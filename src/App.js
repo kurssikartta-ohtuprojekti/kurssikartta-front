@@ -1,15 +1,23 @@
 import React from 'react'
 import './index.css';
 import {Navbar, NavbarBrand,NavItem, Nav, MenuItem, NavDropdown } from 'react-bootstrap'
+import courseService from './services/courses'
+import Course from './components/course'
 
 class App extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
         courses: [],
-      }
-      
+      }    
     }
+
+    componentDidMount() {
+          courseService.getAll().then(courses =>
+            this.setState({ courses })
+          )
+        }
+
     render () {
         return (
         <div>
@@ -37,7 +45,11 @@ class App extends React.Component {
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <img src="https://raw.githubusercontent.com/juhapekkamoilanen/cshy-coursemap/master/cs-hy-coursemap.png" alt="kuva" width="1200"/>
+            {this.state.courses.map(course => 
+                  <Course course={course}/>
+             )}
+
+            {/* <img src="https://raw.githubusercontent.com/juhapekkamoilanen/cshy-coursemap/master/cs-hy-coursemap.png" alt="kuva" width="1200"/> */}
           </div>
         )
     }
