@@ -23,8 +23,8 @@ const Course = ({ course }) => {
                 <div className="compulsory" style={{padding:3}}> 
                     <Button style={compul}>{course.code}<br/>{course.name}</Button>
                 </div> :
-                
-                <div className="compulsory" style={{padding:3}}> 
+
+                <div className="noncompulsory" style={{padding:3}}> 
                     <Button >{course.code}<br/>{course.name}</Button>
                 </div>
             }

@@ -1,8 +1,9 @@
 import React from 'react'
 import './index.css';
-import {Navbar, NavItem, Nav } from 'react-bootstrap'
 import courseService from './services/courses'
 import Course from './components/course'
+import NaviBar from './components/naviBar'
+
 import { perusopinnot, aineopinnot, syventavat } from './utils/tools'
 
 class App extends React.Component {
@@ -14,10 +15,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-          courseService.getAll().then(courses =>
+        courseService.getAll().then(courses =>
             this.setState({ courses }),
 
-          )
+        )
           
         }
 
@@ -27,50 +28,24 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)
 
-        const navBar = () => (
-          <div>
-            <Navbar collapseOnSelect>
-                <Navbar.Header>
-                <Navbar.Brand>
-                    Kurssikartta-sovellus
-                </Navbar.Brand>
-                <Navbar.Toggle />
-                </Navbar.Header>
-                <Navbar.Collapse>
-                <Nav>
-                    <NavItem href="#">
-                    Kandi
-                    </NavItem>
-                    <NavItem href="#">
-                    Maisteri
-                    </NavItem>
-                    <NavItem href="#">
-                    Linjat
-                    </NavItem>
-                    <NavItem>
-          
-                    </NavItem>
-                </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-          </div>
-        )
-
         const courseMap = () => (
             <div className="mappi" style ={mapCss}>
                 <div className="perus" style={{float: 'left', padding: 4}}>
+                    <h2>Perusopinnot</h2>
                     {perus.map(course => 
-                        <Course course={course}/>
+                        <Course key={course.code} course={course}/>
                     )}
                 </div>
-                <div className="aine" style={{float: 'right', padding: 4}}>
+                <div className="aine" style={{float: 'left', padding: 4}}>
+                    <h2>Aineopinnot</h2>
                     {aine.map(course =>
-                        <Course course={course} style={{}}/>   
+                        <Course key={course.code} course={course} style={{}}/>   
                     )}
                 </div>
-                <div className="syventavat" style={{float: 'right', padding: 4}}>
+                <div className="syventavat" style={{float: 'left', padding: 4}}>
+                <h2>Syventävät opinnot</h2>
                     {syv.map(course =>
-                        <Course course={course}/>
+                        <Course key={course.code} course={course}/>
                     )}
                 </div>
             </div> 
@@ -85,11 +60,11 @@ class App extends React.Component {
         
         return (
         <div className="container" style={{position:'relative'}}>
-            {navBar()}
+            <NaviBar/>
             {this.state.courses.length === 0 ?
                 <div>
                     <h1> Loading... </h1>
-                    <div class="loader"></div>
+                    <div className="loader"></div>
                 </div> :
                 courseMap()
             }
