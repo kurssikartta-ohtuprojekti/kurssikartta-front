@@ -3,15 +3,34 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 
 const Course = ({ course }) => {
-  console.log(course)
-  console.log(course.name)
+    // console.log(course)
+    // console.log(course.name)
 
-  return (
-    <div className="wrapper" >
-      <Button>{course.code}<br/>{course.name}</Button>
+    const compulsory = {
+        border: 'solid',
+        borderWidth: 3,
+        borderRadius: 6,
+        borderColor: 'Red',
+        fontWeight: 'bold'
+    }
+
+    // const peruskurssi = {
+
+    // }
+    if (course.compulsory) { 
+        return (
     
-    </div>
-  )
+            <div className="compulsory"> 
+                <Button style={compulsory}>{course.code}<br/>{course.name}</Button>
+    
+            </div>
+        )
+    }
+    return (
+        <div className="compulsory"> 
+            <Button >{course.code}<br/>{course.name}</Button>
+        </div>
+    )
 }
 
 export default Course

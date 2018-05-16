@@ -1,8 +1,9 @@
 import React from 'react'
 import './index.css';
-import {Navbar, NavbarBrand,NavItem, Nav, MenuItem, NavDropdown } from 'react-bootstrap'
+import {Navbar, NavItem, Nav } from 'react-bootstrap'
 import courseService from './services/courses'
 import Course from './components/course'
+import { perusopinnot, aineopinnot, syventavat } from './utils/tools'
 
 class App extends React.Component {
     constructor(props) {
@@ -14,13 +15,20 @@ class App extends React.Component {
 
     componentDidMount() {
           courseService.getAll().then(courses =>
-            this.setState({ courses })
+            this.setState({ courses }),
+
           )
+          
         }
 
     render () {
-        return (
-        <div>
+        // console.log(perusopinnot(this.state.courses))
+        const perus = perusopinnot(this.state.courses)
+        const aine = aineopinnot(this.state.courses)
+        const syv = syventavat(this.state.courses)
+
+        const navBar = () => (
+          <div>
             <Navbar collapseOnSelect>
                 <Navbar.Header>
                 <Navbar.Brand>
@@ -45,12 +53,31 @@ class App extends React.Component {
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            {this.state.courses.map(course => 
-                  <Course course={course}/>
-             )}
+          </div>
+        )
+        return (
+        <div className="container" style={{position:'relative'}}>
+            {navBar()}
+            <div className="mappi" style ={{backgroundColor: 'lightgreen', borderRadius: 30, borderWidth: 5, position: 'absolute'}}>
+                <div className="perus" style={{float: 'left'}}>
+                    {perus.map(course => 
+                        <Course course={course}/>
+                    )}
+                </div>
+                <div className="aine" style={{float: 'right'}}>
+                    {aine.map(course =>
+                        <Course course={course}/>   
+                    )}
+                </div>
+                <div className="syventavat" style={{float: 'right'}}>
+                    {syv.map(course =>
+                        <Course course={course}/>
+                    )}
+                </div>
+            </div> 
 
             {/* <img src="https://raw.githubusercontent.com/juhapekkamoilanen/cshy-coursemap/master/cs-hy-coursemap.png" alt="kuva" width="1200"/> */}
-          </div>
+        </div>
         )
     }
 }
