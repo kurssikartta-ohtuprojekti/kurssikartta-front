@@ -59,17 +59,17 @@ class App extends React.Component {
         <div className="container" style={{position:'relative'}}>
             {navBar()}
             <div className="mappi" style ={{backgroundColor: 'lightgreen', borderRadius: 30, borderWidth: 5, position: 'absolute'}}>
-                <div className="perus" style={{float: 'left'}}>
+                <div className="perus" style={{float: 'left', padding: 4}}>
                     {perus.map(course => 
                         <Course course={course}/>
                     )}
                 </div>
-                <div className="aine" style={{float: 'right'}}>
+                <div className="aine" style={{float: 'right', padding: 4}}>
                     {aine.map(course =>
-                        <Course course={course}/>   
+                        <Course course={course} style={{}}/>   
                     )}
                 </div>
-                <div className="syventavat" style={{float: 'right'}}>
+                <div className="syventavat" style={{float: 'right', padding: 4}}>
                     {syv.map(course =>
                         <Course course={course}/>
                     )}

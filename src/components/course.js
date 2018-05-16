@@ -20,14 +20,14 @@ const Course = ({ course }) => {
     if (course.compulsory) { 
         return (
     
-            <div className="compulsory"> 
+            <div className="compulsory" style={{padding:3}}> 
                 <Button style={compulsory}>{course.code}<br/>{course.name}</Button>
     
             </div>
         )
     }
     return (
-        <div className="compulsory"> 
+        <div className="compulsory" style={{padding:3}}> 
             <Button >{course.code}<br/>{course.name}</Button>
         </div>
     )
