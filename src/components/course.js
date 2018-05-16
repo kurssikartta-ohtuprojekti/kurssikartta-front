@@ -6,7 +6,7 @@ const Course = ({ course }) => {
     // console.log(course)
     // console.log(course.name)
 
-    const compulsory = {
+    const compul = {
         border: 'solid',
         borderWidth: 3,
         borderRadius: 6,
@@ -17,20 +17,20 @@ const Course = ({ course }) => {
     // const peruskurssi = {
 
     // }
-    if (course.compulsory) { 
-        return (
-    
-            <div className="compulsory" style={{padding:3}}> 
-                <Button style={compulsory}>{course.code}<br/>{course.name}</Button>
-    
-            </div>
-        )
-    }
     return (
-        <div className="compulsory" style={{padding:3}}> 
-            <Button >{course.code}<br/>{course.name}</Button>
+        <div> 
+            {course.compulsory ?
+                <div className="compulsory" style={{padding:3}}> 
+                    <Button style={compul}>{course.code}<br/>{course.name}</Button>
+                </div> :
+                
+                <div className="compulsory" style={{padding:3}}> 
+                    <Button >{course.code}<br/>{course.name}</Button>
+                </div>
+            }
         </div>
     )
 }
+
 
 export default Course
