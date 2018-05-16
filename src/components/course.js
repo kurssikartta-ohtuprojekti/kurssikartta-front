@@ -7,9 +7,9 @@ const Course = ({ course }) => {
   console.log(course.name)
 
   return (
-    <div className="wrapper">
-      <p>{course.code} {course.name}</p>
-     
+    <div className="wrapper" >
+      <Button>{course.code}<br/>{course.name}</Button>
+    
     </div>
   )
 }
