@@ -55,10 +55,9 @@ class App extends React.Component {
             </Navbar>
           </div>
         )
-        return (
-        <div className="container" style={{position:'relative'}}>
-            {navBar()}
-            <div className="mappi" style ={{backgroundColor: 'lightgreen', borderRadius: 30, borderWidth: 5, position: 'absolute'}}>
+
+        const courseMap = () => (
+            <div className="mappi" style ={mapCss}>
                 <div className="perus" style={{float: 'left', padding: 4}}>
                     {perus.map(course => 
                         <Course course={course}/>
@@ -75,8 +74,26 @@ class App extends React.Component {
                     )}
                 </div>
             </div> 
+        )
 
-            {/* <img src="https://raw.githubusercontent.com/juhapekkamoilanen/cshy-coursemap/master/cs-hy-coursemap.png" alt="kuva" width="1200"/> */}
+        const mapCss = {
+            backgroundColor: 'lightgreen',
+            borderRadius: 30,
+            borderWidth: 5,
+            position: 'absolute'
+        }
+        
+        return (
+        <div className="container" style={{position:'relative'}}>
+            {navBar()}
+            {this.state.courses.length === 0 ?
+                <div>
+                    <h1> Loading... </h1>
+                    <div class="loader"></div>
+                </div> :
+                courseMap()
+            }
+
         </div>
         )
     }
