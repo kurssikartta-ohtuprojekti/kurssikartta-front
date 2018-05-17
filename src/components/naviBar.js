@@ -14,13 +14,13 @@ const NaviBar = () => (
           <Navbar.Collapse>
           <Nav>
               <NavItem href="#">
-              Kandi
+                Kandi
               </NavItem>
               <NavItem href="#">
-              Maisteri
+                Maisteri
               </NavItem>
               <NavItem href="#">
-              Linjat
+                Linjat
               </NavItem>
               <NavItem>
     

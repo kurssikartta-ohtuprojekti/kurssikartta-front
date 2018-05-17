@@ -16,15 +16,14 @@ class App extends React.Component {
 
     componentDidMount() {
         courseService.getAll().then(courses =>
-            this.setState({ courses }),
-
+            this.setState({ courses })
         )
-          
-        }
+    }
 
     render () {
         // console.log(perusopinnot(this.state.courses))
-        const perus = perusopinnot(this.state.courses)
+
+        const perus = perusopinnot(this.state.courses) // Using functions from /utils/tools.js
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)
 
