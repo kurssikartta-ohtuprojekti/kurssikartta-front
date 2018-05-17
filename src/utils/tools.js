@@ -22,7 +22,7 @@ const syventavat = (courses) => {
     var resultsfilter = courses.filter(function (i,n){
         // console.log(i)
         // console.log(n)
-        return i.level === 'Syventävät opinnot'
+        return i.level === 'Syventävät'
     })
     // console.log(resultsfilter)
 
