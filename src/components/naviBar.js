@@ -13,18 +13,21 @@ const NaviBar = () => (
           </Navbar.Header>
           <Navbar.Collapse>
           <Nav>
-              <NavItem href="#">
+              <NavItem href="/">
+                Etusivu
+              </NavItem>
+              <NavItem href="/perus">
+                Perusopinnot
+              </NavItem>
+              <NavItem href="/kandi">
                 Kandi
               </NavItem>
-              <NavItem href="#">
+              {/* <NavItem href="/maisteri">
                 Maisteri
-              </NavItem>
-              <NavItem href="#">
+              </NavItem> */}
+              {/* <NavItem href="/linjat">
                 Linjat
-              </NavItem>
-              <NavItem>
-    
-              </NavItem>
+              </NavItem> */}
           </Nav>
           </Navbar.Collapse>
       </Navbar>
