@@ -2,22 +2,16 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
 import { Button } from 'react-bootstrap' 
-// import CourseInfo from './courseInfo'
-const Course = ({ course }) => {
-    // console.log(course)
-    //  console.log(course.prereqs)
+import CompCourseStyling from'./courseComponents/compCourseStyling'
+import CourseStyling from'./courseComponents/courseStyling'
 
-    const compul = {
-        border: 'solid',
-        borderWidth: 3,
-        borderRadius: 6,
-        borderColor: 'Red',
-        fontWeight: 'bold'
-    }
+import CourseInfo from './courseComponents/courseInfo'
+// import CompCourseStyling from './courseComponents/compCourseStyling';
+const Course = ({ course }) => {
 
     const compulsoryCourseButton = () => {
         return (
-            <Button style={compul}>
+        <Button className="compulsoryBtn" style={CompCourseStyling({course})}>
                     {course.code}<br/>{course.name}
             </Button> 
         )    
@@ -25,34 +19,9 @@ const Course = ({ course }) => {
 
     const noncompulsoryCourseButton = () => {
         return (
-            <Button >
+            <Button className="noncompulsoryBtn" style={CourseStyling({course})}>
                     {course.code}<br/>{course.name}
             </Button>
-        )
-    }
-    const courseInfo = () => {
-        return (
-            <div>
-                <p style={{fontWeight: 'bold'}}>{course.name}<br/>{course.code} ({course.ects} op)</p>
-                <a href={course.url}>Kurssisivu</a>
-                <br/>
-                {course.compulsory ?
-                    <p>Pakollinen kurssi</p> :
-                    <p>Valinnainen kurssi</p>
-                }
-                <p fontWeight='bold'>Esitiedot:</p>
-
-                {course.prereqs.length !== 0 ?
-                <div style={{paddingLeft:8}}> 
-                    {course.prereqs.map(prereq =>
-                        <p>{prereq}</p>
-                    )}
-                </div> :
-                <div style={{paddingLeft:8}}>
-                    <p>Ei esitietoja</p>
-                </div>
-                }
-            </div>
         )
     }
 
@@ -66,7 +35,7 @@ const Course = ({ course }) => {
                         modal
                         closeOnDocumentClick
                     >
-                        <span> {courseInfo()} </span>
+                        <span> <CourseInfo course={course}/> </span>
                     </Popup>
                 </div> :
 
@@ -74,9 +43,10 @@ const Course = ({ course }) => {
                     <Popup
                         trigger={noncompulsoryCourseButton()}
                         modal
+                        // overlayStyle={{borderRadius:20}}
                         closeOnDocumentClick
                     >
-                        <span> {courseInfo()} </span>
+                        <span> <CourseInfo course={course}/> </span>
                     </Popup>
                 </div>
             } 

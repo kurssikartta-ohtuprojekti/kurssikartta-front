@@ -6,7 +6,7 @@ import NaviBar from './components/naviBar'
 import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
 import {BrowserRouter as Router,
-    Route, Link, Redirect, NavLink} from 'react-router-dom'
+    Route} from 'react-router-dom'
 import { perusopinnot, aineopinnot, syventavat } from './utils/tools'
 
 class App extends React.Component {
@@ -36,7 +36,7 @@ class App extends React.Component {
                 <div>
                     <NaviBar/>
                     {this.state.courses.length === 0 ?
-                        <div style={{position:'absolute', left:'50%'}}>
+                        <div style={{position:'absolute', left:'45%'}}>
                             <h1> Loading... </h1>
                             <div className="loader"></div>
                         </div> :
