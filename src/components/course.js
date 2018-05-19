@@ -26,7 +26,7 @@ const Course = ({ course }) => {
     }
 
     return (
-        <div> 
+        <div className="courseBtn"> 
             {course.compulsory ?
                 <div className="compulsory" style={{padding:3}}> 
                     

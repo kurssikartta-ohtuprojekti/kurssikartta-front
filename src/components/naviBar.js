@@ -3,7 +3,7 @@ import {Navbar, NavItem, Nav } from 'react-bootstrap'
 
 
 const NaviBar = () => (
-    <div>
+    <div className ="navBar">
       <Navbar collapseOnSelect>
           <Navbar.Header>
           <Navbar.Brand>

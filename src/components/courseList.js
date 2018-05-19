@@ -1,6 +1,5 @@
 import React from 'react'
 import Course from './course'
-
     const mapCss = {
         backgroundColor: 'lightgreen',
         borderRadius: 30,
