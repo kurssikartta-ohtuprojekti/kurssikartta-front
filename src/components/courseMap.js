@@ -8,15 +8,18 @@ import Course from './course'
         position: 'absolute'
     }
 
-    const courseMap = ({perus, aine, syv }) => (
+    const CourseMap = ({perus, aine, syv }) => (
         <div className="mappi" style ={mapCss}>
+            {perus === null ? 
+            <div className="nullPerus"></div> :
             <div className="perus" style={{float: 'left', padding: 4}}>
                 <h2>Perusopinnot</h2>
                 {perus.map(course => 
                     <Course key={course.code} course={course}/>                    )}
             </div>
+            }
             {aine === null ? 
-            <div></div> :
+            <div className="nullAine"></div> :
             <div className="aine" style={{float: 'left', padding: 4}}>
                 <h2>Aineopinnot</h2>
                 {aine.map(course =>
@@ -25,7 +28,7 @@ import Course from './course'
             </div>
             }
             {syv === null ? 
-            <div></div> :
+            <div className="nullSyv"></div> :
             <div className="syventavat" style={{float: 'left', padding: 4}}>
                 <h2>Syventävät opinnot</h2>
                 {syv.map(course =>
@@ -37,4 +40,4 @@ import Course from './course'
     )
 
 
-export default courseMap
+export default CourseMap

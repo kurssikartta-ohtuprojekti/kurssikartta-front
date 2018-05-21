@@ -7,12 +7,13 @@ import Course from './course'
         position: 'absolute'
     }
 
-    const courseList = ({perus, aine, syv }) => (
+    const CourseList = ({perus, aine, syv }) => (
         <div className="mappi" style ={mapCss}>
             <div className="perus" style={{float: 'left', padding: 4}}>
                 <h2>Perusopinnot</h2>
                 {perus.map(course => 
-                    <Course key={course.code} course={course}/>                    )}
+                    <Course key={course.code} course={course}/>
+                )}
             </div>
             <div className="aine" style={{float: 'left', padding: 4}}>
                 <h2>Aineopinnot</h2>
@@ -30,4 +31,4 @@ import Course from './course'
     )
 
 
-export default courseList
+export default CourseList
