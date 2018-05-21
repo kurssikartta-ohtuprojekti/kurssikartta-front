@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Kurssitietojen renderointi
 const CourseInfo = ({course}) => {
     return (
         <div>

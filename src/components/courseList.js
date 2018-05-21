@@ -6,7 +6,7 @@ import Course from './course'
         borderWidth: 5,
         position: 'absolute'
     }
-
+    // Kaikkien kurssien renderointi listaan
     const CourseList = ({perus, aine, syv }) => (
         <div className="mappi" style ={mapCss}>
             <div className="perus" style={{float: 'left', padding: 4}}>

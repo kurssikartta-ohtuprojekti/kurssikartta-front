@@ -9,14 +9,16 @@ import CourseInfo from './courseComponents/courseInfo'
 // import CompCourseStyling from './courseComponents/compCourseStyling';
 const Course = ({ course }) => {
 
+    // Pakollisen kurssin Button-ominaisuus
     const compulsoryCourseButton = () => {
         return (
-        <Button className="compulsoryBtn" style={CompCourseStyling({course})}>
+            <Button className="compulsoryBtn" style={CompCourseStyling({course})}>
                     {course.code}<br/>{course.name}
             </Button> 
         )    
     }
 
+    // Valinnasen kurssin Button-ominaisuus
     const noncompulsoryCourseButton = () => {
         return (
             <Button className="noncompulsoryBtn" style={CourseStyling({course})}>
@@ -26,10 +28,11 @@ const Course = ({ course }) => {
     }
 
     return (
+        // Yksittäisen kurssin renderointi
         <div className="courseBtn"> 
             {course.compulsory ?
                 <div className="compulsory" style={{padding:3}}> 
-                    
+                    {/* Popup-ominaisuus kurssitietojen avaamiselle */}
                     <Popup
                         trigger={compulsoryCourseButton()}
                         modal
@@ -40,6 +43,7 @@ const Course = ({ course }) => {
                 </div> :
 
                 <div className="noncompulsory" style={{padding:3}}> 
+                    {/* Popup-ominaisuus kurssitietojen avaamiselle */}
                     <Popup
                         trigger={noncompulsoryCourseButton()}
                         modal

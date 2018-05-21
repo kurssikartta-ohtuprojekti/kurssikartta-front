@@ -1,3 +1,4 @@
+// Pakollisen kurssin tyylittelyt
 
 const CompCourseStyling = ({course}) => {
     // console.log(course.studytrack)

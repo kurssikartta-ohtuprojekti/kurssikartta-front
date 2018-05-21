@@ -1,3 +1,4 @@
+// Valinnaisen kurssin tyylittely
 
 const CourseStyling = ({course}) => {
     // console.log(course.studytrack)

@@ -1,4 +1,5 @@
-const perusopinnot = (courses) => {
+// Ottaa JSONin kaikista kurssesista, palauttaa peruskurssit
+const perusopinnot = (courses) => { 
     var resultsfilter = courses.filter(function (i,n){
         // console.log(i)
         // console.log(n)
@@ -8,6 +9,7 @@ const perusopinnot = (courses) => {
 
     return resultsfilter
 }
+// Ottaa JSONin kaikista kurssesita palauttaa aineopinnot
 const aineopinnot = (courses) => {
     var resultsfilter = courses.filter(function (i,n){
         // console.log(i)
@@ -18,6 +20,7 @@ const aineopinnot = (courses) => {
 
     return resultsfilter
 }
+// Ottaa JSONin kaikista kuesseista palauttaa syventävät opinnot
 const syventavat = (courses) => {
     var resultsfilter = courses.filter(function (i,n){
         // console.log(i)

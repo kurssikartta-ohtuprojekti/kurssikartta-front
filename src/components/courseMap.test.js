@@ -90,7 +90,7 @@ describe.only('<CourseMap />', () => {
         expect(contentDiv.html()).toContain("nullAine")
         expect(contentDiv.html()).toContain("nullSyv")
         const perusDiv = contentDiv.find('.perus')
-        console.log(perusDiv.html())
+        // console.log(perusDiv.html())
         expect(perusDiv.html()).toContain("Dummy")
         expect(perusDiv.html()).toContain("Dummy2")
         
