@@ -13,12 +13,12 @@ const CourseInfo = ({course}) => {
             <p fontWeight='bold'>Esitiedot:</p>
 
             {course.prereqs.length !== 0 ?
-            <div style={{paddingLeft:8}}> 
+            <div className="prereqs" style={{paddingLeft:8}}> 
                 {course.prereqs.map(prereq =>
                     <p>{prereq}</p>
                 )}
             </div> :
-            <div style={{paddingLeft:8}}>
+            <div className="noPrereqs" style={{paddingLeft:8}}>
                 <p>Ei esitietoja</p>
             </div>
             }
