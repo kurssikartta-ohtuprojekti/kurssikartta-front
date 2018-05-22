@@ -29,13 +29,8 @@ const Course = ({ course, style }) => {
 
     return (
         // Yksittäisen kurssin renderointi
-<<<<<<< HEAD
         <div className="courseBtn" style={style}> 
             {course.compulsory ?
-=======
-        <div className="courseBtn"> 
-            {course.compulsory ? 
->>>>>>> 5d4a3379656bba3909416978629e7dda7cd52f1b
                 <div className="compulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}
                     <Popup

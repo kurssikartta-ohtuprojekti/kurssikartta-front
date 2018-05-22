@@ -22,7 +22,7 @@ import './courseMap.css'
         margin: 'auto',
         maxWidth: '450px',
         borderRadius: '5px',
-        backgroundColor: 'lightgreen'
+        backgroundColor: ''
     }
 
     const aineDiv = {
