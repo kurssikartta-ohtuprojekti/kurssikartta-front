@@ -59,10 +59,10 @@ import './courseMap.css'
             <div className="perus">
                 {{perus} === null ? 
                     <div className="nullPerus"></div> :
-                    <div class="container" style={perusDiv}>
+                    <div className="container" style={perusDiv}>
                         <h2>Perusopinnot</h2>
                         {perus.map(course => 
-                            <Course key={course.code} course={course} style={{float: 'left',}}/> 
+                            <Course key={course.code} course={course} style={{float: 'left'}}/> 
                         )}
                     </div>
                 }
@@ -100,8 +100,6 @@ import './courseMap.css'
             }
         </div>
     )
-
-        
         return (
         <div className="mappi" style ={outerDiv}>
             {syventavaContainer()}
