@@ -1,12 +1,6 @@
 import React from 'react'
 import Course from './course'
 import './courseMap.css'
-    const mapCss = {
-        backgroundColor: 'lightgreen',
-        borderRadius: 30,
-        borderWidth: 5,
-        position: 'absolute'
-    }
 
     const outerDiv = {
         padding: '30px',
@@ -15,6 +9,7 @@ import './courseMap.css'
     }
     const perusDiv = {
         // position: 'relative',
+        padding: 8,
         top: 0,
         right: 0,
         bottom: 0,
@@ -22,11 +17,12 @@ import './courseMap.css'
         margin: 'auto',
         maxWidth: '450px',
         borderRadius: '5px',
-        backgroundColor: ''
+        backgroundColor: 'antiquewhite'
     }
 
     const aineDiv = {
         // position: 'relative',
+        padding: 8,
         top: 0,
         right: 0,
         bottom: 0,
@@ -39,6 +35,7 @@ import './courseMap.css'
     }
     const syvDiv = {
         // position: 'relative',
+        padding: 8,
         top: 0,
         right: 0,
         bottom: 0,
@@ -48,10 +45,6 @@ import './courseMap.css'
         maxWidth: '1600px',
         borderRadius: '5px',
         backgroundColor: 'yellow'
-    }
-    const courseDiv = {
-        margin: 'auto',
-        float: 'left'
     }
     
     const CourseMap = ({perus, aine, syv }) => {
@@ -102,6 +95,10 @@ import './courseMap.css'
     )
         return (
         <div className="mappi" style ={outerDiv}>
+            {/* {console.log(syv.length)}
+            {console.log(aine.length)}
+            {console.log(perus.length)} */}
+
             {syventavaContainer()}
             
         </div> 
