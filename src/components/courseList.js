@@ -1,7 +1,7 @@
 import React from 'react'
 import Course from './course'
     const mapCss = {
-        backgroundColor: 'lightgreen',
+        backgroundColor: 'antiquewhite',
         borderRadius: 30,
         borderWidth: 5,
         position: 'absolute'
