@@ -36,6 +36,7 @@ const CompCourseStyling = ({course}) => {
     }
 
     const defaultStyle = {
+        // maxWidth: '200',
         border: 'solid',
         borderWidth: 3,
         borderRadius: 6,

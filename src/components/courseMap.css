@@ -1,0 +1,14 @@
+.courseContainer
+{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100vh;
+}
+.item
+{
+     background-color: #f3f2ef;
+     border-radius: 3px;
+     width: 400px;
+     height: 400px; 
+}

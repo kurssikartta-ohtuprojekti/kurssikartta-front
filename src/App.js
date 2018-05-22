@@ -41,6 +41,9 @@ class App extends React.Component {
                             <div className="loader"></div>
                         </div> :
                         <div>
+                            <Route path="/kartta" render={() =>
+                                <CourseMap perus={perus} aine={aine} syv={syv}/>}
+                            />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null}/>}
                             />
