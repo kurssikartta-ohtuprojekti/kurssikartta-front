@@ -139,7 +139,7 @@ describe.only('Course buttons get coloring based on study track', () => {
         // console.log(courseComponent.html())
         // console.log(contentDiv.html())
         // console.log(contentDiv.text())
-        expect(contentDiv.html()).toContain("background-color:bisque")
+        expect(contentDiv.html()).toContain("background-color:chocolate")
     })
     it('data science', () => {
         
@@ -149,7 +149,7 @@ describe.only('Course buttons get coloring based on study track', () => {
         // console.log(courseComponent.html())
         // console.log(contentDiv.html())
         // console.log(contentDiv.text())
-        expect(contentDiv.html()).toContain("background-color:red")
+        expect(contentDiv.html()).toContain("background-color:lightgreen")
     })
 })
 

@@ -5,15 +5,15 @@ const CompCourseStyling = ({course}) => {
     const algorithms = {
         backgroundColor: 'lightblue',
         border: 'solid',
-        borderWidth: 3,
+        borderWidth: 5,
         borderRadius: 6,
         borderColor: 'Red',
         fontWeight: 'bold',
     }
     const dataSc = {
-        backgroundColor: 'red',
+        backgroundColor: 'lightgreen',
         border: 'solid',
-        borderWidth: 3,
+        borderWidth: 5,
         borderRadius: 6,
         borderColor: 'Red',
         fontWeight: 'bold'
@@ -21,15 +21,15 @@ const CompCourseStyling = ({course}) => {
     const systems = {
         backgroundColor: 'yellow',
         border: 'solid',
-        borderWidth: 3,
+        borderWidth: 5,
         borderRadius: 6,
         borderColor: 'Red',
         fontWeight: 'bold',
     }
     const networking = {
-        backgroundColor: 'bisque',
+        backgroundColor: 'chocolate',
         border: 'solid',
-        borderWidth: 3,
+        borderWidth: 5,
         borderRadius: 6,
         borderColor: 'Red',
         fontWeight: 'bold'
@@ -38,7 +38,7 @@ const CompCourseStyling = ({course}) => {
     const defaultStyle = {
         // maxWidth: '200',
         border: 'solid',
-        borderWidth: 3,
+        borderWidth: 5,
         borderRadius: 6,
         borderColor: 'Red',
         fontWeight: 'bold'
