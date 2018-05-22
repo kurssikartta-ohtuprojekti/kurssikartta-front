@@ -6,13 +6,13 @@ const CourseStyling = ({course}) => {
         backgroundColor: 'lightblue'
     }
     const dataSc = {
-        backgroundColor: 'red'
+        backgroundColor: 'lightgreen'
     }
     const systems = {
         backgroundColor: 'yellow'
     }
     const networking = {
-        backgroundColor: 'bisque'
+        backgroundColor: 'chocolate'
     }
     const defaultStyle = {
         

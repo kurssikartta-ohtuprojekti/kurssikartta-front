@@ -1,0 +1,14 @@
+#wrapper {
+    border: 1px solid red;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    }
+#block {
+    border: 1px solid blue;
+    width: 500px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    }
