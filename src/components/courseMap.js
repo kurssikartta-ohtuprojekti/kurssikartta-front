@@ -2,6 +2,7 @@ import React from 'react'
 import Course from './course'
 import './courseMap.css'
 
+
     const CourseMap = ({perus, aine, syv }) => {
   
         return (

@@ -24,7 +24,12 @@ const NaviBar = () => (
               </NavItem>
               <NavItem href="/kandi">
                 Kandi
-              </NavItem> */}
+
+              </NavItem>
+              <NavItem href="/mat">
+                Matematiikka
+              </NavItem>
+              
               {/* <NavItem href="/maisteri">
                 Maisteri
               </NavItem> */}
