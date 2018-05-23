@@ -114,6 +114,44 @@ import './courseMap.css'
                 <div className="fsskLabra">
                     <Course key={aine[20].code} course={aine[20]} style={{}}/>
                 </div>
+
+                <div className="alon">
+                    <Course key={aine[21].code} course={aine[21]} style={{}}/>
+                </div>
+
+                <div className="roha">
+                    <Course key={aine[22].code} course={aine[22]} style={{}}/>
+                </div>
+
+                <div className="ifp">
+                    <Course key={aine[23].code} course={aine[23]} style={{}}/>
+                </div>
+
+                <div className="vh">
+                    <Course key={aine[24].code} course={aine[24]} style={{}}/>
+                </div>
+
+                <div className="rubyLabra">
+                    <Course key={aine[25].code} course={aine[25]} style={{}}/>
+                </div>
+
+                <div className="kilpa">
+                    <Course key={aine[26].code} course={aine[26]} style={{}}/>
+                </div>
+
+                <div className="eai">
+                    <Course key={aine[27].code} course={aine[27]} style={{}}/>
+                </div>
+
+                <div className="ilc">
+                    <Course key={aine[28].code} course={aine[28]} style={{}}/>
+                </div>
+
+                <div className="ssh">
+                    <Course key={aine[29].code} course={aine[29]} style={{}}/>
+                </div>
+
+
           </div>
     )}
 

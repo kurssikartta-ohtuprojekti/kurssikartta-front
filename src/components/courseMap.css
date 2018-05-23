@@ -2,7 +2,7 @@
 
 .wrapper {
     position: absolute;
-    max-width: 1600px;
+    max-width: 2000px;
     border: 2px solid #f76707;
     border-radius: 5px;
     background-color: #fff4e6;
@@ -26,19 +26,19 @@
 
     ". . . . . . . . . . . . . . . ."
     ". . . . . . . . m . . . . . . ."
-    ". . . . . . v . . . y z . . . ."
-    ". . . . . . s . l . w . . . . ."
-    ". . . . . . . . . . . t . . . ."
-    ". . . . . r p . i . . . . . . ."
-    ". . . . . . . a . b . g . . . ."
-    ". . . . . . . . e . . f . . . ."
-    ". . . . . . u c . d . . n . . ."
-    ". . . . . . . . . . . h . . . ."
+    ". . . . . v . D . . y z . . . ."
+    ". . . . . s . . l . w . . . . ."
+    ". . . . . . . . . . . t E . . ."
+    ". . . . . r p . i B . . . A F ."
+    ". . . . . . . a . b g . . . . ."
+    ". . . . . . . . e . f . . . . ."
+    ". . . . . . u c . d . n G . . ."
+    ". . . . . . . . . . h . . . . ."
     ". . . . . j . k q . . . . . . ."
     ". . . . . . o . . . . . . . . ."
-    ". . . . . . . . x . . . . . . ."
+    ". . . . . I . . x . . . . . . ."
     ". . . . . . . . . . . . . . . ."
-    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . H C ."
     ". . . . . . . . . . . . . . . .";
     align-items: start;
 }
@@ -119,4 +119,31 @@
 }
 .fsskLabra {
     grid-area: z
+}
+.alon {
+    grid-area: A
+}
+.roha {
+    grid-area: B
+}
+.ifp {
+    grid-area: C
+}
+.vh {
+    grid-area: D
+}
+.rubyLabra {
+    grid-area: E
+}
+.kilpa {
+    grid-area: F
+}
+.eai {
+    grid-area: G
+}
+.ilc {
+    grid-area: H
+}
+.ssh {
+    grid-area: I
 }
