@@ -19,24 +19,24 @@
   /* margin: auto;   */
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    grid-gap: 1px;
+    grid-gap: 5px;
     grid-auto-rows: 60px;
     grid-auto-columns: 60px;
     grid-template-areas: 
 
     ". . . . . . . . . . . . . . . ."
     ". . . . . . . . m . . . . . . ."
-    ". . . . . . . . . . . . . g . ."
-    ". . . . . . . . l . . . . . . ."
-    ". . . . . . . . . . . f . . . ."
-    ". . . . . . . . i . . . . . . ."
-    ". . . . . . . a . b . h . . . ."
-    ". . . . . . . . e . . . . . . ."
-    ". . . . . . . c . d . . . . . ."
-    ". . . . . . . . . . . . . . . ."
-    ". . . . . j . k . . . . . . . ."
-    ". . . . . . . . . . . . . . . ."
-    ". . . . . . . . . . . . . . . ."
+    ". . . . . . v . . . y z . . . ."
+    ". . . . . . s . l . w . . . . ."
+    ". . . . . . . . . . . t . . . ."
+    ". . . . . r p . i . . . . . . ."
+    ". . . . . . . a . b . g . . . ."
+    ". . . . . . . . e . . f . . . ."
+    ". . . . . . u c . d . . n . . ."
+    ". . . . . . . . . . . h . . . ."
+    ". . . . . j . k q . . . . . . ."
+    ". . . . . . o . . . . . . . . ."
+    ". . . . . . . . x . . . . . . ."
     ". . . . . . . . . . . . . . . ."
     ". . . . . . . . . . . . . . . ."
     ". . . . . . . . . . . . . . . .";
@@ -80,4 +80,43 @@
 }
 .ohtupr {
     grid-area: m;
+}
+.jtka {
+    grid-area: n;
+}
+.ttpe {
+    grid-area: o
+}
+.tikapeLabra {
+    grid-area: p
+}
+.tilpeLabra {
+    grid-area: q
+}
+.tisu {
+    grid-area: r
+}
+.igp {
+    grid-area: s
+}
+.ruby {
+    grid-area: t
+}
+.tito2 {
+    grid-area: u
+}
+.otjs {
+    grid-area: v
+}
+.wepa {
+    grid-area: w
+}
+.c {
+    grid-area: x
+}
+.fssk {
+    grid-area: y
+}
+.fsskLabra {
+    grid-area: z
 }

@@ -9,7 +9,7 @@ const CompCourseStyling = ({course}) => {
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
+        borderColor: 'black',
         fontWeight: 'bold',
         fontSize: 9,
         overflow: 'hidden'
@@ -23,7 +23,7 @@ const CompCourseStyling = ({course}) => {
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
+        borderColor: 'black',
         fontWeight: 'bold',
         fontSize: 9,
         overflow: 'hidden'
@@ -37,7 +37,7 @@ const CompCourseStyling = ({course}) => {
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
+        borderColor: 'black',
         fontWeight: 'bold',
         fontSize: 9,
         overflow: 'hidden'
@@ -51,7 +51,7 @@ const CompCourseStyling = ({course}) => {
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
+        borderColor: 'black',
         fontWeight: 'bold',
         fontSize: 9,
         overflow: 'hidden'
@@ -64,7 +64,7 @@ const CompCourseStyling = ({course}) => {
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
+        borderColor: 'black',
         fontWeight: 'bold',
         fontSize: 9,
         overflow: 'hidden'
