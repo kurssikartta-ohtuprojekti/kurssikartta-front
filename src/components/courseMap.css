@@ -1,14 +1,122 @@
-#wrapper {
-    border: 1px solid red;
-    width: 500px;
-    height: 500px;
-    position: relative;
-    }
-#block {
-    border: 1px solid blue;
-    width: 500px;
-    height: 250px;
+* {box-sizing: border-box;}
+
+.wrapper {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    }
+    max-width: 1600px;
+    border: 2px solid #f76707;
+    border-radius: 5px;
+    background-color: #fff4e6;
+}
+
+.wrapper > div {
+    /* border: 2px solid #ffa94d; */
+    /* border-radius: 5px; */
+    /* background-color: #ffd8a8; */
+    padding: 0;
+    color: #d9480f;
+}
+.wrapper {
+  /* margin: auto;   */
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-gap: 5px;
+    grid-auto-rows: 60px;
+    grid-auto-columns: 60px;
+    grid-template-areas: 
+
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . m . . . . . . ."
+    ". . . . . . v . . . y z . . . ."
+    ". . . . . . s . l . w . . . . ."
+    ". . . . . . . . . . . t . . . ."
+    ". . . . . r p . i . . . . . . ."
+    ". . . . . . . a . b . g . . . ."
+    ". . . . . . . . e . . f . . . ."
+    ". . . . . . u c . d . . n . . ."
+    ". . . . . . . . . . . h . . . ."
+    ". . . . . j . k q . . . . . . ."
+    ". . . . . . o . . . . . . . . ."
+    ". . . . . . . . x . . . . . . ."
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . .";
+    align-items: start;
+}
+.ohpe {
+    grid-area: a;
+}
+.ohja {
+    grid-area: b;
+}
+.tito {
+    grid-area: c;
+}
+.tikape {
+    grid-area: d;
+}
+.jtkt {
+    grid-area: e;
+}
+.tira {
+    grid-area: f;
+}
+.tiraLabra {
+    grid-area: g;
+}
+.lama {
+    grid-area: h;
+}
+.otm {
+    grid-area: i;
+}
+.kaja {
+    grid-area: j;
+}
+.tilpe {
+    grid-area: k;
+}
+.ohtu {
+    grid-area: l;
+}
+.ohtupr {
+    grid-area: m;
+}
+.jtka {
+    grid-area: n;
+}
+.ttpe {
+    grid-area: o
+}
+.tikapeLabra {
+    grid-area: p
+}
+.tilpeLabra {
+    grid-area: q
+}
+.tisu {
+    grid-area: r
+}
+.igp {
+    grid-area: s
+}
+.ruby {
+    grid-area: t
+}
+.tito2 {
+    grid-area: u
+}
+.otjs {
+    grid-area: v
+}
+.wepa {
+    grid-area: w
+}
+.c {
+    grid-area: x
+}
+.fssk {
+    grid-area: y
+}
+.fsskLabra {
+    grid-area: z
+}

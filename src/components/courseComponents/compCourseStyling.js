@@ -3,44 +3,72 @@
 const CompCourseStyling = ({course}) => {
     // console.log(course.studytrack)
     const algorithms = {
+        width: '150px',
+        height: '80px',
         backgroundColor: 'lightblue',
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
+        borderColor: 'black',
         fontWeight: 'bold',
+        fontSize: 9,
+        overflow: 'hidden'
+
+
     }
     const dataSc = {
+        width: '150px',
+        height: '80px',
         backgroundColor: 'lightgreen',
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
-        fontWeight: 'bold'
+        borderColor: 'black',
+        fontWeight: 'bold',
+        fontSize: 9,
+        overflow: 'hidden'
+
+
     }
     const systems = {
+        width: '150px',
+        height: '60px',
         backgroundColor: 'yellow',
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
+        borderColor: 'black',
         fontWeight: 'bold',
+        fontSize: 9,
+        overflow: 'hidden'
+
+
     }
     const networking = {
+        width: '150px',
+        height: '60px',
         backgroundColor: 'chocolate',
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
-        fontWeight: 'bold'
+        borderColor: 'black',
+        fontWeight: 'bold',
+        fontSize: 9,
+        overflow: 'hidden'
+
     }
 
     const defaultStyle = {
+        width: '150px',
+        height: '60px',
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
-        borderColor: 'Red',
-        fontWeight: 'bold'
+        borderColor: 'black',
+        fontWeight: 'bold',
+        fontSize: 9,
+        overflow: 'hidden'
+
     }
         
     if (course.studytrack[0] === 'ds') {

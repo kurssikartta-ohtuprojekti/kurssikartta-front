@@ -16,15 +16,20 @@ const NaviBar = () => (
               <NavItem href="/">
                 Etusivu
               </NavItem>
-              <NavItem href="/perus">
+              <NavItem href="/kartta">
+                Kartta
+              </NavItem>
+              {/* <NavItem href="/perus">
                 Perusopinnot
               </NavItem>
               <NavItem href="/kandi">
                 Kandi
+
               </NavItem>
               <NavItem href="/mat">
                 Matematiikka
               </NavItem>
+              
               {/* <NavItem href="/maisteri">
                 Maisteri
               </NavItem> */}
