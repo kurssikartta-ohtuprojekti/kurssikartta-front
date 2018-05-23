@@ -1,28 +1,83 @@
-.courseContainer
-{
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     height: 100vh;
-}
-.item
-{
-     background-color: #f3f2ef;
-     border-radius: 3px;
-     width: 400px;
-     height: 400px; 
-}
-#wrapper {
-    border: 1px solid red;
-    width: 500px;
-    height: 500px;
-    position: relative;
-    }
-#block {
-    border: 1px solid blue;
-    width: 500px;
-    height: 250px;
+* {box-sizing: border-box;}
+
+.wrapper {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    }
+    max-width: 1600px;
+    border: 2px solid #f76707;
+    border-radius: 5px;
+    background-color: #fff4e6;
+}
+
+.wrapper > div {
+    /* border: 2px solid #ffa94d; */
+    /* border-radius: 5px; */
+    /* background-color: #ffd8a8; */
+    padding: 0;
+    color: #d9480f;
+}
+.wrapper {
+  /* margin: auto;   */
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-gap: 1px;
+    grid-auto-rows: 60px;
+    grid-auto-columns: 60px;
+    grid-template-areas: 
+
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . m . . . . . . ."
+    ". . . . . . . . . . . . . g . ."
+    ". . . . . . . . l . . . . . . ."
+    ". . . . . . . . . . . f . . . ."
+    ". . . . . . . . i . . . . . . ."
+    ". . . . . . . a . b . h . . . ."
+    ". . . . . . . . e . . . . . . ."
+    ". . . . . . . c . d . . . . . ."
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . j . k . . . . . . . ."
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . .";
+    align-items: start;
+}
+.ohpe {
+    grid-area: a;
+}
+.ohja {
+    grid-area: b;
+}
+.tito {
+    grid-area: c;
+}
+.tikape {
+    grid-area: d;
+}
+.jtkt {
+    grid-area: e;
+}
+.tira {
+    grid-area: f;
+}
+.tiraLabra {
+    grid-area: g;
+}
+.lama {
+    grid-area: h;
+}
+.otm {
+    grid-area: i;
+}
+.kaja {
+    grid-area: j;
+}
+.tilpe {
+    grid-area: k;
+}
+.ohtu {
+    grid-area: l;
+}
+.ohtupr {
+    grid-area: m;
+}
