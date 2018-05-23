@@ -7,6 +7,7 @@ const CourseStyling = ({course}) => {
         width: '150px',
         height: '60px',
         fontSize: 9,
+        overflow: 'hidden'
 
     }
     const dataSc = {
@@ -14,6 +15,8 @@ const CourseStyling = ({course}) => {
         width: '150px',
         height: '60px',
         fontSize: 9,
+        overflow: 'hidden'
+
 
     }
     const systems = {
@@ -21,6 +24,7 @@ const CourseStyling = ({course}) => {
         width: '150px',
         height: '60px',
         fontSize: 9,
+        overflow: 'hidden'
 
     }
     const networking = {
@@ -28,12 +32,15 @@ const CourseStyling = ({course}) => {
         width: '150px',
         height: '60px',
         fontSize: 9,
+        overflow: 'hidden'
 
     }
     const defaultStyle = {
         width: '150px',
         height: '60px',
         fontSize: 9,
+        overflow: 'hidden'
+
     }
     if (course.studytrack[0] === 'ds') {
         return (

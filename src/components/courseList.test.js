@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import CourseList from './courseMap'
+import CourseList from './courseList'
 
 describe.only('<CourseList />', () => {
     const perus = [
@@ -73,7 +73,7 @@ describe.only('<CourseList />', () => {
         const mockHandler = jest.fn()
         const courseListComponent = shallow(<CourseList perus={perus} aine={aine} syv={syv}/>)
         const contentDiv = courseListComponent.find('.mappi')
-        // console.log(courseMapComponent.html())
+        console.log(courseListComponent.html())
         // console.log(contentDiv.html())
         expect(contentDiv.html()).toContain("Dummy")
         expect(contentDiv.html()).toContain("Dummy2")

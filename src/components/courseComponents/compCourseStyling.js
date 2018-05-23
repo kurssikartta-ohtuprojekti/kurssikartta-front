@@ -12,6 +12,8 @@ const CompCourseStyling = ({course}) => {
         borderColor: 'Red',
         fontWeight: 'bold',
         fontSize: 9,
+        overflow: 'hidden'
+
 
     }
     const dataSc = {
@@ -24,6 +26,8 @@ const CompCourseStyling = ({course}) => {
         borderColor: 'Red',
         fontWeight: 'bold',
         fontSize: 9,
+        overflow: 'hidden'
+
 
     }
     const systems = {
@@ -36,6 +40,8 @@ const CompCourseStyling = ({course}) => {
         borderColor: 'Red',
         fontWeight: 'bold',
         fontSize: 9,
+        overflow: 'hidden'
+
 
     }
     const networking = {
@@ -48,6 +54,7 @@ const CompCourseStyling = ({course}) => {
         borderColor: 'Red',
         fontWeight: 'bold',
         fontSize: 9,
+        overflow: 'hidden'
 
     }
 
@@ -60,6 +67,8 @@ const CompCourseStyling = ({course}) => {
         borderColor: 'Red',
         fontWeight: 'bold',
         fontSize: 9,
+        overflow: 'hidden'
+
     }
         
     if (course.studytrack[0] === 'ds') {
