@@ -8,7 +8,7 @@ import Course from './course'
         position: 'absolute'
     }
 
-    const CourseMap = ({perus, aine, syv }) => (
+    const CourseMap = ({perus, aine, syv, mat }) => (
         <div className="mappi" style ={mapCss}>
             {perus === null ? 
             <div className="nullPerus"></div> :
@@ -35,6 +35,15 @@ import Course from './course'
                     <Course key={course.code} course={course}/>
                 )}
             </div>
+            }
+            {mat === null ? 
+            <div className="nullMat"></div> :
+            <div className="matematiikka" style={{float: 'left', padding: 4}}>
+                <h2>Matematiikan opinnot</h2>
+                {mat.map(course =>
+                        <Course key={course.code} course={course}/>
+                )}
+                </div>
             }
         </div> 
     )
