@@ -69,9 +69,33 @@ describe.only('<CourseMap />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         }
     ]
+    const mat = [
+        {
+            code: "MAT12001",
+            name: "Dummy7",
+            level: "Perusopinnot",
+            compulsory: false,
+            prereqs: [],
+            studytrack: [],
+            faculty: "math",
+            ects: "1-10",
+            url: "https://courses.helsinki.fi/fi/TKT21010"
+        },
+        {
+            code: "MAT12002",
+            name: "Dummy8",
+            level: "Perusopinnot",
+            compulsory: false,
+            prereqs: [],
+            studytrack: [],
+            faculty: "math",
+            ects: "1-10",
+            url: "https://courses.helsinki.fi/fi/TKT21010"
+        }
+    ]
     it('renders container for course map', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap perus={null} aine={null} syv={null}/>)
+        const courseMapComponent = shallow(<CourseMap perus={null} aine={null} syv={null} mat={null}/>)
         const contentDiv = courseMapComponent.find('.mappi')
         // console.log(courseMapComponent.html())
         // console.log(contentDiv.html())
@@ -79,11 +103,12 @@ describe.only('<CourseMap />', () => {
         expect(contentDiv.html()).toContain("nullPerus")
         expect(contentDiv.html()).toContain("nullAine")
         expect(contentDiv.html()).toContain("nullSyv")
+        expect(contentDiv.html()).toContain("nullMat")
 
     })
     it ('renders peruskurssit', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap perus={perus} aine={null} syv={null}/>)
+        const courseMapComponent = shallow(<CourseMap perus={perus} aine={null} syv={null} mat={null}/>)
         const contentDiv = courseMapComponent.find('.mappi')
         // console.log(courseMapComponent.html())
         // console.log(contentDiv.html())
@@ -97,7 +122,7 @@ describe.only('<CourseMap />', () => {
     })
     it ('renders ainekurssit', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap perus={null} aine={aine} syv={null}/>)
+        const courseMapComponent = shallow(<CourseMap perus={null} aine={aine} syv={null} mat={null}/>)
         const contentDiv = courseMapComponent.find('.mappi')
         // console.log(courseMapComponent.html())
         // console.log(contentDiv.html())
@@ -111,7 +136,7 @@ describe.only('<CourseMap />', () => {
     })
     it ('renders syventavat kurssit', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap perus={null} aine={null} syv={syv}/>)
+        const courseMapComponent = shallow(<CourseMap perus={null} aine={null} syv={syv} mat={null}/>)
         const contentDiv = courseMapComponent.find('.mappi')
         // console.log(courseMapComponent.html())
         // console.log(contentDiv.html())
@@ -125,7 +150,7 @@ describe.only('<CourseMap />', () => {
     })
     it ('renders all courses', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap perus={perus} aine={aine} syv={syv}/>)
+        const courseMapComponent = shallow(<CourseMap perus={perus} aine={aine} syv={syv} mat={mat}/>)
         const contentDiv = courseMapComponent.find('.mappi')
         // console.log(courseMapComponent.html())
         // console.log(contentDiv.html())
@@ -135,6 +160,8 @@ describe.only('<CourseMap />', () => {
         expect(contentDiv.html()).toContain("Dummy4")
         expect(contentDiv.html()).toContain("Dummy5")
         expect(contentDiv.html()).toContain("Dummy6")
+        expect(contentDiv.html()).toContain("Dummy7")
+        expect(contentDiv.html()).toContain("Dummy8")
         
     })
 })
