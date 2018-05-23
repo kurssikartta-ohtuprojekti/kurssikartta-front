@@ -3,10 +3,21 @@ import Course from './course'
 import './courseMap.css'
 
 
-    const CourseMap = ({perus, aine, syv }) => {
-  
+    const CourseMap = ({perus, aine, syv, mat }) => {
+        
+        if (perus === null) {
+            return (
+                <p>Error</p>
+            )
+        }
+        if (aine === null) {
+            return (
+                <p>Error</p>
+            ) 
+        }
         return (
             <div className="wrapper">
+                
                 <div className="jtkt">
                     <Course key={perus[0].code} course={perus[0]} style={{}}/>
                 </div>
@@ -30,10 +41,6 @@ import './courseMap.css'
                 <div className="tira">
                     <Course key={aine[0].code} course={aine[0]} style={{}}/>
                 </div> 
-
-                {/* <div className="tiraLabra">
-                    <Course key={aine[0].code} course={aine[0]} style={{}}/>
-                </div>  */}
 
                 <div className="otm">
                     <Course key={aine[1].code} course={aine[1]} style={{}}/>
