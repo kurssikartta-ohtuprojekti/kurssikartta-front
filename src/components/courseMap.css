@@ -18,132 +18,281 @@
 .wrapper {
   /* margin: auto;   */
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
+    grid-template-columns: repeat(24, 1fr);
     grid-gap: 5px;
     grid-auto-rows: 60px;
     grid-auto-columns: 60px;
     grid-template-areas: 
-
-    ". . . . . . . . . . . . . . . ."
-    ". . . . . . . . m . . . . . . ."
-    ". . . . . v . D . . y z . . . ."
-    ". . . . . s . . l . w . . . . ."
-    ". . . . . . . . . . . t E . . ."
-    ". . . . . r p . i B . . . A F ."
-    ". . . . . . . a . b g . . . . ."
-    ". . . . . . . . e . f . . . . ."
-    ". . . . . . u c . d . n G . . ."
-    ". . . . . . j . . . h . . . . ."
-    ". . . . . . . k q . . . . . . ."
-    ". . . . . . o . . . . . . . . ."
-    ". . . . . I . . x . . . . . . ."
-    ". . . . . . . . . . . . . . . ."
-    ". . . . . . . . . . . . . H C ."
-    ". . . . . . . . . . . . . . . .";
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  ma .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  va .  Da .  . ya  za .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  sa .  .  la . wa  .  .  Ca .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ta Ea .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  ra pa .  ia Ba .  .  .  Aa Fa .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  aa .  ba ga Ka .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  ea .  fa .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  ua ca .  da .  na Ga .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  ja .  .  .  ha .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  ka qa .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  oa .  .  .  Ha .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  Ia .  .  xa .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ja .  ."
+    ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .";
     align-items: start;
 }
+/* Perusopinnot */
 .ohpe {
-    grid-area: a;
+    grid-area: aa;
 }
 .ohja {
-    grid-area: b;
+    grid-area: ba;
 }
 .tito {
-    grid-area: c;
+    grid-area: ca;
 }
 .tikape {
-    grid-area: d;
+    grid-area: da;
 }
 .jtkt {
-    grid-area: e;
+    grid-area: ea;
 }
+
+/* Aineopinnot */
 .tira {
-    grid-area: f;
+    grid-area: fa;
 }
 .tiraLabra {
-    grid-area: g;
+    grid-area: ga;
 }
 .lama {
-    grid-area: h;
+    grid-area: ha;
 }
 .otm {
-    grid-area: i;
+    grid-area: ia;
 }
 .kaja {
-    grid-area: j;
+    grid-area: ja;
 }
 .tilpe {
-    grid-area: k;
+    grid-area: ka;
 }
 .ohtu {
-    grid-area: l;
+    grid-area: la;
 }
 .ohtupr {
-    grid-area: m;
+    grid-area: ma;
 }
 .jtka {
-    grid-area: n;
+    grid-area: na;
 }
 .ttpe {
-    grid-area: o
+    grid-area: oa
 }
 .tikapeLabra {
-    grid-area: p
+    grid-area: pa
 }
 .tilpeLabra {
-    grid-area: q
+    grid-area: qa
 }
 .tisu {
-    grid-area: r
+    grid-area: ra
 }
 .igp {
-    grid-area: s
+    grid-area: sa
 }
 .ruby {
-    grid-area: t
+    grid-area: ta
 }
 .tito2 {
-    grid-area: u
+    grid-area: ua
 }
 .otjs {
-    grid-area: v
+    grid-area: va
 }
 .wepa {
-    grid-area: w
+    grid-area: wa
 }
 .c {
-    grid-area: x
+    grid-area: xa
 }
 .fssk {
-    grid-area: y
+    grid-area: ya
 }
 .fsskLabra {
-    grid-area: z
+    grid-area: za
 }
 .alon {
-    grid-area: A
+    grid-area: Aa
 }
 .roha {
-    grid-area: B
+    grid-area: Ba
 }
 .ifp {
-    grid-area: C
+    grid-area: Ca
 }
 .vh {
-    grid-area: D
+    grid-area: Da
 }
 .rubyLabra {
-    grid-area: E
+    grid-area: Ea
 }
 .kilpa {
-    grid-area: F
+    grid-area: Fa
 }
 .eai {
-    grid-area: G
+    grid-area: Ga
 }
 .ilc {
-    grid-area: H
+    grid-area: Ha
 }
 .ssh {
-    grid-area: I
+    grid-area: Ia
+}
+/* Syventävät opinnot */
+.cscol {
+    grid-area: Ja
+}
+.daa {
+    grid-area: Ka
+}
+.dct {
+    grid-area: La
+}
+.ra1 {
+    grid-area: Ma
+}
+.ra2 {
+    grid-area: Na
+}
+.bisa {
+    grid-area: Oa
+}
+.seea {
+    grid-area: Pa
+}
+.sepa {
+    grid-area: Qa
+}
+.seada {
+    grid-area: Ra
+}
+.disy {
+    grid-area: Sa
+}
+.ness {
+    grid-area: Ta
+}
+.inpr {
+    grid-area: Ua
+}
+.cec {
+    grid-area: Va
+}
+.son {
+    grid-area: Wa
+}
+.scbmn {
+    grid-area: Xa
+}
+.cin {
+    grid-area: Ya
+}
+.cyse2 {
+    grid-area: Za
+}
+.socs {
+    grid-area: ab
+}
+.seec {
+    grid-area: bb
+}
+.sewm {
+    grid-area: cb
+}
+.scic {
+    grid-area: db
+}
+.hoi {
+    grid-area: eb
+}
+.desis {
+    grid-area: fb
+}
+.sathci {
+    grid-area: gb
+}
+.oat {
+    grid-area: hb
+}
+.mfse {
+    grid-area: ib
+}
+.oahLabra {
+    grid-area: jb
+}
+.spm {
+    grid-area: kb
+}
+.ojr {
+    grid-area: lb
+}
+.sfex {
+    grid-area: mb
+}
+.sese {
+    grid-area: nb
+}
+.ohte {
+    grid-area: ob
+}
+.ohkipe {
+    grid-area: pb
+}
+.compilers {
+    grid-area: qb
+}
+.coge {
+    grid-area: rb
+}
+.sojt {
+    grid-area: sb
+}
+.snsad {
+    grid-area: tb
+}
+.sbdm {
+    grid-area: ub
+}
+.ids {
+    grid-area: vb
+}
+.iml {
+    grid-area: wb
+}
+.adcml {
+    grid-area: xb
+}
+.ibdm {
+    grid-area: yb
+}
+.idv {
+    grid-area: zb
+}
+.sdlnp {
+    grid-area: Ab
+}
+.lmmobi {
+    grid-area: Bb
+}
+.smlmfda {
+    grid-area: Cb
 }
