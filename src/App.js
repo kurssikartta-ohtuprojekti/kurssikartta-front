@@ -43,7 +43,7 @@ class App extends React.Component {
                         </div> :
                         <div>
                             <Route path="/kartta" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={null}/>}
+                                <CourseMap perus={perus} aine={aine} syv={null} mat={null}/>}
                             />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
