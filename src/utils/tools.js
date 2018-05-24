@@ -20,7 +20,7 @@ const aineopinnot = (courses) => {
 
     return resultsfilter
 }
-// Ottaa JSONin kaikista kuesseista palauttaa syventävät opinnot
+// Ottaa JSONin kaikista kursseista palauttaa syventävät opinnot
 const syventavat = (courses) => {
     var resultsfilter = courses.filter(function (i,n){
         // console.log(i)
@@ -31,7 +31,7 @@ const syventavat = (courses) => {
 
     return resultsfilter
 }
-// Ottaa JSONin kaikista kuesseista palauttaa matematiikan opinnot
+// Ottaa JSONin kaikista kursseista palauttaa matematiikan opinnot
 const matematiikka = (courses) => {
     var resultsfilter = courses.filter(function (i,n){
         //console.log(i)
