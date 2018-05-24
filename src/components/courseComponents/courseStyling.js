@@ -3,7 +3,7 @@
 const CourseStyling = ({course}) => {
     // console.log(course.studytrack)
     const algorithms = {
-        backgroundColor: 'lightblue',
+        backgroundColor: '#ffb3b3',
         width: '150px',
         height: '60px',
         fontSize: 9,
@@ -11,7 +11,7 @@ const CourseStyling = ({course}) => {
 
     }
     const dataSc = {
-        backgroundColor: 'lightgreen',
+        backgroundColor: '#bdf5bd',
         width: '150px',
         height: '60px',
         fontSize: 9,
@@ -20,7 +20,7 @@ const CourseStyling = ({course}) => {
 
     }
     const systems = {
-        backgroundColor: 'yellow',
+        backgroundColor: '#ffffcc',
         width: '150px',
         height: '60px',
         fontSize: 9,
@@ -28,12 +28,20 @@ const CourseStyling = ({course}) => {
 
     }
     const networking = {
-        backgroundColor: 'chocolate',
+        backgroundColor: '#c4e3ed',
         width: '150px',
         height: '60px',
         fontSize: 9,
         overflow: 'hidden'
 
+    }
+    const math = {
+        backgroundColor: '#ffb3ff',
+        width: '150px',
+        height: '60px',
+        fontSize: 9,
+        overflow: 'hidden'
+        
     }
     const defaultStyle = {
         width: '150px',
@@ -60,6 +68,11 @@ const CourseStyling = ({course}) => {
     if (course.studytrack[0] === 'adm') {
         return (
             algorithms
+        )
+    }
+    if (course.studytrack[0] === 'math') {
+        return (
+            math
         )
     }
     return (
