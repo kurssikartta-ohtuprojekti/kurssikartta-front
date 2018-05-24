@@ -26,11 +26,10 @@ const opintokohdeMapper = (opintokohde) => {
         <div key={opintokohde.key}>
             {console.log('opetustapahtumat: ', opintokohde.opetustapahtumat)}
             <div>
-                {opintokohde.opintokohteenTunniste}
                 {opintokohde.opetustapahtumat.length !== 0 ?
                     opintokohde.opetustapahtumat.map(opetustapahtumaMapper)
 
-                    : <p>WebOodissa ei opetustapahtumia</p>
+                    : <div style={{ paddingLeft: 8 }}><small>WebOodissa ei opetustapahtumia</small> </div>
                 }
             </div>
         </div>
@@ -43,17 +42,17 @@ const esitietovaatimukset = (prereqs) => {
     return (
 
         <div>
-            <p fontWeight='bold'>Esitiedot:</p>
+            <div fontWeight='bold'>Esitiedot:</div>
 
             {
                 prereqs.length !== 0 ?
                     <div className="prereqs" style={{ paddingLeft: 8 }}>
                         {prereqs.map(prereq =>
-                            <p key={prereq} >{prereq}</p>
+                            <div key={prereq} > <small> {prereq} </small></div>
                         )}
                     </div> :
                     <div className="noPrereqs" style={{ paddingLeft: 8 }}>
-                        <p>Ei esitietoja</p>
+                       <small>Ei esitietoja</small>
                     </div>
             }
         </div>
@@ -66,7 +65,7 @@ const toteutukset = (courseInfo) => {
         <div>
             {courseInfo !== undefined ?
                 <div>
-                    Opintojaksot
+                    Opintojaksot:
                     {courseInfo.map(opintokohdeMapper)}
                 </div>
                 : <p></p>
@@ -98,10 +97,13 @@ export default class CourseInfo extends React.Component {
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}<br />{this.state.course.code} ({this.state.course.ects} op)</p>
                 <a href={this.state.course.url}>Kurssisivu</a>
                 <br />
+
+                <div>
                 {this.state.course.compulsory ?
-                    <p>Pakollinen kurssi</p> :
-                    <p>Valinnainen kurssi</p>
+                    <div>Pakollisuus: Kyllä</div> :
+                    <div>Pakollisuus: Ei</div>
                 }
+                 </div>
                 {esitietovaatimukset(this.state.course.prereqs)}
                 {toteutukset(this.state.courseInfo)}
             </div>
