@@ -3,7 +3,7 @@ const perusopinnot = (courses) => {
     var resultsfilter = courses.filter(function (i,n){
         // console.log(i)
         // console.log(n)
-        return i.level === 'Perusopinnot'
+        return i.level === 'Perusopinnot'  && i.faculty !== 'stats' && i.faculty !== 'math' 
     })
     // console.log(resultsfilter)
 
@@ -20,7 +20,7 @@ const aineopinnot = (courses) => {
 
     return resultsfilter
 }
-// Ottaa JSONin kaikista kuesseista palauttaa syventävät opinnot
+// Ottaa JSONin kaikista kursseista palauttaa syventävät opinnot
 const syventavat = (courses) => {
     var resultsfilter = courses.filter(function (i,n){
         // console.log(i)
@@ -31,10 +31,22 @@ const syventavat = (courses) => {
 
     return resultsfilter
 }
+// Ottaa JSONin kaikista kursseista palauttaa matematiikan opinnot
+const matematiikka = (courses) => {
+    var resultsfilter = courses.filter(function (i,n){
+        //console.log(i)
+        //console.log(n)
+        return i.faculty === 'math'
+    })
+    //console.log(resultsfilter)
+
+    return resultsfilter
+}
 
 
 module.exports = {
     perusopinnot,
     aineopinnot,
-    syventavat
+    syventavat,
+    matematiikka
 }

@@ -7,7 +7,7 @@ import CourseStyling from'./courseComponents/courseStyling'
 
 import CourseInfo from './courseComponents/courseInfo'
 // import CompCourseStyling from './courseComponents/compCourseStyling';
-const Course = ({ course }) => {
+const Course = ({ course, style }) => {
 
     // Pakollisen kurssin Button-ominaisuus
     const compulsoryCourseButton = () => {
@@ -29,7 +29,7 @@ const Course = ({ course }) => {
 
     return (
         // Yksittäisen kurssin renderointi
-        <div className="courseBtn"> 
+        <div className="courseBtn" style={style}> 
             {course.compulsory ?
                 <div className="compulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}

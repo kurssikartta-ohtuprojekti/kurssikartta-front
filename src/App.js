@@ -7,7 +7,7 @@ import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
 import {BrowserRouter as Router,
     Route} from 'react-router-dom'
-import { perusopinnot, aineopinnot, syventavat } from './utils/tools'
+import { perusopinnot, aineopinnot, syventavat, matematiikka } from './utils/tools'
 
 class App extends React.Component {
     constructor(props) {
@@ -28,7 +28,8 @@ class App extends React.Component {
 
         const perus = perusopinnot(this.state.courses) // Using functions from /utils/tools.js
         const aine = aineopinnot(this.state.courses)
-        const syv = syventavat(this.state.courses)        
+        const syv = syventavat(this.state.courses)       
+        const mat = matematiikka(this.state.courses) 
         
         return (
         <div className="container" style={{position:'relative'}}>
@@ -41,16 +42,21 @@ class App extends React.Component {
                             <div className="loader"></div>
                         </div> :
                         <div>
+                            <Route path="/kartta" render={() =>
+                                <CourseMap perus={perus} aine={aine} syv={null} mat={null}/>}
+                            />
                             <Route path="/perus" render={() =>
-                                <CourseMap perus={perus} aine={null} syv={null}/>}
+                                <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
                             />
                             <Route path="/kandi" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={null}/>}
+                                <CourseMap perus={perus} aine={aine} syv={null} mat={null}/>}
+                            />
+                            <Route path="/mat" render={() =>
+                                <CourseMap perus={null} aine={null} syv={null} mat={mat}/>}
                             />
                             <Route exact path="/" render={() =>
-                                <CourseList perus={perus} aine={aine} syv={syv}/>}
+                                <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />
-                            
                         </div>
                     }
                 </div>

@@ -1,13 +1,13 @@
 import React from 'react'
 import Course from './course'
     const mapCss = {
-        backgroundColor: 'lightgreen',
+        backgroundColor: 'antiquewhite',
         borderRadius: 30,
         borderWidth: 5,
         position: 'absolute'
     }
     // Kaikkien kurssien renderointi listaan
-    const CourseList = ({perus, aine, syv }) => (
+    const CourseList = ({perus, aine, syv, mat }) => (
         <div className="mappi" style ={mapCss}>
             <div className="perus" style={{float: 'left', padding: 4}}>
                 <h2>Perusopinnot</h2>
@@ -24,6 +24,12 @@ import Course from './course'
             <div className="syventavat" style={{float: 'left', padding: 4}}>
                 <h2>Syventävät opinnot</h2>
                 {syv.map(course =>
+                    <Course key={course.code} course={course}/>
+                )}
+            </div>
+            <div className="matematiikka" style={{float: 'left', padding: 4}}>
+                <h2>Matematiikan opinnot</h2>
+                {mat.map(course =>
                     <Course key={course.code} course={course}/>
                 )}
             </div>
