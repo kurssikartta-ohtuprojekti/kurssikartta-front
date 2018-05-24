@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/courses/info/'
+const baseUrl = 'https://kurssikartta-backend.herokuapp.com/courses/info/'
 
 
 const getCourseInfo = async (id) => {
