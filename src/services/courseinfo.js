@@ -1,7 +1,7 @@
 import axios from 'axios'
 const baseUrl = 'https://weboodi.helsinki.fi/hy/api/public/opetushaku/hae?nimiTaiTunniste='
 
-
+// Weboodin API 
 const getCourseInfo = async (id) => {
 
     const request = axios.get(baseUrl.contact(id)).then(response => {
