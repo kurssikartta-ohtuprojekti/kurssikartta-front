@@ -2,8 +2,78 @@ import React from 'react'
 import courseInfoService from '../../services/courseinfo'
 // Kurssitietojen renderointi
 
+const opetustapahtumaMapper = (opetustapahtuma) => {
+    return (
+        <div key={opetustapahtuma.key}>
+            <small>
+                Toteutus: {opetustapahtuma.nimi}  <br />
+                <div style={{ paddingLeft: 8 }}>
+                    Tyyppi: {opetustapahtuma.tyyppi}  <br />
+                    Alkamisaika: {new Date(opetustapahtuma.alkamisaika).toLocaleDateString()}  <br />
+                    Loppumisaika: {new Date(opetustapahtuma.loppumisaika).toLocaleDateString()} <br />
+                    Ilmoittautuminen käynnissä: {opetustapahtuma.ilmoittautuminenKaynnissa ? "Kyllä" : "Ei"}
+                </div>
+
+            </small>
+        </div>
+    )
+}
+const opintokohdeMapper = (opintokohde) => {
+    console.log('opintokohde.key: ', opintokohde.key)
+    return (
 
 
+        <div key={opintokohde.key}>
+            {console.log('opetustapahtumat: ', opintokohde.opetustapahtumat)}
+            <div>
+                {opintokohde.opintokohteenTunniste}
+                {opintokohde.opetustapahtumat.length !== 0 ?
+                    opintokohde.opetustapahtumat.map(opetustapahtumaMapper)
+
+                    : <p>WebOodissa ei opetustapahtumia</p>
+                }
+            </div>
+        </div>
+
+    )
+}
+
+const esitietovaatimukset = (prereqs) => {
+
+    return (
+
+        <div>
+            <p fontWeight='bold'>Esitiedot:</p>
+
+            {
+                prereqs.length !== 0 ?
+                    <div className="prereqs" style={{ paddingLeft: 8 }}>
+                        {prereqs.map(prereq =>
+                            <p key={prereq} >{prereq}</p>
+                        )}
+                    </div> :
+                    <div className="noPrereqs" style={{ paddingLeft: 8 }}>
+                        <p>Ei esitietoja</p>
+                    </div>
+            }
+        </div>
+    )
+
+}
+
+const toteutukset = (courseInfo) => {
+    return (
+        <div>
+            {courseInfo !== undefined ?
+                <div>
+                    Opintojaksot
+                    {courseInfo.map(opintokohdeMapper)}
+                </div>
+                : <p></p>
+            }
+        </div>
+    )
+}
 export default class CourseInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -20,6 +90,8 @@ export default class CourseInfo extends React.Component {
         )
     }
 
+
+
     render() {
         return (
             <div>
@@ -30,64 +102,8 @@ export default class CourseInfo extends React.Component {
                     <p>Pakollinen kurssi</p> :
                     <p>Valinnainen kurssi</p>
                 }
-                <p fontWeight='bold'>Esitiedot:</p>
-
-                {this.state.course.prereqs.length !== 0 ?
-                    <div className="prereqs" style={{ paddingLeft: 8 }}>
-                        {this.state.course.prereqs.map(prereq =>
-                            <p>{prereq}</p>
-                        )}
-                    </div> :
-                    <div className="noPrereqs" style={{ paddingLeft: 8 }}>
-                        <p>Ei esitietoja</p>
-                    </div>
-                }
-                <div>
-
-                    {this.state.courseInfo !== undefined ?
-                        <div>
-                            <p>Opintojaksot</p>
-                            {this.state.courseInfo.map(opintokohde => {
-                                console.log('opintokohde.key: ', opintokohde.key)
-                                return (
-                                    <div key = {opintokohde.key}>
-                                        {console.log('opintokohteen tunniste: ', opintokohde.opintokohteenTunniste)}
-                                        <div>
-
-                                            <p>{opintokohde.opintokohteenTunniste}</p>
-                                        </div>
-                                        <div>
-                                            {opintokohde.opetustapahtumat.map(opetustapahtuma => {
-                                                console.log('opetustapahtuma.key', opetustapahtuma.key)
-                                     
-                                                return (
-                                                    <div key = {opetustapahtuma.key}>
-                                                        <small>
-
-                                                            Toteutus: {opetustapahtuma.nimi}  <br />
-
-                                                            <div style={{ paddingLeft: 8 }}>
-                                                                Tyyppi: {opetustapahtuma.tyyppi}  <br />
-                                                                Alkamisaika: {new Date(opetustapahtuma.alkamisaika).toLocaleDateString()}  <br />
-                                                                Loppumisaika: {new Date(opetustapahtuma.loppumisaika).toLocaleDateString()} <br />
-                                                                Ilmoittautuminen käynnissä: {opetustapahtuma.ilmoittautuminenKaynnissa ? "Kyllä" : "Ei"}
-                                                            </div>
-
-                                                        </small>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                )
-                            }
-                            )
-                            }
-                        </div>
-                        : <p></p>
-                    }
-                </div>
-
+                {esitietovaatimukset(this.state.course.prereqs)}
+                {toteutukset(this.state.courseInfo)}
             </div>
         )
     }
