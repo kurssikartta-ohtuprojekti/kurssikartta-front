@@ -48,9 +48,9 @@ export default class CourseInfo extends React.Component {
                         <div>
                             <p>Opintojaksot</p>
                             {this.state.courseInfo.map(opintokohde => {
-                                console.log('opintokohde: ', opintokohde)
+                                console.log('opintokohde.key: ', opintokohde.key)
                                 return (
-                                    <div>
+                                    <div key = {opintokohde.key}>
                                         {console.log('opintokohteen tunniste: ', opintokohde.opintokohteenTunniste)}
                                         <div>
 
@@ -58,21 +58,20 @@ export default class CourseInfo extends React.Component {
                                         </div>
                                         <div>
                                             {opintokohde.opetustapahtumat.map(opetustapahtuma => {
-                                                console.log('key', opetustapahtuma.key)
+                                                console.log('opetustapahtuma.key', opetustapahtuma.key)
+                                     
                                                 return (
-                                                    <div>
-
+                                                    <div key = {opetustapahtuma.key}>
                                                         <small>
 
                                                             Toteutus: {opetustapahtuma.nimi}  <br />
 
                                                             <div style={{ paddingLeft: 8 }}>
                                                                 Tyyppi: {opetustapahtuma.tyyppi}  <br />
-                                                                Alkamisaika: {opetustapahtuma.alkamisaika}  <br />
-                                                                Loppumisaika: {opetustapahtuma.loppumisaika}  <br />
+                                                                Alkamisaika: {new Date(opetustapahtuma.alkamisaika).toLocaleDateString()}  <br />
+                                                                Loppumisaika: {new Date(opetustapahtuma.loppumisaika).toLocaleDateString()} <br />
                                                                 Ilmoittautuminen käynnissä: {opetustapahtuma.ilmoittautuminenKaynnissa ? "Kyllä" : "Ei"}
                                                             </div>
-
 
                                                         </small>
                                                     </div>
