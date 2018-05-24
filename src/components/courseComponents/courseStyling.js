@@ -36,7 +36,7 @@ const CourseStyling = ({course}) => {
 
     }
     const math = {
-        backgroundColor: '#ffb3ff',
+        backgroundColor: '#f6d4bc',
         width: '150px',
         height: '60px',
         fontSize: 9,
