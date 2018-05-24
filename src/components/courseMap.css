@@ -1,18 +1,19 @@
 * {box-sizing: border-box;}
 
 .wrapper {
-    position: absolute;
-    max-width: 2500px;
+    position: relative;
+    max-height: 88vh;
     border: 2px solid #a6a6a6;
     border-radius: 5px;
     background-color: #f2f2f2;
+    overflow: auto;
 }
 
 .wrapper > div {
     /* border: 2px solid #ffa94d; */
     /* border-radius: 5px; */
     /* background-color: #ffd8a8; */
-    padding: 0;
+    padding: 2;
     color: #d9480f;
 }
 .wrapper {
