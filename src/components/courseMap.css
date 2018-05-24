@@ -3,9 +3,9 @@
 .wrapper {
     position: absolute;
     max-width: 1600px;
-    border: 2px solid #f76707;
+    border: 2px solid #a6a6a6;
     border-radius: 5px;
-    background-color: #fff4e6;
+    background-color: #f2f2f2;
 }
 
 .wrapper > div {
