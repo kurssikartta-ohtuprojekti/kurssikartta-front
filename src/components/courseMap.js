@@ -2,7 +2,7 @@ import React from 'react'
 import Course from './course'
 import './courseMap.css'
 
-
+//Tänne ei kannata katsoa vielä. Silmäsi saattavat syttyä ilmiliekkeihin!!
     const CourseMap = ({perus, aine, syv, mat }) => {
         
         if (perus === null) {
