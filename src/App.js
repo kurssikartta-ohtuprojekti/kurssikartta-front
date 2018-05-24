@@ -30,7 +30,7 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
-        
+        // console.log(syv.length)
         return (
         <div className="container" style={{position:'relative'}}>
             <Router>
@@ -43,7 +43,7 @@ class App extends React.Component {
                         </div> :
                         <div>
                             <Route path="/kartta" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={null} mat={null}/>}
+                                <CourseMap perus={perus} aine={aine} syv={syv} mat={null}/>}
                             />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
