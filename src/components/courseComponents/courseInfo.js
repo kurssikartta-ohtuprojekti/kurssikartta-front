@@ -3,14 +3,26 @@ import courseInfoService from '../../services/courseinfo'
 // Kurssitietojen renderointi
 
 const opetustapahtumaMapper = (opetustapahtuma) => {
+
+    const alkuString = new Date(opetustapahtuma.alkamisaika).toLocaleDateString()
+    const loppuString = new Date(opetustapahtuma.loppumisaika).toLocaleDateString()
     return (
         <div key={opetustapahtuma.key}>
             <small>
                 Toteutus: {opetustapahtuma.nimi}  <br />
                 <div style={{ paddingLeft: 8 }}>
                     Tyyppi: {opetustapahtuma.tyyppi}  <br />
-                    Alkamisaika: {new Date(opetustapahtuma.alkamisaika).toLocaleDateString()}  <br />
-                    Loppumisaika: {new Date(opetustapahtuma.loppumisaika).toLocaleDateString()} <br />
+
+                    {alkuString === loppuString ?
+
+                        <span> Ajankohta: {alkuString}  <br /> </span>
+
+                        :
+                        <span>
+                            Alkamisaika: {alkuString}  <br />
+                            Loppumisaika: {loppuString} <br />
+                        </span>
+                    }
                     Ilmoittautuminen käynnissä: {opetustapahtuma.ilmoittautuminenKaynnissa ? "Kyllä" : "Ei"}
                 </div>
 
@@ -52,7 +64,7 @@ const esitietovaatimukset = (prereqs) => {
                         )}
                     </div> :
                     <div className="noPrereqs" style={{ paddingLeft: 8 }}>
-                       <small>Ei esitietoja</small>
+                        <small>Ei esitietoja</small>
                     </div>
             }
         </div>
@@ -99,11 +111,11 @@ export default class CourseInfo extends React.Component {
                 <br />
 
                 <div>
-                {this.state.course.compulsory ?
-                    <div>Pakollisuus: Kyllä</div> :
-                    <div>Pakollisuus: Ei</div>
-                }
-                 </div>
+                    {this.state.course.compulsory ?
+                        <div>Pakollisuus: Kyllä</div> :
+                        <div>Pakollisuus: Ei</div>
+                    }
+                </div>
                 {esitietovaatimukset(this.state.course.prereqs)}
                 {toteutukset(this.state.courseInfo)}
             </div>
