@@ -58,18 +58,22 @@ export default class CourseInfo extends React.Component {
                                         </div>
                                         <div>
                                             {opintokohde.opetustapahtumat.map(opetustapahtuma => {
-                                                console.log('key',opetustapahtuma.key)
+                                                console.log('key', opetustapahtuma.key)
                                                 return (
                                                     <div>
-                                                        
+
                                                         <small>
-                                                            <text>
-                                                              Toteutus: {opetustapahtuma.nimi}  \n
-                                                                Tyyppi: {opetustapahtuma.tyyppi}
-                                                                Alkamisaika: {opetustapahtuma.alkamisaika}
-                                                                Loppumisaika: {opetustapahtuma.loppumisaika}
+
+                                                            Toteutus: {opetustapahtuma.nimi}  <br />
+
+                                                            <div style={{ paddingLeft: 8 }}>
+                                                                Tyyppi: {opetustapahtuma.tyyppi}  <br />
+                                                                Alkamisaika: {opetustapahtuma.alkamisaika}  <br />
+                                                                Loppumisaika: {opetustapahtuma.loppumisaika}  <br />
                                                                 Ilmoittautuminen käynnissä: {opetustapahtuma.ilmoittautuminenKaynnissa ? "Kyllä" : "Ei"}
-                                                            </text>
+                                                            </div>
+
+
                                                         </small>
                                                     </div>
                                                 )
