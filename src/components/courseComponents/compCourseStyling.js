@@ -4,7 +4,7 @@ const CompCourseStyling = ({course}) => {
     // console.log(course.studytrack)
     const algorithms = {
         width: '150px',
-        height: '80px',
+        height: '60px',
         backgroundColor: '#ffb3b3',
         border: 'solid',
         borderWidth: 5,
@@ -18,7 +18,7 @@ const CompCourseStyling = ({course}) => {
     }
     const dataSc = {
         width: '150px',
-        height: '80px',
+        height: '60px',
         backgroundColor: '#bdf5bd',
         border: 'solid',
         borderWidth: 5,
