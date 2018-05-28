@@ -5,7 +5,7 @@ import CourseMap from './courseList'
 describe.only('<CourseMap />', () => {
     const perus = [
         {
-            code: "TKT21010",
+            code: "TKT10001",
             name: "Dummy",
             level: "Perusopinnot",
             compulsory: true,
@@ -15,7 +15,7 @@ describe.only('<CourseMap />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         },
         {
-            code: "TKT21011",
+            code: "TKT10002",
             name: "Dummy2",
             level: "Perusopinnot",
             compulsory: true,
@@ -25,7 +25,7 @@ describe.only('<CourseMap />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         },
         {
-            code: "TKT21011",
+            code: "TKT10003",
             name: "Dummy3",
             level: "Perusopinnot",
             compulsory: true,
@@ -35,7 +35,7 @@ describe.only('<CourseMap />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         },
         {
-            code: "TKT21011",
+            code: "TKT10004",
             name: "Dummy4",
             level: "Perusopinnot",
             compulsory: true,
@@ -45,7 +45,7 @@ describe.only('<CourseMap />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         },
         {
-            code: "TKT21011",
+            code: "TKT10005",
             name: "Dummy5",
             level: "Perusopinnot",
             compulsory: true,
