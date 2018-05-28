@@ -84,7 +84,7 @@ const esitietovaatimukset = (prereqs) => {
 const toteutukset = (courseInfo) => {
     return (
         <div>
-            Kurssitoteutukset:
+            Opintojaksot:
             {courseInfo.map(opintokohdeMapper)}
         </div>
     )
@@ -129,7 +129,7 @@ export default class CourseInfo extends React.Component {
                     toteutukset(this.state.courseInfo)
 
                     : <div style={{ position: 'inherit' }}>
-                        <h5> Ladataan kurssitoteutukisa WebOodista... </h5>
+                        <h5> Ladataan opintojaksoja WebOodista... </h5>
                     </div>
                 }
             </div>
