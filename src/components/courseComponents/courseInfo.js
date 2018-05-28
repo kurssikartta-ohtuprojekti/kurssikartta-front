@@ -6,10 +6,11 @@ const opetustapahtumaMapper = (opetustapahtuma) => {
 
     const alkuString = new Date(opetustapahtuma.alkamisaika).toLocaleDateString()
     const loppuString = new Date(opetustapahtuma.loppumisaika).toLocaleDateString()
+    console.log('opetustapahtuma: ', opetustapahtuma)
     return (
         <div key={opetustapahtuma.key}>
             <small>
-                Toteutus: {opetustapahtuma.nimi}  <br />
+                {opetustapahtuma.opintokohteenTunniste}: {opetustapahtuma.nimi}  <br />
                 <div style={{ paddingLeft: 8 }}>
                     Tyyppi: {opetustapahtuma.tyyppi}  <br />
 
@@ -31,17 +32,25 @@ const opetustapahtumaMapper = (opetustapahtuma) => {
     )
 }
 const opintokohdeMapper = (opintokohde) => {
-    console.log('opintokohde.key: ', opintokohde.key)
+    console.log('opintokohde.key: ', opintokohde)
+   const opetustapahtumat = opintokohde.opetustapahtumat.map(opetustapahtuma => {
+        const tapahtuma = opetustapahtuma
+        tapahtuma.opintokohteenTunniste = opintokohde.opintokohteenTunniste
+        console.log('tapahtuma:', tapahtuma)
+        return tapahtuma
+    })
     return (
 
 
         <div key={opintokohde.key}>
             {console.log('opetustapahtumat: ', opintokohde.opetustapahtumat)}
+            
             <div>
-                {opintokohde.opetustapahtumat.length !== 0 ?
-                    opintokohde.opetustapahtumat.map(opetustapahtumaMapper)
+                {opetustapahtumat.length !== 0 ?
+                
+                    opetustapahtumat.map(opetustapahtumaMapper)
 
-                    : <div style={{ paddingLeft: 8 }}><small>WebOodissa ei opetustapahtumia</small> </div>
+                    : <div><small>{opintokohde.opintokohteenTunniste}: WebOodissa ei opetustapahtumia</small> </div>
                 }
             </div>
         </div>
@@ -90,6 +99,8 @@ export default class CourseInfo extends React.Component {
         super(props);
         this.state = {
             course: props.course,
+            onToteutuksia: false
+
         }
     }
 
