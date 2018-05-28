@@ -33,7 +33,7 @@ const opetustapahtumaMapper = (opetustapahtuma) => {
 }
 const opintokohdeMapper = (opintokohde) => {
     console.log('opintokohde.key: ', opintokohde)
-   const opetustapahtumat = opintokohde.opetustapahtumat.map(opetustapahtuma => {
+    const opetustapahtumat = opintokohde.opetustapahtumat.map(opetustapahtuma => {
         const tapahtuma = opetustapahtuma
         tapahtuma.opintokohteenTunniste = opintokohde.opintokohteenTunniste
         console.log('tapahtuma:', tapahtuma)
@@ -44,10 +44,10 @@ const opintokohdeMapper = (opintokohde) => {
 
         <div key={opintokohde.key}>
             {console.log('opetustapahtumat: ', opintokohde.opetustapahtumat)}
-            
+
             <div>
                 {opetustapahtumat.length !== 0 ?
-                
+
                     opetustapahtumat.map(opetustapahtumaMapper)
 
                     : <div><small>{opintokohde.opintokohteenTunniste}: WebOodissa ei opetustapahtumia</small> </div>
@@ -84,13 +84,8 @@ const esitietovaatimukset = (prereqs) => {
 const toteutukset = (courseInfo) => {
     return (
         <div>
-            {courseInfo !== undefined ?
-                <div>
-                    Opintojaksot:
-                    {courseInfo.map(opintokohdeMapper)}
-                </div>
-                : <p></p>
-            }
+            Kurssitoteutukset:
+            {courseInfo.map(opintokohdeMapper)}
         </div>
     )
 }
@@ -128,7 +123,15 @@ export default class CourseInfo extends React.Component {
                     }
                 </div>
                 {esitietovaatimukset(this.state.course.prereqs)}
-                {toteutukset(this.state.courseInfo)}
+
+                {this.state.courseInfo !== undefined ?
+
+                    toteutukset(this.state.courseInfo)
+
+                    : <div style={{ position: 'inherit' }}>
+                        <h5> Ladataan kurssitoteutukisa WebOodista... </h5>
+                    </div>
+                }
             </div>
         )
     }
