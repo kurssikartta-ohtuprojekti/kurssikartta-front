@@ -25,13 +25,10 @@ class App extends React.Component {
     }
 
     render () {
-        // console.log(perusopinnot(this.state.courses))
-
         const perus = perusopinnot(this.state.courses) // Using functions from /utils/tools.js
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
-        // console.log(syv.length)
         return (
         <div className="container" style={{position:'relative'}}>
             <Router>
