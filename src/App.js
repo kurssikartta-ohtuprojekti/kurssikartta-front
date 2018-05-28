@@ -8,6 +8,7 @@ import CourseMap from './components/courseMap'
 import {BrowserRouter as Router,
     Route} from 'react-router-dom'
 import { perusopinnot, aineopinnot, syventavat, matematiikka } from './utils/tools'
+import LoginForm from './components/LoginForm/LoginForm.js'
 
 class App extends React.Component {
     constructor(props) {
@@ -54,6 +55,7 @@ class App extends React.Component {
                             <Route exact path="/" render={() =>
                                 <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />
+                            <Route exact path="/login" component={LoginForm}/>
                         </div>
                     }
                 </div>
