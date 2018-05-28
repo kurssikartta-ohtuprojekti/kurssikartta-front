@@ -8,6 +8,7 @@ import CourseMap from './components/courseMap'
 import {BrowserRouter as Router,
     Route} from 'react-router-dom'
 import { perusopinnot, aineopinnot, syventavat, matematiikka } from './utils/tools'
+import LoginForm from './components/LoginForm/LoginForm.js'
 
 class App extends React.Component {
     constructor(props) {
@@ -24,13 +25,10 @@ class App extends React.Component {
     }
 
     render () {
-        // console.log(perusopinnot(this.state.courses))
-
         const perus = perusopinnot(this.state.courses) // Using functions from /utils/tools.js
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
-        
         return (
         <div className="container" style={{position:'relative'}}>
             <Router>
@@ -43,7 +41,7 @@ class App extends React.Component {
                         </div> :
                         <div>
                             <Route path="/kartta" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={null} mat={null}/>}
+                                <CourseMap perus={perus} aine={aine} syv={syv} mat={null}/>}
                             />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
@@ -57,6 +55,7 @@ class App extends React.Component {
                             <Route exact path="/" render={() =>
                                 <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />
+                            <Route exact path="/login" component={LoginForm}/>
                         </div>
                     }
                 </div>
