@@ -29,6 +29,7 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
+       
         return (
         <div className="container" style={{position:'relative'}}>
             <Router>
@@ -52,9 +53,11 @@ class App extends React.Component {
                             <Route path="/mat" render={() =>
                                 <CourseMap perus={null} aine={null} syv={null} mat={mat}/>}
                             />
+                            
                             <Route exact path="/" render={() =>
                                 <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />
+                            
                             <Route exact path="/login" component={LoginForm}/>
                         </div>
                     }
