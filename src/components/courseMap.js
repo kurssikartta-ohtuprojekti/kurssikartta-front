@@ -6,12 +6,11 @@ import {cssGridStringify, defaultMatrix, cssTestString} from './courseMatrices.j
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
     const CourseMap = ({perus, aine, syv, mat }) => {
+
         const courseMapMatrice = defaultMatrix()
-        // console.log(courseMapMatrice)
         const cssGridTemplateAreas = cssGridStringify(38, courseMapMatrice)
-        // const cssGridTemplateAreas = cssTestString()
         
-        console.log(cssGridTemplateAreas)
+        // console.log(cssGridTemplateAreas)
         return (
             <div className="wrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
 {/* perusopinnot */}
