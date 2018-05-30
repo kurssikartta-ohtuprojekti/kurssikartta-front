@@ -1,5 +1,35 @@
 // Tools for setting up and modifying matrices
 
+// Add a new course to the matrice with given coordinates
+const addNewCourse = (code, matrice, x, y) => {
+    if (x === undefined) {
+        x = 0
+    }
+    if (y === undefined) {
+        y = 0
+    }
+    if (x >= matrice.length || x < 0 || y >= matrice.length || y < 0) {
+        return {error: 'Given coordinates out of matrice'}
+    }
+    if (matrice[y][x] === '.') {
+        matrice[y][x] = code;
+    } else {
+        return {error: 'Matrix node already taken by' + matrice[y][x]}
+    }
+    return matrice;
+}
+
+const removeCourse = (code, matrice) => {
+    const coords = matrixFindCourseByCode(code, matrice)
+    if (coords === null) {
+        return {error: 'Course not found in matrice'}
+    } else {
+        matrice[coords.y][coords.x] = '.'
+        return matrice // returns the matrice after removal    
+    }
+    
+}
+
 // Move course in matrice by given x and y coordinates
 const moveCourseByXAndY = (code, matrice, x, y) => {
     const oldCoords = matrixFindCourseByCode(code, matrice)
@@ -21,7 +51,6 @@ const moveCourseByXAndY = (code, matrice, x, y) => {
     return matrice;
 }
 
-// Move course up by 1
 const moveCourseNorth = (code, matrice) => {
     return moveCourseByXAndY(code, matrice, 0, -1)
 }
@@ -229,5 +258,7 @@ export {defaultMatrix,
         moveCourseNorthEast,
         moveCourseNorthWest,
         moveCourseSouthEast,
-        moveCourseSouthWest
+        moveCourseSouthWest,
+        addNewCourse,
+        removeCourse
         }

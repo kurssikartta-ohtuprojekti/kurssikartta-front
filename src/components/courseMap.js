@@ -15,7 +15,9 @@ import {cssGridStringify,
         moveCourseNorthEast,
         moveCourseNorthWest,
         moveCourseSouthEast,
-        moveCourseSouthWest
+        moveCourseSouthWest,
+        addNewCourse,
+        removeCourse
             } from '.././utils/courseMatrices.js'
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
@@ -26,6 +28,10 @@ import {cssGridStringify,
         if (courseMapMatrice === undefined) {
             courseMapMatrice = defaultMatrix()
         }
+
+        // courseMapMatrice = moveCourseToNewCoordinates('TKT10001', courseMapMatrice, 1, 1)
+        // courseMapMatrice = removeCourse('TKT10001', courseMapMatrice)
+        // courseMapMatrice = addNewCourse('TKT10001', courseMapMatrice, 1, 1)
 
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
         // console.log(matrixFindCourseByCode('TKT10001', courseMapMatrice))
