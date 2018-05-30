@@ -1,12 +1,18 @@
 import React from 'react'
 import Course from './course'
 import './courseMap.css'
+// import CourseMapMatrice from './courseMapMatrice'
+import {cssGridStringify, defaultMatrix, cssTestString} from './courseMatrices.js'
 
-//  Näkyväksi asetettujen kurssien renderointi kartalle
+//  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
     const CourseMap = ({perus, aine, syv, mat }) => {
+
+        const courseMapMatrice = defaultMatrix()
+        const cssGridTemplateAreas = cssGridStringify(38, courseMapMatrice)
         
+        // console.log(cssGridTemplateAreas)
         return (
-            <div className="wrapper">
+            <div className="wrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
 {/* perusopinnot */}
                 {perus === null ?
                     <div></div> :
