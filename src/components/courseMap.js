@@ -2,14 +2,39 @@ import React from 'react'
 import Course from './course'
 import './courseMap.css'
 // import CourseMapMatrice from './courseMapMatrice'
-import {cssGridStringify, defaultMatrix, cssTestString} from './courseMatrices.js'
+import {cssGridStringify,
+        defaultMatrix,
+        emptyMatrix,
+        matrixFindCourseByCode,
+        moveCourseToNewCoordinates,
+        moveCourseByXAndY,
+        moveCourseEast,
+        moveCourseWest,
+        moveCourseSouth,
+        moveCourseNorth,
+        moveCourseNorthEast,
+        moveCourseNorthWest,
+        moveCourseSouthEast,
+        moveCourseSouthWest,
+        addNewCourse,
+        removeCourse
+            } from '.././utils/courseMatrices.js'
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
-    const CourseMap = ({perus, aine, syv, mat }) => {
+    const CourseMap = ({perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
+        if (sideLength === undefined) {
+            sideLength = 38
+        }
+        if (courseMapMatrice === undefined) {
+            courseMapMatrice = defaultMatrix()
+        }
 
-        const courseMapMatrice = defaultMatrix()
-        const cssGridTemplateAreas = cssGridStringify(38, courseMapMatrice)
-        
+        // courseMapMatrice = moveCourseToNewCoordinates('TKT10001', courseMapMatrice, 1, 1)
+        // courseMapMatrice = removeCourse('TKT10001', courseMapMatrice)
+        // courseMapMatrice = addNewCourse('TKT10001', courseMapMatrice, 1, 1)
+
+        const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
+        // console.log(matrixFindCourseByCode('TKT10001', courseMapMatrice))
         // console.log(cssGridTemplateAreas)
         return (
             <div className="wrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
