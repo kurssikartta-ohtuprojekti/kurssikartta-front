@@ -8,7 +8,7 @@ const addNewCourse = (code, matrice, x, y) => {
     if (y === undefined) {
         y = 0
     }
-    if (x >= matrice.length || x < 0 || y >= matrice.length || y < 0) {
+    if (x >= matrice.lenght || x < 0 || y >= matrice.length || y < 0) {
         return {error: 'Given coordinates out of matrice'}
     }
     if (matrice[y][x] === '.') {
@@ -130,7 +130,7 @@ const cssGridStringify = (sideLength, matrice) => {
         matrice = defaultMatrix()
     }
     if (sideLength === undefined) {
-        sideLength = 38
+        sideLength = matrice.length
     }
     let gridString = '';
     for (let i = 0; i < sideLength; i++) {
@@ -145,6 +145,24 @@ const cssGridStringify = (sideLength, matrice) => {
     
     }
     return gridString
+}
+
+// Return all empty node coords, for admin map
+const emptyNodeCoordinatesAsList = (matrice) => {
+    if (matrice === undefined) {
+        return {error: 'Matrice undefined'}
+    }
+    const side = matrice.length
+    const list = []
+
+    for (let i = 0; i < side; i++) {
+        for (let j = 0; j < side; j++) {
+            if (matrice[i][j] === '.') {
+                list.push(i + ', ' + j)
+            }
+        } 
+    }
+    return list
 }
 
 // Returns Default Matrice
@@ -260,5 +278,6 @@ export {defaultMatrix,
         moveCourseSouthEast,
         moveCourseSouthWest,
         addNewCourse,
-        removeCourse
+        removeCourse,
+        emptyNodeCoordinatesAsList
         }

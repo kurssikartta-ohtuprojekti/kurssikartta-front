@@ -5,6 +5,7 @@ import courseService from './services/courses'
 import NaviBar from './components/naviBar'
 import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
+import CourseMapAdmin from './components/admin/courseMapAdmin'
 import {BrowserRouter as Router,
     Route} from 'react-router-dom'
 import { perusopinnot, aineopinnot, syventavat, matematiikka } from './utils/tools'
@@ -53,7 +54,9 @@ class App extends React.Component {
                             <Route path="/mat" render={() =>
                                 <CourseMap perus={null} aine={null} syv={null} mat={mat}/>}
                             />
-                            
+                            <Route path="/admin/map" render ={() =>
+                                <CourseMapAdmin perus= {perus} aine={aine} syv={syv} mat={null} />}
+                            />
                             <Route exact path="/" render={() =>
                                 <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />

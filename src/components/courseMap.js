@@ -4,20 +4,7 @@ import './courseMap.css'
 // import CourseMapMatrice from './courseMapMatrice'
 import {cssGridStringify,
         defaultMatrix,
-        emptyMatrix,
-        matrixFindCourseByCode,
-        moveCourseToNewCoordinates,
-        moveCourseByXAndY,
-        moveCourseEast,
-        moveCourseWest,
-        moveCourseSouth,
-        moveCourseNorth,
-        moveCourseNorthEast,
-        moveCourseNorthWest,
-        moveCourseSouthEast,
-        moveCourseSouthWest,
-        addNewCourse,
-        removeCourse
+        
             } from '.././utils/courseMatrices.js'
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
