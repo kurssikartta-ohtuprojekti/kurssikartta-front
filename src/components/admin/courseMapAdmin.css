@@ -13,9 +13,10 @@
     position: absolute;
 }
 .awrapper > div {
-    border: 1px solid red;
+    position: relative;
+    border: 1px solid lightsalmon;
     padding: 0;
-    color: #d9480f;
+    color: lightsalmon;
     text-align: center;
     height: 30px;
     width: 75px;
