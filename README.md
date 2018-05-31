@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/kurssikartta-ohtuprojekti/kurssikartta-front.svg?branch=master)](https://travis-ci.org/kurssikartta-ohtuprojekti/kurssikartta-front)
 
+## Introduction
+
+This repository contains frontend code for course map software (Kurssikartta), coded during University course 'Software development project, Summer 2018'. The software is meant to help students to gain information about the courses provided by departments of computer science and mathematics. The application utilizes React and Node.js
+
 ## Project links
 
 ### Application links
@@ -17,21 +21,26 @@
 
 ### How to run locally
 
-To run the frontent locally, you will need [Node.js](https://nodejs.org/en/) and [redux](https://www.npmjs.com/package/redux). Then in order to run the frontend, navigate to the root of the repository and run `npm start`.
-
-### Programming help
-
-* [Fullstack](https://fullstackopen.github.io/)
+To run the frontend locally, you will need [Node.js](https://nodejs.org/en/). Then in order to run it, navigate to the root of the repository and run `npm start`. You might have to run `npm install` first if you're lacking some packages.
 
 ### Git workflow
+
+New features must have a branch. Pushing directly to master is not allowed and you should employ following protocol:
 
 * `git pull origin master`
 * `git checkout -b branch-name-here`
 * codecodecode
-* `git add a-`
+* `git add your-files
 * `git commit -m "commit msg"`
 * `git push origin branch-name-here`
-* Create pull request of your push
+* Create pull request of your push in Github
 * Let your teammate review and accept it
 * Merge (if teammate didn't already)
 
+### Build pipeline
+
+When code is pushed to Github and a pull request to master branch has been made, Travis CI will run tests for the project and if passed, the project is deployed in Heroku.
+
+### Programming help
+
+* [Fullstack](https://fullstackopen.github.io/)
