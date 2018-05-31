@@ -19,6 +19,9 @@ const NaviBar = () => (
               <NavItem href="/kartta">
                 Kartta
               </NavItem>
+              <NavItem href="/admin/map">
+                Admin view
+              </NavItem>
               <NavItem href="/login">
                 Login
               </NavItem>

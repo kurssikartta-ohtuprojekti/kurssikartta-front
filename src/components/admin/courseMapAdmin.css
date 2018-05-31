@@ -1,7 +1,7 @@
 * {box-sizing: border-box;}
 
 
-.wrapper {
+.awrapper {
     position: relative;
     max-height: 88vh;
     border: 2px solid #a6a6a6;
@@ -9,16 +9,19 @@
     background-color: #f2f2f2;
     overflow: auto;
 }
-
-.wrapper > div {
-
+.awrapper > null {
+    position: absolute;
+}
+.awrapper > div {
+    border: 1px solid red;
     padding: 0;
     color: #d9480f;
+    text-align: center;
     height: 30px;
     width: 75px;
 }
 
-.wrapper {
+.awrapper {
     display: grid;
     grid-template-columns: repeat(50, 1fr);
     grid-gap: 5px;
