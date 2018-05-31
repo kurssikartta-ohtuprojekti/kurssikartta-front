@@ -9,11 +9,12 @@ import {cssGridStringify,
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
     const CourseMap = ({perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
-        if (sideLength === undefined) {
-            sideLength = 38
-        }
+        
         if (courseMapMatrice === undefined) {
             courseMapMatrice = defaultMatrix()
+        }
+        if (sideLength === undefined) {
+            sideLength = courseMapMatrice.length
         }
 
         // courseMapMatrice = moveCourseToNewCoordinates('TKT10001', courseMapMatrice, 1, 1)

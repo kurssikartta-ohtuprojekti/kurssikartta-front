@@ -43,6 +43,18 @@ const matematiikka = (courses) => {
     return resultsfilter
 }
 
+// Ottaa JSONin kaikista kursseista palauttaa kartassa näkymättömät
+const visibleFalseFilter = (courses) => {
+    var resultsfilter = courses.filter(function (i,n){
+        //console.log(i)
+        //console.log(n)
+        return i.visible === false
+    })
+    //console.log(resultsfilter)
+
+    return resultsfilter
+}
+
 const courseCounter = (courses1, courses2, courses3, courses4) => {
 
     if (courses1 === null) {
@@ -61,16 +73,16 @@ const courseCounter = (courses1, courses2, courses3, courses4) => {
 }
 
 const visibleFalseCounter = (courses1, courses2, courses3, courses4) => {
-    if (courses1 === null) {
+    if (courses1 === null || courses1 === undefined) {
         courses1 = []
     }
-    if (courses2 === null) {
+    if (courses2 === null || courses2 === undefined) {
         courses2 = []
     }
-    if (courses3 === null) {
+    if (courses3 === null || courses3 === undefined) {
         courses3 = []
     }
-    if (courses4 === null) {
+    if (courses4 === null || courses4 === undefined) {
         courses4 = []
     }
     let count = 0;
@@ -104,6 +116,7 @@ module.exports = {
     aineopinnot,
     syventavat,
     matematiikka,
+    visibleFalseFilter,
     courseCounter,
     visibleFalseCounter
 }

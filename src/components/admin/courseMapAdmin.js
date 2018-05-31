@@ -4,20 +4,20 @@ import './courseMapAdmin.css'
 
 import {cssGridStringify,
         defaultMatrix,
-        emptyMatrix,
-        matrixFindCourseByCode,
-        moveCourseToNewCoordinates,
-        moveCourseByXAndY,
-        moveCourseEast,
-        moveCourseWest,
-        moveCourseSouth,
-        moveCourseNorth,
-        moveCourseNorthEast,
-        moveCourseNorthWest,
-        moveCourseSouthEast,
-        moveCourseSouthWest,
-        addNewCourse,
-        removeCourse,
+        // emptyMatrix,
+        // matrixFindCourseByCode,
+        // moveCourseToNewCoordinates,
+        // moveCourseByXAndY,
+        // moveCourseEast,
+        // moveCourseWest,
+        // moveCourseSouth,
+        // moveCourseNorth,
+        // moveCourseNorthEast,
+        // moveCourseNorthWest,
+        // moveCourseSouthEast,
+        // moveCourseSouthWest,
+        // addNewCourse,
+        // removeCourse,
         emptyNodeCoordinatesAsList
             } from '../.././utils/courseMatrices.js'
 
@@ -25,12 +25,14 @@ import {courseCounter, visibleFalseCounter} from '../.././utils/tools.js'
 
 //  Admin mapview
     const CourseMapAdmin = ({perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
-        if (sideLength === undefined) {
-            sideLength = 38
-        }
+        
         if (courseMapMatrice === undefined) {
             courseMapMatrice = defaultMatrix()
         }
+        if (sideLength === undefined) {
+            sideLength = courseMapMatrice.length
+        }
+        
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
 
         const courseCount = courseCounter(perus, aine, syv, mat)
@@ -44,7 +46,7 @@ import {courseCounter, visibleFalseCounter} from '../.././utils/tools.js'
         }
 
         const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice)
-        console.log(emptyNodeCoordinates)
+        // console.log(emptyNodeCoordinates)
         return (
             <div className="awrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
 {/* perusopinnot */}

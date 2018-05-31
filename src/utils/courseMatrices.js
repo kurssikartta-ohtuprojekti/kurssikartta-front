@@ -146,6 +146,22 @@ const cssGridStringify = (sideLength, matrice) => {
     }
     return gridString
 }
+// Return all courses in matrice by course code.
+const mappedCourses = (matrice) => {
+    if (matrice === undefined) {
+        return []
+    }
+    // console.log(matrice)
+    const mapped = []
+    for (let i = 0; i < matrice.length; i++) {
+        for (let j = 0; j < matrice.length; j++) {
+            if (matrice[i][j] !== '.') {
+                mapped.push(matrice[i][j])
+            }
+        }
+    }
+    return mapped
+}
 
 // Return all empty node coords, for admin map
 const emptyNodeCoordinatesAsList = (matrice) => {
@@ -279,5 +295,6 @@ export {defaultMatrix,
         moveCourseSouthWest,
         addNewCourse,
         removeCourse,
-        emptyNodeCoordinatesAsList
+        emptyNodeCoordinatesAsList,
+        mappedCourses,
         }
