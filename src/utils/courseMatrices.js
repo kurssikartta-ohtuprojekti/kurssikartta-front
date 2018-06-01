@@ -162,6 +162,16 @@ const mappedCourses = (matrice) => {
     }
     return mapped
 }
+// Return all unmapped courses from list of mapped course codes
+const unmappedCourses = (courses, mappedCodes) => {
+    const list = []
+    for (let i = 0; i < courses.length; i++) {
+        if (!mappedCodes.includes(courses[i].code)) {
+            list.push(courses[i])
+        }
+    }
+    return list
+}
 
 // Return all empty node coords, for admin map
 const emptyNodeCoordinatesAsList = (matrice) => {
@@ -297,4 +307,5 @@ export {defaultMatrix,
         removeCourse,
         emptyNodeCoordinatesAsList,
         mappedCourses,
+        unmappedCourses
         }
