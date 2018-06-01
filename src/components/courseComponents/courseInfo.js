@@ -1,12 +1,11 @@
 import React from 'react'
-import courseInfoService from '../../services/courseinfo'
 // Kurssitietojen renderointi
 
 const opetustapahtumaMapper = (opetustapahtuma) => {
 
     const alkuString = new Date(opetustapahtuma.alkamisaika).toLocaleDateString()
     const loppuString = new Date(opetustapahtuma.loppumisaika).toLocaleDateString()
-    console.log('opetustapahtuma: ', opetustapahtuma)
+   // console.log('opetustapahtuma: ', opetustapahtuma)
     return (
         <div key={opetustapahtuma.key}>
             <small>
@@ -32,11 +31,11 @@ const opetustapahtumaMapper = (opetustapahtuma) => {
     )
 }
 const opintokohdeMapper = (opintokohde) => {
-    console.log('opintokohde.key: ', opintokohde)
+    //console.log('opintokohde.key: ', opintokohde)
     const opetustapahtumat = opintokohde.opetustapahtumat.map(opetustapahtuma => {
         const tapahtuma = opetustapahtuma
         tapahtuma.opintokohteenTunniste = opintokohde.opintokohteenTunniste
-        console.log('tapahtuma:', tapahtuma)
+      // console.log('tapahtuma:', tapahtuma)
         return tapahtuma
     })
     return (
@@ -94,22 +93,25 @@ export default class CourseInfo extends React.Component {
         super(props);
         this.state = {
             course: props.course,
-            onToteutuksia: false
-
+            onToteutuksia: false,
+            courseInfoService: props.courseInfoService
         }
+        
     }
 
     componentDidMount() {
-        courseInfoService.getCourseInfo(this.state.course.code).then(courseInfo => {
+        this.state.courseInfoService.getCourseInfo(this.state.course.code).then(courseInfo => {
             this.setState({ courseInfo })
-            console.log(this.state.courseInfo)
-        }
-        )
+           // console.log('A', this.state.courseInfo)
+        }).catch(() => console.log('coult not fetch course info from weboodi'))
+
     }
 
 
 
     render() {
+
+        console.log('process.env', process.env)
         return (
             <div>
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}<br />{this.state.course.code} ({this.state.course.ects} op)</p>
