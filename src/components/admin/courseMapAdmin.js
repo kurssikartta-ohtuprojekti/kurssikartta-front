@@ -3,7 +3,7 @@ import Course from '../course'
 import './courseMapAdmin.css'
 
 import {cssGridStringify,
-        defaultMatrix,
+        // defaultMatrix,
         // emptyMatrix,
         // matrixFindCourseByCode,
         // moveCourseToNewCoordinates,
@@ -31,10 +31,6 @@ class CourseMapAdmin extends React.Component {
       super(props)
       this.state = {
       }
-    }
-    componentDidUpdate () {
-        this.setState({})
-    
     }
    
         removeUnmappedCourses = (matrice, courses) => {

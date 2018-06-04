@@ -31,4 +31,4 @@ const deleteById = async (id) => {
   }
 
 
-export default { getAll, getById }
+export default { getAll, getById, updateById, updateWithoutId, deleteById }

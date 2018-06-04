@@ -3,7 +3,7 @@ import Course from './course'
 import './courseMap.css'
 // import CourseMapMatrice from './courseMapMatrice'
 import {cssGridStringify,
-        defaultMatrix,
+        // defaultMatrix,
         mappedCourses,
         unmappedCourses
             } from '.././utils/courseMatrices.js'
