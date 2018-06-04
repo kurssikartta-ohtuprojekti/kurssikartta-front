@@ -6,6 +6,8 @@ import CompCourseStyling from'./courseComponents/compCourseStyling'
 import CourseStyling from'./courseComponents/courseStyling'
 
 import CourseInfo from './courseComponents/courseInfo'
+import courseInfoService from './../services/courseinfo'
+
 // import CompCourseStyling from './courseComponents/compCourseStyling';
 const Course = ({ course, style }) => {
 
@@ -38,7 +40,7 @@ const Course = ({ course, style }) => {
                         modal
                         closeOnDocumentClick
                     >
-                        <span> <CourseInfo course={course}/> </span>
+                        <span> <CourseInfo course={course} courseInfoService={courseInfoService}/> </span>
                     </Popup>
                 </div> :
 
@@ -50,7 +52,7 @@ const Course = ({ course, style }) => {
                         // overlayStyle={{borderRadius:20}}
                         closeOnDocumentClick
                     >
-                        <span> <CourseInfo course={course}/> </span>
+                        <span> <CourseInfo course={course} courseInfoService={courseInfoService}/> </span>
                     </Popup>
                 </div>
             } 
