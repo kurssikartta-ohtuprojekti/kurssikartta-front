@@ -12,6 +12,7 @@ class AdminPage extends React.Component {
             <div>
                 {this.props.courseMapAdmin}
                 {this.props.unmappedCourses}
+                {this.props.courseUpdate}
             </div>
         )
     }
