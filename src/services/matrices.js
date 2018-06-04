@@ -11,6 +11,11 @@ const getById = async (id) => {
   return await request.then(response => response.data)
 }
 
+const postNewMatrice = async (newMatrice) => {
+    const request = axios.post(baseUrl)
+    return await request.then(response => response.data)
+}
+
 const updateById = async (id, newObject) => {
     const request = axios.put(`${baseUrl}/${id}`, newObject)
     return await request.then(response => response.data)
@@ -31,4 +36,4 @@ const deleteById = async (id) => {
   }
 
 
-export default { getAll, getById, updateById, updateWithoutId, deleteById }
+export default { getAll, getById, updateById, updateWithoutId, deleteById, postNewMatrice}
