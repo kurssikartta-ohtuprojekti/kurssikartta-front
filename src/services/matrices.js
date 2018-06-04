@@ -1,25 +1,25 @@
 import axios from 'axios'
-const baseUrl = 'https://kurssikartta-backend.herokuapp.com/matrices'
+const baseUrl = 'https://kurssikartta-backend.herokuapp.com/matrix'
 
 const getAll = async () => {
-    const request = await axios.get(baseUrl)
-    return request.then(response => response.data)
+    const request = axios.get(baseUrl)
+    return await request.then(response => response.data)
 }
 
 const getById = async (id) => {
-  const request = await axios.get(`${baseUrl}/${id}`)
-  return request.then(response => response.data)
+  const request = axios.get(`${baseUrl}/${id}`)
+  return await request.then(response => response.data)
 }
 
 const updateById = async (id, newObject) => {
-    const request = await axios.put(`${baseUrl}/${id}`, newObject)
-    return request.then(response => response.data)
+    const request = axios.put(`${baseUrl}/${id}`, newObject)
+    return await request.then(response => response.data)
 }
 
 const updateWithoutId = async (newMatrice) => {
   
-    const request = await axios.put(`${baseUrl}/${newMatrice._id}`, newMatrice)
-    return request.then(response => response.data)
+    const request = axios.put(`${baseUrl}/${newMatrice._id}`, newMatrice)
+    return await request.then(response => response.data)
 }
 
 const deleteById = async (id) => {

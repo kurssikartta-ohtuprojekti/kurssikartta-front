@@ -4,14 +4,30 @@ import './courseMap.css'
 // import CourseMapMatrice from './courseMapMatrice'
 import {cssGridStringify,
         defaultMatrix,
-        
+        mappedCourses,
+        unmappedCourses
             } from '.././utils/courseMatrices.js'
+
+
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
     const CourseMap = ({perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
-        
+
+        const removeUnmappedCourses = (matrice, courses) => {
+            const mapped = mappedCourses(matrice)
+            const unmapped = unmappedCourses(courses, mapped)
+            const returnList = []
+
+            for (let i = 0; i < courses.length; i++) {
+                if (!unmapped.includes(courses[i])) {
+                    returnList.push(courses[i])
+                }
+            }
+            return returnList
+        }
+
         if (courseMapMatrice === undefined) {
-            courseMapMatrice = defaultMatrix()
+            // courseMapMatrice = defaultMatrix()
         }
         if (sideLength === undefined) {
             sideLength = courseMapMatrice.length
@@ -21,9 +37,13 @@ import {cssGridStringify,
         // courseMapMatrice = removeCourse('TKT10001', courseMapMatrice)
         // courseMapMatrice = addNewCourse('TKT10001', courseMapMatrice, 1, 1)
 
+        perus = removeUnmappedCourses(courseMapMatrice, perus)
+        aine = removeUnmappedCourses(courseMapMatrice, aine)
+        syv = removeUnmappedCourses(courseMapMatrice, syv)
+        mat = removeUnmappedCourses(courseMapMatrice, mat)
+
+
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
-        // console.log(matrixFindCourseByCode('TKT10001', courseMapMatrice))
-        // console.log(cssGridTemplateAreas)
         return (
             <div className="wrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
 {/* perusopinnot */}

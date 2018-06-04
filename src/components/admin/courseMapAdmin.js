@@ -32,8 +32,9 @@ class CourseMapAdmin extends React.Component {
       this.state = {
       }
     }
-    componentDidUpdate() {
-
+    componentDidUpdate () {
+        this.setState({})
+    
     }
    
         removeUnmappedCourses = (matrice, courses) => {
@@ -53,7 +54,7 @@ class CourseMapAdmin extends React.Component {
             // console.log(this.props.matrice)
             let courseMapMatrice = []
             if (this.props.matrice === undefined) {
-                courseMapMatrice = defaultMatrix()
+                // courseMapMatrice = defaultMatrix()
             } else {
                 courseMapMatrice = this.props.matrice
             }

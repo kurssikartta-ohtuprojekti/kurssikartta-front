@@ -30,8 +30,9 @@ class App extends React.Component {
         // const def = defaultMatrix()
         // this.setState({matrices: [...this.state.matrices, def]})
         matriceService.getAll().then(matrices =>
-            this.setState({matrices})
+            this.setState({ matrices })
         )
+        
     }
 
     modifyMatriceHandler = (event) => {
@@ -40,7 +41,7 @@ class App extends React.Component {
         console.log(event.target.xCoord.value)
         console.log(event.target.id)
         const newMatrice = addNewCourse(event.target.id, 
-                                        this.state.matrices[0].matrice,
+                                        this.state.matrices[0],
                                         event.target.yCoord.value,
                                         event.target.xCoord.value)
         const newMatrices = []
@@ -72,7 +73,7 @@ class App extends React.Component {
                         </div> :
                         <div>
                             <Route path="/kartta" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0]}/>}
+                                <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} courseMapMatrice={this.state.matrices[0].matrice}/>}
                             />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
@@ -85,8 +86,8 @@ class App extends React.Component {
                             />
                             <Route path="/admin/map" render ={() =>
                             <AdminPage 
-                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices[0]}/>}
-                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0]}/>}
+                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices[0].matrice}/>}
+                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0].matrice}/>}
                                     />}
                             />
                             
