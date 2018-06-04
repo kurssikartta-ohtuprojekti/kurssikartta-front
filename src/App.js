@@ -7,6 +7,7 @@ import NaviBar from './components/naviBar'
 import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
 import CourseMapAdmin from './components/admin/courseMapAdmin'
+import CourseUpdate from './components/admin/courseUpdate'
 import {BrowserRouter as Router,
         Route} from 'react-router-dom'
 import {perusopinnot,
@@ -93,6 +94,7 @@ class App extends React.Component {
                             <AdminPage 
                                     unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices[0].matrice}/>}
                                     courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0].matrice}/>}
+                                    courseUpdate={<CourseUpdate/>}
                                     />}
                             />
                             
