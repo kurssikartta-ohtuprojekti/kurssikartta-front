@@ -27,8 +27,7 @@ class App extends React.Component {
         courseService.getAll().then(courses =>
             this.setState({ courses })
         )
-        // const def = defaultMatrix()
-        // this.setState({matrices: [...this.state.matrices, def]})
+        
         matriceService.getAll().then(matrices =>
             this.setState({ matrices })
         )

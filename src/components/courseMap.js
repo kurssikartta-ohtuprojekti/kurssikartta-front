@@ -27,7 +27,7 @@ import {cssGridStringify,
         }
 
         if (courseMapMatrice === undefined) {
-            // courseMapMatrice = defaultMatrix()
+            courseMapMatrice = []
         }
         if (sideLength === undefined) {
             sideLength = courseMapMatrice.length
