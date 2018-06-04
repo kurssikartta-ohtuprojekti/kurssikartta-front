@@ -94,8 +94,8 @@ class App extends React.Component {
                             />
                             <Route path="/admin/map" render ={() =>
                             <AdminPage 
-                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices[0].matrice}/>}
-                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0].matrice}/>}
+                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices.matrice}/>}
+                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices.matrice}/>}
                                     courseUpdate={<CourseUpdate/>}
                                     />}
                             />
