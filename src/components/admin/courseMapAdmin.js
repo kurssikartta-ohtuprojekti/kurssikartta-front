@@ -60,13 +60,12 @@ class CourseMapAdmin extends React.Component {
                 sideLength = courseMapMatrice.length
             }
             
-            const cssGridTemplateAreas = cssGridStringify(this.props.sideLength, this.props.courseMapMatrice)
+            const cssGridTemplateAreas = cssGridStringify(this.props.sideLength, courseMapMatrice)
 
             const perus = this.removeUnmappedCourses(courseMapMatrice, this.props.perus)
             const aine = this.removeUnmappedCourses(courseMapMatrice, this.props.aine)
             const syv = this.removeUnmappedCourses(courseMapMatrice, this.props.syv)
             const mat = this.removeUnmappedCourses(courseMapMatrice, this.props.mat)
-            // console.log(mat)
             const courseCount = courseCounter(perus, aine, syv, mat)
             const matriceNodeCount = sideLength * sideLength
             const visibleFalseCount = visibleFalseCounter(perus, aine, syv, mat) 
