@@ -14,19 +14,16 @@ import {perusopinnot,
         aineopinnot,
         syventavat,
         matematiikka, 
-        // visibleFalseFilter
          } from './utils/tools'
 import LoginForm from './components/LoginForm/LoginForm.js'
 import AdminPage from './components/admin/adminPage'
 import UnmappedCourses from './components/admin/unmappedCourses';
-import {
-        // defaultMatrix, 
-        addNewCourse} from './utils/courseMatrices'
+import {addNewCourse} from './utils/courseMatrices'
 class App extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        courses: [],
+        courses: [1],
         matrices: [1],
       }    
     }
@@ -44,20 +41,23 @@ class App extends React.Component {
 
     modifyMatriceHandler = (event) => {
         event.preventDefault()
-        console.log(event.target.yCoord.value)
-        console.log(event.target.xCoord.value)
-        console.log(event.target.id)
-        const newMatrice = addNewCourse(event.target.id, 
-                                        this.state.matrices[0].matrice,
-                                        event.target.yCoord.value,
-                                        event.target.xCoord.value)
-        const newMatrices = []
-        for (let i = 0; i < this.state.matrices.length; i++) {
-            newMatrices[i] = this.state.matrices[i]
-        }
-        newMatrices[0] = newMatrice
-        this.setState({matrices: newMatrices})
-        console.log(newMatrice)
+        const newMatrice = addNewCourse(event.target.id, // course code of the new course
+                                        this.state.matrices[0].matrice, // matrice
+                                        event.target.yCoord.value, // y coordinate value 
+                                        event.target.xCoord.value) // x coordinate value
+        
+        const newMatriceJson = {  
+                                id: 0,
+                                name: 'Default',
+                                matrice: newMatrice
+                            }
+                        
+          
+        matriceService.postNewMatrice(newMatriceJson).then(msg =>
+            this.componentDidMount()
+        )
+        // this.setState({matrices: newMatrices})
+        // console.log(newMatrice)
     }
 
     render () {

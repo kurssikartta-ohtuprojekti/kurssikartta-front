@@ -30,7 +30,7 @@ New features must have a branch. Pushing directly to master is not allowed and y
 * `git pull origin master`
 * `git checkout -b branch-name-here`
 * codecodecode
-* `git add your-files
+* `git add your-files`
 * `git commit -m "commit msg"`
 * `git push origin branch-name-here`
 * Create pull request of your push in Github
