@@ -10,9 +10,9 @@ class AdminPage extends React.Component {
     render() {
         return (
             <div>
+                {this.props.courseUpdate}
                 {this.props.courseMapAdmin}
                 {this.props.unmappedCourses}
-                {this.props.courseUpdate}
             </div>
         )
     }

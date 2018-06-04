@@ -14,7 +14,7 @@ const addNewCourse = (code, matrice, x, y) => {
     if (matrice[y][x] === '.') {
         matrice[y][x] = code;
     } else {
-        return {error: 'Matrix node already taken by' + matrice[y][x]}
+        return {error: 'Matrix node already taken by ' + matrice[y][x]}
     }
     return matrice;
 }
@@ -46,7 +46,7 @@ const moveCourseByXAndY = (code, matrice, x, y) => {
         matrice[oldCoords.y][oldCoords.x] = '.';
         matrice[oldCoords.y + y][oldCoords.x + x] = code;
     }   else {
-        return {error: 'Matrix node already taken by' + matrice[y][x]}
+        return {error: 'Matrix node already taken by ' + matrice[y][x]}
     }
     return matrice;
 }
@@ -100,7 +100,7 @@ const moveCourseToNewCoordinates = (code, matrice, y, x) => {
         matrice[oldCoords.y][oldCoords.x] = '.';
         matrice[y][x] = code;
     } else {
-        return {error: 'Matrix node already taken by' + matrice[y][x]}
+        return {error: 'Matrix node already taken by ' + matrice[y][x]}
     }
     return matrice;
 }

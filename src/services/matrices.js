@@ -12,7 +12,7 @@ const getById = async (id) => {
 }
 
 const postNewMatrice = async (newMatrice) => {
-    const request = axios.post(baseUrl)
+    const request = axios.post(baseUrl, newMatrice)
     return await request.then(response => response.data)
 }
 
