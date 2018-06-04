@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.css';
 import courseService from './services/courses'
+import matriceService from './services/matrices'
 // import Course from './components/course'
 import NaviBar from './components/naviBar'
 import CourseList from './components/courseList'
@@ -26,8 +27,11 @@ class App extends React.Component {
         courseService.getAll().then(courses =>
             this.setState({ courses })
         )
-        const def = defaultMatrix()
-        this.setState({matrices: [...this.state.matrices, def]})
+        // const def = defaultMatrix()
+        // this.setState({matrices: [...this.state.matrices, def]})
+        matriceService.getAll().then(matrices =>
+            this.setState({matrices})
+        )
     }
 
     modifyMatriceHandler = (event) => {
@@ -36,7 +40,7 @@ class App extends React.Component {
         console.log(event.target.xCoord.value)
         console.log(event.target.id)
         const newMatrice = addNewCourse(event.target.id, 
-                                        this.state.matrices[0],
+                                        this.state.matrices[0].matrice,
                                         event.target.yCoord.value,
                                         event.target.xCoord.value)
         const newMatrices = []

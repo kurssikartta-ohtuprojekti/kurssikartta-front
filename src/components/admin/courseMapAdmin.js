@@ -33,8 +33,9 @@ class CourseMapAdmin extends React.Component {
       }
     }
     componentDidUpdate() {
-        
+
     }
+   
         removeUnmappedCourses = (matrice, courses) => {
             const mapped = mappedCourses(matrice)
             const unmapped = unmappedCourses(courses, mapped)
