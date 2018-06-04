@@ -51,7 +51,7 @@ import {cssGridStringify,
                     <div></div> :
                     perus.map(course => 
                         course.visible ?
-                            <div style={{gridArea: course.code}}>
+                            <div key = {course.code} style={{gridArea: course.code}}>
                                 <Course key={course.code} course={course}/>
                             </div> :
                             <div>{course.visible}</div> 
@@ -61,7 +61,7 @@ import {cssGridStringify,
                 {aine === null ?
                     <div></div> :
                     aine.map(course => course.visible ?
-                                            <div style={{gridArea: course.code}}>
+                                            <div key = {course.code}  style={{gridArea: course.code}}>
                                                 <Course key={course.code} course={course}/>
                                             </div> :
                                             <div>{course.visible}</div> 
@@ -72,10 +72,10 @@ import {cssGridStringify,
                 {syv === null ?
                     <div></div> :
                     syv.map(course => course.visible ?
-                                            <div style={{gridArea: course.code}}>
+                                            <div key = {course.code} style={{gridArea: course.code}}>
                                                 <Course key={course.code} course={course}/>
                                             </div> :
-                                            <div>{course.visible}</div> 
+                                            <div key = {course.code}>{course.visible}</div> 
                     )
                 }
 
