@@ -3,21 +3,38 @@ import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
 // import CourseMapMatrice from './courseMapMatrice'
-import {
-    cssGridStringify,
-    defaultMatrix,
+import {cssGridStringify,
+        // defaultMatrix,
+        mappedCourses,
+        unmappedCourses
+            } from '.././utils/courseMatrices.js'
 
-} from '.././utils/courseMatrices.js'
+
+
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
-const CourseMap = ({ perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
+    const CourseMap = ({perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
 
-    if (courseMapMatrice === undefined) {
-        courseMapMatrice = defaultMatrix()
-    }
-    if (sideLength === undefined) {
-        sideLength = courseMapMatrice.length
-    }
+        const removeUnmappedCourses = (matrice, courses) => {
+            const mapped = mappedCourses(matrice)
+            const unmapped = unmappedCourses(courses, mapped)
+            const returnList = []
+
+            for (let i = 0; i < courses.length; i++) {
+                if (!unmapped.includes(courses[i])) {
+                    returnList.push(courses[i])
+                }
+            }
+            return returnList
+        }
+
+        if (courseMapMatrice === undefined) {
+            courseMapMatrice = []
+        }
+        if (sideLength === undefined) {
+            sideLength = courseMapMatrice.length
+        }
+
 
     // courseMapMatrice = moveCourseToNewCoordinates('TKT10001', courseMapMatrice, 1, 1)
     // courseMapMatrice = removeCourse('TKT10001', courseMapMatrice)
@@ -33,7 +50,17 @@ const CourseMap = ({ perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
             </div>
             <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
 
-                {/* perusopinnot */}
+        perus = removeUnmappedCourses(courseMapMatrice, perus)
+        aine = removeUnmappedCourses(courseMapMatrice, aine)
+        syv = removeUnmappedCourses(courseMapMatrice, syv)
+        mat = removeUnmappedCourses(courseMapMatrice, mat)
+
+
+        const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
+        return (
+            <div className="wrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
+{/* perusopinnot */}
+
                 {perus === null ?
                     <div></div> :
                     perus.map(course =>
