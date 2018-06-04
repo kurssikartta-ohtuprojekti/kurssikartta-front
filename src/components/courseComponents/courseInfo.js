@@ -111,7 +111,7 @@ export default class CourseInfo extends React.Component {
 
     render() {
 
-        console.log('process.env', process.env)
+      //  console.log('process.env', process.env)
         return (
             <div>
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}<br />{this.state.course.code} ({this.state.course.ects} op)</p>

@@ -42,15 +42,15 @@ describe.only('<CourseInfo />', () => {
     it('renders course info, no prerequirements', async () => {
 
         const mockHandler = jest.fn()
-        const courseComponent = shallow(<CourseInfo course={course} courseInfoService={dummyCourseInfoService} />)
+        const courseComponent = await shallow(<CourseInfo course={course} courseInfoService={dummyCourseInfoService} />)
         const contentDiv = courseComponent.find('.noncompulsory')
-        // console.log(courseComponent.html())
+        console.log(courseComponent.html())
         // console.log(contentDiv.html())
         // console.log(contentDiv.text())
         expect(courseComponent.html()).toContain("Full Stack -websovelluskehitys harjoitustyö")
         expect(courseComponent.html()).toContain("TKT21010 (1-10 op)")
         expect(courseComponent.html()).toContain("Ei esitietoja")
-
+        
           //expect(courseComponent.html()).toContain("Avoin yo: Johdatus tietojenkäsittelytieteeseen kesä 2018, Ryhmä 1")
 
 
