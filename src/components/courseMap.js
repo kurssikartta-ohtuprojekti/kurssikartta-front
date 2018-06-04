@@ -87,13 +87,27 @@ class CourseMap extends React.Component {
                             <div>{course.visible}</div>
                         )
                     }
+                    {/* Syventävät opinnot */}
+                   {syv === null ?
+                       <div></div> :
+                       syv.map(course => course.visible ?
+                           <div style={{ gridArea: course.code }}>
+                               <Course key={course.code} course={course} />
+                           </div> :
+                           <div>{course.visible}</div>
+                       )
+                   }
 
-                            <div style={{ gridArea: course.code }}>
-                                <Course key={course.code} course={course} />
-                            </div> :
-                            <div>{course.visible}</div>
-                        )
-                    }
+                   {/* Muut opinnot */}
+                   {mat === null ?
+                       <div></div> :
+                       mat.map(course => course.visible ?
+                           <div style={{ gridArea: course.code }}>
+                               <Course key={course.code} course={course} />
+                           </div> :
+                           <div>{course.visible}</div>
+                       )
+                   }
 
                 </div>
             </div>
