@@ -12,7 +12,7 @@ import { perusopinnot, aineopinnot, syventavat, matematiikka, visibleFalseFilter
 import LoginForm from './components/LoginForm/LoginForm.js'
 import AdminPage from './components/admin/adminPage'
 import UnmappedCourses from './components/admin/unmappedCourses';
-import {defaultMatrix} from './utils/courseMatrices'
+import {defaultMatrix, addNewCourse} from './utils/courseMatrices'
 class App extends React.Component {
     constructor(props) {
       super(props)
@@ -30,13 +30,31 @@ class App extends React.Component {
         this.setState({matrices: [...this.state.matrices, def]})
     }
 
+    modifyMatriceHandler = (event) => {
+        event.preventDefault()
+        console.log(event.target.yCoord.value)
+        console.log(event.target.xCoord.value)
+        console.log(event.target.id)
+        const newMatrice = addNewCourse(event.target.id, 
+                                        this.state.matrices[0],
+                                        event.target.yCoord.value,
+                                        event.target.xCoord.value)
+        const newMatrices = []
+        for (let i = 0; i < this.state.matrices.length; i++) {
+            newMatrices[i] = this.state.matrices[i]
+        }
+        newMatrices[0] = newMatrice
+        this.setState({matrices: newMatrices})
+        console.log(newMatrice)
+    }
+
     render () {
         const perus = perusopinnot(this.state.courses) // Using functions from /utils/tools.js
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
         const visibleFalse = visibleFalseFilter(this.state.courses)
-        // console.log(this.state.matrices)
+        console.log(this.state.matrices)
         // console.log(this.state.courses)
         return (
         <div className="container" style={{position:'relative'}}>
@@ -50,7 +68,7 @@ class App extends React.Component {
                         </div> :
                         <div>
                             <Route path="/kartta" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={syv} mat={null} matrice={this.state.matrices[0]}/>}
+                                <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0]}/>}
                             />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
@@ -63,8 +81,8 @@ class App extends React.Component {
                             />
                             <Route path="/admin/map" render ={() =>
                             <AdminPage 
-                                    unmappedCourses={<UnmappedCourses courses={this.state.courses} matrice={this.state.matrices[0]}/>}
-                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={null} matrice={this.state.matrices[0]}/>}
+                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices[0]}/>}
+                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0]}/>}
                                     />}
                             />
                             
