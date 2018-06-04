@@ -22,8 +22,8 @@ class App extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        courses: [1],
-        matrices: [1],
+        courses: [],
+        matrices: null,
       }    
     }
 
@@ -41,7 +41,7 @@ class App extends React.Component {
     modifyMatriceHandler = (event) => {
         event.preventDefault()
         const newMatrice = addNewCourse(event.target.id, // course code of the new course
-                                        this.state.matrices[0].matrice, // matrice
+                                        this.state.matrices.matrice, // matrice
                                         event.target.yCoord.value, // y coordinate value 
                                         event.target.xCoord.value) // x coordinate value
         
@@ -66,19 +66,21 @@ class App extends React.Component {
         const mat = matematiikka(this.state.courses) 
         console.log(this.state.matrices)
         // console.log(this.state.courses)
+        
         return (
         <div className="container" style={{position:'relative'}}>
             <Router>
                 <div>
                     <NaviBar/>
-                    {this.state.courses.length === 0 ?
+                    {this.state.courses.length === 0  || this.state.matrices === null ?
                         <div style={{position:'absolute', left:'45%'}}>
                             <h1> Loading... </h1>
                             <div className="loader"></div>
                         </div> :
+                        
                         <div>
                             <Route path="/kartta" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} courseMapMatrice={this.state.matrices[0].matrice}/>}
+                                <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} courseMapMatrice={this.state.matrices.matrice}/>}
                             />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
@@ -91,8 +93,8 @@ class App extends React.Component {
                             />
                             <Route path="/admin/map" render ={() =>
                             <AdminPage 
-                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices[0].matrice}/>}
-                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices[0].matrice}/>}
+                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices.matrice}/>}
+                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices.matrice}/>}
                                     />}
                             />
                             
