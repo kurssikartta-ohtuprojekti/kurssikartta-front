@@ -23,7 +23,7 @@ import {cssGridStringify,
         emptyNodeCoordinatesAsList
             } from '../.././utils/courseMatrices.js'
 
-import {courseCounter, visibleFalseCounter} from '../.././utils/tools.js'
+import {courseCounter} from '../.././utils/tools.js'
 
 //  Admin mapview
 class CourseMapAdmin extends React.Component {
@@ -68,8 +68,7 @@ class CourseMapAdmin extends React.Component {
             const mat = this.removeUnmappedCourses(courseMapMatrice, this.props.mat)
             const courseCount = courseCounter(perus, aine, syv, mat)
             const matriceNodeCount = sideLength * sideLength
-            const visibleFalseCount = visibleFalseCounter(perus, aine, syv, mat) 
-            const emptyNodeCount = matriceNodeCount - courseCount + visibleFalseCount 
+            const emptyNodeCount = matriceNodeCount - courseCount
             
             const emptyList = [] // Used to render empty matrice nodes
             for (let i = 0; i < emptyNodeCount; i++) {
@@ -84,43 +83,38 @@ class CourseMapAdmin extends React.Component {
                     {perus === null ?
                         <null></null>:
                         perus.map(course => 
-                            course.visible ?
                                 <div style={{gridArea: course.code}}>
                                     <Course key={course.code} course={course}/>
-                                </div> :
-                                <null></null>
+                                </div> 
                         ) 
                     }
     {/* Aineopinnot */}
                     {aine === null ?
                         <null></null> :
-                        aine.map(course => course.visible ?
-                                                <div style={{gridArea: course.code}}>
-                                                    <Course key={course.code} course={course}/>
-                                                </div> :
-                                                <null></null>
+                        aine.map(course =>
+                                    <div style={{gridArea: course.code}}>
+                                        <Course key={course.code} course={course}/>
+                                    </div>
                         )
                     }
 
     {/* Syventävät opinnot */}
                     {syv === null ?
                         <null></null> :
-                        syv.map(course => course.visible ?
-                                                <div style={{gridArea: course.code}}>
-                                                    <Course key={course.code} course={course}/>
-                                                </div> :
-                                                <null></null>
+                        syv.map(course =>
+                                    <div style={{gridArea: course.code}}>
+                                        <Course key={course.code} course={course}/>
+                                    </div>
                         )
                     }
 
     {/* Muut opinnot */}
                     {this.props.mat === null ?
                         <null></null> :
-                        mat.map(course => course.visible ?
-                                                <div style={{gridArea: course.code}}>
-                                                    <Course key={course.code} course={course}/>
-                                                </div> :
-                                                <null></null>
+                        mat.map(course =>
+                                    <div style={{gridArea: course.code}}>
+                                        <Course key={course.code} course={course}/>
+                                    </div>
                         )
                     }
     {/* Admin empty grids */}
