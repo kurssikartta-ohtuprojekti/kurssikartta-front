@@ -2,6 +2,7 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
+//import { klikHandle } from './periodButton'
 // import CourseMapMatrice from './courseMapMatrice'
 import {
     cssGridStringify,
@@ -34,6 +35,11 @@ class CourseMap extends React.Component {
         }
         return returnList
     }
+
+    myCallback = (period) => {
+        this.setState({period: period})
+    }
+
     // courseMapMatrice = moveCourseToNewCoordinates('TKT10001', courseMapMatrice, 1, 1)
     // courseMapMatrice = removeCourse('TKT10001', courseMapMatrice)
     // courseMapMatrice = addNewCourse('TKT10001', courseMapMatrice, 1, 1)
@@ -42,6 +48,7 @@ class CourseMap extends React.Component {
     // console.log(matrixFindCourseByCode('TKT10001', courseMapMatrice))
     // console.log(cssGridTemplateAreas)
     render() {
+        console.log(this.state.period)
         let courseMapMatrice = []
         if (this.props.courseMapMatrice === undefined) {
             courseMapMatrice = []
@@ -62,7 +69,7 @@ class CourseMap extends React.Component {
         return (
             <div>
                 <div>
-                    <PeriodButton />
+                    <PeriodButton period={this.state.period} callbackFromParent={this.myCallback} />
                 </div>
                 <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
@@ -88,26 +95,26 @@ class CourseMap extends React.Component {
                         )
                     }
                     {/* Syventävät opinnot */}
-                   {syv === null ?
-                       <div></div> :
-                       syv.map(course => course.visible ?
-                           <div style={{ gridArea: course.code }}>
-                               <Course key={course.code} course={course} />
-                           </div> :
-                           <div>{course.visible}</div>
-                       )
-                   }
+                    {syv === null ?
+                        <div></div> :
+                        syv.map(course => course.visible ?
+                            <div style={{ gridArea: course.code }}>
+                                <Course key={course.code} course={course} />
+                            </div> :
+                            <div>{course.visible}</div>
+                        )
+                    }
 
-                   {/* Muut opinnot */}
-                   {mat === null ?
-                       <div></div> :
-                       mat.map(course => course.visible ?
-                           <div style={{ gridArea: course.code }}>
-                               <Course key={course.code} course={course} />
-                           </div> :
-                           <div>{course.visible}</div>
-                       )
-                   }
+                    {/* Muut opinnot */}
+                    {mat === null ?
+                        <div></div> :
+                        mat.map(course => course.visible ?
+                            <div style={{ gridArea: course.code }}>
+                                <Course key={course.code} course={course} />
+                            </div> :
+                            <div>{course.visible}</div>
+                        )
+                    }
 
                 </div>
             </div>
