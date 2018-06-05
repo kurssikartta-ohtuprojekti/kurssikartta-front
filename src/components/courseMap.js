@@ -10,7 +10,7 @@ import {
     mappedCourses,
     unmappedCourses
 } from '.././utils/courseMatrices.js'
-
+import {periodFilter} from '.././utils/tools.js'
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
 class CourseMap extends React.Component {
     constructor(props) {
@@ -50,7 +50,6 @@ class CourseMap extends React.Component {
     }
 
     render() {
-        console.log(this.state.year)
         let courseMapMatrice = []
         if (this.props.courseMapMatrice === undefined) {
             courseMapMatrice = []
@@ -75,6 +74,7 @@ class CourseMap extends React.Component {
                     p4={this.state.p4} pC={this.state.pC} pS={this.state.pS} callback={this.periodCallback}
                     year={this.state.year} yearCallback={this.yearCallback} />
                 </div>
+
                 <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
 
@@ -82,7 +82,10 @@ class CourseMap extends React.Component {
                         <div></div> :
                         perus.map(course =>
                                 <div style={{ gridArea: course.code }}>
-                                    <Course key={course.code} course={course} />
+                                    {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
+                                        <Course key={course.code} course={course} /> :
+                                        <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
+                                    }
                                 </div> 
                         )
                     }
@@ -90,18 +93,24 @@ class CourseMap extends React.Component {
                     {aine === null ?
                         <div></div> :
                         aine.map(course =>
-                            <div style={{ gridArea: course.code }}>
-                                <Course key={course.code} course={course} />
-                            </div>
+                                <div style={{ gridArea: course.code }}>
+                                        {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
+                                            <Course key={course.code} course={course} /> :
+                                            <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
+                                        }
+                                </div>
                         )
                     }
                     {/* Syventävät opinnot */}
                     {syv === null ?
                         <div></div> :
                         syv.map(course =>
-                            <div style={{ gridArea: course.code }}>
-                                <Course key={course.code} course={course} />
-                            </div>
+                                <div style={{ gridArea: course.code }}>
+                                        {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
+                                            <Course key={course.code} course={course} /> :
+                                            <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
+                                        }
+                                </div>
                         )
                     }
 
@@ -110,7 +119,10 @@ class CourseMap extends React.Component {
                         <div></div> :
                         mat.map(course =>
                             <div style={{ gridArea: course.code }}>
-                                <Course key={course.code} course={course} />
+                                    {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
+                                        <Course key={course.code} course={course} /> :
+                                        <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
+                                    }
                             </div>
                         )
                     }
