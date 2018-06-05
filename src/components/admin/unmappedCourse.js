@@ -6,8 +6,8 @@ export default class UnmappedCourse extends React.Component {
         super(props);
         this.state = {
             course: props.course,
-            xCoord: '',
-            yCoord: ''
+            xCoord: 0,
+            yCoord: 0
 
         }
     }

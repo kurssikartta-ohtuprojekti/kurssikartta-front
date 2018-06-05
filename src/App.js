@@ -41,25 +41,30 @@ class App extends React.Component {
 
     modifyMatriceHandler = (event) => {
         event.preventDefault()
-        const newMatrice = addNewCourse(event.target.id, // course code of the new course
-                                        this.state.matrices.matrice, // old matrice
-                                        event.target.xCoord.value, // x Coordinate value
-                                        event.target.yCoord.value,) // y coordinate value
-        if (newMatrice.error === undefined) {
-        const newMatriceJson = {  
-                                id: 0,
-                                name: 'Default',
-                                matrice: newMatrice
-                            }
-                        
-          
-        matriceService.postNewMatrice(newMatriceJson).then(msg =>
-            this.componentDidMount()
-        )
-        window.alert('Kurssi lisätty kartalle')
+        console.log(event.target.xCoord.value)
+        if (event.target.xCoord.value !== '' || event.target.yCoord.value !== '') {
+            const newMatrice = addNewCourse(event.target.id, // course code of the new course
+                                            this.state.matrices.matrice, // old matrice
+                                            event.target.xCoord.value, // x Coordinate value
+                                            event.target.yCoord.value,) // y coordinate value
+            if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                                    id: 0,
+                                    name: 'Default',
+                                    matrice: newMatrice
+                                }
+                            
+            
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            window.alert('Kurssi lisätty kartalle')
 
-    } else {
-        window.alert(newMatrice.error)
+        } else {
+            window.alert(newMatrice.error)
+        }
+    }else {
+        window.alert('Enter coordinates!')
     }
 
         // this.setState({matrices: newMatrices})
@@ -71,7 +76,7 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
-        console.log(this.state.matrices)
+        // console.log(this.state.matrices)
         // console.log(this.state.courses)
         
         return (
