@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup'
 import { Button } from 'react-bootstrap'
 import './periodButton.css'
 
-const PeriodButton = () => {
+const PeriodButton = (props) => {
 
     const popupButton = () => {
         return (
@@ -16,28 +16,28 @@ const PeriodButton = () => {
                 trigger={popupButton()}
                 modal
                 closeOnDocumentClick>
-                <span><Periods /></span>
+                <span><Periods period={props.period} callbackFromParent={props.callbackFromParent} /></span>
             </Popup>
         </div>
     )
 }
 
-const Periods = () => {
+const Periods = (props) => {
 
+    /*
     function klikHandle(arvo) {
-        return () => {
-            const period = arvo
-            console.log('klikattiin periodia', period)
-        }
-    }
+        props.callbackFromParent(arvo)
+    }*/
+    
     return (
         <div>
-            <Button onClick={klikHandle('one')}>Periodi 1</Button>
-            <Button onClick={klikHandle('two')}>Periodi 2</Button>
-            <Button onClick={klikHandle('three')}>Periodi 3</Button>
-            <Button onClick={klikHandle('four')}>Periodi 4</Button>
-            <Button onClick={klikHandle('christmas')}>Joulu</Button>
-            <Button onClick={klikHandle('summer')}>Kesä</Button>
+            <Button onClick={() => props.callbackFromParent('one')}>Periodi 1</Button>
+            <Button onClick={() => props.callbackFromParent('two')}>Periodi 2</Button>
+            <Button onClick={() => props.callbackFromParent('three')}>Periodi 3</Button>
+            <Button onClick={() => props.callbackFromParent('four')}>Periodi 4</Button>
+            <Button onClick={() => props.callbackFromParent('christmas')}>Joulu</Button>
+            <Button onClick={() => props.callbackFromParent('summer')}>Kesä</Button>
+            <Button onClick={() => props.callbackFromParent('all')}>Kaikki</Button>
         </div>
     )
 }
