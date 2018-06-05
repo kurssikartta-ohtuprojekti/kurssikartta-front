@@ -81,42 +81,37 @@ class CourseMap extends React.Component {
                     {perus === null ?
                         <div></div> :
                         perus.map(course =>
-                            course.visible ?
                                 <div style={{ gridArea: course.code }}>
                                     <Course key={course.code} course={course} />
-                                </div> :
-                                <div>{course.visible}</div>
+                                </div> 
                         )
                     }
                     {/* Aineopinnot */}
                     {aine === null ?
                         <div></div> :
-                        aine.map(course => course.visible ?
+                        aine.map(course =>
                             <div style={{ gridArea: course.code }}>
                                 <Course key={course.code} course={course} />
-                            </div> :
-                            <div>{course.visible}</div>
+                            </div>
                         )
                     }
                     {/* Syventävät opinnot */}
                     {syv === null ?
                         <div></div> :
-                        syv.map(course => course.visible ?
+                        syv.map(course =>
                             <div style={{ gridArea: course.code }}>
                                 <Course key={course.code} course={course} />
-                            </div> :
-                            <div>{course.visible}</div>
+                            </div>
                         )
                     }
 
                     {/* Muut opinnot */}
                     {mat === null ?
                         <div></div> :
-                        mat.map(course => course.visible ?
+                        mat.map(course =>
                             <div style={{ gridArea: course.code }}>
                                 <Course key={course.code} course={course} />
-                            </div> :
-                            <div>{course.visible}</div>
+                            </div>
                         )
                     }
 
