@@ -75,14 +75,48 @@ const courseCounter = (courses1, courses2, courses3, courses4) => {
 
 // return true if course is not to be filtered, false if course is to be filtered
 const periodFilter = (periodFilter, coursePeriods) => {
-    console.log(periodFilter)
+
+    // console.log(coursePeriods[periodFilter.year])
+   
     if (coursePeriods === undefined) {
         return true
     }
-    if (!periodFilter.p1 && !periodFilter.p2 && !periodFilter.p3 && !periodFilter.p4 && !periodFilter.pC && !periodFilter.pS) {
+    if (periodFilter === undefined) {
         return true
     }
+    if (!periodFilter.p1 && !periodFilter.p2 && !periodFilter.p3 && 
+        !periodFilter.p4 && !periodFilter.pC && !periodFilter.pS) {
+        return true
+    }
+    if (coursePeriods[periodFilter.year] === undefined) {
+        return false
+    }
+    if (coursePeriods[periodFilter.year] === []) {
+        return false
+    }
+    if (periodFilter.p1 && coursePeriods[periodFilter.year][0]) {
+        // console.log(coursePeriods[periodFilter.year][0])
+        // console.log(periodFilter.p1)
+        return true
+    }
+    if (periodFilter.p2 && coursePeriods[periodFilter.year][1]) {
+        return true
+    }
+    if (periodFilter.pC && coursePeriods[periodFilter.year][2]) {
+        return true
+    }
+    if (periodFilter.p3 && coursePeriods[periodFilter.year][3]) {
+        return true
+    }
+    if (periodFilter.p4 && coursePeriods[periodFilter.year][4]) {
+        return true
+    }
+    if (periodFilter.pS && coursePeriods[periodFilter.year][5]) {
+        return true
 
+    }
+   
+    return false
 }
 
 
