@@ -20,7 +20,7 @@ class UnmappedCourses extends React.Component {
             <div>
                 <h1> Courses that can be added to map </h1>
                 {unmapped.map(course => 
-                    <UnmappedCourse course={course} handleSubmit={this.props.handleSubmit}/>
+                    <UnmappedCourse key={course.code} course={course} handleSubmit={this.props.handleSubmit}/>
                     )
                 }
             </div>
