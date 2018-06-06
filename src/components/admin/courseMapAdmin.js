@@ -83,7 +83,7 @@ class CourseMapAdmin extends React.Component {
                     {perus === null ?
                         <null></null>:
                         perus.map(course => 
-                                <div style={{gridArea: course.code}}>
+                                <div key={course.code} style={{gridArea: course.code}}>
                                     <Course key={course.code} course={course}/>
                                 </div> 
                         ) 
@@ -92,7 +92,7 @@ class CourseMapAdmin extends React.Component {
                     {aine === null ?
                         <null></null> :
                         aine.map(course =>
-                                    <div style={{gridArea: course.code}}>
+                                    <div key={course.code} style={{gridArea: course.code}}>
                                         <Course key={course.code} course={course}/>
                                     </div>
                         )
@@ -102,7 +102,7 @@ class CourseMapAdmin extends React.Component {
                     {syv === null ?
                         <null></null> :
                         syv.map(course =>
-                                    <div style={{gridArea: course.code}}>
+                                    <div key={course.code} style={{gridArea: course.code}}>
                                         <Course key={course.code} course={course}/>
                                     </div>
                         )
@@ -112,14 +112,16 @@ class CourseMapAdmin extends React.Component {
                     {this.props.mat === null ?
                         <null></null> :
                         mat.map(course =>
-                                    <div style={{gridArea: course.code}}>
+                                    <div key={course.code} style={{gridArea: course.code}}>
                                         <Course key={course.code} course={course}/>
                                     </div>
                         )
                     }
     {/* Admin empty grids */}
                     {emptyList.map(i => 
-                            <div><p>{emptyNodeCoordinates[i]}</p></div>
+                            <div key={emptyNodeCoordinates[i]}>
+                                <p>{emptyNodeCoordinates[i]}</p>
+                            </div>
                         )
 
                     }           

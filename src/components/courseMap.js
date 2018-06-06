@@ -45,7 +45,7 @@ class CourseMap extends React.Component {
     }
 
     yearCallback = (event) => {
-        console.log(event.target.name)
+        // console.log(event.target.name)
         this.setState({year : event.target.name})
     }
 
@@ -81,7 +81,7 @@ class CourseMap extends React.Component {
                     {perus === null ?
                         <div></div> :
                         perus.map(course =>
-                                <div style={{ gridArea: course.code }}>
+                                <div key={course.code} style={{ gridArea: course.code }}>
                                     {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
                                         <Course key={course.code} course={course} /> :
                                         <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
@@ -93,7 +93,7 @@ class CourseMap extends React.Component {
                     {aine === null ?
                         <div></div> :
                         aine.map(course =>
-                                <div style={{ gridArea: course.code }}>
+                                <div key={course.code} style={{ gridArea: course.code }}>
                                         {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
                                             <Course key={course.code} course={course} /> :
                                             <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
@@ -105,7 +105,7 @@ class CourseMap extends React.Component {
                     {syv === null ?
                         <div></div> :
                         syv.map(course =>
-                                <div style={{ gridArea: course.code }}>
+                                <div key={course.code} style={{ gridArea: course.code }}>
                                         {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
                                             <Course key={course.code} course={course} /> :
                                             <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
@@ -118,7 +118,7 @@ class CourseMap extends React.Component {
                     {mat === null ?
                         <div></div> :
                         mat.map(course =>
-                            <div style={{ gridArea: course.code }}>
+                            <div key={course.code} style={{ gridArea: course.code }}>
                                     {periodFilter({p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year}, course.periodyear) ? 
                                         <Course key={course.code} course={course} /> :
                                         <Course key={course.code} course={course}  style={{opacity: '0.3'}}/>
