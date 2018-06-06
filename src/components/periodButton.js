@@ -52,10 +52,10 @@ const Periods = (props) => {
     return (
         <div>
 
-            <Checkbox checked={props.p1} onChange={props.callback} name="p1">Periodi 1</Checkbox>
-            <Checkbox checked={props.p2} onChange={props.callback} name='p2'>Periodi 2</Checkbox>
-            <Checkbox checked={props.p3} onChange={props.callback} name='p3'>Periodi 3</Checkbox>
-            <Checkbox checked={props.p4} onChange={props.callback} name='p4'>Periodi 4</Checkbox>
+            <Checkbox checked={props.p1} onChange={props.callback} name="p1">Syksy 1</Checkbox>
+            <Checkbox checked={props.p2} onChange={props.callback} name='p2'>Syksy 2</Checkbox>
+            <Checkbox checked={props.p3} onChange={props.callback} name='p3'>Kevät 1</Checkbox>
+            <Checkbox checked={props.p4} onChange={props.callback} name='p4'>Kevät 2</Checkbox>
             <Checkbox checked={props.pC} onChange={props.callback} name='pC'>Joulu</Checkbox>
             <Checkbox checked={props.pS} onChange={props.callback} name='pS'>Kesä</Checkbox>
         </div>

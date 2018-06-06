@@ -72,42 +72,51 @@ const courseCounter = (courses1, courses2, courses3, courses4) => {
     return (courses1.length + courses2.length + courses3.length + courses4.length)
 }
 
-const visibleFalseCounter = (courses1, courses2, courses3, courses4) => {
-    if (courses1 === null || courses1 === undefined) {
-        courses1 = []
-    }
-    if (courses2 === null || courses2 === undefined) {
-        courses2 = []
-    }
-    if (courses3 === null || courses3 === undefined) {
-        courses3 = []
-    }
-    if (courses4 === null || courses4 === undefined) {
-        courses4 = []
-    }
-    let count = 0;
-    for (let i = 0; i < courses1.length; i++) {
-        if (courses1[i].visible === false) {
-            count++;
-        }
-    }
-    for (let i = 0; i < courses2.length; i++) {
-        if (courses2[i].visible === false) {
-            count++;
-        }
-    }
-    for (let i = 0; i < courses3.length; i++) {
-        if (courses3[i].visible === false) {
-            count++;
-        }
-    }
-    for (let i = 0; i < courses4.length; i++) {
-        if (courses4[i].visible === false) {
-            count++;
-        }
-    }
 
-    return count;
+// return true if course is not to be filtered, false if course is to be filtered
+const periodFilter = (periodFilter, coursePeriods) => {
+
+    // console.log(coursePeriods[periodFilter.year])
+   
+    if (coursePeriods === undefined) {
+        return true
+    }
+    if (periodFilter === undefined) {
+        return true
+    }
+    if (!periodFilter.p1 && !periodFilter.p2 && !periodFilter.p3 && 
+        !periodFilter.p4 && !periodFilter.pC && !periodFilter.pS) {
+        return true
+    }
+    if (coursePeriods[periodFilter.year] === undefined) {
+        return false
+    }
+    if (coursePeriods[periodFilter.year] === []) {
+        return false
+    }
+    if (periodFilter.p1 && coursePeriods[periodFilter.year][0]) {
+        // console.log(coursePeriods[periodFilter.year][0])
+        // console.log(periodFilter.p1)
+        return true
+    }
+    if (periodFilter.p2 && coursePeriods[periodFilter.year][1]) {
+        return true
+    }
+    if (periodFilter.pC && coursePeriods[periodFilter.year][2]) {
+        return true
+    }
+    if (periodFilter.p3 && coursePeriods[periodFilter.year][3]) {
+        return true
+    }
+    if (periodFilter.p4 && coursePeriods[periodFilter.year][4]) {
+        return true
+    }
+    if (periodFilter.pS && coursePeriods[periodFilter.year][5]) {
+        return true
+
+    }
+   
+    return false
 }
 
 
@@ -118,5 +127,5 @@ module.exports = {
     matematiikka,
     visibleFalseFilter,
     courseCounter,
-    visibleFalseCounter
+    periodFilter
 }
