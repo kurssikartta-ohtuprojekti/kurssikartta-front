@@ -45,7 +45,7 @@ class CourseMap extends React.Component {
     }
 
     yearCallback = (event) => {
-        console.log(event.target.name)
+        // console.log(event.target.name)
         this.setState({year : event.target.name})
     }
 

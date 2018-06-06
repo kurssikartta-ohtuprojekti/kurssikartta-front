@@ -19,12 +19,16 @@ import LoginForm from './components/LoginForm/LoginForm.js'
 import AdminPage from './components/admin/adminPage'
 import UnmappedCourses from './components/admin/unmappedCourses';
 import {addNewCourse} from './utils/courseMatrices'
+import loginService from './services/login'
 class App extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
         courses: [],
         matrices: null,
+        user: null,
+        username: '',
+        password: '',
       }    
     }
 
@@ -36,7 +40,39 @@ class App extends React.Component {
         matriceService.getAll().then(matrices =>
             this.setState({ matrices })
         )
-        
+        const loggedUserJSON = window.localStorage.getItem('loggedAdmin')
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON)
+            this.setState({ user })
+            // blogService.setToken(user.token)
+        }
+    }
+
+    logout = async (event) => {
+        event.preventDefault()
+        console.log(window.localStorage.getItem('loggedAdmin'))
+        window.localStorage.removeItem('loggedAdmin')
+        this.setState({ user: null })
+    }
+    
+    login = async (event) => {
+        event.preventDefault()
+        try {
+          const user = await loginService.login({
+            username: this.state.username,
+            password: this.state.password
+          })
+    
+          window.localStorage.setItem('loggedAdmin', JSON.stringify(user))
+          this.setState({ username: '', password: '', user })
+        } catch (exception) {
+          window.alert("Invalid username or password")
+        }
+    }
+
+    handleLoginFieldChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+
     }
 
     modifyMatriceHandler = (event) => {
@@ -63,7 +99,7 @@ class App extends React.Component {
         } else {
             window.alert(newMatrice.error)
         }
-    }else {
+    } else {
         window.alert('Enter coordinates!')
     }
 
@@ -76,9 +112,7 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
-        // console.log(this.state.matrices)
-        // console.log(this.state.courses)
-        
+        console.log(this.state.user)
         return (
         <div className="container" style={{position:'relative'}}>
             <Router>
@@ -115,7 +149,13 @@ class App extends React.Component {
                                 <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />
                             
-                            <Route exact path="/login" component={LoginForm}/>
+                            <Route exact path="/login" render={() =>
+                                <LoginForm 
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        handleChange={this.handleLoginFieldChange}
+                                        handleSubmit={this.login}/>}
+                            />
                         </div>
                     }
                 </div>
