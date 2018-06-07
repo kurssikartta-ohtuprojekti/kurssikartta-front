@@ -6,8 +6,8 @@ import matriceService from './services/matrices'
 import NaviBar from './components/naviBar'
 import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
-import CourseMapAdmin from './components/admin/courseMapAdmin'
-import CourseUpdate from './components/admin/courseUpdate'
+// import CourseMapAdmin from './components/admin/courseMapAdmin'
+// import CourseUpdate from './components/admin/courseUpdate'
 import {BrowserRouter as Router,
         Route} from 'react-router-dom'
 import {perusopinnot,
@@ -15,11 +15,11 @@ import {perusopinnot,
         syventavat,
         matematiikka, 
          } from './utils/tools'
-import LoginForm from './components/LoginForm/LoginForm.js'
 import AdminPage from './components/admin/adminPage'
-import UnmappedCourses from './components/admin/unmappedCourses';
+// import UnmappedCourses from './components/admin/unmappedCourses';
 import {addNewCourse} from './utils/courseMatrices'
 import loginService from './services/login'
+import LoginForm from './components/LoginForm/LoginForm';
 class App extends React.Component {
     constructor(props) {
       super(props)
@@ -70,6 +70,16 @@ class App extends React.Component {
         }
     }
 
+    // temporary login until backend login works
+    dummyLogin = (event) => {
+        event.preventDefault()
+            const user = {
+                username: this.state.username,
+                password: this.state.password
+            }
+            this.setState({username: '', password:'', user})
+    }
+
     handleLoginFieldChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
 
@@ -77,7 +87,7 @@ class App extends React.Component {
 
     modifyMatriceHandler = (event) => {
         event.preventDefault()
-        console.log(event.target.xCoord.value)
+        // console.log(event.target.xCoord.value)
         if (event.target.xCoord.value !== '' || event.target.yCoord.value !== '') {
             const newMatrice = addNewCourse(event.target.id, // course code of the new course
                                             this.state.matrices.matrice, // old matrice
@@ -96,15 +106,12 @@ class App extends React.Component {
             )
             window.alert('Kurssi lisätty kartalle')
 
+            } else {
+                window.alert(newMatrice.error)
+            }
         } else {
-            window.alert(newMatrice.error)
+            window.alert('Enter coordinates!')
         }
-    } else {
-        window.alert('Enter coordinates!')
-    }
-
-        // this.setState({matrices: newMatrices})
-        // console.log(newMatrice)
     }
 
     render () {
@@ -138,24 +145,33 @@ class App extends React.Component {
                                 <CourseMap perus={null} aine={null} syv={null} mat={mat}/>}
                             />
                             <Route path="/admin/map" render ={() =>
-                            <AdminPage 
-                                    unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices.matrice}/>}
-                                    courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices.matrice}/>}
-                                    courseUpdate={<CourseUpdate/>}
-                                    />}
+                                <AdminPage
+                                    username={this.state.username}
+                                    password={this.state.password}
+                                    handleLoginFieldChange={this.handleLoginFieldChange}
+                                    login={this.dummyLogin}
+                                    logout={this.logout}
+                                    courses={this.state.courses}
+                                    matrice={this.state.matrices.matrice}
+                                    handleSubmit={this.modifyMatriceHandler}
+                                    perus={perus} aine={aine} syv={syv} mat={mat}
+                                    user={this.state.user}
+                                />}
                             />
-                            
+                            <Route path="/login" render= {() =>
+                                <LoginForm
+                                    username={this.state.username}
+                                    password={this.state.password}
+                                    handleChange={this.handleLoginFieldChange}
+                                    handleSubmit={this.login} 
+                               />
+                            }
+                            />
+
                             <Route exact path="/" render={() =>
                                 <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />
                             
-                            <Route exact path="/login" render={() =>
-                                <LoginForm 
-                                        username={this.state.username}
-                                        password={this.state.password}
-                                        handleChange={this.handleLoginFieldChange}
-                                        handleSubmit={this.login}/>}
-                            />
                         </div>
                     }
                 </div>

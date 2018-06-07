@@ -84,7 +84,7 @@ class CourseMapAdmin extends React.Component {
                         <null></null>:
                         perus.map(course => 
                                 <div key={course.code} style={{gridArea: course.code}}>
-                                    <Course key={course.code} course={course}/>
+                                    <Course key={course.code} course={course} user={this.props.user}/>
                                 </div> 
                         ) 
                     }
@@ -93,7 +93,7 @@ class CourseMapAdmin extends React.Component {
                         <null></null> :
                         aine.map(course =>
                                     <div key={course.code} style={{gridArea: course.code}}>
-                                        <Course key={course.code} course={course}/>
+                                        <Course key={course.code} course={course} user={this.props.user}/>
                                     </div>
                         )
                     }
@@ -103,7 +103,7 @@ class CourseMapAdmin extends React.Component {
                         <null></null> :
                         syv.map(course =>
                                     <div key={course.code} style={{gridArea: course.code}}>
-                                        <Course key={course.code} course={course}/>
+                                        <Course key={course.code} course={course} user={this.props.user}/>
                                     </div>
                         )
                     }
@@ -113,7 +113,7 @@ class CourseMapAdmin extends React.Component {
                         <null></null> :
                         mat.map(course =>
                                     <div key={course.code} style={{gridArea: course.code}}>
-                                        <Course key={course.code} course={course}/>
+                                        <Course key={course.code} course={course} user={this.props.user}/>
                                     </div>
                         )
                     }
