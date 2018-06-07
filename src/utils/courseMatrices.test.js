@@ -173,3 +173,65 @@ test('mappedcourses maps all the courses', () => {
     //console.log(result)
     expect(result).toEqual(map)
 })
+
+test('empty node coordinates as list gives proper list', () => {
+    const matrix = []
+    for (let i = 0; i < 2; i++) {
+        matrix[i] = [];
+        for (let j = 0; j < 2; j++) {
+            matrix[i][j] = '.';
+        }
+    }
+    const courseCode = 'CSM13402'
+    courseMatrices.addNewCourse(courseCode, matrix, 0, 0)
+
+    const result = courseMatrices.emptyNodeCoordinatesAsList(matrix)
+
+    const list = ["0, 1", "1, 0", "1, 1"]
+
+    //console.log(result)
+    expect(result).toEqual(list)
+})
+
+test('unmappedcourses returns correct list', () => {
+    const mapped = ['CSM14106', 'CSM14103', 'CSM14104']
+    const courses = [{code: 'CSM14106'}, {code: 'CSM14103'}, {code: 'CSM14104'}, {code: 'CSM13402'}]
+
+    const toCompare = [{code: 'CSM13402'}]
+
+    const result = courseMatrices.unmappedCourses(courses, mapped)
+
+    //console.log(result)
+    expect(result).toEqual(toCompare)
+})
+
+test('cssGridStringfy works', () => {
+    const matrix = []
+    for (let i = 0; i < 2; i++) {
+        matrix[i] = [];
+        for (let j = 0; j < 2; j++) {
+            matrix[i][j] = '.';
+        }
+    }
+    const sidelength = matrix.length
+    const toCompare =   "'. . '\n'. . '\n"
+
+    const result = courseMatrices.cssGridStringify(sidelength, matrix)
+
+    //console.log(result)
+    expect(result).toEqual(toCompare)
+})
+
+test('emptyMatrice creates empty one of specified length', () => {
+    const result = courseMatrices.emptyMatrix(2)
+
+    const toCompare = []
+    for (let i = 0; i < 2; i++) {
+        toCompare[i] = [];
+        for (let j = 0; j < 2; j++) {
+            toCompare[i][j] = '.';
+        }
+    }
+    //console.log(result)
+    expect(result).toEqual(toCompare)
+})
