@@ -1,6 +1,8 @@
 import React from 'react'
 import LoginForm from '.././LoginForm/LoginForm.js'
-
+import CourseUpdate from './courseUpdate'
+import CourseMapAdmin from './courseMapAdmin'
+import UnmappedCourses from './unmappedCourses'
 class AdminPage extends React.Component {
     constructor(props) {
       super(props)
@@ -9,18 +11,18 @@ class AdminPage extends React.Component {
     }
     render() {
         return (
-           
             <div>
                 {this.props.user === null ? 
                     <LoginForm 
-                    username={this.state.username}
-                    password={this.state.password}
-                    handleChange={this.handleLoginFieldChange}
-                    handleSubmit={this.login}/> :
+                        username={this.props.username}
+                        password={this.props.password}
+                        handleChange={this.props.handleLoginFieldChange}
+                        handleSubmit={this.props.login}/> :
+
                     <div>
-                        {this.props.courseUpdate}
-                        {this.props.courseMapAdmin}
-                        {this.props.unmappedCourses}
+                        <CourseUpdate/>
+                        <CourseMapAdmin matrice={this.props.matrice} user={this.props.user} perus={this.props.perus} aine={this.props.aine} syv={this.props.syv} mat={this.props.mat}/>
+                        <UnmappedCourses matrice={this.props.matrice} courses={this.props.courses} handleSubmit={this.props.handleSubmit}/>
                     </div>
                  }
             </div>

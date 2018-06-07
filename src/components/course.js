@@ -4,12 +4,12 @@ import Popup from 'reactjs-popup'
 import { Button } from 'react-bootstrap' 
 import CompCourseStyling from'./courseComponents/compCourseStyling'
 import CourseStyling from'./courseComponents/courseStyling'
-
+import CourseAdminPanel from './admin/courseAdminPanel'
 import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
 
 // import CompCourseStyling from './courseComponents/compCourseStyling';
-const Course = ({ course, style, admin }) => {
+const Course = ({ course, style, user }) => {
 
     // Pakollisen kurssin Button-ominaisuus
     const compulsoryCourseButton = () => {
@@ -28,7 +28,6 @@ const Course = ({ course, style, admin }) => {
             </Button>
         )
     }
-
     return (
         // Yksittäisen kurssin renderointi
         <div className="courseBtn" style={style}> 
@@ -40,9 +39,15 @@ const Course = ({ course, style, admin }) => {
                         modal
                         closeOnDocumentClick
                     >
-                        <span> 
-                            <CourseInfo course={course} courseInfoService={courseInfoService}/> 
-                        </span>
+                        {user !== undefined ? 
+                            <span>
+                                <CourseAdminPanel course={course}/>  
+                            </span> 
+                            :
+                            <span>
+                                <CourseInfo course={course} courseInfoService={courseInfoService}/> 
+                            </span>
+                        }
                     </Popup>
                 </div> :
 
@@ -54,9 +59,16 @@ const Course = ({ course, style, admin }) => {
                         // overlayStyle={{borderRadius:20}}
                         closeOnDocumentClick
                     >
-                        <span> 
-                            <CourseInfo course={course} courseInfoService={courseInfoService}/>
-                        </span>
+                        {user !== undefined ? 
+
+                            <span>
+                                <CourseAdminPanel course={course}/>  
+                            </span> 
+                            :
+                            <span>
+                                <CourseInfo course={course} courseInfoService={courseInfoService}/> 
+                            </span>
+                        }
                     </Popup>
                 </div>
             } 
