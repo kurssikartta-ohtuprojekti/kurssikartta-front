@@ -15,7 +15,6 @@ import {perusopinnot,
         syventavat,
         matematiikka, 
          } from './utils/tools'
-import LoginForm from './components/LoginForm/LoginForm.js'
 import AdminPage from './components/admin/adminPage'
 import UnmappedCourses from './components/admin/unmappedCourses';
 import {addNewCourse} from './utils/courseMatrices'
@@ -77,7 +76,7 @@ class App extends React.Component {
 
     modifyMatriceHandler = (event) => {
         event.preventDefault()
-        console.log(event.target.xCoord.value)
+        // console.log(event.target.xCoord.value)
         if (event.target.xCoord.value !== '' || event.target.yCoord.value !== '') {
             const newMatrice = addNewCourse(event.target.id, // course code of the new course
                                             this.state.matrices.matrice, // old matrice
@@ -142,6 +141,7 @@ class App extends React.Component {
                                     unmappedCourses={<UnmappedCourses handleSubmit={this.modifyMatriceHandler} courses={this.state.courses} matrice={this.state.matrices.matrice}/>}
                                     courseMapAdmin={<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} matrice={this.state.matrices.matrice}/>}
                                     courseUpdate={<CourseUpdate/>}
+                                    user={this.state.user}
                                     />}
                             />
                             
@@ -149,13 +149,6 @@ class App extends React.Component {
                                 <CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>}
                             />
                             
-                            <Route exact path="/login" render={() =>
-                                <LoginForm 
-                                        username={this.state.username}
-                                        password={this.state.password}
-                                        handleChange={this.handleLoginFieldChange}
-                                        handleSubmit={this.login}/>}
-                            />
                         </div>
                     }
                 </div>
