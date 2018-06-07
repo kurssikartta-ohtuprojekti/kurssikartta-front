@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-
+import {Button} from 'react-bootstrap'
 
 export default class courseUpdate extends React.Component {
 
@@ -27,11 +27,11 @@ export default class courseUpdate extends React.Component {
 
     render() {
         return (
-            <ul>
-                <button onClick={this.handleClick}>
-                    {this.state.isToggleOn ? 'Päivitä kurssitietokanta' : 'Päivitetty'}
-                </button>
-            </ul>
+            
+            <Button onClick={this.handleClick}>
+                {this.state.isToggleOn ? 'Päivitä kurssitietokanta' : 'Päivitetty'}
+            </Button>
+        
         )
     }
 }

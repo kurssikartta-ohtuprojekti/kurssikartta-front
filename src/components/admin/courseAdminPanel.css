@@ -1,0 +1,24 @@
+.controlWrapper {
+    position: relative;
+    float: left;
+    max-height: 228px;
+    max-width: 228px;
+    border: 2px solid #a6a6a6;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: minmax(75px, auto);
+    grid-template-areas: 
+      "ul u  ur"
+      "l  .  r"
+      "dl d dr";
+}
+
+.wrapper > div {
+
+    padding: 0;
+    color: #d9480f;
+    height: 75px;
+    width: 75px;
+}

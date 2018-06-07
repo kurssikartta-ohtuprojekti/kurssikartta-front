@@ -17,7 +17,16 @@ import {perusopinnot,
          } from './utils/tools'
 import AdminPage from './components/admin/adminPage'
 // import UnmappedCourses from './components/admin/unmappedCourses';
-import {addNewCourse} from './utils/courseMatrices'
+import {addNewCourse,
+        removeCourse,
+        moveCourseEast,
+        moveCourseWest,
+        moveCourseSouth,
+        moveCourseNorth,
+        moveCourseNorthEast,
+        moveCourseNorthWest,
+        moveCourseSouthEast,
+        moveCourseSouthWest,} from './utils/courseMatrices'
 import loginService from './services/login'
 import LoginForm from './components/LoginForm/LoginForm';
 class App extends React.Component {
@@ -73,11 +82,11 @@ class App extends React.Component {
     // temporary login until backend login works
     dummyLogin = (event) => {
         event.preventDefault()
-            const user = {
-                username: this.state.username,
-                password: this.state.password
-            }
-            this.setState({username: '', password:'', user})
+        const user = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        this.setState({username: '', password:'', user})
     }
 
     handleLoginFieldChange = (event) => {
@@ -85,7 +94,7 @@ class App extends React.Component {
 
     }
 
-    modifyMatriceHandler = (event) => {
+    addNewCourseMatriceHandler = (event) => {
         event.preventDefault()
         // console.log(event.target.xCoord.value)
         if (event.target.xCoord.value !== '' || event.target.yCoord.value !== '') {
@@ -113,6 +122,195 @@ class App extends React.Component {
             window.alert('Enter coordinates!')
         }
     }
+
+    deleteCourseHandler = (event) => {
+        event.preventDefault()
+        console.log(event.target.id)
+        console.log(this.state.matrices)
+        const newMatrice = removeCourse(event.target.id, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            window.alert('Kurssi poistettu kartalta')
+
+        } else {
+            window.alert(newMatrice.error)
+        }
+    }
+
+    moveWestHandler = (code) => {
+        const newMatrice = moveCourseWest(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+    moveEastHandler = (code) => {
+        const newMatrice = moveCourseEast(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+    moveNorthHandler = (code) => {
+        const newMatrice = moveCourseNorth(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+    moveSouthHandler = (code) => {
+        const newMatrice = moveCourseSouth(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+    moveNorthWestHandler = (code) => {
+        const newMatrice = moveCourseNorthWest(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+    moveNorthEastHandler = (code) => {
+        const newMatrice = moveCourseNorthEast(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+    moveSouthWestHandler = (code) => {
+        const newMatrice = moveCourseSouthWest(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+    moveSouthEastHandler = (code) => {
+        const newMatrice = moveCourseSouthEast(code, this.state.matrices.matrice)
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                id: 0,
+                name: 'Default',
+                matrice: newMatrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            // window.alert('Kurssia liikutettu')
+
+        } else {
+            window.alert(newMatrice.error)
+        }    
+    } 
+
+    courseMovementHandler = (event) => {
+        event.preventDefault()
+        // console.log(event.target.id)
+        // console.log(event.target.name)
+        if (event.target.name === 'left') {
+            this.moveWestHandler(event.target.id)
+        }
+        if (event.target.name === 'right') {
+            this.moveEastHandler(event.target.id)
+        }
+        if (event.target.name === 'up') {
+            this.moveNorthHandler(event.target.id) 
+        }
+        if (event.target.name === 'down') {
+            this.moveSouthHandler(event.target.id)
+        }
+        if (event.target.name === 'upRight') {
+            this.moveNorthEastHandler(event.target.id)
+        }
+        if (event.target.name === 'upLeft') {
+            this.moveNorthWestHandler(event.target.id)
+        }
+        if (event.target.name === 'downLeft') {
+            this.moveSouthWestHandler(event.target.id)
+        }
+        if (event.target.name === 'downRight') {
+            this.moveSouthEastHandler(event.target.id)
+        }
+    }
+
 
     render () {
         const perus = perusopinnot(this.state.courses) // Using functions from /utils/tools.js
@@ -153,9 +351,11 @@ class App extends React.Component {
                                     logout={this.logout}
                                     courses={this.state.courses}
                                     matrice={this.state.matrices.matrice}
-                                    handleSubmit={this.modifyMatriceHandler}
+                                    handleNewSubmit={this.addNewCourseMatriceHandler}
                                     perus={perus} aine={aine} syv={syv} mat={mat}
                                     user={this.state.user}
+                                    deleteCourseHandler={this.deleteCourseHandler}
+                                    courseMovementHandler={this.courseMovementHandler}
                                 />}
                             />
                             <Route path="/login" render= {() =>

@@ -9,7 +9,7 @@ import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
 
 // import CompCourseStyling from './courseComponents/compCourseStyling';
-const Course = ({ course, style, user }) => {
+const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandler }) => {
 
     // Pakollisen kurssin Button-ominaisuus
     const compulsoryCourseButton = () => {
@@ -41,11 +41,15 @@ const Course = ({ course, style, user }) => {
                     >
                         {user !== undefined ? 
                             <span>
-                                <CourseAdminPanel course={course}/>  
+                                <CourseAdminPanel 
+                                    course={course}
+                                    courseMovementHandler={courseMovementHandler} 
+                                    deleteCourseHandler={deleteCourseHandler}/>  
                             </span> 
                             :
                             <span>
-                                <CourseInfo course={course} courseInfoService={courseInfoService}/> 
+                                <CourseInfo course={course}
+                                            courseInfoService={courseInfoService}/> 
                             </span>
                         }
                     </Popup>
@@ -62,11 +66,15 @@ const Course = ({ course, style, user }) => {
                         {user !== undefined ? 
 
                             <span>
-                                <CourseAdminPanel course={course}/>  
+                                <CourseAdminPanel 
+                                    course={course}
+                                    courseMovementHandler={courseMovementHandler} 
+                                    deleteCourseHandler={deleteCourseHandler}/>  
                             </span> 
                             :
                             <span>
-                                <CourseInfo course={course} courseInfoService={courseInfoService}/> 
+                                <CourseInfo course={course} 
+                                            courseInfoService={courseInfoService}/> 
                             </span>
                         }
                     </Popup>
