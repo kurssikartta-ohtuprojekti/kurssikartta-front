@@ -99,7 +99,6 @@ const moveCourseToNewCoordinates = (code, matrice, y, x) => {
     if (matrice[y][x] === '.') {
         matrice[oldCoords.y][oldCoords.x] = '.';
         matrice[y][x] = code;
-        return matrice;
     } else {
         return {error: 'Matrix node already taken by ' + matrice[y][x]}
     }
@@ -108,7 +107,7 @@ const moveCourseToNewCoordinates = (code, matrice, y, x) => {
 // Takes a course code and a matrice and searches the matrice for the course.
 // Returns a JSX object that contains the course code, and coordinates of the course in the matrice.
 const matrixFindCourseByCode = (code, matrice) => {
-    if (matrice === undefined) {
+    if (matrice === undefined || matrice === null) {
         return undefined
     }
     if (code === undefined) {

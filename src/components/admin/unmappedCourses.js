@@ -15,7 +15,7 @@ class UnmappedCourses extends React.Component {
 
         const unmapped = unmappedCourses(this.props.courses, mapped)
         // console.log(this.props.matrice)
-        console.log(unmapped)
+        // console.log(unmapped)
         return (
             <div>
                 <h1> Courses that can be added to map </h1>
