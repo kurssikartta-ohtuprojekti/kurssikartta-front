@@ -20,7 +20,8 @@ export default class UnmappedCourse extends React.Component {
     render() {
         return(
             <div>
-                {this.state.course.code} {this.state.course.name}
+                <p style={{float: 'left'}}> {this.state.course.code} {this.state.course.name}: </p>
+                <br/>
                 <AddForm 
                             style={{float: 'left'}}
                             courseCode={this.state.course.code}
@@ -29,6 +30,9 @@ export default class UnmappedCourse extends React.Component {
                             handleChange={this.handleCoordFieldChange}
                             handleSubmit={this.props.handleSubmit}
                 />
+                <br/>
+                <br/>
+                <p>__________________________________________________</p>
             </div>
         )
     }

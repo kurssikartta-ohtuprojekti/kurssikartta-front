@@ -22,9 +22,9 @@ const NaviBar = () => (
               <NavItem href="/admin/map">
                 Admin view
               </NavItem>
-              <NavItem href="/login">
+              {/* <NavItem href="/login">
                 Login
-              </NavItem>
+              </NavItem> */}
               {/* <NavItem href="/perus">
                 Perusopinnot
               </NavItem>
