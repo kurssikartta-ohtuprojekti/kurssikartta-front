@@ -19,7 +19,7 @@ const getById = async (id) => {
 
 const postNewMatrice = async (newMatrice) => {
     const config = {
-        headers: { 'Authorization': token }
+        headers: { 'authorization': token }
     }
     const request = axios.post(baseUrl, newMatrice, config)
     return await request.then(response => response.data)

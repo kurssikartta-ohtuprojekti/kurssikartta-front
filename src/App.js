@@ -100,10 +100,13 @@ class App extends React.Component {
                                 }
                             
             
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
-            window.alert('Kurssi lisätty kartalle')
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
 
             } else {
                 window.alert(newMatrice.error)
@@ -124,10 +127,13 @@ class App extends React.Component {
                 name: 'Default',
                 matrice: newMatrice
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
-            window.alert('Kurssi poistettu kartalta')
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
 
         } else {
             window.alert(newMatrice.error)
@@ -142,9 +148,13 @@ class App extends React.Component {
                 name: 'Default',
                 matrice: newMatrice
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
             // window.alert('Kurssia liikutettu')
 
         } else {
@@ -159,9 +169,13 @@ class App extends React.Component {
                 name: 'Default',
                 matrice: newMatrice
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
             // window.alert('Kurssia liikutettu')
 
         } else {
@@ -176,9 +190,13 @@ class App extends React.Component {
                 name: 'Default',
                 matrice: newMatrice
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
             // window.alert('Kurssia liikutettu')
 
         } else {
@@ -193,9 +211,13 @@ class App extends React.Component {
                 name: 'Default',
                 matrice: newMatrice
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
             // window.alert('Kurssia liikutettu')
 
         } else {
@@ -210,9 +232,13 @@ class App extends React.Component {
                 name: 'Default',
                 matrice: newMatrice
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                )
+            } catch (exception){
+                window.alert(exception)
+            }
             // window.alert('Kurssia liikutettu')
 
         } else {
@@ -227,9 +253,14 @@ class App extends React.Component {
                 name: 'Default',
                 matrice: newMatrice
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                    
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
             // window.alert('Kurssia liikutettu')
 
         } else {
