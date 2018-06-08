@@ -34,50 +34,61 @@ const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandle
             {course.compulsory ?
                 <div className="compulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}
-                    <Popup
-                        trigger={compulsoryCourseButton()}
-                        modal
-                        closeOnDocumentClick
-                    >
-                        {user !== undefined ? 
+
+                    {user !== undefined ? 
+                        <Popup
+                            trigger={compulsoryCourseButton()}
+                            // modal
+                            closeOnDocumentClick
+                        >
                             <span>
                                 <CourseAdminPanel 
                                     course={course}
                                     courseMovementHandler={courseMovementHandler} 
                                     deleteCourseHandler={deleteCourseHandler}/>  
                             </span> 
+                        </Popup>
                             :
+                        <Popup
+                            trigger={compulsoryCourseButton()}
+                            modal
+                            closeOnDocumentClick
+                        >
                             <span>
                                 <CourseInfo course={course}
                                             courseInfoService={courseInfoService}/> 
                             </span>
-                        }
-                    </Popup>
+                        </Popup>
+                    }
                 </div> :
 
                 <div className="noncompulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}
-                    <Popup
-                        trigger={noncompulsoryCourseButton()}
-                        modal
-                        // overlayStyle={{borderRadius:20}}
-                        closeOnDocumentClick
-                    >
-                        {user !== undefined ? 
-
+                    {user !== undefined ? 
+                        <Popup
+                            trigger={noncompulsoryCourseButton()}
+                            // modal
+                            closeOnDocumentClick
+                        >
                             <span>
                                 <CourseAdminPanel 
                                     course={course}
                                     courseMovementHandler={courseMovementHandler} 
                                     deleteCourseHandler={deleteCourseHandler}/>  
                             </span> 
+                        </Popup>
                             :
+                        <Popup
+                            trigger={noncompulsoryCourseButton()}
+                            modal
+                            closeOnDocumentClick
+                        >
                             <span>
-                                <CourseInfo course={course} 
+                                <CourseInfo course={course}
                                             courseInfoService={courseInfoService}/> 
                             </span>
-                        }
-                    </Popup>
+                        </Popup>
+                    }
                 </div>
             } 
         </div>
