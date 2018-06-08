@@ -44,11 +44,6 @@ const Years = (props) => {
 
 const Periods = (props) => {
 
-    /*
-    function klikHandle(arvo) {
-        props.callbackFromParent(arvo)
-    }*/
-
     return (
         <div>
 

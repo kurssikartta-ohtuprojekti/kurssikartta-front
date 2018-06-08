@@ -7,8 +7,8 @@ describe.only('<NaviBar />', () => {
         const mockHandler = jest.fn()
         const courseComponent = shallow(<NaviBar/>)
         const contentDiv = courseComponent.find('.navBar')
-        // console.log(courseComponent)
-        // console.log(contentDiv.text())
+        //console.log(courseComponent)
+        //console.log(contentDiv.text())
         expect(contentDiv.html()).toContain("Kurssikartta-sovellus")
     })
 
