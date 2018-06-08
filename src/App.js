@@ -77,6 +77,7 @@ class App extends React.Component {
         } catch (exception) {
           window.alert("Invalid username or password")
         }
+        this.componentDidMount()
     }
 
     handleLoginFieldChange = (event) => {
