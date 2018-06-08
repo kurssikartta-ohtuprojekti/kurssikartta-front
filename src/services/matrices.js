@@ -1,6 +1,12 @@
 import axios from 'axios'
 const baseUrl = 'https://kurssikartta-backend.herokuapp.com/matrix'
 
+let token = null
+
+const setToken = (newToken) => {
+    token = newToken
+}
+
 const getAll = async () => {
     const request = axios.get(baseUrl)
     return await request.then(response => response.data)
@@ -12,7 +18,10 @@ const getById = async (id) => {
 }
 
 const postNewMatrice = async (newMatrice) => {
-    const request = axios.post(baseUrl, newMatrice)
+    const config = {
+        headers: { 'Authorization': token }
+    }
+    const request = axios.post(baseUrl, newMatrice, config)
     return await request.then(response => response.data)
 }
 
@@ -36,4 +45,4 @@ const deleteById = async (id) => {
   }
 
 
-export default { getAll, getById, updateById, updateWithoutId, deleteById, postNewMatrice}
+export default {setToken, getAll, getById, updateById, updateWithoutId, deleteById, postNewMatrice}
