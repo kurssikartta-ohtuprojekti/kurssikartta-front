@@ -1,29 +1,31 @@
 import React from 'react'
-import { Button, FormGroup, FormControl } from 'react-bootstrap'
+import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord }) => {
   return (
     <div>
       <form id={courseCode} onSubmit={handleSubmit}>
         <FormGroup>
-          y: 
+          <ControlLabel style={{float: 'left'}}>Y:</ControlLabel>
+
           <FormControl
             value={yCoord}
             onChange={handleChange}
             name="yCoord"
-            style={{width: 50}}
+            style={{width: 50, float: 'left'}}
           />
         
-          x:
+          <ControlLabel style={{float: 'left'}}>X:</ControlLabel>
+
           <FormControl
             name="xCoord"
             value={xCoord}
             onChange={handleChange}
-            style={{width: 50}}
+            style={{width: 50, float: 'left'}}
+            
+          />
 
-          /><br/>
-
-          <Button type="submit" bsStyle="success">add</Button> 
+          <Button style={{float: 'left'}} type="submit" bsStyle="success">add</Button> 
         </FormGroup>
       </form>
     </div>

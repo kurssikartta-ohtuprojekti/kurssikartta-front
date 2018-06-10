@@ -22,7 +22,6 @@ class AdminPage extends React.Component {
 
                     <div>
                         <Logout logoutHandler={this.props.logout}/>
-                        <CourseUpdate/>
                         <CourseMapAdmin 
                                         courseMovementHandler={this.props.courseMovementHandler} 
                                         deleteCourseHandler={this.props.deleteCourseHandler}
@@ -31,6 +30,7 @@ class AdminPage extends React.Component {
                                         aine={this.props.aine} 
                                         syv={this.props.syv} 
                                         mat={this.props.mat}/>
+                        <CourseUpdate/>
                         <UnmappedCourses 
                                         matrice={this.props.matrice} 
                                         courses={this.props.courses} 
