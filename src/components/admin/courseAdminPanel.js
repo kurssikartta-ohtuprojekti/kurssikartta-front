@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
+import Popup from 'reactjs-popup'
 import './courseAdminPanel.css'
 import AddForm from './addForm';
 export default class CourseAdminPanel extends React.Component {
@@ -39,19 +40,31 @@ export default class CourseAdminPanel extends React.Component {
                     <div style={{gridArea:"dr"}}>
                         <Button onClick={this.props.courseMovementHandler} name='downRight' id={this.props.course.code} style={{width: 60, height: 60}}></Button>
                     </div>
+                    <div style={{gridArea:"m"}}>
+                        <Popup
+                            trigger={<Button style={{width: 60, height: 60}}>More</Button>}
+                            modal
+                            closeOnDocumentClick
+                        >
+                            <span>
+                                <p style={{float: 'left'}}>New Coordinates:</p>
+                                <br/>
+                                <AddForm style={{float: 'left'}}
+                                        courseCode={this.props.course.code}
+                                        formName='newCoords'
+                                        yCoord={this.state.yCoord}
+                                        xCoord={this.state.xCoord} 
+                                        handleChange={this.handleCoordFieldChange}
+                                        handleSubmit={this.props.courseMovementHandler}
+                                />
+                                <br/><br/>
+                                <Button id={this.props.course.code} style={{marginTop: 6, float: 'down'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
+                            </span> 
+                        </Popup>
+                    </div>
                 </div>
                     
-                    <p>New Coordinates:</p>
-                    <AddForm style={{float: 'left'}}
-                            courseCode={this.props.course.code}
-                            formName='newCoords'
-                            yCoord={this.state.yCoord}
-                            xCoord={this.state.xCoord} 
-                            handleChange={this.handleCoordFieldChange}
-                            handleSubmit={this.props.courseMovementHandler}
-                    />
                     
-                    <Button id={this.props.course.code} style={{marginTop: 6, float: 'down'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
 
             </div>
         )

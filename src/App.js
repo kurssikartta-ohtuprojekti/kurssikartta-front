@@ -2,12 +2,9 @@ import React from 'react'
 import './index.css';
 import courseService from './services/courses'
 import matriceService from './services/matrices'
-// import Course from './components/course'
 import NaviBar from './components/naviBar'
 import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
-// import CourseMapAdmin from './components/admin/courseMapAdmin'
-// import CourseUpdate from './components/admin/courseUpdate'
 import {BrowserRouter as Router,
         Route} from 'react-router-dom'
 import {perusopinnot,
@@ -16,7 +13,6 @@ import {perusopinnot,
         matematiikka, 
          } from './utils/tools'
 import AdminPage from './components/admin/adminPage'
-// import UnmappedCourses from './components/admin/unmappedCourses';
 import {addNewCourse,
         removeCourse,
         moveCourseToNewCoordinates,
