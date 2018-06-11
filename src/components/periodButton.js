@@ -14,6 +14,7 @@ const PeriodButton = (props) => {
     }
     return (
         <div>
+            <MatriceSelect matrices={props.matrices} matrice={props.matrice} matriceCallback={props.matriceCallback} />
             <Popup
                 trigger={popupButton()}
                 modal
@@ -23,7 +24,6 @@ const PeriodButton = (props) => {
                     <Periods p1={props.p1} p2={props.p2} p3={props.p3}
                         p4={props.p4} pC={props.pC} pS={props.pS} callback={props.callback}
                     />
-                    <MatriceSelect matrices={props.matrices} matrice={props.matrice} matriceCallback={props.matriceCallback} />
                 </span>
             </Popup>
         </div>

@@ -1,13 +1,11 @@
 import React from 'react'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
+import './periodButton.css'
 
 const MatriceSelect = (props) => {
     return (
         <div>
-            Valitse kartta:&nbsp;
-
             <Kartta matrices={props.matrices} matrice={props.matrice} names={props.names} selected={props.selected} matriceCallback={props.matriceCallback} />
-
         </div>
     )
 }
@@ -25,9 +23,9 @@ const Kartta = (props) => {
     console.log(names);
 
     return (
-        <DropdownButton
+        <DropdownButton id="myBtn"
             title={matrices[0].name}
-            id='1'
+            
         >
             {matrices === null ?
                 <null></null> :
