@@ -1,12 +1,16 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import CourseMap from './courseList'
+import CourseMap from './courseMap'
+import {defaultMatrix} from '.././utils/courseMatrices'
+
 
 describe.only('<CourseMap />', () => {
+    const defaultMatrice = defaultMatrix()
+
     const perus = [
         {
             code: "TKT10001",
-            name: "Dummy",
+            name: "Dummy1",
             level: "Perusopinnot",
             compulsory: true,
             prereqs: [],
@@ -17,36 +21,6 @@ describe.only('<CourseMap />', () => {
         {
             code: "TKT10002",
             name: "Dummy2",
-            level: "Perusopinnot",
-            compulsory: true,
-            prereqs: [],
-            studytrack: ["ss"],
-            ects: "1-10",
-            url: "https://courses.helsinki.fi/fi/TKT21010"
-        },
-        {
-            code: "TKT10003",
-            name: "Dummy3",
-            level: "Perusopinnot",
-            compulsory: true,
-            prereqs: [],
-            studytrack: ["ss"],
-            ects: "1-10",
-            url: "https://courses.helsinki.fi/fi/TKT21010"
-        },
-        {
-            code: "TKT10004",
-            name: "Dummy4",
-            level: "Perusopinnot",
-            compulsory: true,
-            prereqs: [],
-            studytrack: ["ss"],
-            ects: "1-10",
-            url: "https://courses.helsinki.fi/fi/TKT21010"
-        },
-        {
-            code: "TKT10005",
-            name: "Dummy5",
             level: "Perusopinnot",
             compulsory: true,
             prereqs: [],
@@ -99,31 +73,109 @@ describe.only('<CourseMap />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         }
     ]
-    // it ('renders peruskurssit', () => {
-    //     const mockHandler = jest.fn()
-    //     const courseMapComponent = shallow(<CourseMap perus={perus} aine={null} syv={null} mat={null}/>)
-    //     const contentDiv = courseMapComponent.find('.wrapper')
-    //     console.log(courseMapComponent.html())
-    //     console.log(contentDiv.html())
-    //     expect(contentDiv.html()).toContain("Dummy")
-    //     expect(contentDiv.html()).toContain("Dummy2")
-    //     expect(contentDiv.html()).toContain("Dummy3")
-    //     expect(contentDiv.html()).toContain("Dummy4")
-    //     expect(contentDiv.html()).toContain("Dummy5")
-    // })
-    it ('renders the page', () => {
-        // const mockHandler = jest.fn()
-        // const courseMapComponent = shallow(<CourseMap perus={perus} aine={aine} syv={syv}/>)
-        // const contentDiv = courseMapComponent.find('.mappi')
-        // console.log(courseMapComponent.html())
-        // console.log(contentDiv.html())
-        // expect(contentDiv.html()).toContain("Dummy")
-        // expect(contentDiv.html()).toContain("Dummy2")
-        // expect(contentDiv.html()).toContain("Dummy3")
-        // expect(contentDiv.html()).toContain("Dummy4")
-        // expect(contentDiv.html()).toContain("Dummy5")
-        // expect(contentDiv.html()).toContain("Dummy6")
+    const mat = [
+        {
+            code: "MAT11001",
+            name: "Dummy7",
+            level: "Matematiikka",
+            faculty: "math",
+            compulsory: false,
+            prereqs: [],
+            studytrack: ["math"],
+            ects: "1-10",
+            url: "https://courses.helsinki.fi/fi/mat11001"
+        },
+        {
+            code: "MAT11002",
+            name: "Dummy8",
+            level: "Matematiikka",
+            faculty: "math",
+            compulsory: false,
+            prereqs: [],
+            studytrack: ["math"],
+            ects: "1-10",
+            url: "https://courses.helsinki.fi/fi/mat11002/"
+        }
+    ]
 
-        
+    it('renders peruskurssit', () => {
+        const mockHandler = jest.fn()
+        const courseMapComponent = shallow(<CourseMap perus={perus} aine={null} syv={null} mat={null} courseMapMatrice={defaultMatrice} />)
+        //console.log(courseMapComponent)
+        const contentDiv = courseMapComponent.html().toString()
+        expect(contentDiv.includes("Dummy1"))
+        expect(contentDiv.includes("Dummy2"))
+
+        expect(!contentDiv.includes("Dummy3"))
+        expect(!contentDiv.includes("Dummy4"))
+        expect(!contentDiv.includes("Dummy5"))
+        expect(!contentDiv.includes("Dummy6"))
+        expect(!contentDiv.includes("Dummy7"))
+        expect(!contentDiv.includes("Dummy8"))
+    })
+
+    it('renders ainekurssit', () => {
+        const mockHandler = jest.fn()
+        const courseMapComponent = shallow(<CourseMap perus={null} aine={perus} syv={null} mat={null} courseMapMatrice={defaultMatrice} />)
+        //console.log(courseMapComponent)
+        const contentDiv = courseMapComponent.html().toString()
+        expect(contentDiv.includes("Dummy3"))
+        expect(contentDiv.includes("Dummy4"))
+
+        expect(!contentDiv.includes("Dummy1"))
+        expect(!contentDiv.includes("Dummy2"))
+        expect(!contentDiv.includes("Dummy5"))
+        expect(!contentDiv.includes("Dummy6"))
+        expect(!contentDiv.includes("Dummy7"))
+        expect(!contentDiv.includes("Dummy8"))
+    })
+
+    it('renders syventävät', () => {
+        const mockHandler = jest.fn()
+        const courseMapComponent = shallow(<CourseMap perus={null} aine={null} syv={syv} mat={null} courseMapMatrice={defaultMatrice} />)
+        //console.log(courseMapComponent)
+        const contentDiv = courseMapComponent.html().toString()
+        expect(contentDiv.includes("Dummy5"))
+        expect(contentDiv.includes("Dummy6"))
+
+        expect(!contentDiv.includes("Dummy1"))
+        expect(!contentDiv.includes("Dummy2"))
+        expect(!contentDiv.includes("Dummy3"))
+        expect(!contentDiv.includes("Dummy4"))
+        expect(!contentDiv.includes("Dummy7"))
+        expect(!contentDiv.includes("Dummy8"))
+    })
+
+    it('renders matematiikat', () => {
+        const mockHandler = jest.fn()
+        const courseMapComponent = shallow(<CourseMap perus={null} aine={null} syv={null} mat={mat} courseMapMatrice={defaultMatrice} />)
+        //console.log(courseMapComponent)
+        const contentDiv = courseMapComponent.html().toString()
+        expect(contentDiv.includes("Dummy7"))
+        expect(contentDiv.includes("Dummy8"))
+
+        expect(!contentDiv.includes("Dummy1"))
+        expect(!contentDiv.includes("Dummy2"))
+        expect(!contentDiv.includes("Dummy3"))
+        expect(!contentDiv.includes("Dummy4"))
+        expect(!contentDiv.includes("Dummy5"))
+        expect(!contentDiv.includes("Dummy6"))    
+    })
+
+    it('renders the page', () => {
+        const mockHandler = jest.fn()
+        const courseMapComponent = shallow(<CourseMap perus={perus} aine={aine} syv={syv} mat={mat} />)
+        //console.log(courseMapComponent)
+        const contentDiv = courseMapComponent.html().toString()
+        //console.log(courseMapComponent.html())
+        //console.log(contentDiv)
+        expect(contentDiv.includes("Dummy1"))
+        expect(contentDiv.includes("Dummy2"))
+        expect(contentDiv.includes("Dummy3"))
+        expect(contentDiv.includes("Dummy4"))
+        expect(contentDiv.includes("Dummy5"))
+        expect(contentDiv.includes("Dummy6"))
+        expect(contentDiv.includes("Dummy7"))
+        expect(contentDiv.includes("Dummy8"))
     })
 })
