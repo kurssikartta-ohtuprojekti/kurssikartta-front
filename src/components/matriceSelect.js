@@ -1,6 +1,6 @@
 import React from 'react'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
-import './periodButton.css'
+import './matriceSelect.css'
 
 const MatriceSelect = (props) => {
     return (
