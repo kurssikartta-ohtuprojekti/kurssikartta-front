@@ -28,6 +28,9 @@ class CourseMap extends React.Component {
     }
 
     removeUnmappedCourses = (matrice, courses) => {
+        if (courses === null) {
+            return null
+        }
         const mapped = mappedCourses(matrice)
         const unmapped = unmappedCourses(courses, mapped)
         const returnList = []
@@ -61,10 +64,12 @@ class CourseMap extends React.Component {
             sideLength = courseMapMatrice.length
         }
 
+        
         const perus = this.removeUnmappedCourses(courseMapMatrice, this.props.perus)
         const aine = this.removeUnmappedCourses(courseMapMatrice, this.props.aine)
         const syv = this.removeUnmappedCourses(courseMapMatrice, this.props.syv)
         const mat = this.removeUnmappedCourses(courseMapMatrice, this.props.mat)
+        
 
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
         return (
@@ -78,7 +83,7 @@ class CourseMap extends React.Component {
                 <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
 
-                    {perus === null ?
+                    {perus === null || perus === undefined ?
                         <div></div> :
                         perus.map(course =>
                                 <div key={course.code} style={{ gridArea: course.code }}>
@@ -90,7 +95,7 @@ class CourseMap extends React.Component {
                         )
                     }
                     {/* Aineopinnot */}
-                    {aine === null ?
+                    {aine === null || aine === undefined ?
                         <div></div> :
                         aine.map(course =>
                                 <div key={course.code} style={{ gridArea: course.code }}>
@@ -102,7 +107,7 @@ class CourseMap extends React.Component {
                         )
                     }
                     {/* Syventävät opinnot */}
-                    {syv === null ?
+                    {syv === null || syv === undefined ?
                         <div></div> :
                         syv.map(course =>
                                 <div key={course.code} style={{ gridArea: course.code }}>
@@ -115,7 +120,7 @@ class CourseMap extends React.Component {
                     }
 
                     {/* Muut opinnot */}
-                    {mat === null ?
+                    {mat === null || mat === undefined ?
                         <div></div> :
                         mat.map(course =>
                             <div key={course.code} style={{ gridArea: course.code }}>
