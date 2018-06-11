@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
-const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord }) => {
+const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord, formName }) => {
   return (
     <div>
-      <form id={courseCode} onSubmit={handleSubmit}>
+      <form id={courseCode} name={formName} onSubmit={handleSubmit}>
         <FormGroup>
           <ControlLabel style={{float: 'left'}}>Y:</ControlLabel>
 

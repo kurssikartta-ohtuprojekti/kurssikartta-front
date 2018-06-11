@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
 import './courseAdminPanel.css'
+import AddForm from './addForm';
 export default class CourseAdminPanel extends React.Component {
     constructor(props) {
         super(props);
@@ -41,7 +42,15 @@ export default class CourseAdminPanel extends React.Component {
                 </div>
                     <br/>
                     <Button id={this.props.course.code} style={{float: 'down'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
-                    <br/>
+                    <p>New Coordinates:</p>
+                    <AddForm style={{float: 'left'}}
+                            courseCode={this.props.course.code}
+                            formName='newCoords'
+                            yCoord={this.state.yCoord}
+                            xCoord={this.state.xCoord} 
+                            handleChange={this.handleCoordFieldChange}
+                            handleSubmit={this.props.courseMovementHandler}
+                    />
             </div>
         )
     }

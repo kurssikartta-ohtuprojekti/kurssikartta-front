@@ -6,43 +6,25 @@ const NaviBar = () => (
     <div className ="navBar">
       <Navbar collapseOnSelect>
           <Navbar.Header>
-          <Navbar.Brand>
-              Kurssikartta-sovellus
-          </Navbar.Brand>
-          <Navbar.Toggle />
+            <Navbar.Brand>
+                Kurssikartta-sovellus
+            </Navbar.Brand>
+            <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-          <Nav>
-              <NavItem href="/">
-                Etusivu
-              </NavItem>
-              <NavItem href="/kartta">
-                Kartta
-              </NavItem>
-              <NavItem href="/admin/map">
-                Admin view
-              </NavItem>
-              {/* <NavItem href="/login">
-                Login
-              </NavItem> */}
-              {/* <NavItem href="/perus">
-                Perusopinnot
-              </NavItem>
-              <NavItem href="/kandi">
-                Kandi
-
-              </NavItem>
-              <NavItem href="/mat">
-                Matematiikka
-              </NavItem>
-              
-              {/* <NavItem href="/maisteri">
-                Maisteri
-              </NavItem> */}
-              {/* <NavItem href="/linjat">
-                Linjat
-              </NavItem> */}
-          </Nav>
+            <Nav>
+                <NavItem href="/">
+                  Etusivu
+                </NavItem>
+                <NavItem href="/kartta">
+                  Kartta
+                </NavItem>
+            </Nav>
+            <Nav pullRight>
+                <NavItem style={{paddingRight: 10}} href="/admin/map">
+                  Admin view
+                </NavItem>
+            </Nav>
           </Navbar.Collapse>
       </Navbar>
     </div>
