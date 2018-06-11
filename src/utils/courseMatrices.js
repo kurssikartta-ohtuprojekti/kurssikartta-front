@@ -124,8 +124,6 @@ const matrixFindCourseByCode = (code, matrice) => {
 }
 // Create a JSX inline css gridTemplateArea string of a course matrice
 const cssGridStringify = (sideLength, matrice) => {
-    // console.log(matrice)
-    // console.log(sideLength)
     if (matrice === undefined) {
         matrice = defaultMatrix()
     }
@@ -300,7 +298,6 @@ const emptyMatrix = (sideLength) => {
                 matrix[i][j] = '.';
             }
         }
-        //matrix[36][36] = 'TKT10001'
     return matrix
 }
 

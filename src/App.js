@@ -2,12 +2,9 @@ import React from 'react'
 import './index.css';
 import courseService from './services/courses'
 import matriceService from './services/matrices'
-// import Course from './components/course'
 import NaviBar from './components/naviBar'
 import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
-// import CourseMapAdmin from './components/admin/courseMapAdmin'
-// import CourseUpdate from './components/admin/courseUpdate'
 import {BrowserRouter as Router,
         Route} from 'react-router-dom'
 import {perusopinnot,
@@ -16,9 +13,9 @@ import {perusopinnot,
         matematiikka, 
          } from './utils/tools'
 import AdminPage from './components/admin/adminPage'
-// import UnmappedCourses from './components/admin/unmappedCourses';
 import {addNewCourse,
         removeCourse,
+        moveCourseToNewCoordinates,
         moveCourseEast,
         moveCourseWest,
         moveCourseSouth,
@@ -93,6 +90,37 @@ class App extends React.Component {
                                             this.state.matrices.matrice, // old matrice
                                             event.target.xCoord.value, // x Coordinate value
                                             event.target.yCoord.value,) // y coordinate value
+            if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                                    id: 0,
+                                    name: 'Default',
+                                    matrice: newMatrice
+                                }
+                            
+            
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
+
+            } else {
+                window.alert(newMatrice.error)
+            }
+        } else {
+            window.alert('Enter coordinates!')
+        }
+    }
+    moveCourseToNewCoordsMatriceHandler = (code, matrice, y, x) => {
+        // console.log(event.target.xCoord.value)
+        if (x !== '' || y!== '') {
+            const newMatrice = moveCourseToNewCoordinates(
+                                                            code, // course code of the new course
+                                                            matrice, // old matrice
+                                                            y, // y Coordinate value
+                                                            x) // x coordinate value
             if (newMatrice.error === undefined) {
             const newMatriceJson = {  
                                     id: 0,
@@ -330,6 +358,9 @@ class App extends React.Component {
         }
         if (event.target.name === 'downRight') {
             this.moveSouthEastHandler(event.target.id, this.state.matrices.matrice)
+        }
+        if (event.target.name === 'newCoords') {
+            this.moveCourseToNewCoordsMatriceHandler(event.target.id, this.state.matrices.matrice, event.target.yCoord.value, event.target.xCoord.value)
         }
     }
 

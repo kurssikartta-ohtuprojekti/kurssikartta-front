@@ -17,6 +17,7 @@ class CourseMapAdmin extends React.Component {
       }
     }
         render () {
+            // console.log(this.props.matrice)
             let courseMapMatrice = []
             if (this.props.matrice === undefined) {
             } else {
@@ -44,6 +45,7 @@ class CourseMapAdmin extends React.Component {
             }
 
             const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice)
+            // console.log(emptyNodeCoordinates)
             return (
                 <div className="awrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
     {/* perusopinnot */}
