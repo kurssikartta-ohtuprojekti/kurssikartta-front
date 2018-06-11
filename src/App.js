@@ -373,7 +373,7 @@ class App extends React.Component {
                                     logout={this.logout}
                                     courses={this.state.courses}
                                     matrices={this.state.matrices}
-                                    matrice={this.state.matrices.matrice}
+                                    matrice={this.state.matrices[0].matrice}
                                     handleNewSubmit={this.addNewCourseMatriceHandler}
                                     perus={perus} aine={aine} syv={syv} mat={mat}
                                     user={this.state.user}

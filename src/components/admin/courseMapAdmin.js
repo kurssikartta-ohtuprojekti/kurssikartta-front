@@ -25,6 +25,9 @@ class CourseMapAdmin extends React.Component {
     }
     render() {
         let courseMapMatrice = []
+        console.log(this.props.matrice);
+        console.log('1');
+        console.log(this.props.matrices[0]);
         if (this.props.matrice === undefined) {
         } else {
             courseMapMatrice = this.props.matrice
@@ -54,7 +57,7 @@ class CourseMapAdmin extends React.Component {
         return (
             <div>
                 <div>
-                    <br /><MatriceSelect selected={this.props.matrice.name} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} /><br />
+                    <br /><MatriceSelect selected={courseMapMatrice.name} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} /><br />
                 </div>
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}

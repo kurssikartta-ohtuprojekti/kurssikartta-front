@@ -16,24 +16,22 @@ const Kartta = (props) => {
     console.log(props.matrices)
 
     var matrices = props.matrices;
-    var names = ['1', '2'];
+    var names = [];
+    console.log(matrices);
 
     for (var matrice in matrices) {
-        console.log(props.matrice.name);
         names.push(matrice.name);
     }
     console.log(names);
 
-    matrices[id];
-
     return (
         <DropdownButton
-            title={props.selected}
+            title={matrices[0].name}
             id='1'
         >
-            {
-                matrices.map(matrice =>
-                    console.log(matrice),
+            {matrices === null ?
+                <null></null> :
+                props.matrices.map(matrice =>
                     <div>
                         <MenuItem eventKey={matrice.id} name={matrice.name} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
                     </div>
