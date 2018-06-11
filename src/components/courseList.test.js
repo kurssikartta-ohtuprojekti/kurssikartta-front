@@ -97,7 +97,7 @@ describe.only('<CourseList />', () => {
         const mockHandler = jest.fn()
         const courseListComponent = shallow(<CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>)
         const contentDiv = courseListComponent.find('.mappi')
-        console.log(courseListComponent.html())
+        //console.log(courseListComponent.html())
         // console.log(contentDiv.html())
         expect(contentDiv.html()).toContain("Dummy")
         expect(contentDiv.html()).toContain("Dummy2")
