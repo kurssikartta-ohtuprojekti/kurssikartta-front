@@ -11,7 +11,7 @@
     grid-auto-rows: minmax(60px, auto);
     grid-template-areas: 
       "ul u  ur"
-      "l  .  r"
+      "l  m  r"
       "dl d dr";
 }
 
