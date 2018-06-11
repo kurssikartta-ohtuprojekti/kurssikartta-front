@@ -175,6 +175,9 @@ const unmappedCourses = (courses, mappedCodes) => {
 
 // Returns a list of courses with unmapped courses removed
 const removeUnmappedCourses = (matrice, courses) => {
+    if (courses === null) {
+        return null
+    }
     const mapped = mappedCourses(matrice)
     const unmapped = unmappedCourses(courses, mapped)
     const returnList = []

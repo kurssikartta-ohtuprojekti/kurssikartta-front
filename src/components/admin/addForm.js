@@ -1,31 +1,31 @@
 import React from 'react'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
-const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord }) => {
+const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord, formName }) => {
   return (
     <div>
-      <form id={courseCode} onSubmit={handleSubmit}>
+      <form id={courseCode} name={formName} onSubmit={handleSubmit}>
         <FormGroup>
-          <ControlLabel style={{float: 'left'}}>Y:</ControlLabel>
+          <ControlLabel style={{marginLeft: 2, float: 'left'}}>Y:</ControlLabel>
 
           <FormControl
             value={yCoord}
             onChange={handleChange}
             name="yCoord"
-            style={{width: 50, float: 'left'}}
+            style={{marginLeft: 4, width: 45, float: 'left'}}
           />
         
-          <ControlLabel style={{float: 'left'}}>X:</ControlLabel>
+          <ControlLabel style={{marginLeft: 4, float: 'left'}}>X:</ControlLabel>
 
           <FormControl
             name="xCoord"
             value={xCoord}
             onChange={handleChange}
-            style={{width: 50, float: 'left'}}
+            style={{marginLeft: 4, width: 45, float: 'left'}}
             
           />
 
-          <Button style={{float: 'left'}} type="submit" bsStyle="success">add</Button> 
+          <Button style={{marginLeft: 4, float: 'left'}} type="submit" bsStyle="success">add</Button> 
         </FormGroup>
       </form>
     </div>

@@ -13,8 +13,8 @@ const getAll = async () => {
 }
 
 const getById = async (id) => {
-  const request = axios.get(`${baseUrl}/${id}`)
-  return await request.then(response => response.data)
+    const request = axios.get(`${baseUrl}/${id}`)
+    return await request.then(response => response.data)
 }
 
 const postNewMatrice = async (newMatrice) => {
@@ -42,7 +42,7 @@ const deleteById = async (id) => {
     // }
     const response = await axios.delete(`${baseUrl}/${id}`)
     return response.data
-  }
+}
 
 
 export default {setToken, getAll, getById, updateById, updateWithoutId, deleteById, postNewMatrice}

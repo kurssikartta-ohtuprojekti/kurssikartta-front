@@ -19,6 +19,7 @@ import AdminPage from './components/admin/adminPage'
 // import UnmappedCourses from './components/admin/unmappedCourses';
 import {addNewCourse,
         removeCourse,
+        moveCourseToNewCoordinates,
         moveCourseEast,
         moveCourseWest,
         moveCourseSouth,
@@ -93,6 +94,37 @@ class App extends React.Component {
                                             this.state.matrices[0].matrice, // old matrice
                                             event.target.xCoord.value, // x Coordinate value
                                             event.target.yCoord.value,) // y coordinate value
+            if (newMatrice.error === undefined) {
+            const newMatriceJson = {  
+                                    id: 0,
+                                    name: 'Default',
+                                    matrice: newMatrice
+                                }
+                            
+            
+            try {
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                ) 
+            } catch (exception){
+                window.alert(exception)
+            }
+
+            } else {
+                window.alert(newMatrice.error)
+            }
+        } else {
+            window.alert('Enter coordinates!')
+        }
+    }
+    moveCourseToNewCoordsMatriceHandler = (code, matrice, y, x) => {
+        // console.log(event.target.xCoord.value)
+        if (x !== '' || y!== '') {
+            const newMatrice = moveCourseToNewCoordinates(
+                                                            code, // course code of the new course
+                                                            matrice, // old matrice
+                                                            y, // y Coordinate value
+                                                            x) // x coordinate value
             if (newMatrice.error === undefined) {
             const newMatriceJson = {  
                                     id: 0,
@@ -330,6 +362,9 @@ class App extends React.Component {
         }
         if (event.target.name === 'downRight') {
             this.moveSouthEastHandler(event.target.id, this.state.matrices[0].matrice)
+        }
+        if (event.target.name === 'newCoords') {
+            this.moveCourseToNewCoordsMatriceHandler(event.target.id, this.state.matrices.matrice, event.target.yCoord.value, event.target.xCoord.value)
         }
     }
 
