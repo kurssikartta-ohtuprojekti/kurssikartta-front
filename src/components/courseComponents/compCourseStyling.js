@@ -13,9 +13,9 @@ const CompCourseStyling = ({course}) => {
         fontWeight: 'bold',
         fontSize: 9,
         whiteSpace: 'normal',
-        overflow: 'hidden'
-
-
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 1,
     }
     const dataSc = {
         width: '150px',
@@ -28,9 +28,9 @@ const CompCourseStyling = ({course}) => {
         fontWeight: 'bold',
         fontSize: 9,
         whiteSpace: 'normal',
-        overflow: 'hidden'
-
-
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 1,
     }
     const systems = {
         width: '150px',
@@ -43,9 +43,9 @@ const CompCourseStyling = ({course}) => {
         fontWeight: 'bold',
         fontSize: 9,
         whiteSpace: 'normal',
-        overflow: 'hidden'
-
-
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 1,
     }
     const networking = {
         width: '150px',
@@ -58,8 +58,9 @@ const CompCourseStyling = ({course}) => {
         fontWeight: 'bold',
         fontSize: 9,
         whiteSpace: 'normal',
-        overflow: 'hidden'
-
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 1,
     }
 
     const defaultStyle = {
@@ -72,8 +73,9 @@ const CompCourseStyling = ({course}) => {
         fontWeight: 'bold',
         fontSize: 9,
         whiteSpace: 'normal',
-        overflow: 'hidden'
-
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 1,
     }
         
     if (course.studytrack[0] === 'ds') {

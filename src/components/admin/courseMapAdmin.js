@@ -3,23 +3,7 @@ import Course from '../course'
 import './courseMapAdmin.css'
 
 import {cssGridStringify,
-        // defaultMatrix,
-        // emptyMatrix,
-        // matrixFindCourseByCode,
-        // moveCourseToNewCoordinates,
-        // moveCourseByXAndY,
-        // moveCourseEast,
-        // moveCourseWest,
-        // moveCourseSouth,
-        // moveCourseNorth,
-        // moveCourseNorthEast,
-        // moveCourseNorthWest,
-        // moveCourseSouthEast,
-        // moveCourseSouthWest,
-        // addNewCourse,
-        // removeCourse,
-        mappedCourses,
-        unmappedCourses,
+        removeUnmappedCourses,
         emptyNodeCoordinatesAsList
             } from '../.././utils/courseMatrices.js'
 
@@ -32,25 +16,9 @@ class CourseMapAdmin extends React.Component {
       this.state = {
       }
     }
-   
-        removeUnmappedCourses = (matrice, courses) => {
-            const mapped = mappedCourses(matrice)
-            const unmapped = unmappedCourses(courses, mapped)
-            const returnList = []
-
-            for (let i = 0; i < courses.length; i++) {
-                if (!unmapped.includes(courses[i])) {
-                    returnList.push(courses[i])
-                }
-            }
-            return returnList
-        }
-    // const CourseMapAdmin = ({perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
         render () {
-            // console.log(this.props.matrice)
             let courseMapMatrice = []
             if (this.props.matrice === undefined) {
-                // courseMapMatrice = defaultMatrix()
             } else {
                 courseMapMatrice = this.props.matrice
             }
@@ -62,10 +30,10 @@ class CourseMapAdmin extends React.Component {
             
             const cssGridTemplateAreas = cssGridStringify(this.props.sideLength, courseMapMatrice)
 
-            const perus = this.removeUnmappedCourses(courseMapMatrice, this.props.perus)
-            const aine = this.removeUnmappedCourses(courseMapMatrice, this.props.aine)
-            const syv = this.removeUnmappedCourses(courseMapMatrice, this.props.syv)
-            const mat = this.removeUnmappedCourses(courseMapMatrice, this.props.mat)
+            const perus = removeUnmappedCourses(courseMapMatrice, this.props.perus)
+            const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
+            const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
+            const mat = removeUnmappedCourses(courseMapMatrice, this.props.mat)
             const courseCount = courseCounter(perus, aine, syv, mat)
             const matriceNodeCount = sideLength * sideLength
             const emptyNodeCount = matriceNodeCount - courseCount
@@ -76,7 +44,6 @@ class CourseMapAdmin extends React.Component {
             }
 
             const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice)
-            // console.log(emptyNodeCoordinates)
             return (
                 <div className="awrapper" style={{gridTemplateAreas: cssGridTemplateAreas}}>
     {/* perusopinnot */}

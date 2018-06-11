@@ -173,6 +173,23 @@ const unmappedCourses = (courses, mappedCodes) => {
     return list
 }
 
+// Returns a list of courses with unmapped courses removed
+const removeUnmappedCourses = (matrice, courses) => {
+    if (courses === null) {
+        return null
+    }
+    const mapped = mappedCourses(matrice)
+    const unmapped = unmappedCourses(courses, mapped)
+    const returnList = []
+
+    for (let i = 0; i < courses.length; i++) {
+        if (!unmapped.includes(courses[i])) {
+            returnList.push(courses[i])
+        }
+    }
+    return returnList
+}
+
 // Return all empty node coords, for admin map
 const emptyNodeCoordinatesAsList = (matrice) => {
     if (matrice === undefined) {
@@ -307,5 +324,6 @@ export {defaultMatrix,
         removeCourse,
         emptyNodeCoordinatesAsList,
         mappedCourses,
-        unmappedCourses
+        unmappedCourses, 
+        removeUnmappedCourses
         }

@@ -4,7 +4,6 @@ const baseUrl = 'https://kurssikartta-backend.herokuapp.com/login'
 
 
 const login = async (credentials) => {
-    console.log(credentials)
     const request = axios.post(baseUrl, credentials)
     return await request.then(response => response.data)
 }
