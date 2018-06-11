@@ -40,8 +40,7 @@ export default class CourseAdminPanel extends React.Component {
                         <Button onClick={this.props.courseMovementHandler} name='downRight' id={this.props.course.code} style={{width: 60, height: 60}}></Button>
                     </div>
                 </div>
-                    <br/>
-                    <Button id={this.props.course.code} style={{float: 'down'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
+                    
                     <p>New Coordinates:</p>
                     <AddForm style={{float: 'left'}}
                             courseCode={this.props.course.code}
@@ -51,6 +50,9 @@ export default class CourseAdminPanel extends React.Component {
                             handleChange={this.handleCoordFieldChange}
                             handleSubmit={this.props.courseMovementHandler}
                     />
+                    
+                    <Button id={this.props.course.code} style={{marginTop: 6, float: 'down'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
+
             </div>
         )
     }
