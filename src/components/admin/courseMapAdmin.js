@@ -50,8 +50,10 @@ class CourseMapAdmin extends React.Component {
 
     matriceCallback = (event) => {
         console.log(event.target.name)
-        this.setState({matrice : event.target.name})
+        var newMatrice = this.props.matrices[event.target.name]
+        this.setState({courseMapMatrice : newMatrice})
     }
+
     // const CourseMapAdmin = ({perus, aine, syv, mat, sideLength, courseMapMatrice }) => {
     render() {
         // console.log(this.props.matrice)
@@ -89,7 +91,7 @@ class CourseMapAdmin extends React.Component {
         return (
             <div>
                 <div>
-                    <br /><MatriceSelect selected={this.props.matrices.name} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} /><br />
+                    <br /><MatriceSelect selected={this.props.matrice.name} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} /><br />
                 </div>
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
