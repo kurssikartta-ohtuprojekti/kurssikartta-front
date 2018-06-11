@@ -2,15 +2,13 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
-//import { klikHandle } from './periodButton'
-// import CourseMapMatrice from './courseMapMatrice'
+
 import {
     cssGridStringify,
-    // defaultMatrix,
-    mappedCourses,
-    unmappedCourses
+    removeUnmappedCourses
 } from '.././utils/courseMatrices.js'
 import {periodFilter} from '.././utils/tools.js'
+
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
 class CourseMap extends React.Component {
     constructor(props) {
@@ -26,26 +24,11 @@ class CourseMap extends React.Component {
             year: (new Date()).getFullYear().toString()
         }
     }
-
-    removeUnmappedCourses = (matrice, courses) => {
-        const mapped = mappedCourses(matrice)
-        const unmapped = unmappedCourses(courses, mapped)
-        const returnList = []
-
-        for (let i = 0; i < courses.length; i++) {
-            if (!unmapped.includes(courses[i])) {
-                returnList.push(courses[i])
-            }
-        }
-        return returnList
-    }
-
     periodCallback = (event) => {
         this.setState({[event.target.name] : event.target.checked})
     }
 
     yearCallback = (event) => {
-        // console.log(event.target.name)
         this.setState({year : event.target.name})
     }
 
@@ -61,10 +44,10 @@ class CourseMap extends React.Component {
             sideLength = courseMapMatrice.length
         }
 
-        const perus = this.removeUnmappedCourses(courseMapMatrice, this.props.perus)
-        const aine = this.removeUnmappedCourses(courseMapMatrice, this.props.aine)
-        const syv = this.removeUnmappedCourses(courseMapMatrice, this.props.syv)
-        const mat = this.removeUnmappedCourses(courseMapMatrice, this.props.mat)
+        const perus = removeUnmappedCourses(courseMapMatrice, this.props.perus)
+        const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
+        const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
+        const mat = removeUnmappedCourses(courseMapMatrice, this.props.mat)
 
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
         return (
