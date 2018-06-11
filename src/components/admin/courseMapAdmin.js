@@ -1,6 +1,6 @@
 import React from 'react'
 import Course from '../course'
-import MatriceSelect from './matriceSelect'
+import MatriceSelect from '../matriceSelect'
 import './courseMapAdmin.css'
 
 import {
@@ -20,8 +20,9 @@ class CourseMapAdmin extends React.Component {
     }
     matriceCallback = (event) => {
         console.log(event.target.name)
+        console.log("eventtarget")
         var newMatrice = this.props.matrices[event.target.name]
-        this.setState({ courseMapMatrice: newMatrice })
+        this.setState({ courseMapMatrice : newMatrice })
     }
     render() {
         let courseMapMatrice = []

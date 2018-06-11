@@ -2,6 +2,7 @@ import React from 'react'
 import Popup from 'reactjs-popup'
 import { Button, Checkbox, DropdownButton, MenuItem } from 'react-bootstrap'
 import './periodButton.css'
+import MatriceSelect from './matriceSelect';
 
 
 const PeriodButton = (props) => {
@@ -21,7 +22,9 @@ const PeriodButton = (props) => {
                     <Years year={props.year} yearCallback={props.yearCallback} />
                     <Periods p1={props.p1} p2={props.p2} p3={props.p3}
                         p4={props.p4} pC={props.pC} pS={props.pS} callback={props.callback}
-                    /></span>
+                    />
+                    <MatriceSelect matrices={props.matrices} matrice={props.matrice} matriceCallback={props.matriceCallback} />
+                </span>
             </Popup>
         </div>
     )
