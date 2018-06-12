@@ -52,7 +52,7 @@ class CourseMapAdmin extends React.Component {
             <div>
                 <div>
                     {console.log(this.props.matrice)}
-                    <MatriceSelect selected={this.props.matrice} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} />
+                    <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
                 </div>
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}

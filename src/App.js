@@ -370,10 +370,13 @@ class App extends React.Component {
         }
     }
 
+    
     matriceCallback = (event) => {
-        console.log(event.target.value)
-        console.log("eventtarget")
-        var newMatrice = event.target.value
+        event.preventDefault()
+        console.log(event.target.name)
+        // console.log(event.key)
+        var newMatrice = this.state.matrices.find(matrice => matrice.id.toString() === event.target.name)
+        console.log(newMatrice)
         this.setState({ selectedMatrice: newMatrice })
     }
 
@@ -399,7 +402,7 @@ class App extends React.Component {
 
                             <div>
                                 <Route path="/kartta" render={() =>
-                                    <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} courseMapMatrice={this.state.selectedMatrice.matrice} matrices={this.state.matrices} matriceCallback={this.matriceCallback} />}
+                                    <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} selectedMatrice={this.state.selectedMatrice} courseMapMatrice={this.state.selectedMatrice.matrice} matrices={this.state.matrices} matriceCallback={this.matriceCallback} />}
                                 />
                                 <Route path="/perus" render={() =>
                                     <CourseMap perus={perus} aine={null} syv={null} mat={null} />}
@@ -425,6 +428,8 @@ class App extends React.Component {
                                         user={this.state.user}
                                         deleteCourseHandler={this.deleteCourseHandler}
                                         courseMovementHandler={this.courseMovementHandler}
+                                        matriceCallback={this.matriceCallback}
+                                        selectedMatrice={this.state.selectedMatrice}
                                     />}
                                 />
                                 <Route path="/login" render={() =>

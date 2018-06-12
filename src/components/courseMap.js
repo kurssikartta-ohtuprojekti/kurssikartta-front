@@ -59,7 +59,7 @@ class CourseMap extends React.Component {
                         year={this.state.year} yearCallback={this.yearCallback} />
                     {this.props.matrices === undefined ?
                         <div /> :
-                        <MatriceSelect matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} />
+                        <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
                     }
                 </div>
 
