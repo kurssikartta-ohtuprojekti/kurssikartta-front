@@ -4,9 +4,9 @@ import './matriceSelect.css'
 
 const MatriceSelect = (props) => {
     return (
-        <div>
-            <Kartta matrices={props.matrices} matrice={props.matrice} names={props.names} selected={props.selected} matriceCallback={props.matriceCallback} />
-        </div>
+        
+        <Kartta matrices={props.matrices} matrice={props.matrice} names={props.names} selected={props.selected} matriceCallback={props.matriceCallback} />
+        
     )
 }
 
@@ -24,7 +24,7 @@ const Kartta = (props) => {
     console.log(names);
 
     return (
-        <DropdownButton id="myBtn"
+        <DropdownButton id="matriceSelect"
             title={matrices[0].name}
             
         >
