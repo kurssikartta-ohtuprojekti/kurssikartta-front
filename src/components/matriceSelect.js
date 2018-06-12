@@ -33,7 +33,7 @@ const Kartta = (props) => {
                 props.matrices.map(matrice =>
                     <div>
                         {console.log(matrice.id)}
-                        <MenuItem eventKey={matrice.id} name={matrice.name} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
+                        <MenuItem value={matrice} eventKey={matrice.id} name={matrice.name} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
                     </div>
                 )
             }

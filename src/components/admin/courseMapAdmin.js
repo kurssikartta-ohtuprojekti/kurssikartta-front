@@ -16,15 +16,7 @@ class CourseMapAdmin extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            selectedMatrice : 0
         }
-    }
-    matriceCallback = (event) => {
-        console.log(event.target.name)
-        console.log("eventtarget")
-        var newMatrice = this.props.matrices[event.target.name].matrice
-        this.setState({ courseMapMatrice : newMatrice })
-        this.setState({ selectedMatrice : event.target.name})
     }
     render() {
         let courseMapMatrice = []

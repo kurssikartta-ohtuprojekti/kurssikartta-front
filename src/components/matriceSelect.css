@@ -1,7 +1,7 @@
 #myBtn {
     position: absolute; /* Fixed/sticky position */
     top: 73px; /* Place the button at the top */
-    right: 15px; /* Place the button 30px from the left */
+    right: 30px; /* Place the button 30px from the left */
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
