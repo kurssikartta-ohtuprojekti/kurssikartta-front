@@ -12,10 +12,11 @@ const MatriceSelect = (props) => {
 
 const Kartta = (props) => {
     console.log(props.matrices)
+    console.log(props.selected)
+    console.log("selected")
 
     var matrices = props.matrices;
     var names = [];
-    console.log(matrices);
 
     for (var matrice in matrices) {
         names.push(matrice.name);
@@ -31,6 +32,7 @@ const Kartta = (props) => {
                 <null></null> :
                 props.matrices.map(matrice =>
                     <div>
+                        {console.log(matrice.id)}
                         <MenuItem eventKey={matrice.id} name={matrice.name} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
                     </div>
                 )

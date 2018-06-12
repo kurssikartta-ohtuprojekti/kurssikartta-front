@@ -16,19 +16,20 @@ class CourseMapAdmin extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            selectedMatrice : 0
         }
     }
     matriceCallback = (event) => {
         console.log(event.target.name)
         console.log("eventtarget")
-        var newMatrice = this.props.matrices[event.target.name]
+        var newMatrice = this.props.matrices[event.target.name].matrice
         this.setState({ courseMapMatrice : newMatrice })
+        this.setState({ selectedMatrice : event.target.name})
     }
     render() {
         let courseMapMatrice = []
-        console.log(this.props.matrice);
-        console.log('1');
-        console.log(this.props.matrices[0]);
+        console.log('selected');
+        console.log(this.props.matrices[this.state.selectedMatrice]);
         if (this.props.matrice === undefined) {
         } else {
             courseMapMatrice = this.props.matrice
@@ -58,7 +59,8 @@ class CourseMapAdmin extends React.Component {
         return (
             <div>
                 <div>
-                    <MatriceSelect selected={courseMapMatrice.name} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} />
+                    {console.log(this.props.matrice)}
+                    <MatriceSelect selected={this.props.matrice} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} />
                 </div>
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
