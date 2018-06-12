@@ -236,7 +236,7 @@ test('matematiikka returned', () => {
 
 })
 
-test('visiblefilter returns correct ones', () => {
+test('visiblefalsefilter returns correct ones', () => {
     
     const result = tools.visibleFalseFilter(courses)
 
@@ -277,4 +277,32 @@ test('courseCounter return correct amount', () => {
     const result = tools.courseCounter(courses1, courses2, courses3, courses4)
 
     expect(result).toEqual(8)
+})
+
+test('periodfilter returns true if course is not to be filtered', () => {
+    const p1 = false
+    const p2 = false
+    const p3 = false
+    const p4 = false
+    const pC = false
+    const pS = false
+    const year = 2018
+
+    const result = tools.periodFilter({p1, p2, p3, p4, pC, pS, year}, 2019)
+
+    expect(result).toEqual(true)
+})
+
+test('periodfilter returns false if course is to be filtered', () => {
+    const p1 = true
+    const p2 = true
+    const p3 = true
+    const p4 = true
+    const pC = true
+    const pS = true
+    const year = 2018
+
+    const result = tools.periodFilter({p1, p2, p3, p4, pC, pS, year}, 2019)
+
+    expect(result).toEqual(false)
 })

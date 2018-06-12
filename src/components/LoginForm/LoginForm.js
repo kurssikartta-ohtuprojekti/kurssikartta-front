@@ -12,25 +12,25 @@ const LoginForm = ({ handleSubmit, handleChange, username, password }) => {
             value={username}
             onChange={handleChange}
             name="username"
-            style={{width: 350}}
+            style={{ width: 350 }}
           />
-          
+
           <ControlLabel>Password: </ControlLabel>
           <FormControl
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
-            style={{width: 350}}
+            style={{ width: 350 }}
 
-          /><br/>
+          /><br />
 
-          <Button type="submit" bsStyle="success">Login</Button> 
+          <Button type="submit" bsStyle="success">Login</Button>
         </FormGroup>
       </form>
     </div>
   )
-    
+
 }
 
 export default LoginForm

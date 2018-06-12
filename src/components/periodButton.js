@@ -6,15 +6,10 @@ import './periodButton.css'
 
 const PeriodButton = (props) => {
 
-    const popupButton = () => {
-        return (
-            <Button id="myBtn">Periodit</Button>
-        )
-    }
     return (
         <div>
             <Popup
-                trigger={popupButton()}
+                trigger={<Button id="myBtn">Periodit</Button>}
                 modal
                 closeOnDocumentClick>
                 <span>
