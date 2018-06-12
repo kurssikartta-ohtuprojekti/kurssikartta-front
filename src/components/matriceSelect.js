@@ -1,6 +1,6 @@
 import React from 'react'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
-import './matriceSelect.css'
+// import './matriceSelect.css'
 
 const MatriceSelect = (props) => {
     return (
@@ -16,12 +16,6 @@ const Kartta = (props) => {
     console.log("selected")
 
     var matrices = props.matrices;
-    var names = [];
-
-    for (var matrice in matrices) {
-        names.push(matrice.name);
-    }
-    console.log(names);
 
     return (
         <DropdownButton id="matriceSelect"
@@ -32,8 +26,8 @@ const Kartta = (props) => {
                 <null></null> :
                 props.matrices.map(matrice =>
                     <div>
-                        {console.log(matrice.id)}
-                        <MenuItem value={matrice} eventKey={matrice.id} name={matrice.name} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
+                        {console.log(matrice)}
+                        <MenuItem name={matrice.id} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
                     </div>
                 )
             }
