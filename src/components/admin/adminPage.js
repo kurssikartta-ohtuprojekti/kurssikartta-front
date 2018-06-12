@@ -30,7 +30,10 @@ class AdminPage extends React.Component {
                                         perus={this.props.perus} 
                                         aine={this.props.aine} 
                                         syv={this.props.syv} 
-                                        mat={this.props.mat}/>
+                                        mat={this.props.mat}
+                                        matriceCallback={this.props.matriceCallback}
+                                        selectedMatrice={this.props.selectedMatrice}/>
+                                       
                         <CourseUpdate/>
                         <UnmappedCourses 
                                         matrice={this.props.matrice} 
