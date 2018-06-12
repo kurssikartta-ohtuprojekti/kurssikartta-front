@@ -372,7 +372,7 @@ class App extends React.Component {
         const mat = matematiikka(this.state.courses) 
         // console.log(this.state.user)
         return (
-        <div className="container" style={{position:'relative'}}>
+        <div className="containerFluid" style={{position:'relative'}}>
             <Router>
                 <div>
                     <NaviBar/>
