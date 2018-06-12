@@ -35,6 +35,7 @@ class App extends React.Component {
         user: null,
         username: '',
         password: '',
+        selectedMatrice: null,
       }    
     }
 
@@ -87,7 +88,7 @@ class App extends React.Component {
         // console.log(event.target.xCoord.value)
         if (event.target.xCoord.value !== '' || event.target.yCoord.value !== '') {
             const newMatrice = addNewCourse(event.target.id, // course code of the new course
-                                            this.state.matrices[0].matrice, // old matrice
+                                            this.state.selectedMatrice.matrice, // old matrice
                                             event.target.xCoord.value, // x Coordinate value
                                             event.target.yCoord.value,) // y coordinate value
             if (newMatrice.error === undefined) {
@@ -149,7 +150,7 @@ class App extends React.Component {
         event.preventDefault()
         console.log(event.target.id)
         console.log(this.state.matrices)
-        const newMatrice = removeCourse(event.target.id, this.state.matrices[0].matrice)
+        const newMatrice = removeCourse(event.target.id, this.state.selectedMatrice.matrice)
         if (newMatrice.error === undefined) {
             const newMatriceJson = {  
                 id: 0,
@@ -336,31 +337,31 @@ class App extends React.Component {
         // console.log(event.target.id)
         // console.log(event.target.name)
         if (event.target.name === 'left') {
-            this.moveWestHandler(event.target.id, this.state.matrices[0].matrice)
+            this.moveWestHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
         if (event.target.name === 'right') {
-            this.moveEastHandler(event.target.id, this.state.matrices[0].matrice)
+            this.moveEastHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
         if (event.target.name === 'up') {
-            this.moveNorthHandler(event.target.id, this.state.matrices[0].matrice) 
+            this.moveNorthHandler(event.target.id, this.state.selectedMatrice.matrice) 
         }
         if (event.target.name === 'down') {
-            this.moveSouthHandler(event.target.id, this.state.matrices[0].matrice)
+            this.moveSouthHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
         if (event.target.name === 'upRight') {
-            this.moveNorthEastHandler(event.target.id, this.state.matrices[0].matrice)
+            this.moveNorthEastHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
         if (event.target.name === 'upLeft') {
-            this.moveNorthWestHandler(event.target.id, this.state.matrices[0].matrice)
+            this.moveNorthWestHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
         if (event.target.name === 'downLeft') {
-            this.moveSouthWestHandler(event.target.id, this.state.matrices[0].matrice)
+            this.moveSouthWestHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
         if (event.target.name === 'downRight') {
-            this.moveSouthEastHandler(event.target.id, this.state.matrices[0].matrice)
+            this.moveSouthEastHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
         if (event.target.name === 'newCoords') {
-            this.moveCourseToNewCoordsMatriceHandler(event.target.id, this.state.matrices.matrice, event.target.yCoord.value, event.target.xCoord.value)
+            this.moveCourseToNewCoordsMatriceHandler(event.target.id, this.state.selectedMatrice.matrice, event.target.yCoord.value, event.target.xCoord.value)
         }
     }
 
@@ -370,13 +371,16 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)       
         const mat = matematiikka(this.state.courses) 
+        if(this.state.matrices !== null && this.state.selectedMatrice === null) {
+            this.setState({selectedMatrice : this.state.matrices[0]})
+        } 
         // console.log(this.state.user)
         return (
         <div className="containerFluid" style={{position:'relative'}}>
             <Router>
                 <div>
                     <NaviBar/>
-                    {this.state.courses.length === 0  || this.state.matrices === null ?
+                    {this.state.courses.length === 0  || this.state.matrices === null || this.state.selectedMatrice === null ?
                         <div style={{position:'absolute', left:'45%'}}>
                             <h1> Loading... </h1>
                             <div className="loader"></div>
@@ -384,7 +388,7 @@ class App extends React.Component {
                         
                         <div>
                             <Route path="/kartta" render={() =>
-                                <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} courseMapMatrice={this.state.matrices[0].matrice} matrices={this.state.matrices}/>}
+                                <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} courseMapMatrice={this.state.selectedMatrice.matrice} matrices={this.state.matrices}/>}
                             />
                             <Route path="/perus" render={() =>
                                 <CourseMap perus={perus} aine={null} syv={null} mat={null}/>}
@@ -404,7 +408,7 @@ class App extends React.Component {
                                     logout={this.logout}
                                     courses={this.state.courses}
                                     matrices={this.state.matrices}
-                                    matrice={this.state.matrices[0].matrice}
+                                    matrice={this.state.selectedMatrice.matrice}
                                     handleNewSubmit={this.addNewCourseMatriceHandler}
                                     perus={perus} aine={aine} syv={syv} mat={mat}
                                     user={this.state.user}

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/matrix'
+const baseUrl = 'https://kurssikartta-backend.herokuapp.com/matrix'
 
 let token = null
 
@@ -21,7 +21,7 @@ const postNewMatrice = async (newMatrice) => {
     const config = {
         headers: { 'authorization': token }
     }
-    const request = axios.post(baseUrl, newMatrice, config)
+    const request = axios.post(`${baseUrl}/${newMatrice.id}`, newMatrice, config)
     return await request.then(response => response.data)
 }
 
