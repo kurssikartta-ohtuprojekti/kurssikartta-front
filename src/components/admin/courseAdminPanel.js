@@ -58,7 +58,7 @@ export default class CourseAdminPanel extends React.Component {
                                         handleSubmit={this.props.courseMovementHandler}
                                 />
                                 <br/><br/>
-                                <Button id={this.props.course.code} style={{marginTop: 6, float: 'down'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
+                                <Button id={this.props.course.code} style={{marginTop: 6, float: 'left'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
                             </span> 
                         </Popup>
                     </div>
