@@ -2,7 +2,6 @@ import React from 'react'
 import Popup from 'reactjs-popup'
 import { Button, Checkbox, DropdownButton, MenuItem } from 'react-bootstrap'
 import './periodButton.css'
-import MatriceSelect from './matriceSelect';
 
 
 const PeriodButton = (props) => {
@@ -14,7 +13,6 @@ const PeriodButton = (props) => {
     }
     return (
         <div>
-            <MatriceSelect matrices={props.matrices} matrice={props.matrice} matriceCallback={props.matriceCallback} />
             <Popup
                 trigger={popupButton()}
                 modal

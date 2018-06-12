@@ -2,6 +2,7 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
+import MatriceSelect from './matriceSelect';
 
 import {
     cssGridStringify,
@@ -53,10 +54,10 @@ class CourseMap extends React.Component {
         return (
             <div>
                 <div>
+                    <MatriceSelect matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} />
                     <PeriodButton p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
                         p4={this.state.p4} pC={this.state.pC} pS={this.state.pS} callback={this.periodCallback}
-                        year={this.state.year} yearCallback={this.yearCallback}
-                        selected={this.props.matrices[0].id} matrices={this.props.matrices} matrice={this.props.matrice} matriceCallback={this.props.matriceCallback} />
+                        year={this.state.year} yearCallback={this.yearCallback} />
                 </div>
 
                 <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
