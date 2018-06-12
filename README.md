@@ -10,9 +10,9 @@ This repository contains frontend code for course map software (Kurssikartta), c
 
 ### Application links
 
-[Kurssikartta-sovellus](https://kurssikartta.herokuapp.com/)
-
-[Backend](https://github.com/kurssikartta-ohtuprojekti/kurssikartta-back)
+* [Kurssikartta-sovellus](https://kurssikartta.herokuapp.com/)
+* [Backend](https://github.com/kurssikartta-ohtuprojekti/kurssikartta-back)
+* [Course list](https://docs.google.com/spreadsheets/d/1K0w4aGHVwqZJpB8wm9sa9eye3nsQXPn2KvacnZGmlh8/edit#gid=91902172)
 
 ### Documentation
 * [Backlog and progress](https://docs.google.com/spreadsheets/d/1PXgQVgB_MMsUWzie6D0eFcQnCfmKfAFmBePvULNeHoE/edit#gid=422100513)
