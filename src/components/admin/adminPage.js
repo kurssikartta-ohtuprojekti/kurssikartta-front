@@ -25,6 +25,7 @@ class AdminPage extends React.Component {
                         <CourseMapAdmin 
                                         courseMovementHandler={this.props.courseMovementHandler} 
                                         deleteCourseHandler={this.props.deleteCourseHandler}
+                                        matrices={this.props.matrices}
                                         matrice={this.props.matrice} user={this.props.user}
                                         perus={this.props.perus} 
                                         aine={this.props.aine} 

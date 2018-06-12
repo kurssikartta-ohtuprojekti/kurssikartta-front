@@ -1,0 +1,47 @@
+import React from 'react'
+import { DropdownButton, MenuItem } from 'react-bootstrap'
+import './matriceSelect.css'
+
+const MatriceSelect = (props) => {
+    return (
+        <div>
+            <Kartta matrices={props.matrices} matrice={props.matrice} names={props.names} selected={props.selected} matriceCallback={props.matriceCallback} />
+        </div>
+    )
+}
+
+const Kartta = (props) => {
+    console.log(props.matrices)
+    console.log(props.selected)
+    console.log("selected")
+
+    var matrices = props.matrices;
+    var names = [];
+
+    for (var matrice in matrices) {
+        names.push(matrice.name);
+    }
+    console.log(names);
+
+    return (
+        <DropdownButton id="myBtn"
+            title={matrices[0].name}
+            
+        >
+            {matrices === null ?
+                <null></null> :
+                props.matrices.map(matrice =>
+                    <div>
+                        {console.log(matrice.id)}
+                        <MenuItem value={matrice} eventKey={matrice.id} name={matrice.name} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
+                    </div>
+                )
+            }
+            {/* <MenuItem eventKey="0" name={names[0]} active={props.selected === names[0]} onClick={props.matriceCallback}>{names[0]}</MenuItem>
+            <MenuItem eventKey="1" name={names[1]} active={props.selected === names[1]} onClick={props.matriceCallback}>{names[1]}</MenuItem> */}
+        </DropdownButton>
+    )
+}
+
+
+export default MatriceSelect
