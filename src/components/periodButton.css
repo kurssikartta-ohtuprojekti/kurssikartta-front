@@ -8,7 +8,7 @@
     background-color: rgb(139, 138, 138); /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 15px; /* Some padding */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
+    padding: 5px; /* Some padding */
+    border-radius: 2px; /* Rounded corners */
+    font-size: 15px; /* Increase font size */
 }

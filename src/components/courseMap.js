@@ -2,7 +2,8 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
-import MatriceSelect from './matriceSelect';
+import LegendButton from './legendButton'
+import MatriceSelect from './matriceSelect'
 
 import {
     cssGridStringify,
@@ -67,7 +68,9 @@ class CourseMap extends React.Component {
                         </div>
                     }  
                 </div>
-
+                <div>
+                    <LegendButton />
+                </div>
                 <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
 
