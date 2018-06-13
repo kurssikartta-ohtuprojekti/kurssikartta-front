@@ -20,8 +20,8 @@ class CourseMapAdmin extends React.Component {
     }
     render() {
         let courseMapMatrice = []
-        console.log('selected');
-        console.log(this.props.matrices[this.state.selectedMatrice]);
+        // console.log('selected');
+        // console.log(this.props.matrices[this.state.selectedMatrice]);
         if (this.props.matrice === undefined) {
         } else {
             courseMapMatrice = this.props.matrice
