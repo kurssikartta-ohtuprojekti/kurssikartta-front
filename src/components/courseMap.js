@@ -35,22 +35,20 @@ class CourseMap extends React.Component {
             year: (new Date()).getFullYear().toString()
         }
     }
+    // Handler for zoom
     handlePanAndZoom(x, y, scale) {
-        console.log(scale)
-        console.log(Number.EPSILON)
         if (scale < 0.8) {
-            // this.handlePanMove(x, y)
-            this.setState({scale: 0.8})
+            this.setState({x, y, scale: 0.8})
         }
         else if (scale > 2.5) {
-            this.setState({scale: 2.5})
+            this.setState({x, y, scale: 2.5})
         } 
-        // t
         else {
-            this.setState({scale});
+            this.setState({x, y, scale});
         }
     }
  
+    // Handler for maps drag movement
     handlePanMove(x, y) {
         if (x > 0) {
             this.setState({x: 0, y})
@@ -90,10 +88,9 @@ class CourseMap extends React.Component {
         const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
         const mat = removeUnmappedCourses(courseMapMatrice, this.props.mat)
         const {x, y, scale} = this.state;
-        console.log(this.state.scale)
+
         console.log(this.state.x)
         console.log(this.state.y)
-
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
         return (
             <div>
@@ -108,14 +105,15 @@ class CourseMap extends React.Component {
                         </div>
                     }  
                 </div>
-                <InteractiveDiv
+
+                <InteractiveDiv 
                     x={x}
                     y={y}
                     scale={scale}
                     scaleFactor={Math.sqrt(1.5)}
                     minScale={0.8}
                     maxScale={2.5}
-                    onPanAndZoom={(x, y, scale) => this.handlePanAndZoom(undefined, undefined, scale)}
+                    onPanAndZoom={(x, y, scale) => this.handlePanAndZoom(x, y, scale)}
                     style={{overflow: 'hidden', height: '88vh',  border: '3px solid #a6a6a6', borderRadius: '5px', position: 'relative'}}
                     onPanMove={(x, y) => this.handlePanMove(x, y)}
                 >
