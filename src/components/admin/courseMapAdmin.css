@@ -4,7 +4,7 @@
 .awrapper {
     position: relative;
     max-height: 88vh;
-    border: 2px solid #a6a6a6;
+    border: 3px solid #a6a6a6;
     border-radius: 5px;
     background-color: #f2f2f2;
     overflow: auto;
