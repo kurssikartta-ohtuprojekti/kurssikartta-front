@@ -38,12 +38,12 @@ class CourseMap extends React.Component {
     handlePanAndZoom(x, y, scale) {
         console.log(scale)
         console.log(Number.EPSILON)
-        if (scale < 1.0) {
+        if (scale < 0.8) {
             // this.handlePanMove(x, y)
-            this.setState({scale: 1.01})
+            this.setState({scale: 0.8})
         }
-        else if (scale > 4.0) {
-            this.setState({scale: 3.99})
+        else if (scale > 2.5) {
+            this.setState({scale: 2.5})
         } 
         // t
         else {
@@ -82,8 +82,8 @@ class CourseMap extends React.Component {
         if (this.props.sideLength === undefined) {
             sideLength = courseMapMatrice.length
         }
-        const wrapperWidth = 37 * sideLength
-        const wrapperHeight = 15 * sideLength
+        const wrapperWidth = 37.5 * 50
+        const wrapperHeight = 15 * 50
 
         const perus = removeUnmappedCourses(courseMapMatrice, this.props.perus)
         const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
@@ -113,8 +113,8 @@ class CourseMap extends React.Component {
                     y={y}
                     scale={scale}
                     scaleFactor={Math.sqrt(1.5)}
-                    minScale={1}
-                    maxScale={4}
+                    minScale={0.8}
+                    maxScale={2.5}
                     onPanAndZoom={(x, y, scale) => this.handlePanAndZoom(undefined, undefined, scale)}
                     style={{overflow: 'hidden', height: '88vh',  border: '3px solid #a6a6a6', borderRadius: '5px', position: 'relative'}}
                     onPanMove={(x, y) => this.handlePanMove(x, y)}
@@ -124,7 +124,7 @@ class CourseMap extends React.Component {
                                     gridAutoRows: `${scale * 15}px`,
                                     gridAutoColumns: `${scale * 37.5}px`,
                                     gridTemplateRows: `${scale * 15}px`,
-                                    gridTemplateColumns: `${scale * 37}px`,
+                                    gridTemplateColumns: `${scale * 37.5}px`,
                                     position: 'absolute',
                                     top: `${y * 100}%`, 
                                     left: `${x * 100}%`,
