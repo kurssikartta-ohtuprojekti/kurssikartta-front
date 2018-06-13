@@ -1,0 +1,14 @@
+#myBtn {
+    position: absolute; /* Fixed/sticky position */
+    top: 200px; /* Place the button at the top */
+    right: 100px; /* Place the button 30px from the left */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: rgb(139, 138, 138); /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+}
