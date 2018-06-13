@@ -16,7 +16,7 @@ export default class courseUpdate extends React.Component {
         axios.get('https://kurssikartta-backend.herokuapp.com/update')
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res.status)
+                    // console.log(res.status)
                     this.setState(prevState => ({
 
                         isToggleOn: !prevState.isToggleOn
@@ -29,7 +29,8 @@ export default class courseUpdate extends React.Component {
         return (
             
             <Button bsStyle='danger' onClick={this.handleClick}>
-                {this.state.isToggleOn ? 'Päivitä kurssitietokanta' : 'Päivitetty'}
+                <span class="glyphicon glyphicon-refresh"></span>
+                {this.state.isToggleOn ? ' Päivitä kurssitietokanta' : ' Päivitetty'}
             </Button>
         
         )

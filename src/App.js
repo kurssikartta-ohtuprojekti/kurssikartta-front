@@ -373,10 +373,10 @@ class App extends React.Component {
     
     matriceCallback = (event) => {
         event.preventDefault()
-        console.log(event.target.name)
+        // console.log(event.target.name)
         // console.log(event.key)
         var newMatrice = this.state.matrices.find(matrice => matrice.id.toString() === event.target.name)
-        console.log(newMatrice)
+        // console.log(newMatrice)
         this.setState({ selectedMatrice: newMatrice })
     }
 

@@ -20,8 +20,8 @@ class CourseMapAdmin extends React.Component {
     }
     render() {
         let courseMapMatrice = []
-        console.log('selected');
-        console.log(this.props.matrices[this.state.selectedMatrice]);
+        // console.log('selected');
+        // console.log(this.props.matrices[this.state.selectedMatrice]);
         if (this.props.matrice === undefined) {
         } else {
             courseMapMatrice = this.props.matrice
@@ -50,10 +50,12 @@ class CourseMapAdmin extends React.Component {
         const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice)
         return (
             <div>
-                <div>
-                    {console.log(this.props.matrice)}
-                    <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
-                </div>
+                {this.props.matrices === undefined ?
+                    <div /> :
+                    <div style={{ position: 'absolute', top: '75px', right: '115px', zIndex: 98 }}>
+                        <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
+                    </div>
+                }
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
                     {perus === null ?
