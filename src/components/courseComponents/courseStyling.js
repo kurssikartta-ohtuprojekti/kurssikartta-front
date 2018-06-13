@@ -1,11 +1,11 @@
 // Valinnaisen kurssin tyylittely
 
-const CourseStyling = ({course}) => {
+const CourseStyling = ({course, scale}) => {
     // console.log(course.studytrack)
     const algorithms = {
         backgroundColor: '#ffb3b3',
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         fontSize: 9,
         overflow: 'hidden',
         whiteSpace: 'normal',
@@ -15,8 +15,8 @@ const CourseStyling = ({course}) => {
     }
     const dataSc = {
         backgroundColor: '#bdf5bd',
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         fontSize: 9,
         whiteSpace: 'normal',
         overflow: 'hidden',
@@ -26,8 +26,8 @@ const CourseStyling = ({course}) => {
     }
     const systems = {
         backgroundColor: '#ffffcc',
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         fontSize: 9,
         whiteSpace: 'normal',
         overflow: 'hidden',
@@ -36,8 +36,8 @@ const CourseStyling = ({course}) => {
     }
     const networking = {
         backgroundColor: '#c4e3ed',
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         fontSize: 9,
         overflow: 'hidden',
         whiteSpace: 'normal',
@@ -47,8 +47,8 @@ const CourseStyling = ({course}) => {
     }
     const math = {
         backgroundColor: '#f6d4bc',
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         fontSize: 9,
         overflow: 'hidden',
         whiteSpace: 'normal',
@@ -57,8 +57,8 @@ const CourseStyling = ({course}) => {
       
     }
     const defaultStyle = {
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         fontSize: 9,
         overflow: 'hidden',
         whiteSpace: 'normal',

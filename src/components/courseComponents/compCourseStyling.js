@@ -1,10 +1,10 @@
 // Pakollisen kurssin tyylittelyt
 
-const CompCourseStyling = ({course}) => {
+const CompCourseStyling = ({course, scale}) => {
     // console.log(course.studytrack)
     const algorithms = {
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         backgroundColor: '#ffb3b3',
         border: 'solid',
         borderWidth: 5,
@@ -18,8 +18,8 @@ const CompCourseStyling = ({course}) => {
         zIndex: 1,
     }
     const dataSc = {
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         backgroundColor: '#bdf5bd',
         border: 'solid',
         borderWidth: 5,
@@ -33,8 +33,8 @@ const CompCourseStyling = ({course}) => {
         zIndex: 1,
     }
     const systems = {
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         backgroundColor: '#ffffcc',
         border: 'solid',
         borderWidth: 5,
@@ -48,8 +48,8 @@ const CompCourseStyling = ({course}) => {
         zIndex: 1,
     }
     const networking = {
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         backgroundColor: '#c4e3ed',
         border: 'solid',
         borderWidth: 5,
@@ -64,8 +64,8 @@ const CompCourseStyling = ({course}) => {
     }
 
     const defaultStyle = {
-        width: '150px',
-        height: '60px',
+        width: `${scale * 75}px`,
+        height: `${scale * 30}px`,
         border: 'solid',
         borderWidth: 5,
         borderRadius: 6,
