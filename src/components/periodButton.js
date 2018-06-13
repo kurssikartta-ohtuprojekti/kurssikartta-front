@@ -9,7 +9,7 @@ const PeriodButton = (props) => {
     return (
         <div>
             <Popup
-                trigger={<Button id="myBtn">Periodit</Button>}
+                trigger={<Button id="periodSelect">Periodit</Button>}
                 modal
                 closeOnDocumentClick>
                 <span>

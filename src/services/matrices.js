@@ -1,6 +1,7 @@
 import axios from 'axios'
 const baseUrl = 'https://kurssikartta-backend.herokuapp.com/matrix'
 
+
 let token = null
 
 const setToken = (newToken) => {

@@ -2,13 +2,17 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
-import MatriceSelect from './matriceSelect';
+import LegendButton from './legendButton'
+import MatriceSelect from './matriceSelect'
 
 import {
     cssGridStringify,
     removeUnmappedCourses
 } from '.././utils/courseMatrices.js'
+import './matriceSelect.css'
+
 import { periodFilter } from '.././utils/tools.js'
+// import panAndZoomHoc from 'react-pan-and-zoom-hoc';
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
 class CourseMap extends React.Component {
@@ -59,10 +63,14 @@ class CourseMap extends React.Component {
                         year={this.state.year} yearCallback={this.yearCallback} />
                     {this.props.matrices === undefined ?
                         <div /> :
-                        <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
-                    }
+                        <div style={{position: 'absolute', top: '75px', right: '115px', zIndex: 98}}>
+                            <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
+                        </div>
+                    }  
                 </div>
-
+                <div>
+                    <LegendButton />
+                </div>
                 <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
 
