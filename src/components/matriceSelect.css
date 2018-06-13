@@ -1,8 +1,8 @@
 #matriceSelect {
-    position: absolute; /* Fixed/sticky position */
-    top: 0px; /* Place the button at the top */
-    right: 1000px; /* Place the button 30px from the left */
-    z-index: 98; /* Make sure it does not overlap */
+    position: absolute; 
+    top: 95px; 
+    right: 0%; 
+    z-index: 99; 
     
   
 }
