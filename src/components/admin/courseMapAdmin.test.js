@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import CourseMapAdmin from './courseMapAdmin'
 import {defaultMatrix} from '../../utils/courseMatrices'
+import MatriceSelect from '../matriceSelect'
 
 describe.only('<CourseMapAdmin />', () => {
   const defaultMatrice = defaultMatrix()
