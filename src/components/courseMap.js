@@ -2,6 +2,7 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
+import LegendButton from './legendButton'
 
 import {
     cssGridStringify,
@@ -57,7 +58,9 @@ class CourseMap extends React.Component {
                     p4={this.state.p4} pC={this.state.pC} pS={this.state.pS} callback={this.periodCallback}
                     year={this.state.year} yearCallback={this.yearCallback} />
                 </div>
-
+                <div>
+                    <LegendButton />
+                </div>
                 <div className="wrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
 
