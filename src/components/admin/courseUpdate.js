@@ -29,7 +29,8 @@ export default class courseUpdate extends React.Component {
         return (
             
             <Button bsStyle='danger' onClick={this.handleClick}>
-                {this.state.isToggleOn ? 'Päivitä kurssitietokanta' : 'Päivitetty'}
+                <span class="glyphicon glyphicon-refresh"></span>
+                {this.state.isToggleOn ? ' Päivitä kurssitietokanta' : ' Päivitetty'}
             </Button>
         
         )

@@ -26,7 +26,7 @@ const PeriodButton = (props) => {
 const Years = (props) => {
     return (
         <DropdownButton
-            title={props.year}
+            title={props.year + "-" + (parseInt(props.year, 10) + 1)}
             id='1'
         >
             <MenuItem eventKey="2017" name="2017" active={props.year === '2017'} onClick={props.yearCallback}>2017-2018</MenuItem>
@@ -43,11 +43,11 @@ const Periods = (props) => {
     return (
         <div>
 
-            <Checkbox checked={props.p1} onChange={props.callback} name="p1">1</Checkbox>
-            <Checkbox checked={props.p2} onChange={props.callback} name='p2'>2</Checkbox>
+            <Checkbox checked={props.p1} onChange={props.callback} name="p1">Syksy (I periodi)</Checkbox>
+            <Checkbox checked={props.p2} onChange={props.callback} name='p2'>Syksy (II periodi)</Checkbox>
             <Checkbox checked={props.pC} onChange={props.callback} name='pC'>Joulu</Checkbox>
-            <Checkbox checked={props.p3} onChange={props.callback} name='p3'>3</Checkbox>
-            <Checkbox checked={props.p4} onChange={props.callback} name='p4'>4</Checkbox>
+            <Checkbox checked={props.p3} onChange={props.callback} name='p3'>Kevät (III periodi)</Checkbox>
+            <Checkbox checked={props.p4} onChange={props.callback} name='p4'>Kevät (IV periodi)</Checkbox>
             <Checkbox checked={props.pS} onChange={props.callback} name='pS'>Kesä</Checkbox>
         </div>
     )
