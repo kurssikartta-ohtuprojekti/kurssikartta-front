@@ -3,7 +3,22 @@
     padding-bottom: 3px;
     height: 60px;
     font-size: 13px;
+    
 }
 .unmappedHeader {
     margin-left: 10px;
+}
+.filter {
+    margin-left: 14px;
+    font-size: 15px;
+    margin-right: 2px;
+    padding-bottom: 2px;
+}
+
+.filterInput{
+    padding: 3px;
+    margin-left: 4px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: none;
 }
