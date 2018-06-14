@@ -67,6 +67,7 @@ class CourseMapAdmin extends React.Component {
                                     deleteCourseHandler={this.props.deleteCourseHandler}
                                     key={course.code}
                                     course={course}
+                                    scale={2}
                                     user={this.props.user} />
                             </div>
                         )
@@ -81,6 +82,7 @@ class CourseMapAdmin extends React.Component {
                                     deleteCourseHandler={this.props.deleteCourseHandler}
                                     key={course.code}
                                     course={course}
+                                    scale={2}
                                     user={this.props.user} />
                             </div>
                         )
@@ -96,6 +98,7 @@ class CourseMapAdmin extends React.Component {
                                     deleteCourseHandler={this.props.deleteCourseHandler}
                                     key={course.code}
                                     course={course}
+                                    scale={2}
                                     user={this.props.user} />
                             </div>
                         )
@@ -111,6 +114,7 @@ class CourseMapAdmin extends React.Component {
                                     deleteCourseHandler={this.props.deleteCourseHandler}
                                     key={course.code}
                                     course={course}
+                                    scale={2}
                                     user={this.props.user} />
                             </div>
                         )
