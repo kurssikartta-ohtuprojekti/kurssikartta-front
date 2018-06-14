@@ -105,7 +105,7 @@ class CourseMap extends React.Component {
                     x={x}
                     y={y}
                     scale={scale}
-                    scaleFactor={Math.sqrt(1.3)}
+                    scaleFactor={Math.sqrt(1.15)}
                     minScale={0.9}
                     maxScale={2.5}
                     onPanAndZoom={(x, y, scale) => this.handlePanAndZoom(x, y, scale)}
