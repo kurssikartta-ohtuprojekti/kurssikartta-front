@@ -4,6 +4,7 @@ import CourseUpdate from './courseUpdate'
 import CourseMapAdmin from './courseMapAdmin'
 import UnmappedCourses from './unmappedCourses'
 import Logout from '.././LoginForm/Logout.js'
+import './adminPage.css'
 class AdminPage extends React.Component {
     constructor(props) {
       super(props)
@@ -21,7 +22,10 @@ class AdminPage extends React.Component {
                         handleSubmit={this.props.login}/> :
 
                     <div>
-                        <Logout logoutHandler={this.props.logout}/>
+                        <div className="adminButtonGroup">
+                            <Logout logoutHandler={this.props.logout}/>
+                            <CourseUpdate/>
+                        </div>
                         <CourseMapAdmin 
                                         courseMovementHandler={this.props.courseMovementHandler} 
                                         deleteCourseHandler={this.props.deleteCourseHandler}
@@ -34,9 +38,8 @@ class AdminPage extends React.Component {
                                         matriceCallback={this.props.matriceCallback}
                                         selectedMatrice={this.props.selectedMatrice}/>
                                        
-                        <CourseUpdate/>
                         <UnmappedCourses 
-                                        matrice={this.props.matrice} 
+                                        selectedMatrice={this.props.selectedMatrice} 
                                         courses={this.props.courses} 
                                         handleSubmit={this.props.handleNewSubmit}/>
                     </div>

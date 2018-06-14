@@ -1,0 +1,9 @@
+.unmappedCourseItem {
+    padding: 0px;
+    padding-bottom: 3px;
+    height: 60px;
+    font-size: 13px;
+}
+.unmappedHeader {
+    margin-left: 10px;
+}
