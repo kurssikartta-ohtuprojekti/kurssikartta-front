@@ -9,6 +9,6 @@
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 5px; /* Some padding */
-    border-radius: 2px; /* Rounded corners */
+    border-radius: 4px; /* Rounded corners */
     font-size: 15px; /* Increase font size */
 }

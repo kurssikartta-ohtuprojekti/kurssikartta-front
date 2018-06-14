@@ -51,17 +51,7 @@ class CourseMap extends React.Component {
  
     // Handler for maps drag movement
     handlePanMove(x, y) {
-        console.log(x)
-        console.log(y)
-        if (x > 0) {
-            this.setState({x: 0})
-        } 
-        if (y > 0) {
-            this.setState({y: 0})
-        }
-        else {
-            this.setState({x, y})
-        }
+        this.setState({x, y})
     }
     periodCallback = (event) => {
         this.setState({ [event.target.name]: event.target.checked })
@@ -90,10 +80,9 @@ class CourseMap extends React.Component {
         const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
         const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
         const mat = removeUnmappedCourses(courseMapMatrice, this.props.mat)
+        
         const {x, y, scale} = this.state;
 
-        console.log(this.state.x)
-        console.log(this.state.y)
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
         return (
             <div>
