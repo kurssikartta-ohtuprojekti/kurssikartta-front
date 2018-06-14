@@ -1,9 +1,9 @@
 // Ottaa JSONin kaikista kurssesista, palauttaa peruskurssit
-const perusopinnot = (courses) => { 
-    var resultsfilter = courses.filter(function (i,n){
+const perusopinnot = (courses) => {
+    var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Perusopinnot'  && i.faculty !== 'stats' && i.faculty !== 'math' 
+        return i.level === 'Perusopinnot' && i.faculty !== 'stats' && i.faculty !== 'math'
     })
     // console.log(resultsfilter)
 
@@ -11,7 +11,7 @@ const perusopinnot = (courses) => {
 }
 // Ottaa JSONin kaikista kurssesita palauttaa aineopinnot
 const aineopinnot = (courses) => {
-    var resultsfilter = courses.filter(function (i,n){
+    var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
         return i.level === 'Aineopinnot'
@@ -22,7 +22,7 @@ const aineopinnot = (courses) => {
 }
 // Ottaa JSONin kaikista kursseista palauttaa syventävät opinnot
 const syventavat = (courses) => {
-    var resultsfilter = courses.filter(function (i,n){
+    var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
         return i.level === 'Syventävät'
@@ -33,7 +33,7 @@ const syventavat = (courses) => {
 }
 // Ottaa JSONin kaikista kursseista palauttaa matematiikan opinnot
 const matematiikka = (courses) => {
-    var resultsfilter = courses.filter(function (i,n){
+    var resultsfilter = courses.filter(function (i, n) {
         //console.log(i)
         //console.log(n)
         return i.faculty === 'math'
@@ -43,9 +43,16 @@ const matematiikka = (courses) => {
     return resultsfilter
 }
 
+const tilastotiede = (courses) => {
+    var resultsfilter = courses.filter(function (i, n) {
+        return i.faculty === 'stats'
+    })
+    return resultsfilter
+}
+
 // Ottaa JSONin kaikista kursseista palauttaa kartassa näkymättömät
 const visibleFalseFilter = (courses) => {
-    var resultsfilter = courses.filter(function (i,n){
+    var resultsfilter = courses.filter(function (i, n) {
         //console.log(i)
         //console.log(n)
         return i.visible === false
@@ -77,14 +84,14 @@ const courseCounter = (courses1, courses2, courses3, courses4) => {
 const periodFilter = (periodFilter, coursePeriods) => {
 
     // console.log(coursePeriods[periodFilter.year])
-   
+
     if (coursePeriods === undefined) {
         return true
     }
     if (periodFilter === undefined) {
         return true
     }
-    if (!periodFilter.p1 && !periodFilter.p2 && !periodFilter.p3 && 
+    if (!periodFilter.p1 && !periodFilter.p2 && !periodFilter.p3 &&
         !periodFilter.p4 && !periodFilter.pC && !periodFilter.pS) {
         return true
     }
@@ -115,7 +122,7 @@ const periodFilter = (periodFilter, coursePeriods) => {
         return true
 
     }
-   
+
     return false
 }
 
@@ -125,6 +132,7 @@ module.exports = {
     aineopinnot,
     syventavat,
     matematiikka,
+    tilastotiede,
     visibleFalseFilter,
     courseCounter,
     periodFilter
