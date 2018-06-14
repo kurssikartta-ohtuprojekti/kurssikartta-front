@@ -1,6 +1,6 @@
 import React from 'react'
 import AddForm from './addForm'
-
+import './unmappedCourse.css'
 export default class UnmappedCourse extends React.Component {
     constructor(props) {
         super(props);
@@ -19,9 +19,8 @@ export default class UnmappedCourse extends React.Component {
 
     render() {
         return(
-            <div>
-                <p style={{float: 'left'}}> {this.state.course.code} {this.state.course.name}: </p>
-                <br/>
+            
+            <div className="unmappedCourse">
                 <AddForm 
                             style={{float: 'left'}}
                             courseCode={this.state.course.code}
@@ -30,9 +29,9 @@ export default class UnmappedCourse extends React.Component {
                             handleChange={this.handleCoordFieldChange}
                             handleSubmit={this.props.handleSubmit}
                 />
-                <br/>
-                <br/>
-                <p>__________________________________________________</p>
+                <div className="unmappedCourseText">
+                    {this.state.course.code} {this.state.course.name}
+                </div>
             </div>
         )
     }

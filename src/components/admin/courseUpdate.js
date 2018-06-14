@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import {Button} from 'react-bootstrap'
-
+import './courseUpdate.css'
 export default class courseUpdate extends React.Component {
 
     constructor(props) {
@@ -28,7 +28,7 @@ export default class courseUpdate extends React.Component {
     render() {
         return (
             
-            <Button bsStyle='danger' onClick={this.handleClick}>
+            <Button className="courseUpdate" bsStyle='success' onClick={this.handleClick}>
                 <span class="glyphicon glyphicon-refresh"></span>
                 {this.state.isToggleOn ? ' Päivitä kurssitietokanta' : ' Päivitetty'}
             </Button>
