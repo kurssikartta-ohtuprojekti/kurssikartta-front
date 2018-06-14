@@ -1,6 +1,9 @@
 // Valinnaisen kurssin tyylittely
 
 const CourseStyling = ({course, scale}) => {
+    if (scale === undefined) {
+        scale = 2
+    }
     const fontSizing = () => {
         if (scale > 2) {
             return (4.5 * scale)
