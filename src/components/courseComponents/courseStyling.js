@@ -1,12 +1,20 @@
 // Valinnaisen kurssin tyylittely
 
 const CourseStyling = ({course, scale}) => {
+    const fontSizing = () => {
+        if (scale > 2) {
+            return (4.5 * scale)
+        } 
+        else {
+            return 9
+        }
+    }  
     // console.log(course.studytrack)
     const algorithms = {
         backgroundColor: '#ffb3b3',
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
-        fontSize: 9,
+        fontSize: fontSizing(),
         overflow: 'hidden',
         whiteSpace: 'normal',
         position: 'relative',
@@ -17,7 +25,7 @@ const CourseStyling = ({course, scale}) => {
         backgroundColor: '#bdf5bd',
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
-        fontSize: 9,
+        fontSize: fontSizing(),
         whiteSpace: 'normal',
         overflow: 'hidden',
         position: 'relative',
@@ -28,7 +36,7 @@ const CourseStyling = ({course, scale}) => {
         backgroundColor: '#ffffcc',
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
-        fontSize: 9,
+        fontSize: fontSizing(),
         whiteSpace: 'normal',
         overflow: 'hidden',
         position: 'relative', 
@@ -38,7 +46,7 @@ const CourseStyling = ({course, scale}) => {
         backgroundColor: '#c4e3ed',
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
-        fontSize: 9,
+        fontSize: fontSizing(),
         overflow: 'hidden',
         whiteSpace: 'normal',
         position: 'relative',
@@ -49,7 +57,7 @@ const CourseStyling = ({course, scale}) => {
         backgroundColor: '#f6d4bc',
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
-        fontSize: 9,
+        fontSize: fontSizing(),
         overflow: 'hidden',
         whiteSpace: 'normal',
         position: 'relative',
@@ -59,7 +67,7 @@ const CourseStyling = ({course, scale}) => {
     const defaultStyle = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
-        fontSize: 9,
+        fontSize: fontSizing(),
         overflow: 'hidden',
         whiteSpace: 'normal',
         position: 'relative',

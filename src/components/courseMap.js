@@ -38,8 +38,8 @@ class CourseMap extends React.Component {
     }
     // Handler for zoom
     handlePanAndZoom(x, y, scale) {
-        if (scale < 0.8) {
-            this.setState({x, y, scale: 0.8})
+        if (scale < 0.9) {
+            this.setState({x, y, scale: 0.9})
         }
         else if (scale > 2.5) {
             this.setState({x, y, scale: 2.5})
@@ -51,11 +51,13 @@ class CourseMap extends React.Component {
  
     // Handler for maps drag movement
     handlePanMove(x, y) {
+        console.log(x)
+        console.log(y)
         if (x > 0) {
-            this.setState({x: 0, y})
+            this.setState({x: 0})
         } 
-        else if (y > 0) {
-            this.setState({x, y: 0})
+        if (y > 0) {
+            this.setState({y: 0})
         }
         else {
             this.setState({x, y})
@@ -111,8 +113,8 @@ class CourseMap extends React.Component {
                     x={x}
                     y={y}
                     scale={scale}
-                    scaleFactor={Math.sqrt(1.5)}
-                    minScale={0.8}
+                    scaleFactor={Math.sqrt(1.3)}
+                    minScale={0.9}
                     maxScale={2.5}
                     onPanAndZoom={(x, y, scale) => this.handlePanAndZoom(x, y, scale)}
                     style={{overflow: 'hidden', height: '88vh',  border: '3px solid #a6a6a6', borderRadius: '5px', position: 'relative'}}

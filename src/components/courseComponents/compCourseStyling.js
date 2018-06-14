@@ -1,17 +1,25 @@
 // Pakollisen kurssin tyylittelyt
 
 const CompCourseStyling = ({course, scale}) => {
+    const fontSizing = () => {
+        if (scale > 2) {
+            return (4.5 * scale)
+        } 
+        else {
+            return 9
+        }
+    }   
     // console.log(course.studytrack)
     const algorithms = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         backgroundColor: '#ffb3b3',
         border: 'solid',
-        borderWidth: 5,
+        borderWidth: 4,
         borderRadius: 6,
         borderColor: '#C0C0C0',
         fontWeight: 'bold',
-        fontSize: 9,
+        fontSize: fontSizing(),
         whiteSpace: 'normal',
         overflow: 'hidden',
         position: 'relative',
@@ -22,11 +30,11 @@ const CompCourseStyling = ({course, scale}) => {
         height: `${scale * 30}px`,
         backgroundColor: '#bdf5bd',
         border: 'solid',
-        borderWidth: 5,
+        borderWidth: 4,
         borderRadius: 6,
         borderColor: '#C0C0C0',
         fontWeight: 'bold',
-        fontSize: 9,
+        fontSize: fontSizing(),
         whiteSpace: 'normal',
         overflow: 'hidden',
         position: 'relative',
@@ -37,11 +45,11 @@ const CompCourseStyling = ({course, scale}) => {
         height: `${scale * 30}px`,
         backgroundColor: '#ffffcc',
         border: 'solid',
-        borderWidth: 5,
+        borderWidth: 4,
         borderRadius: 6,
         borderColor: '#C0C0C0',
         fontWeight: 'bold',
-        fontSize: 9,
+        fontSize: fontSizing(),
         whiteSpace: 'normal',
         overflow: 'hidden',
         position: 'relative',
@@ -52,11 +60,11 @@ const CompCourseStyling = ({course, scale}) => {
         height: `${scale * 30}px`,
         backgroundColor: '#c4e3ed',
         border: 'solid',
-        borderWidth: 5,
+        borderWidth: 4,
         borderRadius: 6,
         borderColor: '#C0C0C0',
         fontWeight: 'bold',
-        fontSize: 9,
+        fontSize: fontSizing(),
         whiteSpace: 'normal',
         overflow: 'hidden',
         position: 'relative',
@@ -67,11 +75,11 @@ const CompCourseStyling = ({course, scale}) => {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         border: 'solid',
-        borderWidth: 5,
+        borderWidth: 4,
         borderRadius: 6,
         borderColor: '#C0C0C0',
         fontWeight: 'bold',
-        fontSize: 9,
+        fontSize: fontSizing(),
         whiteSpace: 'normal',
         overflow: 'hidden',
         position: 'relative',
