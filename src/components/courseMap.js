@@ -103,10 +103,13 @@ class CourseMap extends React.Component {
                         year={this.state.year} yearCallback={this.yearCallback} />
                     {this.props.matrices === undefined ?
                         <div /> :
-                        <div style={{position: 'absolute', top: '75px', right: '115px', zIndex: 98}}>
+                        <div style={{position: 'absolute', top: '75px', right: '3px', zIndex: 98}}>
                             <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
                         </div>
                     }  
+                </div>
+                <div>
+                    <LegendButton />
                 </div>
 
                 <InteractiveDiv 
