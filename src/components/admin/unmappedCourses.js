@@ -37,19 +37,21 @@ class UnmappedCourses extends React.Component {
                             onChange={this.handleFilterChange}
                         />
                     </div>
-                <ListGroup>
-                {filtered.map(course => 
-                    <ListGroupItem className="unmappedCourseItem">
-                        <UnmappedCourse key={course.code}
-                                        course={course}
-                                        handleSubmit={this.props.handleSubmit}
-                                        />
+                <div className="unmappedList">
+                    <ListGroup>
+                    {filtered.map(course => 
+                        <ListGroupItem className="unmappedCourseItem">
+                            <UnmappedCourse key={course.code}
+                                            course={course}
+                                            handleSubmit={this.props.handleSubmit}
+                                            />
 
-                    </ListGroupItem>
+                        </ListGroupItem>
 
-                    )
-                }
-                </ListGroup>
+                        )
+                    }
+                    </ListGroup>
+                </div>
             </div>
 
         )
