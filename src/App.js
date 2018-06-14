@@ -14,6 +14,7 @@ import {
     aineopinnot,
     syventavat,
     matematiikka,
+    tilastotiede,
 } from './utils/tools'
 import AdminPage from './components/admin/adminPage'
 import {
@@ -385,6 +386,7 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)
         const mat = matematiikka(this.state.courses)
+        const stats = tilastotiede(this.state.courses)
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
@@ -443,7 +445,7 @@ class App extends React.Component {
                                 />
 
                                 <Route exact path="/" render={() =>
-                                    <CourseList perus={perus} aine={aine} syv={syv} mat={mat} />}
+                                    <CourseList perus={perus} aine={aine} syv={syv} mat={mat} stats={stats} />}
                                 />
 
                             </div>
