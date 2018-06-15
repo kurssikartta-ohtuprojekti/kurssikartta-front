@@ -38,7 +38,7 @@ class CourseMap extends React.Component {
     }
     // Handler for zoom
     handlePanAndZoom(x, y, scale) {
-        if (scale < 0.9) {
+        if (scale < 0.8) {
             this.setState({x, y, scale: 0.8})
         }
         else if (scale > 2.5) {
