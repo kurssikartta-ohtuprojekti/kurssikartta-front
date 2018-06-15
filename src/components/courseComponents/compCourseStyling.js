@@ -16,6 +16,7 @@ const CompCourseStyling = ({course, scale}) => {
     const algorithms = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
+        padding: 0,
         backgroundColor: '#ffb3b3',
         border: 'solid',
         borderWidth: 4,
@@ -31,6 +32,7 @@ const CompCourseStyling = ({course, scale}) => {
     const dataSc = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
+        padding: 0,
         backgroundColor: '#bdf5bd',
         border: 'solid',
         borderWidth: 4,
@@ -46,6 +48,7 @@ const CompCourseStyling = ({course, scale}) => {
     const systems = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
+        padding: 0,
         backgroundColor: '#ffffcc',
         border: 'solid',
         borderWidth: 4,
@@ -61,6 +64,7 @@ const CompCourseStyling = ({course, scale}) => {
     const networking = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
+        padding: 0,
         backgroundColor: '#c4e3ed',
         border: 'solid',
         borderWidth: 4,
@@ -77,6 +81,7 @@ const CompCourseStyling = ({course, scale}) => {
     const defaultStyle = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
+        padding: 0,
         border: 'solid',
         borderWidth: 4,
         borderRadius: 6,
