@@ -39,7 +39,7 @@ class CourseMap extends React.Component {
     // Handler for zoom
     handlePanAndZoom(x, y, scale) {
         if (scale < 0.9) {
-            this.setState({x, y, scale: 0.9})
+            this.setState({x, y, scale: 0.8})
         }
         else if (scale > 2.5) {
             this.setState({x, y, scale: 2.5})
@@ -106,7 +106,7 @@ class CourseMap extends React.Component {
                     y={y}
                     scale={scale}
                     scaleFactor={Math.sqrt(1.15)}
-                    minScale={0.9}
+                    minScale={0.8}
                     maxScale={2.5}
                     onPanAndZoom={(x, y, scale) => this.handlePanAndZoom(x, y, scale)}
                     style={{overflow: 'hidden', height: '88vh',  border: '3px solid #a6a6a6', borderRadius: '5px', position: 'relative'}}
