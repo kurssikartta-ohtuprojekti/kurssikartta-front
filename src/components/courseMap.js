@@ -86,21 +86,21 @@ class CourseMap extends React.Component {
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
         return (
             <div>
-                <div>
+                <div style={{position: 'relative'}}>
                     <PeriodButton p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
                         p4={this.state.p4} pC={this.state.pC} pS={this.state.pS} callback={this.periodCallback}
                         year={this.state.year} yearCallback={this.yearCallback} />
                     {this.props.matrices === undefined ?
                         <div /> :
-                        <div style={{position: 'absolute', top: '75px', right: '3px', zIndex: 98}}>
+                        <div style={{position: 'absolute', top: '3px', right: '3px', zIndex: 98}}>
                             <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
                         </div>
                     }  
-                </div>
-                <div>
-                    <LegendButton />
-                </div>
 
+                <LegendButton />
+
+                </div>
+                
                 <InteractiveDiv 
                     x={x}
                     y={y}

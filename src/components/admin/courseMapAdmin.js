@@ -49,10 +49,10 @@ class CourseMapAdmin extends React.Component {
 
         const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice)
         return (
-            <div>
+            <div style={{position: 'relative'}}>
                 {this.props.matrices === undefined ?
                     <div /> :
-                    <div style={{ position: 'absolute', top: '111px', left: '2px', zIndex: 98 }}>
+                    <div style={{ position: 'absolute', top: '3px', left: '2px', zIndex: 98 }}>
                         <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
                     </div>
                 }

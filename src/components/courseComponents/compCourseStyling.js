@@ -1,9 +1,11 @@
-// Pakollisen kurssin tyylittelyt
+// Compulsory course styling
 
 const CompCourseStyling = ({course, scale}) => {
     if (scale === undefined) {
         scale = 2
     }
+
+    // Used to scale font size based on map zoom
     const fontSizing = () => {
         if (scale > 2) {
             return (4.5 * scale)
