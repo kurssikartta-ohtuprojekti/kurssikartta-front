@@ -1,43 +1,15 @@
-form[name="loginForm"] {
-  display: flex;
-  flex-direction: column;
-  width: 450px;
-  padding: 10px;
+.loginForm {
+  margin-left: 15px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
+.loginInput {
+  width: 300px;
 }
-
-label {
-  min-width: 180px;
-  width: 180px;
-  font-weight: bold;
-  font-size: 25px;
+.loginWrapper {
+  width: 325px;
+  margin-left: 15px;
 }
-
-input[type="email"], input[type="password"] {
-  box-sizing: border-box;
-  height: 40px;
-  padding: 3px;
-  flex-grow: 1;
-  font-size: 25px;
-}
-
-input[type="submit"] {
-  align-self: flex-end;
-  width: 100px;
-  height: 50px;
-  border: 3px solid lightgray;
-  border-radius: 5px;
-  font-size: 20px;
-  background: white;
-}
-
-.message {
-  font-size: 25px;
-  margin-top: 10px;
-  text-align: right;
+.loginSubmit {
+  float: left;
+  margin-top: 15px;
 }

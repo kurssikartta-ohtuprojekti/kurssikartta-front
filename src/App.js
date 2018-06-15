@@ -415,7 +415,7 @@ class App extends React.Component {
                                 <Route path="/mat" render={() =>
                                     <CourseMap perus={null} aine={null} syv={null} mat={mat} />}
                                 />
-                                <Route path="/admin/map" render={() =>
+                                <Route path="/admin" render={() =>
                                     <AdminPage
                                         username={this.state.username}
                                         password={this.state.password}
