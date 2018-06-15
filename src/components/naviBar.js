@@ -21,7 +21,7 @@ const NaviBar = () => (
                 </NavItem>
             </Nav>
             <Nav pullRight>
-                <NavItem href="/admin/map">
+                <NavItem href="/admin">
                   Admin view
                 </NavItem>
             </Nav>

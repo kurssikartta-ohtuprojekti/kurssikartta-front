@@ -1,31 +1,32 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
+import './LoginForm.css'
 const LoginForm = ({ handleSubmit, handleChange, username, password }) => {
   return (
-    <div>
-      <h2>Log in to the application</h2>
+    <div className="loginWrapper">
+      <h2 className="loginHeader">Admin login</h2>
 
       <form onSubmit={handleSubmit}>
-        <FormGroup>
+        <FormGroup className="loginForm">
           <ControlLabel>Username: </ControlLabel>
           <FormControl
+            className="loginInput"
             value={username}
             onChange={handleChange}
             name="username"
-            style={{ width: 350 }}
           />
 
           <ControlLabel>Password: </ControlLabel>
           <FormControl
+            className="loginInput"
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
-            style={{ width: 350 }}
 
-          /><br />
+          />
 
-          <Button type="submit" bsStyle="success">Login</Button>
+          <Button className="loginSubmit" type="submit" bsStyle="success">Login</Button>
         </FormGroup>
       </form>
     </div>
