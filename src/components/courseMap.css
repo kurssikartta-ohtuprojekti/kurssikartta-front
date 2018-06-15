@@ -28,3 +28,10 @@
     /* grid-template-areas: IS DEFINED AT COURSEMAP.JS */
     align-items: start;
 }
+.interactive {
+    overflow: hidden;
+    height: 88vh;
+    border: 3px solid #a6a6a6;
+    border-radius: 5px;
+    position: relative;
+}
