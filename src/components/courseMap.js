@@ -53,10 +53,19 @@ class CourseMap extends React.Component {
     handlePanMove(x, y) {
         this.setState({x, y})
     }
+
+    ifOutsideOnPanEnd(x, y) {
+        if (x > 0) {
+            this.setState({x: 0})
+        }
+        if (y > 0) {
+            this.setState({y: 0})
+        }
+    }
+
     periodCallback = (event) => {
         this.setState({ [event.target.name]: event.target.checked })
     }
-
     yearCallback = (event) => {
         this.setState({ year: event.target.name })
     }
@@ -102,6 +111,7 @@ class CourseMap extends React.Component {
                 </div>
                 
                 <InteractiveDiv 
+                    className="interactive"
                     x={x}
                     y={y}
                     scale={scale}
@@ -109,8 +119,8 @@ class CourseMap extends React.Component {
                     minScale={0.8}
                     maxScale={2.5}
                     onPanAndZoom={(x, y, scale) => this.handlePanAndZoom(x, y, scale)}
-                    style={{overflow: 'hidden', height: '88vh',  border: '3px solid #a6a6a6', borderRadius: '5px', position: 'relative'}}
                     onPanMove={(x, y) => this.handlePanMove(x, y)}
+                    onPanEnd={(x, y) => this.ifOutsideOnPanEnd(x, y)}
                 >
                     <div className="wrapper"
                         style={{   gridTemplateAreas: cssGridTemplateAreas,
