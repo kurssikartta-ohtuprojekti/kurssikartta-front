@@ -3,9 +3,8 @@ import Popup from 'reactjs-popup'
 import { Button, Checkbox, DropdownButton, MenuItem } from 'react-bootstrap'
 import './periodButton.css'
 
-
+// Used to render the button and modal for period selection
 const PeriodButton = (props) => {
-
     return (
         <div>
             <Popup
@@ -22,7 +21,7 @@ const PeriodButton = (props) => {
         </div>
     )
 }
-
+// Renders the dropdown menu for years
 const Years = (props) => {
     return (
         <DropdownButton
@@ -38,11 +37,10 @@ const Years = (props) => {
     )
 }
 
+// Renders the checkboxes for periods in a year
 const Periods = (props) => {
-
     return (
         <div>
-
             <Checkbox checked={props.p1} onChange={props.callback} name="p1">Syksy (I periodi)</Checkbox>
             <Checkbox checked={props.p2} onChange={props.callback} name='p2'>Syksy (II periodi)</Checkbox>
             <Checkbox checked={props.pC} onChange={props.callback} name='pC'>Joulu</Checkbox>

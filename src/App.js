@@ -338,10 +338,9 @@ class App extends React.Component {
         }
     }
 
+    // Wrapper to handle admin course movement on map
     courseMovementHandler = (event) => {
         event.preventDefault()
-        // console.log(event.target.id)
-        // console.log(event.target.name)
         if (event.target.name === 'left') {
             this.moveWestHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
@@ -374,10 +373,7 @@ class App extends React.Component {
     
     matriceCallback = (event) => {
         event.preventDefault()
-        // console.log(event.target.name)
-        // console.log(event.key)
         var newMatrice = this.state.matrices.find(matrice => matrice.id.toString() === event.target.name)
-        // console.log(newMatrice)
         this.setState({ selectedMatrice: newMatrice })
     }
 
@@ -390,7 +386,6 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
-        // console.log(this.state.user)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>

@@ -14,6 +14,7 @@ export default class CourseAdminPanel extends React.Component {
             <div>
                 {this.props.course.name}
 
+                {/* Render the movement control panel */}
                 <div className="controlWrapper">
                     <div style={{ gridArea: "l" }}>
                         <Button onClick={this.props.courseMovementHandler} name='left' id={this.props.course.code} style={{ width: 60, height: 60 }}>Left</Button>
@@ -40,6 +41,8 @@ export default class CourseAdminPanel extends React.Component {
                         <Button onClick={this.props.courseMovementHandler} name='downRight' id={this.props.course.code} style={{ width: 60, height: 60 }}></Button>
                     </div>
                     <div style={{ gridArea: "m" }}>
+                        
+                        {/* Modal for more admin options */}
                         <Popup
                             trigger={<Button style={{ width: 60, height: 60 }}>More</Button>}
                             modal
@@ -48,6 +51,7 @@ export default class CourseAdminPanel extends React.Component {
                             <span>
                                 <p style={{ float: 'left' }}>New Coordinates:</p>
                                 <br />
+                                {/* Form for repositioning */}
                                 <AddForm style={{ float: 'left' }}
                                     courseCode={this.props.course.code}
                                     formName='newCoords'
@@ -57,6 +61,7 @@ export default class CourseAdminPanel extends React.Component {
                                     handleSubmit={this.props.courseMovementHandler}
                                 />
                                 <br/><br/>
+                                {/* Delete Button */}
                                 <Button id={this.props.course.code} style={{marginTop: 6, float: 'left'}} onClick={this.props.deleteCourseHandler} bsStyle="danger">Poista</Button>
                             </span> 
                         </Popup>

@@ -11,7 +11,7 @@ export default class courseUpdate extends React.Component {
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
-
+    // Handler for update button
     handleClick() {
         axios.get('https://kurssikartta-backend.herokuapp.com/update')
             .then(res => {
