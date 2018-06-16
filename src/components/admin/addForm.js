@@ -1,11 +1,13 @@
 import React from 'react'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import './addForm.css'
+
+// Render a form for new coordinates on map for a course
 const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord, formName }) => {
   return (
     <div>
       <form id={courseCode} name={formName} onSubmit={handleSubmit}>
-        <FormGroup style={{padding: 0}}>
+        <FormGroup className="coordFormGroup">
           <ControlLabel className="coordText">Y:</ControlLabel>
 
           <FormControl

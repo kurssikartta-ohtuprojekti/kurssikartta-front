@@ -20,8 +20,7 @@ class CourseMapAdmin extends React.Component {
     }
     render() {
         let courseMapMatrice = []
-        // console.log('selected');
-        // console.log(this.props.matrices[this.state.selectedMatrice]);
+
         if (this.props.matrice === undefined) {
         } else {
             courseMapMatrice = this.props.matrice
@@ -32,12 +31,16 @@ class CourseMapAdmin extends React.Component {
             sideLength = courseMapMatrice.length
         }
 
+        // Turn the course matrice into the css property grid-template-areas
         const cssGridTemplateAreas = cssGridStringify(this.props.sideLength, courseMapMatrice)
 
+        // Makes sure unmapped courses arenät rendered in the map
         const perus = removeUnmappedCourses(courseMapMatrice, this.props.perus)
         const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
         const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
         const mat = removeUnmappedCourses(courseMapMatrice, this.props.mat)
+
+        // Calculate the amount of empty divs to be rendered as (y, x)
         const courseCount = courseCounter(perus, aine, syv, mat)
         const matriceNodeCount = sideLength * sideLength
         const emptyNodeCount = matriceNodeCount - courseCount
@@ -52,7 +55,7 @@ class CourseMapAdmin extends React.Component {
             <div style={{position: 'relative'}}>
                 {this.props.matrices === undefined ?
                     <div /> :
-                    <div style={{ position: 'absolute', top: '3px', left: '2px', zIndex: 98 }}>
+                    <div className="matriceSelect" style={{left: 3}}>
                         <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
                     </div>
                 }

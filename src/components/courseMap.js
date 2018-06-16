@@ -2,6 +2,7 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import './courseMap.css'
+import './matriceSelect.css'
 import LegendButton from './legendButton'
 import MatriceSelect from './matriceSelect'
 
@@ -82,9 +83,11 @@ class CourseMap extends React.Component {
         if (this.props.sideLength === undefined) {
             sideLength = courseMapMatrice.length
         }
+
         const wrapperWidth = 37.5 * 50
         const wrapperHeight = 15 * 50
 
+        // Makes sure unmapped courses aren't rendered in the map
         const perus = removeUnmappedCourses(courseMapMatrice, this.props.perus)
         const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
         const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
@@ -92,17 +95,25 @@ class CourseMap extends React.Component {
         
         const {x, y, scale} = this.state;
 
+        // Turn the course matrice into the css property grid-template-areas
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
         return (
             <div>
                 <div style={{position: 'relative'}}>
-                    <PeriodButton p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
-                        p4={this.state.p4} pC={this.state.pC} pS={this.state.pS} callback={this.periodCallback}
-                        year={this.state.year} yearCallback={this.yearCallback} />
+                    <PeriodButton   
+                            p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
+                            p4={this.state.p4} pC={this.state.pC} pS={this.state.pS}
+                            callback={this.periodCallback}
+                            year={this.state.year} yearCallback={this.yearCallback} 
+                    />
                     {this.props.matrices === undefined ?
                         <div /> :
-                        <div style={{position: 'absolute', top: '3px', right: '3px', zIndex: 98}}>
-                            <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
+                        <div className="matriceSelect">
+                            <MatriceSelect  
+                                    selected={this.props.selectedMatrice}
+                                    matrices={this.props.matrices}
+                                    matriceCallback={this.props.matriceCallback}
+                            />
                         </div>
                     }  
 
@@ -123,18 +134,18 @@ class CourseMap extends React.Component {
                     onPanEnd={(x, y) => this.ifOutsideOnPanEnd(x, y)}
                 >
                     <div className="wrapper"
-                        style={{   gridTemplateAreas: cssGridTemplateAreas,
-                                    gridAutoRows: `${scale * 15}px`,
-                                    gridAutoColumns: `${scale * 37.5}px`,
-                                    gridTemplateRows: `${scale * 15}px`,
-                                    gridTemplateColumns: `${scale * 37.5}px`,
-                                    position: 'absolute',
-                                    top: `${y * 100}%`, 
-                                    left: `${x * 100}%`,
-                                    width :`${scale * wrapperWidth}px`,
-                                    height :`${scale * wrapperHeight}px`}}>
-                        {/* perusopinnot */}
+                        style={{gridTemplateAreas: cssGridTemplateAreas,
+                                gridAutoRows: `${scale * 15}px`,
+                                gridAutoColumns: `${scale * 37.5}px`,
+                                gridTemplateRows: `${scale * 15}px`,
+                                gridTemplateColumns: `${scale * 37.5}px`,
+                                position: 'absolute',
+                                top: `${y * 100}%`, 
+                                left: `${x * 100}%`,
+                                width :`${scale * wrapperWidth}px`,
+                                height :`${scale * wrapperHeight}px`}}>
 
+                        {/* perusopinnot */}
                         {perus === null || perus === undefined ?
                             <div></div> :
                             perus.map(course =>

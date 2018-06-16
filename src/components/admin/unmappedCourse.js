@@ -11,15 +11,16 @@ export default class UnmappedCourse extends React.Component {
 
         }
     }
+    // Handler for add to map form
     handleCoordFieldChange = (event) => {
         if (event.target.value.length < 4) {
             this.setState({ [event.target.name]: event.target.value })
         }
       }
 
+    // Render a single unmapped course's code, name and AddForm
     render() {
         return(
-            
             <div className="unmappedCourse">
                 <AddForm 
                             style={{float: 'left'}}
