@@ -3,22 +3,16 @@ import { DropdownButton, MenuItem } from 'react-bootstrap'
 import './matriceSelect.css'
 
 const MatriceSelect = (props) => {
-        console.log(props.matrices)
-        console.log(props.selected)
-        console.log("selected")
-    
-    
         return (
             <DropdownButton 
                 // id="matriceSelect"
                 title={props.selected.name}
-                
+                id = "matriceSelect"
             >
                 {props.matrices === null ?
                     <null></null> :
                     props.matrices.map(matrice =>
-                        <div>
-                            {console.log(matrice)}
+                        <div key={matrice.id}>
                             <MenuItem name={matrice.id} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
                         </div>
                     )
