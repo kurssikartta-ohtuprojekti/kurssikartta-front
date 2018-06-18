@@ -1,38 +1,38 @@
 // Ottaa JSONin kaikista kurssesista, palauttaa peruskurssit
-const perusopinnot = (courses) => {
+const basics = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Perusopinnot' && i.faculty !== 'stats' && i.faculty !== 'math'
+        return i.level === 'basic' && i.faculty !== 'stats' && i.faculty !== 'math'
     })
     // console.log(resultsfilter)
 
     return resultsfilter
 }
 // Ottaa JSONin kaikista kurssesita palauttaa aineopinnot
-const aineopinnot = (courses) => {
+const intermediate = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Aineopinnot'
+        return i.level === 'intermediate'
     })
     // console.log(resultsfilter)
 
     return resultsfilter
 }
 // Ottaa JSONin kaikista kursseista palauttaa syventävät opinnot
-const syventavat = (courses) => {
+const advanced = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Syventävät'
+        return i.level === 'advanced'
     })
     // console.log(resultsfilter)
 
     return resultsfilter
 }
 // Ottaa JSONin kaikista kursseista palauttaa matematiikan opinnot
-const matematiikka = (courses) => {
+const mathematics = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         //console.log(i)
         //console.log(n)
@@ -43,7 +43,7 @@ const matematiikka = (courses) => {
     return resultsfilter
 }
 
-const tilastotiede = (courses) => {
+const statistics = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         return i.faculty === 'stats'
     })
@@ -62,21 +62,24 @@ const visibleFalseFilter = (courses) => {
     return resultsfilter
 }
 
-const courseCounter = (courses1, courses2, courses3, courses4) => {
+const courseCounter = (courses1, courses2, courses3, courses4, courses5) => {
 
-    if (courses1 === null) {
+    if (courses1 === null || courses1 === undefined) {
         courses1 = []
     }
-    if (courses2 === null) {
+    if (courses2 === null || courses2 === undefined) {
         courses2 = []
     }
-    if (courses3 === null) {
+    if (courses3 === null || courses3 === undefined) {
         courses3 = []
     }
-    if (courses4 === null) {
+    if (courses4 === null || courses4 === undefined) {
         courses4 = []
     }
-    return (courses1.length + courses2.length + courses3.length + courses4.length)
+    if (courses5 === null || courses5 === undefined) {
+        courses5 = []
+    }
+    return (courses1.length + courses2.length + courses3.length + courses4.length + courses5.length)
 }
 
 
@@ -128,11 +131,11 @@ const periodFilter = (periodFilter, coursePeriods) => {
 
 
 module.exports = {
-    perusopinnot,
-    aineopinnot,
-    syventavat,
-    matematiikka,
-    tilastotiede,
+    basics,
+    intermediate,
+    advanced,
+    mathematics,
+    statistics,
     visibleFalseFilter,
     courseCounter,
     periodFilter

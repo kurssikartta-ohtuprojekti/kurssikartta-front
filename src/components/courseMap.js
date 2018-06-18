@@ -88,11 +88,11 @@ class CourseMap extends React.Component {
         const wrapperHeight = 15 * 50
 
         // Makes sure unmapped courses aren't rendered in the map
-        const perus = removeUnmappedCourses(courseMapMatrice, this.props.perus)
-        const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
-        const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
-        const mat = removeUnmappedCourses(courseMapMatrice, this.props.mat)
-        
+        const basic = removeUnmappedCourses(courseMapMatrice, this.props.basic)
+        const inter = removeUnmappedCourses(courseMapMatrice, this.props.inter)
+        const adv = removeUnmappedCourses(courseMapMatrice, this.props.adv)
+        const math = removeUnmappedCourses(courseMapMatrice, this.props.math)
+        const stats = removeUnmappedCourses(courseMapMatrice, this.props.stats)
         const {x, y, scale} = this.state;
 
         // Turn the course matrice into the css property grid-template-areas
@@ -146,9 +146,9 @@ class CourseMap extends React.Component {
                                 height :`${scale * wrapperHeight}px`}}>
 
                         {/* perusopinnot */}
-                        {perus === null || perus === undefined ?
+                        {basic === null || basic === undefined ?
                             <div></div> :
-                            perus.map(course =>
+                            basic.map(course =>
                                 <div key={course.code}
                                     style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px`}}>
                                     {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
@@ -159,9 +159,9 @@ class CourseMap extends React.Component {
                             )
                         }
                         {/* Aineopinnot */}
-                        {aine === null || aine === undefined ?
+                        {inter === null || inter === undefined ?
                             <div></div> :
-                            aine.map(course =>
+                            inter.map(course =>
                                 <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
                                     {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
                                         <Course key={course.code} course={course} scale={this.state.scale}/> :
@@ -171,9 +171,9 @@ class CourseMap extends React.Component {
                             )
                         }
                         {/* Syventävät opinnot */}
-                        {syv === null || syv === undefined ?
+                        {adv === null || adv === undefined ?
                             <div></div> :
-                            syv.map(course =>
+                            adv.map(course =>
                                 <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
                                     {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
                                         <Course key={course.code} course={course} scale={this.state.scale}/> :
@@ -183,10 +183,22 @@ class CourseMap extends React.Component {
                             )
                         }
 
-                        {/* Muut opinnot */}
-                        {mat === null || mat === undefined ?
+                        {/* Matematiikan opinnot */}
+                        {math === null || math === undefined ?
                             <div></div> :
-                            mat.map(course =>
+                            math.map(course =>
+                                <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
+                                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
+                                        <Course key={course.code} course={course} scale={this.state.scale}/> :
+                                        <Course key={course.code} course={course} scale={this.state.scale} style={{ opacity: '0.3' }} />
+                                    }
+                                </div>
+                            )
+                        }
+                        {/* Tilastotieteen opinnot */}
+                        {stats === null || stats === undefined ?
+                            <div></div> :
+                            math.map(course =>
                                 <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
                                     {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
                                         <Course key={course.code} course={course} scale={this.state.scale}/> :
