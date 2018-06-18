@@ -89,7 +89,7 @@ const courses = [
 test('empty course inputs (perus)', () => {
     const empty = []
 
-    const result = tools.perusopinnot(empty)
+    const result = tools.basics(empty)
 
     // console.log(result)
     expect(result).toEqual([])
@@ -97,7 +97,7 @@ test('empty course inputs (perus)', () => {
 test('empty course inputs (aine)', () => {
     const empty = []
 
-    const result = tools.aineopinnot(empty)
+    const result = tools.intermediate(empty)
 
     // console.log(result)s
     expect(result).toEqual([])
@@ -105,7 +105,7 @@ test('empty course inputs (aine)', () => {
 test('empty course inputs (syventava)', () => {
     const empty = []
 
-    const result = tools.syventavat(empty)
+    const result = tools.advanced(empty)
 
     // console.log(result)
     expect(result).toEqual([])
@@ -114,7 +114,7 @@ test('empty course inputs (syventava)', () => {
 test('empty course inputs (matematiikka)', () => {
     const empty = []
 
-    const result = tools.matematiikka(empty)
+    const result = tools.mathematics(empty)
 
     // console.log(result)
     expect(result).toEqual([])
@@ -122,7 +122,7 @@ test('empty course inputs (matematiikka)', () => {
 
 test('peruskurssit returned', () => {
 
-    const result = tools.perusopinnot(courses)
+    const result = tools.basics(courses)
 
     // console.log(result)
     expect(result).toEqual([
@@ -150,7 +150,7 @@ test('peruskurssit returned', () => {
     )
 })
 test('aineopinnot returned', () => {
-    const result = tools.aineopinnot(courses)
+    const result = tools.intermediate(courses)
 
     // console.log(result)
     expect(result).toEqual([
@@ -177,7 +177,7 @@ test('aineopinnot returned', () => {
     )
 })
 test('syventavat opinnot returned', () => {
-    const result = tools.syventavat(courses)
+    const result = tools.advanced(courses)
 
     // console.log(result)
     expect(result).toEqual([
@@ -205,7 +205,7 @@ test('syventavat opinnot returned', () => {
 })
 
 test('matematiikka returned', () => {
-    const result = tools.matematiikka(courses)
+    const result = tools.mathematics(courses)
 
     expect(result).toEqual([
         {
@@ -269,10 +269,10 @@ test('visiblefalsefilter returns correct ones', () => {
 })
 
 test('courseCounter return correct amount', () => {
-    const courses1 = tools.perusopinnot(courses)
-    const courses2 = tools.aineopinnot(courses)
-    const courses3 = tools.syventavat(courses)
-    const courses4 = tools.matematiikka(courses)
+    const courses1 = tools.basics(courses)
+    const courses2 = tools.intermediate(courses)
+    const courses3 = tools.advanced(courses)
+    const courses4 = tools.mathematics(courses)
 
     const result = tools.courseCounter(courses1, courses2, courses3, courses4)
 

@@ -119,7 +119,7 @@ describe.only('<CourseList />', () => {
     ]
     it('renders all courses', () => {
         const mockHandler = jest.fn()
-        const courseListComponent = shallow(<CourseList perus={perus} aine={aine} syv={syv} mat={mat} stats={stats} />)
+        const courseListComponent = shallow(<CourseList basic={perus} inter={aine} adv={syv} math={mat} stats={stats} />)
         const contentDiv = courseListComponent.find('.mappi')
         //console.log(courseListComponent.html())
         // console.log(contentDiv.html())
