@@ -1,6 +1,7 @@
+import color from 'color'
 // Compulsory course styling
 
-const CompCourseStyling = ({course, scale}) => {
+const CompCourseStyling = ({course, scale, hovered}) => {
     if (scale === undefined) {
         scale = 2
     }
@@ -13,17 +14,37 @@ const CompCourseStyling = ({course, scale}) => {
         else {
             return 9
         }
-    }   
+    }
+    const background = (bgColor) => {
+        const returnColor = color(bgColor)
+        // console.log(returnColor)
+        if (!hovered) {
+            return returnColor
+        } else {
+            // console.log(returnColor.lighten(0.5).rgbNumber())
+            return returnColor.lighten(0.05)
+        }
+    }
+
+    const border = (borderColor) => {
+        const returnColor = color(borderColor)
+        if (!hovered) {
+            return returnColor
+        } else {
+            // console.log(returnColor.lighten(0.5).rgbNumber())
+            return returnColor.darken(0.1)
+        }
+    }
     // console.log(course.studytrack)
     const algorithms = {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
-        backgroundColor: '#ffb3b3',
+        backgroundColor: background('#ffb3b3'),
         border: 'solid',
         borderWidth: 4,
         borderRadius: 6,
-        borderColor: '#C0C0C0',
+        borderColor: border('#C0C0C0'),
         fontWeight: 'bold',
         fontSize: fontSizing(),
         whiteSpace: 'normal',
@@ -35,11 +56,11 @@ const CompCourseStyling = ({course, scale}) => {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
-        backgroundColor: '#bdf5bd',
+        backgroundColor: background('#bdf5bd'),
         border: 'solid',
         borderWidth: 4,
         borderRadius: 6,
-        borderColor: '#C0C0C0',
+        borderColor: border('#C0C0C0'),
         fontWeight: 'bold',
         fontSize: fontSizing(),
         whiteSpace: 'normal',
@@ -51,11 +72,11 @@ const CompCourseStyling = ({course, scale}) => {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
-        backgroundColor: '#ffffcc',
+        backgroundColor: background('#ffffcc'),
         border: 'solid',
         borderWidth: 4,
         borderRadius: 6,
-        borderColor: '#C0C0C0',
+        borderColor: border('#C0C0C0'),
         fontWeight: 'bold',
         fontSize: fontSizing(),
         whiteSpace: 'normal',
@@ -67,11 +88,11 @@ const CompCourseStyling = ({course, scale}) => {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
-        backgroundColor: '#c4e3ed',
+        backgroundColor: background('#c4e3ed'),
         border: 'solid',
         borderWidth: 4,
         borderRadius: 6,
-        borderColor: '#C0C0C0',
+        borderColor: border('#C0C0C0'),
         fontWeight: 'bold',
         fontSize: fontSizing(),
         whiteSpace: 'normal',
@@ -87,7 +108,7 @@ const CompCourseStyling = ({course, scale}) => {
         border: 'solid',
         borderWidth: 4,
         borderRadius: 6,
-        borderColor: '#C0C0C0',
+        borderColor: border('#C0C0C0'),
         fontWeight: 'bold',
         fontSize: fontSizing(),
         whiteSpace: 'normal',

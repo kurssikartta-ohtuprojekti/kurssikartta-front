@@ -119,7 +119,7 @@ describe.only('Course buttons get coloring based on study track', () => {
         // console.log(courseComponent.html())
         // console.log(contentDiv.html())
         // console.log(contentDiv.text())
-        expect(contentDiv.html()).toContain("background-color:#ffffcc")
+        expect(contentDiv.html()).toContain("background-color:rgb(255, 255, 204)")
     })
     it('algorithms', () => {
         
@@ -129,7 +129,7 @@ describe.only('Course buttons get coloring based on study track', () => {
         // console.log(courseComponent.html())
         // console.log(contentDiv.html())
         // console.log(contentDiv.text())
-        expect(contentDiv.html()).toContain("background-color:#ffb3b3")
+        expect(contentDiv.html()).toContain("background-color:rgb(255, 179, 179)")
     })
     it('networking', () => {
         
@@ -139,7 +139,7 @@ describe.only('Course buttons get coloring based on study track', () => {
         // console.log(courseComponent.html())
         // console.log(contentDiv.html())
         // console.log(contentDiv.text())
-        expect(contentDiv.html()).toContain("background-color:#c4e3ed")
+        expect(contentDiv.html()).toContain("background-color:rgb(196, 227, 237)")
     })
     it('data science', () => {
         
@@ -149,7 +149,7 @@ describe.only('Course buttons get coloring based on study track', () => {
         // console.log(courseComponent.html())
         // console.log(contentDiv.html())
         // console.log(contentDiv.text())
-        expect(contentDiv.html()).toContain("background-color:#bdf5bd")
+        expect(contentDiv.html()).toContain("background-color:rgb(189, 245, 189")
     })
 })
 
