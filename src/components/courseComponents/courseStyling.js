@@ -116,13 +116,13 @@ const CourseStyling = ({ course, scale }) => {
             algorithms
         )
     }
-    if (course.studytrack[0] === 'math') {
+    if (course.faculty === 'math') {
         return (
             math
         )
     }
 
-    if (course.studytrack[0] === 'stats') {
+    if (course.faculty === 'stats') {
         return (
             stats
         )

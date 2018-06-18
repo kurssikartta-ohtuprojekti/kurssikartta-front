@@ -92,30 +92,12 @@ class App extends React.Component {
     addNewCourseMatriceHandler = (event) => {
         event.preventDefault()
         // console.log(event.target.xCoord.value)
-        if (event.target.xCoord.value !== '' ||  event.target.yCoord.value !== '') {
+        if (event.target.xCoord.value !== '' || event.target.yCoord.value !== '') {
             const newMatrice = addNewCourse(event.target.id, // course code of the new course
                 this.state.selectedMatrice.matrice, // old matrice
                 event.target.xCoord.value, // x Coordinate value
                 event.target.yCoord.value, ) // y coordinate value
-            if (newMatrice.error === undefined) {
-                const newMatriceJson = {
-                    id: 0,
-                    name: 'Default',
-                    matrice: newMatrice
-                }
-
-
-                try {
-                    matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                        this.componentDidMount()
-                    )
-                } catch (exception) {
-                    window.alert(exception)
-                }
-
-            } else {
-                window.alert(newMatrice.error)
-            }
+            this.postChangedMatrice(newMatrice);
         } else {
             window.alert('Enter coordinates!')
         }
@@ -128,25 +110,7 @@ class App extends React.Component {
                 matrice, // old matrice
                 y, // y Coordinate value
                 x) // x coordinate value
-            if (newMatrice.error === undefined) {
-                const newMatriceJson = {
-                    id: 0,
-                    name: 'Default',
-                    matrice: newMatrice
-                }
-
-
-                try {
-                    matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                        this.componentDidMount()
-                    )
-                } catch (exception) {
-                    window.alert(exception)
-                }
-
-            } else {
-                window.alert(newMatrice.error)
-            }
+            this.postChangedMatrice(newMatrice);
         } else {
             window.alert('Enter coordinates!')
         }
@@ -157,185 +121,40 @@ class App extends React.Component {
         console.log(event.target.id)
         console.log(this.state.matrices)
         const newMatrice = removeCourse(event.target.id, this.state.selectedMatrice.matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            try {
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                    this.componentDidMount()
-                )
-            } catch (exception) {
-                window.alert(exception)
-            }
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
 
     moveWestHandler = (code, matrice) => {
         const newMatrice = moveCourseWest(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            try {
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                    this.componentDidMount()
-                )
-            } catch (exception) {
-                window.alert(exception)
-            }
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
     moveEastHandler = (code, matrice) => {
         const newMatrice = moveCourseEast(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            try {
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                    this.componentDidMount()
-                )
-            } catch (exception) {
-                window.alert(exception)
-            }
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
     moveNorthHandler = (code, matrice) => {
         const newMatrice = moveCourseNorth(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            try {
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                    this.componentDidMount()
-                )
-            } catch (exception) {
-                window.alert(exception)
-            }
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
     moveSouthHandler = (code, matrice) => {
         const newMatrice = moveCourseSouth(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            try {
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                    this.componentDidMount()
-                )
-            } catch (exception) {
-                window.alert(exception)
-            }
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
     moveNorthWestHandler = (code, matrice) => {
         const newMatrice = moveCourseNorthWest(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            try {
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                    this.componentDidMount()
-                )
-            } catch (exception) {
-                window.alert(exception)
-            }
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
     moveNorthEastHandler = (code, matrice) => {
         const newMatrice = moveCourseNorthEast(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            try {
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                    this.componentDidMount()
-
-                )
-            } catch (exception) {
-                window.alert(exception)
-            }
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
     moveSouthWestHandler = (code, matrice) => {
         const newMatrice = moveCourseSouthWest(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
     moveSouthEastHandler = (code, matrice) => {
         const newMatrice = moveCourseSouthEast(code, matrice)
-        if (newMatrice.error === undefined) {
-            const newMatriceJson = {
-                id: 0,
-                name: 'Default',
-                matrice: newMatrice
-            }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
-            // window.alert('Kurssia liikutettu')
-
-        } else {
-            window.alert(newMatrice.error)
-        }
+        this.postChangedMatrice(newMatrice);
     }
 
     // Wrapper to handle admin course movement on map
@@ -370,11 +189,68 @@ class App extends React.Component {
         }
     }
 
-    
+
     matriceCallback = (event) => {
         event.preventDefault()
-        var newMatrice = this.state.matrices.find(matrice => matrice.id.toString() === event.target.name)
-        this.setState({ selectedMatrice: newMatrice })
+        if (event.target.name === "clone") {
+            const newMatrice = this.state.selectedMatrice
+            console.log((parseInt(this.state.matrices.length, 10)))
+            if (newMatrice.error === undefined) {
+                const newMatriceJson = {
+                    id: (parseInt(this.state.matrices.length, 10)),
+                    name: 'Clone of ' + newMatrice.name,
+                    matrice: newMatrice.matrice
+                }
+                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                )
+                this.setState({ selectedMatrice: newMatriceJson })
+                window.alert('Matriisi kloonattu')
+
+            } else {
+                window.alert(newMatrice.error)
+            }
+        } else if (event.target.name === "rename") {
+            var newName = prompt("Anna uusi nimi", this.state.selectedMatrice.name)
+            const newMatriceJson = {
+                id: this.state.selectedMatrice.id,
+                name: newName,
+                matrice: this.state.selectedMatrice.matrice
+            }
+            matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                this.componentDidMount()
+            )
+            this.setState({ selectedMatrice: newMatriceJson })
+            window.alert('Nimi muutettu')
+
+        } else if (event.target.name === "delete") {
+            matriceService.deleteById(this.state.selectedMatrice.id).then(msg =>
+                this.componentDidMount()
+            )
+            var changeMatrice = this.state.matrices[(this.state.selectedMatrice.id - 1)]
+            this.setState({ selectedMatrice: changeMatrice })
+            window.alert('Matriisi poistettu')
+
+        } else {
+
+            var newMatrice = this.state.matrices.find(matrice => matrice.id.toString() === event.target.name)
+            this.setState({ selectedMatrice: newMatrice })
+        }
+    }
+
+    postChangedMatrice(newMatrice) {
+        if (newMatrice.error === undefined) {
+            const newMatriceJson = {
+                id: this.state.selectedMatrice.id,
+                name: this.state.selectedMatrice.name,
+                matrice: newMatrice
+            };
+            matriceService.postNewMatrice(newMatriceJson).then(msg => this.componentDidMount());
+            // window.alert('Kurssia liikutettu')
+        }
+        else {
+            window.alert(newMatrice.error);
+        }
     }
 
     render() {
