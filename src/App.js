@@ -224,12 +224,16 @@ class App extends React.Component {
             window.alert('Nimi muutettu')
 
         } else if (event.target.name === "delete") {
-            matriceService.deleteById(this.state.selectedMatrice.id).then(msg =>
-                this.componentDidMount()
-            )
-            var changeMatrice = this.state.matrices[(this.state.selectedMatrice.id - 1)]
-            this.setState({ selectedMatrice: changeMatrice })
-            window.alert('Matriisi poistettu')
+            if (this.state.matrices.length >= 2) {
+                matriceService.deleteById(this.state.selectedMatrice.id).then(msg =>
+                    this.componentDidMount()
+                )
+                var changeMatrice = this.state.matrices[0]
+                this.setState({ selectedMatrice: changeMatrice })
+                window.alert('Matriisi poistettu')
+            } else {
+                window.alert('Matriisia ei voitu poistaa')
+            }
 
         } else {
 
