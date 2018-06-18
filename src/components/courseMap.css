@@ -16,7 +16,9 @@
     /* height: 30px;
     width: 75px; */
 }
-
+.wrapper > null {
+    position: absolute;
+}
 .wrapper {
     display: grid;
     grid-template-columns: repeat(50, 1fr);
