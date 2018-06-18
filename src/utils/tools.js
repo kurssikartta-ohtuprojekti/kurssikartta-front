@@ -14,7 +14,7 @@ const aineopinnot = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Aineopinnot'
+        return i.level === 'Aineopinnot' && i.faculty !== 'stats' && i.faculty !== 'math'
     })
     // console.log(resultsfilter)
 
