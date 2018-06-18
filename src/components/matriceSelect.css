@@ -1,11 +1,25 @@
-.matriceSelect { /* for the buttons wrapper div */
-    position: absolute; 
-    top: 3px; 
-    right: 3px; 
-    z-index: 98; 
-    
-  
+#matriceSelect {
+    position: relative; /* Fixed/sticky position */
+    top: 35px; 
+    left: 3px;
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 5px; /* Some padding */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 15px; /* Increase font size */
 }
+
+.dropdown-menu {
+    position: absolute;
+    top: 64px;
+    left: 3px;
+    z-index: 1000;
+    display: none;
+    float: left;
+}
+ 
 .matriceSelect > null {
     position: absolute;
 }
