@@ -3,7 +3,7 @@ const basics = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Perusopinnot' && i.faculty !== 'stats' && i.faculty !== 'math'
+        return i.level === 'basic' && i.faculty !== 'stats' && i.faculty !== 'math'
     })
     // console.log(resultsfilter)
 
@@ -14,7 +14,7 @@ const intermediate = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Aineopinnot'
+        return i.level === 'intermediate'
     })
     // console.log(resultsfilter)
 
@@ -25,7 +25,7 @@ const advanced = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'Syventävät'
+        return i.level === 'advanced'
     })
     // console.log(resultsfilter)
 
