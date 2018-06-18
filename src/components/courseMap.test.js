@@ -11,7 +11,7 @@ describe.only('<CourseMap />', () => {
         {
             code: "TKT10001",
             name: "Dummy1",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: true,
             prereqs: [],
             studytrack: ["ss"],
@@ -21,7 +21,7 @@ describe.only('<CourseMap />', () => {
         {
             code: "TKT10002",
             name: "Dummy2",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: true,
             prereqs: [],
             studytrack: ["ss"],
@@ -33,7 +33,7 @@ describe.only('<CourseMap />', () => {
         {
             code: "TKT21010",
             name: "Dummy3",
-            level: "Aineopinnot",
+            level: "intermediate",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
@@ -43,7 +43,7 @@ describe.only('<CourseMap />', () => {
         {
             code: "TKT21011",
             name: "Dummy4",
-            level: "Aineopinnot",
+            level: "intermediate",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
