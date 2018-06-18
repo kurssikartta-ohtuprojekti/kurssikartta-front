@@ -4,7 +4,7 @@ const courses = [
     {
         code: "TKT21010",
         name: "Dummy",
-        level: "Perusopinnot",
+        level: "basic",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -14,7 +14,7 @@ const courses = [
     {
         code: "TKT21011",
         name: "Dummy2",
-        level: "Perusopinnot",
+        level: "basic",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -24,7 +24,7 @@ const courses = [
     {
         code: "TKT21013",
         name: "Dummy3",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -34,7 +34,7 @@ const courses = [
     {
         code: "TKT21014",
         name: "Dummy4",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -44,7 +44,7 @@ const courses = [
     {
         code: "TKT21015",
         name: "Dummy5",
-        level: "Syventävät",
+        level: "advanced",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -54,7 +54,7 @@ const courses = [
     {
         code: "TKT21016",
         name: "Dummy6",
-        level: "Syventävät",
+        level: "advanced",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -129,7 +129,7 @@ test('peruskurssit returned', () => {
         {
             code: 'TKT21010',
             name: 'Dummy',
-            level: 'Perusopinnot',
+            level: 'basic',
             compulsory: false,
             prereqs: [],
             studytrack: ['ss'],
@@ -139,7 +139,7 @@ test('peruskurssit returned', () => {
         {
             code: 'TKT21011',
             name: 'Dummy2',
-            level: 'Perusopinnot',
+            level: 'basic',
             compulsory: false,
             prereqs: [],
             studytrack: ['ss'],
@@ -157,7 +157,7 @@ test('aineopinnot returned', () => {
         {
             code: 'TKT21013',
             name: 'Dummy3',
-            level: 'Aineopinnot',
+            level: 'intermediate',
             compulsory: false,
             prereqs: [],
             studytrack: ['ss'],
@@ -167,7 +167,7 @@ test('aineopinnot returned', () => {
         {
             code: 'TKT21014',
             name: 'Dummy4',
-            level: 'Aineopinnot',
+            level: 'intermediate',
             compulsory: false,
             prereqs: [],
             studytrack: ['ss'],
@@ -184,7 +184,7 @@ test('syventavat opinnot returned', () => {
         {
             code: 'TKT21015',
             name: 'Dummy5',
-            level: 'Syventävät',
+            level: 'advanced',
             compulsory: false,
             prereqs: [],
             studytrack: ['ss'],
@@ -194,7 +194,7 @@ test('syventavat opinnot returned', () => {
         {
             code: 'TKT21016',
             name: 'Dummy6',
-            level: 'Syventävät',
+            level: 'advanced',
             compulsory: false,
             prereqs: [],
             studytrack: ['ss'],

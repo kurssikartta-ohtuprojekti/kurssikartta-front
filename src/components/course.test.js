@@ -6,7 +6,7 @@ describe.only('<Course course={noncompulsory course}/>', () => {
     const course = {
         code: "TKT21010",
         name: "Full Stack -websovelluskehitys harjoitustyö",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -38,7 +38,7 @@ describe.only('<Course course={compulsory course}/>', () => {
     const course = {
         code: "TKT20001",
         name: "Tietorakenteet ja algoritmit",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: true,
         prereqs: [],
         studytrack: ["adm"],
@@ -72,7 +72,7 @@ describe.only('Course buttons get coloring based on study track', () => {
     const softwareSystems = {
         code: "TKT21010",
         name: "Full Stack -websovelluskehitys harjoitustyö",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -82,7 +82,7 @@ describe.only('Course buttons get coloring based on study track', () => {
     const algorithms = {
         code: "TKT20001",
         name: "Tietorakenteet ja algoritmit",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: true,
         prereqs: [],
         studytrack: ["adm"],
@@ -92,7 +92,7 @@ describe.only('Course buttons get coloring based on study track', () => {
     const networking = {
         code: "TKT20004",
         name: "Tietoliikenteen perusteet",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: true,
         prereqs: [],
         studytrack: ["ns"],
@@ -103,7 +103,7 @@ describe.only('Course buttons get coloring based on study track', () => {
     const datascience = {
         code: "DATA11001",
         name: "Introduction to Data Science",
-        level: "Syventävät",
+        level: "advanced",
         compulsory: false,
         prereqs: [],
         studytrack: ["ds"],
