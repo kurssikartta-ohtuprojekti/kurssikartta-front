@@ -33,10 +33,11 @@ class AdminPage extends React.Component {
                                         deleteCourseHandler={this.props.deleteCourseHandler}
                                         matrices={this.props.matrices}
                                         matrice={this.props.matrice} user={this.props.user}
-                                        perus={this.props.perus} 
-                                        aine={this.props.aine} 
-                                        syv={this.props.syv} 
-                                        mat={this.props.mat}
+                                        basic={this.props.basic} 
+                                        inter={this.props.inter} 
+                                        adv={this.props.adv} 
+                                        math={this.props.math}
+                                        stats={this.props.stats}
                                         matriceCallback={this.props.matriceCallback}
                                         selectedMatrice={this.props.selectedMatrice}/>
                                         

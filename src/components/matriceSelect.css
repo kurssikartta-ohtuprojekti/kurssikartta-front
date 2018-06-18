@@ -19,3 +19,7 @@
     display: none;
     float: left;
 }
+ 
+.matriceSelect > null {
+    position: absolute;
+}
