@@ -62,9 +62,6 @@ export default class CourseAdminPanel extends React.Component {
                         </Popup>
                     </div>
                 </div>
-
-
-
             </div>
         )
     }
