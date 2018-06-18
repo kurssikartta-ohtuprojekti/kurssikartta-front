@@ -35,13 +35,14 @@ class CourseMapAdmin extends React.Component {
         const cssGridTemplateAreas = cssGridStringify(this.props.sideLength, courseMapMatrice)
 
         // Makes sure unmapped courses arenät rendered in the map
-        const perus = removeUnmappedCourses(courseMapMatrice, this.props.perus)
-        const aine = removeUnmappedCourses(courseMapMatrice, this.props.aine)
-        const syv = removeUnmappedCourses(courseMapMatrice, this.props.syv)
-        const mat = removeUnmappedCourses(courseMapMatrice, this.props.mat)
+        const basic = removeUnmappedCourses(courseMapMatrice, this.props.basic)
+        const inter = removeUnmappedCourses(courseMapMatrice, this.props.inter)
+        const adv = removeUnmappedCourses(courseMapMatrice, this.props.adv)
+        const math = removeUnmappedCourses(courseMapMatrice, this.props.math)
+        const stats = removeUnmappedCourses(courseMapMatrice, this.props.stats)
 
         // Calculate the amount of empty divs to be rendered as (y, x)
-        const courseCount = courseCounter(perus, aine, syv, mat)
+        const courseCount = courseCounter(basic, inter, adv, math, stats)
         const matriceNodeCount = sideLength * sideLength
         const emptyNodeCount = matriceNodeCount - courseCount
 
@@ -61,9 +62,9 @@ class CourseMapAdmin extends React.Component {
                 }
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
-                    {perus === null ?
+                    {basic === null ?
                         <null></null> :
-                        perus.map(course =>
+                        basic.map(course =>
                             <div key={course.code} style={{ gridArea: course.code }}>
                                 <Course
                                     courseMovementHandler={this.props.courseMovementHandler}
@@ -76,9 +77,9 @@ class CourseMapAdmin extends React.Component {
                         )
                     }
                     {/* Aineopinnot */}
-                    {aine === null ?
+                    {inter === null ?
                         <null></null> :
-                        aine.map(course =>
+                        inter.map(course =>
                             <div key={course.code} style={{ gridArea: course.code }}>
                                 <Course
                                     courseMovementHandler={this.props.courseMovementHandler}
@@ -92,9 +93,9 @@ class CourseMapAdmin extends React.Component {
                     }
 
                     {/* Syventävät opinnot */}
-                    {syv === null ?
+                    {adv === null ?
                         <null></null> :
-                        syv.map(course =>
+                        adv.map(course =>
                             <div key={course.code} style={{ gridArea: course.code }}>
                                 <Course
                                     courseMovementHandler={this.props.courseMovementHandler}
@@ -107,10 +108,25 @@ class CourseMapAdmin extends React.Component {
                         )
                     }
 
-                    {/* Muut opinnot */}
-                    {this.props.mat === null ?
+                    {/* Matematiikan opinnot */}
+                    {this.props.math === null ?
                         <null></null> :
-                        mat.map(course =>
+                        math.map(course =>
+                            <div key={course.code} style={{ gridArea: course.code }}>
+                                <Course
+                                    courseMovementHandler={this.props.courseMovementHandler}
+                                    deleteCourseHandler={this.props.deleteCourseHandler}
+                                    key={course.code}
+                                    course={course}
+                                    scale={2}
+                                    user={this.props.user} />
+                            </div>
+                        )
+                    }
+                    {/* Tilastotieteen opinnot */}
+                    {this.props.stats === null ?
+                        <null></null> :
+                        stats.map(course =>
                             <div key={course.code} style={{ gridArea: course.code }}>
                                 <Course
                                     courseMovementHandler={this.props.courseMovementHandler}
