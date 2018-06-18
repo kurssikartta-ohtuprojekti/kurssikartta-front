@@ -8,19 +8,37 @@ import CourseAdminPanel from './admin/courseAdminPanel'
 import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
 
-// import CompCourseStyling from './courseComponents/compCourseStyling';
-const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandler, scale }) => {
-
+// const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandler, scale }) => {
+class Course extends React.Component {
+    constructor(props) {
+        super(props)
+            this.state = {
+                hovered: false,                
+            }
+        }
+    
+    toggleHover = () => {
+        if (!this.state.hovered) {
+            // console.log("in")
+            this.setState({hovered: true})
+        } else {
+            // console.log("out")
+            this.setState({hovered: false})
+        }
+    }
     // Pakollisen kurssin Button-ominaisuus
-    const compulsoryCourseButton = () => {
+    compulsoryCourseButton = () => {
+        const course = this.props.course
+        const scale = this.props.scale
+        const hovered = this.state.hovered
         return (
-            <Button className="compulsoryBtn" style={CompCourseStyling({course, scale})}>   
-                {scale > 1.5 || scale === undefined ? 
+            <Button onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} className="compulsoryBtn" style={CompCourseStyling({course, scale, hovered})}>   
+                {this.props.scale > 1.5 || this.props.scale === undefined ? 
                     <span>
-                        {course.code} <br/> {course.name}
+                        {this.props.course.code} <br/> {this.props.course.name}
                     </span> :
                     <span style= {{textAlign: 'center'}}>
-                        {course.code}
+                        {this.props.course.code}
                     </span>
                 }
             </Button> 
@@ -28,48 +46,52 @@ const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandle
     }
 
     // Valinnasen kurssin Button-ominaisuus
-    const noncompulsoryCourseButton = () => {
+    noncompulsoryCourseButton = () => {
+        const course = this.props.course
+        const scale = this.props.scale
+        const hovered = this.state.hovered
         return (
-            <Button className="noncompulsoryBtn" style={CourseStyling({course, scale})}>
-                {scale > 1.5 || scale === undefined ? 
+            <Button onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} className="noncompulsoryBtn" style={CourseStyling({course, scale, hovered})}>
+                {this.props.scale > 1.5 || this.props.scale === undefined ? 
                     <span>
-                        {course.code} <br/> {course.name}
+                        {this.props.course.code} <br/> {this.props.course.name}
                     </span> :
                     <span style= {{textAlign: 'center'}}>
-                        {course.code}
+                        {this.props.course.code}
                     </span>
                 }            
             </Button>
         )
     }
-    return (
+    render () { 
+        return (
         // Yksittäisen kurssin renderointi
-        <div className="courseBtn" style={style}> 
-            {course.compulsory ?
+        <div className="courseBtn" style={this.props.style}> 
+            {this.props.course.compulsory ?
                 <div className="compulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}
 
-                    {user !== undefined ? 
+                    {this.props.user !== undefined ? 
                         <Popup
-                            trigger={compulsoryCourseButton()}
+                            trigger={this.compulsoryCourseButton()}
                             // modal
                             closeOnDocumentClick
                         >
                             <span>
                                 <CourseAdminPanel 
-                                    course={course}
-                                    courseMovementHandler={courseMovementHandler} 
-                                    deleteCourseHandler={deleteCourseHandler}/>  
+                                    course={this.props.course}
+                                    courseMovementHandler={this.props.courseMovementHandler} 
+                                    deleteCourseHandler={this.props.deleteCourseHandler}/>  
                             </span> 
                         </Popup>
                             :
                         <Popup
-                            trigger={compulsoryCourseButton()}
+                            trigger={this.compulsoryCourseButton()}
                             modal
                             closeOnDocumentClick
                         >
                             <span>
-                                <CourseInfo course={course}
+                                <CourseInfo course={this.props.course}
                                             courseInfoService={courseInfoService}/> 
                             </span>
                         </Popup>
@@ -78,27 +100,27 @@ const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandle
 
                 <div className="noncompulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}
-                    {user !== undefined ? 
+                    {this.props.user !== undefined ? 
                         <Popup
-                            trigger={noncompulsoryCourseButton()}
+                            trigger={this.noncompulsoryCourseButton()}
                             // modal
                             closeOnDocumentClick
                         >
                             <span>
                                 <CourseAdminPanel 
-                                    course={course}
-                                    courseMovementHandler={courseMovementHandler} 
-                                    deleteCourseHandler={deleteCourseHandler}/>  
+                                    course={this.props.course}
+                                    courseMovementHandler={this.props.courseMovementHandler} 
+                                    deleteCourseHandler={this.props.deleteCourseHandler}/>  
                             </span> 
                         </Popup>
                             :
                         <Popup
-                            trigger={noncompulsoryCourseButton()}
+                            trigger={this.noncompulsoryCourseButton()}
                             modal
                             closeOnDocumentClick
                         >
                             <span>
-                                <CourseInfo course={course}
+                                <CourseInfo course={this.props.course}
                                             courseInfoService={courseInfoService}/> 
                             </span>
                         </Popup>
@@ -108,6 +130,7 @@ const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandle
         </div>
         
     )
+    }
 }
 
 

@@ -1,6 +1,7 @@
 // Valinnaisen kurssin tyylittely
+import color from 'color'
 
-const CourseStyling = ({ course, scale }) => {
+const CourseStyling = ({ course, scale, hovered }) => {
     if (scale === undefined) {
         scale = 2
     }
@@ -12,9 +13,19 @@ const CourseStyling = ({ course, scale }) => {
             return 9
         }
     }
-    // console.log(course.studytrack)
+    const background = (bgColor) => {
+        const returnColor = color(bgColor)
+        // console.log(returnColor)
+        if (!hovered) {
+            return returnColor
+        } else {
+            // console.log(returnColor.lighten(0.5).rgbNumber())
+            return returnColor.lighten(0.05)
+        }
+    }
+     // console.log(course.studytrack)
     const algorithms = {
-        backgroundColor: '#ffb3b3',
+        backgroundColor: background('#ffb3b3'),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
@@ -26,7 +37,7 @@ const CourseStyling = ({ course, scale }) => {
 
     }
     const dataSc = {
-        backgroundColor: '#bdf5bd',
+        backgroundColor: background('#bdf5bd'),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
@@ -38,7 +49,7 @@ const CourseStyling = ({ course, scale }) => {
 
     }
     const systems = {
-        backgroundColor: '#ffffcc',
+        backgroundColor: background('#ffffcc'),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
@@ -49,7 +60,7 @@ const CourseStyling = ({ course, scale }) => {
         zIndex: 1,
     }
     const networking = {
-        backgroundColor: '#c4e3ed',
+        backgroundColor: background('#c4e3ed'),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
@@ -61,7 +72,7 @@ const CourseStyling = ({ course, scale }) => {
 
     }
     const math = {
-        backgroundColor: '#f6d4bc',
+        backgroundColor: background('#f6d4bc'),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
@@ -74,7 +85,7 @@ const CourseStyling = ({ course, scale }) => {
     }
 
     const stats = {
-        backgroundColor: '#f6bcdd',
+        backgroundColor: background('#f6bcdd'),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
@@ -90,6 +101,7 @@ const CourseStyling = ({ course, scale }) => {
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
+        ':hover': {backgroundColor: 'red'},
         fontSize: fontSizing(),
         overflow: 'hidden',
         whiteSpace: 'normal',
