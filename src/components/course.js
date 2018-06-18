@@ -9,13 +9,20 @@ import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
 
 // import CompCourseStyling from './courseComponents/compCourseStyling';
-const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandler }) => {
+const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandler, scale }) => {
 
     // Pakollisen kurssin Button-ominaisuus
     const compulsoryCourseButton = () => {
         return (
-            <Button className="compulsoryBtn" style={CompCourseStyling({course})}>
-                    {course.code}<br/>{course.name}
+            <Button className="compulsoryBtn" style={CompCourseStyling({course, scale})}>   
+                {scale > 1.5 || scale === undefined ? 
+                    <span>
+                        {course.code} <br/> {course.name}
+                    </span> :
+                    <span style= {{textAlign: 'center'}}>
+                        {course.code}
+                    </span>
+                }
             </Button> 
         )    
     }
@@ -23,8 +30,15 @@ const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandle
     // Valinnasen kurssin Button-ominaisuus
     const noncompulsoryCourseButton = () => {
         return (
-            <Button className="noncompulsoryBtn" style={CourseStyling({course})}>
-                    {course.code}<br/>{course.name}
+            <Button className="noncompulsoryBtn" style={CourseStyling({course, scale})}>
+                {scale > 1.5 || scale === undefined ? 
+                    <span>
+                        {course.code} <br/> {course.name}
+                    </span> :
+                    <span style= {{textAlign: 'center'}}>
+                        {course.code}
+                    </span>
+                }            
             </Button>
         )
     }

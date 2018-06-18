@@ -14,6 +14,7 @@ import {
     aineopinnot,
     syventavat,
     matematiikka,
+    tilastotiede,
 } from './utils/tools'
 import AdminPage from './components/admin/adminPage'
 import {
@@ -337,10 +338,9 @@ class App extends React.Component {
         }
     }
 
+    // Wrapper to handle admin course movement on map
     courseMovementHandler = (event) => {
         event.preventDefault()
-        // console.log(event.target.id)
-        // console.log(event.target.name)
         if (event.target.name === 'left') {
             this.moveWestHandler(event.target.id, this.state.selectedMatrice.matrice)
         }
@@ -373,10 +373,7 @@ class App extends React.Component {
     
     matriceCallback = (event) => {
         event.preventDefault()
-        // console.log(event.target.name)
-        // console.log(event.key)
         var newMatrice = this.state.matrices.find(matrice => matrice.id.toString() === event.target.name)
-        // console.log(newMatrice)
         this.setState({ selectedMatrice: newMatrice })
     }
 
@@ -385,10 +382,10 @@ class App extends React.Component {
         const aine = aineopinnot(this.state.courses)
         const syv = syventavat(this.state.courses)
         const mat = matematiikka(this.state.courses)
+        const stats = tilastotiede(this.state.courses)
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
-        // console.log(this.state.user)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>
@@ -413,7 +410,7 @@ class App extends React.Component {
                                 <Route path="/mat" render={() =>
                                     <CourseMap perus={null} aine={null} syv={null} mat={mat} />}
                                 />
-                                <Route path="/admin/map" render={() =>
+                                <Route path="/admin" render={() =>
                                     <AdminPage
                                         username={this.state.username}
                                         password={this.state.password}
@@ -443,7 +440,7 @@ class App extends React.Component {
                                 />
 
                                 <Route exact path="/" render={() =>
-                                    <CourseList perus={perus} aine={aine} syv={syv} mat={mat} />}
+                                    <CourseList perus={perus} aine={aine} syv={syv} mat={mat} stats={stats} />}
                                 />
 
                             </div>

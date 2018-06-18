@@ -1,6 +1,6 @@
 import React from 'react'
 import AddForm from './addForm'
-
+import './unmappedCourse.css'
 export default class UnmappedCourse extends React.Component {
     constructor(props) {
         super(props);
@@ -11,17 +11,17 @@ export default class UnmappedCourse extends React.Component {
 
         }
     }
+    // Handler for add to map form
     handleCoordFieldChange = (event) => {
         if (event.target.value.length < 4) {
             this.setState({ [event.target.name]: event.target.value })
         }
       }
 
+    // Render a single unmapped course's code, name and AddForm
     render() {
         return(
-            <div>
-                <p style={{float: 'left'}}> {this.state.course.code} {this.state.course.name}: </p>
-                <br/>
+            <div className="unmappedCourse">
                 <AddForm 
                             style={{float: 'left'}}
                             courseCode={this.state.course.code}
@@ -30,9 +30,9 @@ export default class UnmappedCourse extends React.Component {
                             handleChange={this.handleCoordFieldChange}
                             handleSubmit={this.props.handleSubmit}
                 />
-                <br/>
-                <br/>
-                <p>__________________________________________________</p>
+                <div className="unmappedCourseText">
+                    {this.state.course.code} {this.state.course.name}
+                </div>
             </div>
         )
     }

@@ -1,31 +1,32 @@
 import React from 'react'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import './addForm.css'
 
+// Render a form for new coordinates on map for a course
 const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord, formName }) => {
   return (
     <div>
       <form id={courseCode} name={formName} onSubmit={handleSubmit}>
-        <FormGroup>
-          <ControlLabel style={{marginLeft: 2, float: 'left'}}>Y:</ControlLabel>
+        <FormGroup className="coordFormGroup">
+          <ControlLabel className="coordText">Y:</ControlLabel>
 
           <FormControl
             value={yCoord}
             onChange={handleChange}
             name="yCoord"
-            style={{marginLeft: 4, width: 45, float: 'left'}}
+            className="coordInput"
           />
         
-          <ControlLabel style={{marginLeft: 4, float: 'left'}}>X:</ControlLabel>
+          <ControlLabel className="coordText">X:</ControlLabel>
 
           <FormControl
             name="xCoord"
             value={xCoord}
             onChange={handleChange}
-            style={{marginLeft: 4, width: 45, float: 'left'}}
-            
+            className="coordInput"            
           />
 
-          <Button style={{marginLeft: 4, float: 'left'}} type="submit" bsStyle="success">add</Button> 
+          <Button className="submitButton" type="submit" bsStyle="success">Add</Button> 
         </FormGroup>
       </form>
     </div>

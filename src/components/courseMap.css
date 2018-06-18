@@ -2,30 +2,36 @@
 
 
 .wrapper {
-    position: relative;
-    max-height: 88vh;
-    border: 3px solid #a6a6a6;
+    /* position: relative; */
+    /* max-height: 88vh; */
     border-radius: 5px;
     background-color: #f2f2f2;
-    overflow: auto;
+    /* overflow: hidden; */
 }
 
 .wrapper > div {
 
     padding: 0;
     color: #d9480f;
-    height: 30px;
-    width: 75px;
+    /* height: 30px;
+    width: 75px; */
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(50, 1fr);
     grid-gap: 5px;
-    grid-auto-rows: 30px;
+    /* grid-auto-rows: 30px;
     grid-auto-columns: 75px;
     grid-template-rows: 30px;
-    grid-template-columns: 75px;
+    grid-template-columns: 75px; */
     /* grid-template-areas: IS DEFINED AT COURSEMAP.JS */
     align-items: start;
+}
+.interactive {
+    overflow: hidden;
+    height: 88vh;
+    border: 3px solid #a6a6a6;
+    border-radius: 5px;
+    position: relative;
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
-
+import './Logout.css'
 const Logout = ({logoutHandler}) => {
     return (
-        <Button onClick={logoutHandler} bsStyle="success">Logout</Button> 
+        <Button className="logout" onClick={logoutHandler} bsStyle="danger">Logout</Button> 
     )
 }
 

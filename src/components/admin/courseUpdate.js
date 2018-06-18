@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import {Button} from 'react-bootstrap'
-
+import './courseUpdate.css'
 export default class courseUpdate extends React.Component {
 
     constructor(props) {
@@ -11,7 +11,7 @@ export default class courseUpdate extends React.Component {
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
-
+    // Handler for update button
     handleClick() {
         axios.get('https://kurssikartta-backend.herokuapp.com/update')
             .then(res => {
@@ -28,8 +28,9 @@ export default class courseUpdate extends React.Component {
     render() {
         return (
             
-            <Button bsStyle='danger' onClick={this.handleClick}>
-                {this.state.isToggleOn ? 'Päivitä kurssitietokanta' : 'Päivitetty'}
+            <Button className="courseUpdate" bsStyle='success' onClick={this.handleClick}>
+                <span class="glyphicon glyphicon-refresh"></span>
+                {this.state.isToggleOn ? ' Päivitä kurssitietokanta' : ' Päivitetty'}
             </Button>
         
         )

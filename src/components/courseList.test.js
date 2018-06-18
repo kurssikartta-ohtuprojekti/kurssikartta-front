@@ -71,7 +71,7 @@ describe.only('<CourseList />', () => {
     ]
     const mat = [
         {
-            code: "MAT12001",
+            code: "MAT11001",
             name: "Dummy7",
             level: "Perusopinnot",
             compulsory: false,
@@ -82,7 +82,7 @@ describe.only('<CourseList />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         },
         {
-            code: "MAT12002",
+            code: "MAT11002",
             name: "Dummy8",
             level: "Perusopinnot",
             compulsory: false,
@@ -93,9 +93,33 @@ describe.only('<CourseList />', () => {
             url: "https://courses.helsinki.fi/fi/TKT21010"
         }
     ]
-    it ('renders all courses', () => {
+    const stats = [
+        {
+            code: "MAT12001",
+            name: "Dummy9",
+            level: "Perusopinnot",
+            compulsory: false,
+            prereqs: [],
+            studytrack: [],
+            faculty: "math",
+            ects: "1-10",
+            url: "https://courses.helsinki.fi/fi/TKT21010"
+        },
+        {
+            code: "MAT12002",
+            name: "Dummy10",
+            level: "Perusopinnot",
+            compulsory: false,
+            prereqs: [],
+            studytrack: [],
+            faculty: "math",
+            ects: "1-10",
+            url: "https://courses.helsinki.fi/fi/TKT21010"
+        }
+    ]
+    it('renders all courses', () => {
         const mockHandler = jest.fn()
-        const courseListComponent = shallow(<CourseList perus={perus} aine={aine} syv={syv} mat={mat}/>)
+        const courseListComponent = shallow(<CourseList perus={perus} aine={aine} syv={syv} mat={mat} stats={stats} />)
         const contentDiv = courseListComponent.find('.mappi')
         //console.log(courseListComponent.html())
         // console.log(contentDiv.html())
@@ -107,5 +131,7 @@ describe.only('<CourseList />', () => {
         expect(contentDiv.html()).toContain("Dummy6")
         expect(contentDiv.html()).toContain("Dummy7")
         expect(contentDiv.html()).toContain("Dummy8")
+        expect(contentDiv.html()).toContain("Dummy9")
+        expect(contentDiv.html()).toContain("Dummy10")
     })
 })

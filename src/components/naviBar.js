@@ -1,7 +1,7 @@
 import React from 'react'
 import {Navbar, NavItem, Nav } from 'react-bootstrap'
 
-
+// Renders the navigation bar
 const NaviBar = () => (
     <div className ="navBar">
       <Navbar collapseOnSelect>
@@ -21,7 +21,7 @@ const NaviBar = () => (
                 </NavItem>
             </Nav>
             <Nav pullRight>
-                <NavItem href="/admin/map">
+                <NavItem href="/admin">
                   Admin view
                 </NavItem>
             </Nav>

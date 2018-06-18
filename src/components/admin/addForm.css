@@ -1,0 +1,25 @@
+.submitButton {
+    margin-left: 5px;
+    height: 30px;
+    margin-right: 6px; 
+    float: left;
+    padding-top: 3px;
+    text-align: center;
+}
+.coordText{
+    padding-top: 4px;
+    margin-left: 4px;
+    float: left;
+}
+.coordInput {
+    padding: 0px;
+    text-align: center;
+    font-size: 12;
+    margin-left: 4px;
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.coordFormGroup {
+    padding: 0px;
+}

@@ -1,8 +1,9 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import { Button, Checkbox, DropdownButton, MenuItem } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import './legendButton.css'
 
+// Renders the info button and modal
 const LegendButton = () => {
   return (
     <div>
