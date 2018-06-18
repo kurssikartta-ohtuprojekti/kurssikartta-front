@@ -56,7 +56,7 @@ class CourseMapAdmin extends React.Component {
                 {this.props.matrices === undefined ?
                     <div /> :
                     <div className="matriceSelect" style={{left: 3}}>
-                        <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} />
+                        <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} user={this.props.user} />
                     </div>
                 }
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
