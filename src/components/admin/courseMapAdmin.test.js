@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import CourseMapAdmin from './courseMapAdmin'
 import {defaultMatrix} from '../../utils/courseMatrices'
 import MatriceSelect from '../matriceSelect'
+import { getHeapSpaceStatistics } from 'v8';
 
 describe.only('<CourseMapAdmin />', () => {
   const defaultMatrice = defaultMatrix()
@@ -100,7 +101,7 @@ describe.only('<CourseMapAdmin />', () => {
 
   it('renders peruskurssit', () => {
       const mockHandler = jest.fn()
-      const courseMapComponent = shallow(<CourseMapAdmin perus={perus} aine={null} syv={null} mat={null} courseMapMatrice={defaultMatrice} />)
+      const courseMapComponent = shallow(<CourseMapAdmin basic={perus} inter={null} adv={null} math={null} stats={null} courseMapMatrice={defaultMatrice} />)
       //console.log(courseMapComponent)
       const contentDiv = courseMapComponent.html().toString()
       expect(contentDiv.includes("Dummy1"))
@@ -116,7 +117,7 @@ describe.only('<CourseMapAdmin />', () => {
 
   it('renders ainekurssit', () => {
       const mockHandler = jest.fn()
-      const courseMapComponent = shallow(<CourseMapAdmin perus={null} aine={perus} syv={null} mat={null} courseMapMatrice={defaultMatrice} />)
+      const courseMapComponent = shallow(<CourseMapAdmin basic={null} inter={perus} adv={null} math={null} stats={null} courseMapMatrice={defaultMatrice} />)
       //console.log(courseMapComponent)
       const contentDiv = courseMapComponent.html().toString()
       expect(contentDiv.includes("Dummy3"))
@@ -132,7 +133,7 @@ describe.only('<CourseMapAdmin />', () => {
 
   it('renders syventävät', () => {
       const mockHandler = jest.fn()
-      const courseMapComponent = shallow(<CourseMapAdmin perus={null} aine={null} syv={syv} mat={null} courseMapMatrice={defaultMatrice} />)
+      const courseMapComponent = shallow(<CourseMapAdmin basic={null} inter={null} adv={syv} math={null}  stats={null} courseMapMatrice={defaultMatrice} />)
       //console.log(courseMapComponent)
       const contentDiv = courseMapComponent.html().toString()
       expect(contentDiv.includes("Dummy5"))
@@ -148,7 +149,7 @@ describe.only('<CourseMapAdmin />', () => {
 
   it('renders matematiikat', () => {
       const mockHandler = jest.fn()
-      const courseMapComponent = shallow(<CourseMapAdmin perus={null} aine={null} syv={null} mat={mat} courseMapMatrice={defaultMatrice} />)
+      const courseMapComponent = shallow(<CourseMapAdmin basic={null} inter={null} adv={null} math={mat} stats={null} courseMapMatrice={defaultMatrice} />)
       //console.log(courseMapComponent)
       const contentDiv = courseMapComponent.html().toString()
       expect(contentDiv.includes("Dummy7"))
@@ -164,7 +165,7 @@ describe.only('<CourseMapAdmin />', () => {
 
   it('renders the page', () => {
       const mockHandler = jest.fn()
-      const courseMapComponent = shallow(<CourseMapAdmin perus={perus} aine={aine} syv={syv} mat={mat} />)
+      const courseMapComponent = shallow(<CourseMapAdmin basic={perus} inter={aine} adv={syv} math={mat} stats={null} />)
       //console.log(courseMapComponent)
       const contentDiv = courseMapComponent.html().toString()
       //console.log(courseMapComponent.html())
