@@ -18,11 +18,19 @@ const getById = async (id) => {
     return await request.then(response => response.data)
 }
 
-const postNewMatrice = async (newMatrice) => {
+const updateMatrice = async (newMatrice) => {
     const config = {
         headers: { 'authorization': token }
     }
     const request = axios.post(`${baseUrl}/${newMatrice.id}`, newMatrice, config)
+    return await request.then(response => response.data)
+}
+
+const postNewMatrice = async (newMatrice) => {
+    const config = {
+        headers: { 'authorization': token }
+    }
+    const request = axios.post(`${baseUrl}`, newMatrice, config)
     return await request.then(response => response.data)
 }
 
@@ -46,4 +54,4 @@ const deleteById = async (id) => {
 }
 
 
-export default {setToken, getAll, getById, updateById, updateWithoutId, deleteById, postNewMatrice}
+export default {setToken, getAll, getById, updateById, updateWithoutId, deleteById, updateMatrice, postNewMatrice}
