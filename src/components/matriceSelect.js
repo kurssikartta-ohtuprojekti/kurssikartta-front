@@ -29,7 +29,7 @@ const MatriceSelect = (props) => {
                     </div>
                 )
             }
-            {props.user === undefined ?
+            {props.admin === undefined ?
                 <null></null> :
                 <div style={divStyle2}>
                     <MenuItem divider />

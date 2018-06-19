@@ -4,7 +4,7 @@ import './LoginForm.css'
 const LoginForm = ({ handleSubmit, handleChange, username, password }) => {
   return (
     <div className="loginWrapper">
-      <h2 className="loginHeader">Admin login</h2>
+      <h2 className="loginHeader">Login</h2>
 
       <form onSubmit={handleSubmit}>
         <FormGroup className="loginForm">
@@ -27,7 +27,10 @@ const LoginForm = ({ handleSubmit, handleChange, username, password }) => {
           />
 
           <Button className="loginSubmit" type="submit" bsStyle="success">Login</Button>
+
+
         </FormGroup>
+        &nbsp; <Button className="register" type="register">Register</Button>
       </form>
     </div>
   )

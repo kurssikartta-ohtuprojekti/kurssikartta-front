@@ -32,6 +32,7 @@ import {
 } from './utils/courseMatrices'
 import loginService from './services/login'
 import LoginForm from './components/LoginForm/LoginForm';
+import MyStudies from './components/myStudies/myStudies';
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -39,6 +40,7 @@ class App extends React.Component {
             courses: [],
             matrices: null,
             user: null,
+            admin: null,
             username: '',
             password: '',
             selectedMatrice: null,
@@ -53,7 +55,7 @@ class App extends React.Component {
         matriceService.getAll().then(matrices =>
             this.setState({ matrices })
         )
-        const loggedUserJSON = window.localStorage.getItem('loggedAdmin')
+        const loggedUserJSON = window.localStorage.getItem('loggedUser')
         if (loggedUserJSON) {
             const user = JSON.parse(loggedUserJSON)
             this.setState({ user })
@@ -63,8 +65,8 @@ class App extends React.Component {
 
     logout = async (event) => {
         event.preventDefault()
-        console.log(window.localStorage.getItem('loggedAdmin'))
-        window.localStorage.removeItem('loggedAdmin')
+        console.log(window.localStorage.getItem('loggedUser'))
+        window.localStorage.removeItem('loggedUser')
         this.setState({ user: null })
     }
 
@@ -75,8 +77,27 @@ class App extends React.Component {
                 username: this.state.username,
                 password: this.state.password
             })
+            var admin
+            if(user.admin) {
+                admin = user.admin
+            }
+            window.localStorage.setItem('loggedUser', JSON.stringify(user))
+            this.setState({ username: '', password: '', user, admin })
+        } catch (exception) {
+            window.alert("Invalid username or password")
+        }
+        this.componentDidMount()
+    }
 
-            window.localStorage.setItem('loggedAdmin', JSON.stringify(user))
+    register = async (event) => {
+        event.preventDefault()
+        try {
+            const user = await loginService.register({
+                username: this.state.username,
+                password: this.state.password,
+            })
+
+            window.localStorage.setItem('loggedUser', JSON.stringify(user))
             this.setState({ username: '', password: '', user })
         } catch (exception) {
             window.alert("Invalid username or password")
@@ -300,6 +321,7 @@ class App extends React.Component {
                                         password={this.state.password}
                                         handleLoginFieldChange={this.handleLoginFieldChange}
                                         login={this.login}
+                                        register={this.register}
                                         logout={this.logout}
                                         courses={this.state.courses}
                                         matrices={this.state.matrices}
@@ -307,6 +329,7 @@ class App extends React.Component {
                                         handleNewSubmit={this.addNewCourseMatriceHandler}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                         user={this.state.user}
+                                        admin={this.state.admin}
                                         deleteCourseHandler={this.deleteCourseHandler}
                                         courseMovementHandler={this.courseMovementHandler}
                                         matriceCallback={this.matriceCallback}
@@ -319,6 +342,22 @@ class App extends React.Component {
                                         password={this.state.password}
                                         handleChange={this.handleLoginFieldChange}
                                         handleSubmit={this.login}
+                                    />
+                                }
+                                />
+                                <Route path="/myStudies" render={() =>
+                                    <MyStudies
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        handleLoginFieldChange={this.handleLoginFieldChange}
+                                        login={this.login}
+                                        logout={this.logout}
+                                        courses={this.state.courses}
+                                        matrices={this.state.matrices}
+                                        matrice={this.state.selectedMatrice.matrice}
+                                        basic={basic} inter={inter} adv={adv} math={math} stats={stats}
+                                        user={this.state.user}
+                                        admin={this.state.admin}
                                     />
                                 }
                                 />

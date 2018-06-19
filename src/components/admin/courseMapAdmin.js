@@ -57,7 +57,7 @@ class CourseMapAdmin extends React.Component {
                 {this.props.matrices === undefined ?
                     <div /> :
                     <div className="matriceSelect" style={{left: 3}}>
-                        <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} user={this.props.user} />
+                        <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} user={this.props.user} admin={this.props.admin} />
                     </div>
                 }
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
@@ -72,7 +72,9 @@ class CourseMapAdmin extends React.Component {
                                     key={course.code}
                                     course={course}
                                     scale={2}
-                                    user={this.props.user} />
+                                    user={this.props.user}
+                                    admin={this.props.admin}
+                                     />
                             </div>
                         )
                     }

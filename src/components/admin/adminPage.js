@@ -7,47 +7,49 @@ import Logout from '.././LoginForm/Logout.js'
 import './adminPage.css'
 class AdminPage extends React.Component {
     constructor(props) {
-      super(props)
-      this.state = {
-      }
+        super(props)
+        this.state = {
+        }
     }
     render() {
         return (
             <div>
                 {/* Render login page if admin isn't logged in */}
-                {this.props.user === null ? 
-                    <LoginForm 
+                {this.props.admin === false ?
+                    <LoginForm
                         username={this.props.username}
                         password={this.props.password}
                         handleChange={this.props.handleLoginFieldChange}
-                        handleSubmit={this.props.login}/> :
+                        handleSubmit={this.props.login} /> :
 
                     <div>
                         <div className="adminButtonGroup">
-                            <Logout logoutHandler={this.props.logout}/> {/* Admin log out */}
-                            <CourseUpdate/> {/* Render button to update backend form excel database */}
+                            <Logout logoutHandler={this.props.logout} /> {/* Admin log out */}
+                            <CourseUpdate /> {/* Render button to update backend form excel database */}
                         </div>
                         {/* Render admin map view */}
-                        <CourseMapAdmin 
-                                        courseMovementHandler={this.props.courseMovementHandler} 
-                                        deleteCourseHandler={this.props.deleteCourseHandler}
-                                        matrices={this.props.matrices}
-                                        matrice={this.props.matrice} user={this.props.user}
-                                        basic={this.props.basic} 
-                                        inter={this.props.inter} 
-                                        adv={this.props.adv} 
-                                        math={this.props.math}
-                                        stats={this.props.stats}
-                                        matriceCallback={this.props.matriceCallback}
-                                        selectedMatrice={this.props.selectedMatrice}/>
-                                        
+                        <CourseMapAdmin
+                            courseMovementHandler={this.props.courseMovementHandler}
+                            deleteCourseHandler={this.props.deleteCourseHandler}
+                            matrices={this.props.matrices}
+                            matrice={this.props.matrice}
+                            user={this.props.user}
+                            admin={this.props.admin}
+                            basic={this.props.basic}
+                            inter={this.props.inter}
+                            adv={this.props.adv}
+                            math={this.props.math}
+                            stats={this.props.stats}
+                            matriceCallback={this.props.matriceCallback}
+                            selectedMatrice={this.props.selectedMatrice} />
+
                         {/* Render unmapped courses of the selected course matrice */}
-                        <UnmappedCourses  
-                                        selectedMatrice={this.props.selectedMatrice} 
-                                        courses={this.props.courses} 
-                                        handleSubmit={this.props.handleNewSubmit}/>
+                        <UnmappedCourses
+                            selectedMatrice={this.props.selectedMatrice}
+                            courses={this.props.courses}
+                            handleSubmit={this.props.handleNewSubmit} />
                     </div>
-                 }
+                }
             </div>
         )
     }

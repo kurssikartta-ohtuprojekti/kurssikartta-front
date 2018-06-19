@@ -71,7 +71,7 @@ class Course extends React.Component {
                 <div className="compulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}
 
-                    {this.props.user !== undefined ? 
+                    {this.props.admin !== undefined ?
                         <Popup
                             trigger={this.compulsoryCourseButton()}
                             // modal
@@ -100,7 +100,7 @@ class Course extends React.Component {
 
                 <div className="noncompulsory" style={{padding:3}}> 
                     {/* Popup-ominaisuus kurssitietojen avaamiselle */}
-                    {this.props.user !== undefined ? 
+                    {this.props.admin !== undefined ? 
                         <Popup
                             trigger={this.noncompulsoryCourseButton()}
                             // modal
