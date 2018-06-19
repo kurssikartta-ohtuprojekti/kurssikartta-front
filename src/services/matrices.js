@@ -54,4 +54,4 @@ const deleteById = async (id) => {
 }
 
 
-export default {setToken, getAll, getById, updateById, updateWithoutId, deleteById, updateMatrice}
+export default {setToken, getAll, getById, updateById, updateWithoutId, deleteById, updateMatrice, postNewMatrice}
