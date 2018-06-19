@@ -31,6 +31,7 @@
     align-items: start;
 }
 .interactive {
+    margin: 2px;
     overflow: hidden;
     height: 88vh;
     border: 3px solid #a6a6a6;

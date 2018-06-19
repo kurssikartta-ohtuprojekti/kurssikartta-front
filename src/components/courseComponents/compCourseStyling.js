@@ -1,7 +1,7 @@
 import color from 'color'
 // Compulsory course styling
 
-const CompCourseStyling = ({course, scale, hovered}) => {
+const CompCourseStyling = ({course, scale, hovered, prereqHighlight}) => {
     if (scale === undefined) {
         scale = 2
     }
@@ -35,6 +35,14 @@ const CompCourseStyling = ({course, scale, hovered}) => {
             return returnColor.darken(0.1)
         }
     }
+    const prereq = () => {
+        if (prereqHighlight === true) {
+            return '2px 3px 3px black'
+        }
+        else {
+            return 'none'
+        }
+    }
     // console.log(course.studytrack)
     const algorithms = {
         width: `${scale * 75}px`,
@@ -51,6 +59,7 @@ const CompCourseStyling = ({course, scale, hovered}) => {
         overflow: 'hidden',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
     }
     const dataSc = {
         width: `${scale * 75}px`,
@@ -67,6 +76,8 @@ const CompCourseStyling = ({course, scale, hovered}) => {
         overflow: 'hidden',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
+
     }
     const systems = {
         width: `${scale * 75}px`,
@@ -83,6 +94,8 @@ const CompCourseStyling = ({course, scale, hovered}) => {
         overflow: 'hidden',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
+
     }
     const networking = {
         width: `${scale * 75}px`,
@@ -99,6 +112,8 @@ const CompCourseStyling = ({course, scale, hovered}) => {
         overflow: 'hidden',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
+
     }
 
     const defaultStyle = {
@@ -115,6 +130,8 @@ const CompCourseStyling = ({course, scale, hovered}) => {
         overflow: 'hidden',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
+
     }
         
     if (course.studytrack[0] === 'ds') {

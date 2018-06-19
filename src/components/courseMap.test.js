@@ -100,7 +100,7 @@ describe.only('<CourseMap />', () => {
 
     it('renders peruskurssit', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap basic={perus} inter={null} adv={null} math={null} stats={null} courseMapMatrice={defaultMatrice} />)
+        const courseMapComponent = shallow(<CourseMap basic={perus} inter={null} adv={null} math={null} stats={null} highlightedPrereqs={[]}courseMapMatrice={defaultMatrice} />)
         //console.log(courseMapComponent)
         const contentDiv = courseMapComponent.html().toString()
         expect(contentDiv.includes("Dummy1"))
@@ -116,7 +116,7 @@ describe.only('<CourseMap />', () => {
 
     it('renders ainekurssit', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap basic={null} inter={perus} adv={null} math={null} stats={null} courseMapMatrice={defaultMatrice} />)
+        const courseMapComponent = shallow(<CourseMap basic={null} inter={perus} adv={null} math={null} stats={null} highlightedPrereqs={[]} courseMapMatrice={defaultMatrice} />)
         //console.log(courseMapComponent)
         const contentDiv = courseMapComponent.html().toString()
         expect(contentDiv.includes("Dummy3"))
@@ -132,7 +132,7 @@ describe.only('<CourseMap />', () => {
 
     it('renders syventävät', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap basic={null} inter={null} adv={syv} math={null} stats={null} courseMapMatrice={defaultMatrice} />)
+        const courseMapComponent = shallow(<CourseMap basic={null} inter={null} adv={syv} math={null} stats={null} highlightedPrereqs={[]} courseMapMatrice={defaultMatrice} />)
         //console.log(courseMapComponent)
         const contentDiv = courseMapComponent.html().toString()
         expect(contentDiv.includes("Dummy5"))
@@ -148,7 +148,7 @@ describe.only('<CourseMap />', () => {
 
     it('renders matematiikat', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap basic={null} inter={null} adv={null} math={mat} stats={null} courseMapMatrice={defaultMatrice} />)
+        const courseMapComponent = shallow(<CourseMap basic={null} inter={null} adv={null} math={mat} stats={null} highlightedPrereqs={[]} courseMapMatrice={defaultMatrice} />)
         //console.log(courseMapComponent)
         const contentDiv = courseMapComponent.html().toString()
         expect(contentDiv.includes("Dummy7"))
@@ -164,7 +164,7 @@ describe.only('<CourseMap />', () => {
 
     it('renders the page', () => {
         const mockHandler = jest.fn()
-        const courseMapComponent = shallow(<CourseMap basic={perus} inter={aine} adv={syv} math={mat} stats={null} />)
+        const courseMapComponent = shallow(<CourseMap basic={perus} inter={aine} adv={syv} math={mat} highlightedPrereqs={[]} stats={null} />)
         //console.log(courseMapComponent)
         const contentDiv = courseMapComponent.html().toString()
         //console.log(courseMapComponent.html())

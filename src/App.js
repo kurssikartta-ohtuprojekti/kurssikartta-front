@@ -37,6 +37,7 @@ class App extends React.Component {
         super(props)
         this.state = {
             courses: [],
+            selectedPrereqs: [],
             matrices: null,
             user: null,
             username: '',
@@ -257,6 +258,21 @@ class App extends React.Component {
         }
     }
 
+    prerequirementHighlightHandler = (course) => {
+        // console.log(this.state.courses)
+
+        let found = []
+        for (let i = 0; i < course.prereqs.length; i++) {
+            found.push(this.state.courses.find(c => c.code === course.prereqs[i]))
+        }
+
+        this.setState({selectedPrereqs: found})
+    }
+
+    prerequirementHighlightOffHandler = () => {
+        this.setState({selectedPrereqs: []})
+    }
+
     render() {
         const basic = basics(this.state.courses) // Using functions from /utils/tools.js
         const inter = intermediate(this.state.courses)
@@ -266,6 +282,7 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
+        console.log(this.state.selectedPrereqs)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>
@@ -279,7 +296,15 @@ class App extends React.Component {
 
                             <div>
                                 <Route path="/kartta" render={() =>
-                                    <CourseMap basic={basic} inter={inter} adv={adv} math={math} stats={stats} selectedMatrice={this.state.selectedMatrice} courseMapMatrice={this.state.selectedMatrice.matrice} matrices={this.state.matrices} matriceCallback={this.matriceCallback} />}
+                                    <CourseMap 
+                                        prereqsOffHandler={this.prerequirementHighlightOffHandler}
+                                        prereqsHandler={this.prerequirementHighlightHandler}
+                                        highlightedPrereqs={this.state.selectedPrereqs}
+                                        basic={basic} inter={inter} adv={adv} math={math} stats={stats}
+                                        selectedMatrice={this.state.selectedMatrice}
+                                        courseMapMatrice={this.state.selectedMatrice.matrice}
+                                        matrices={this.state.matrices}
+                                        matriceCallback={this.matriceCallback} />}
                                 />
                                 <Route path="/perus" render={() =>
                                     <CourseMap basic={basic} inter={null} adv={null} math={null} />}
@@ -320,7 +345,11 @@ class App extends React.Component {
                                 />
 
                                 <Route exact path="/" render={() =>
-                                    <CourseList basic={basic} inter={inter} adv={adv} math={math} stats={stats} />}
+                                    <CourseList prereqsOffHandler={this.prerequirementHighlightOffHandler}
+                                                prereqsHandler={this.prerequirementHighlightHandler}
+                                                highlightedPrereqs={this.state.selectedPrereqs}
+                                                basic={basic} inter={inter} adv={adv} math={math} stats={stats} 
+                                    />}
                                 />
 
                             </div>
