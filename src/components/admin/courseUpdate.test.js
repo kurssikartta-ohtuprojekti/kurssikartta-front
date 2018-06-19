@@ -9,15 +9,14 @@ describe.only('<courseUpdate />', () => {
 
     const cuComponent = shallow(
       <courseUpdate
-        handleClick={mockHandler}
+        //handleClick={mockHandler}
       />
     )
-    console.log(cuComponent.html().toString())
+    console.log(cuComponent.html())
     const button = cuComponent.find('Button')
     button.simulate('click')
 
     expect(mockHandler.mock.calls.length).toBe(1)
     */
-
   })
 })

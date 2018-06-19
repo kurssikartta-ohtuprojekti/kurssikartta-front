@@ -14,8 +14,9 @@ describe.only('<PeriodButton />', () => {
         expect(contentDiv.toString().includes("Periodit"))
     })
 
-    /*
+    
     it('clicking button opens popup', () => {
+        /*
         const mockHandler = jest.fn()
         const periodComponent = shallow(<PeriodButton />)
         const popup = periodComponent.find('Popup')
@@ -25,6 +26,6 @@ describe.only('<PeriodButton />', () => {
         console.log(popup.debug())
         expect(popup.open).toEqual(true)
         //expect(mockHandler.mock.calls.length).toBe(1)
+        */
     })
-    */
 })
