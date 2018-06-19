@@ -6,7 +6,7 @@ describe.only('<CourseInfo />', () => {
     const course = {
         code: "TKT21010",
         name: "Full Stack -websovelluskehitys harjoitustyö",
-        level: "Aineopinnot",
+        level: "intermediate",
         compulsory: false,
         prereqs: [],
         studytrack: ["ss"],
@@ -18,13 +18,13 @@ describe.only('<CourseInfo />', () => {
         [
             {
                 key: 0,
-                opintokohteenTunniste: "AYTKT10001",
-                opetustapahtumat: [{
+                studyObjectCode: "AYTKT10001",
+                instructionEvents: [{
                     key: 0,
-                    nimi: "Avoin yo: Johdatus tietojenkäsittelytieteeseen kesä 2018, Ryhmä 1",
-                    alkamisaika: 1525208400000,
-                    loppumisaika: 1529960400000,
-                    tyyppi: "Kurssi"
+                    name: "Avoin yo: Johdatus tietojenkäsittelytieteeseen kesä 2018, Ryhmä 1",
+                    begings: 1525208400000,
+                    ends: 1529960400000,
+                    type: "Kurssi"
                 }]
             }
 

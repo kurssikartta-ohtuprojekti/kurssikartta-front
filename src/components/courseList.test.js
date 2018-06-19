@@ -7,7 +7,7 @@ describe.only('<CourseList />', () => {
         {
             code: "TKT21010",
             name: "Dummy",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
@@ -17,7 +17,7 @@ describe.only('<CourseList />', () => {
         {
             code: "TKT21011",
             name: "Dummy2",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
@@ -29,7 +29,7 @@ describe.only('<CourseList />', () => {
         {
             code: "TKT21010",
             name: "Dummy3",
-            level: "Aineopinnot",
+            level: "intermediate",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
@@ -39,7 +39,7 @@ describe.only('<CourseList />', () => {
         {
             code: "TKT21011",
             name: "Dummy4",
-            level: "Aineopinnot",
+            level: "intermediate",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
@@ -51,7 +51,7 @@ describe.only('<CourseList />', () => {
         {
             code: "TKT21010",
             name: "Dummy5",
-            level: "Syventävät",
+            level: "advanced",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
@@ -61,7 +61,7 @@ describe.only('<CourseList />', () => {
         {
             code: "TKT21011",
             name: "Dummy6",
-            level: "Syventävät",
+            level: "advanced",
             compulsory: false,
             prereqs: [],
             studytrack: ["ss"],
@@ -73,7 +73,7 @@ describe.only('<CourseList />', () => {
         {
             code: "MAT11001",
             name: "Dummy7",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: false,
             prereqs: [],
             studytrack: [],
@@ -84,7 +84,7 @@ describe.only('<CourseList />', () => {
         {
             code: "MAT11002",
             name: "Dummy8",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: false,
             prereqs: [],
             studytrack: [],
@@ -97,7 +97,7 @@ describe.only('<CourseList />', () => {
         {
             code: "MAT12001",
             name: "Dummy9",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: false,
             prereqs: [],
             studytrack: [],
@@ -108,7 +108,7 @@ describe.only('<CourseList />', () => {
         {
             code: "MAT12002",
             name: "Dummy10",
-            level: "Perusopinnot",
+            level: "basic",
             compulsory: false,
             prereqs: [],
             studytrack: [],
@@ -119,7 +119,7 @@ describe.only('<CourseList />', () => {
     ]
     it('renders all courses', () => {
         const mockHandler = jest.fn()
-        const courseListComponent = shallow(<CourseList perus={perus} aine={aine} syv={syv} mat={mat} stats={stats} />)
+        const courseListComponent = shallow(<CourseList basic={perus} inter={aine} adv={syv} math={mat} stats={stats} />)
         const contentDiv = courseListComponent.find('.mappi')
         //console.log(courseListComponent.html())
         // console.log(contentDiv.html())

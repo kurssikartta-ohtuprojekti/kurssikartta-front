@@ -10,11 +10,11 @@ import {
     Route
 } from 'react-router-dom'
 import {
-    perusopinnot,
-    aineopinnot,
-    syventavat,
-    matematiikka,
-    tilastotiede,
+    basics,
+    intermediate,
+    advanced,
+    mathematics,
+    statistics,
 } from './utils/tools'
 import AdminPage from './components/admin/adminPage'
 import {
@@ -224,12 +224,16 @@ class App extends React.Component {
             window.alert('Nimi muutettu')
 
         } else if (event.target.name === "delete") {
-            matriceService.deleteById(this.state.selectedMatrice.id).then(msg =>
-                this.componentDidMount()
-            )
-            var changeMatrice = this.state.matrices[(this.state.selectedMatrice.id - 1)]
-            this.setState({ selectedMatrice: changeMatrice })
-            window.alert('Matriisi poistettu')
+            if (this.state.matrices.length >= 2) {
+                matriceService.deleteById(this.state.selectedMatrice.id).then(msg =>
+                    this.componentDidMount()
+                )
+                var changeMatrice = this.state.matrices[0]
+                this.setState({ selectedMatrice: changeMatrice })
+                window.alert('Matriisi poistettu')
+            } else {
+                window.alert('Matriisia ei voitu poistaa')
+            }
 
         } else {
 
@@ -254,11 +258,11 @@ class App extends React.Component {
     }
 
     render() {
-        const perus = perusopinnot(this.state.courses) // Using functions from /utils/tools.js
-        const aine = aineopinnot(this.state.courses)
-        const syv = syventavat(this.state.courses)
-        const mat = matematiikka(this.state.courses)
-        const stats = tilastotiede(this.state.courses)
+        const basic = basics(this.state.courses) // Using functions from /utils/tools.js
+        const inter = intermediate(this.state.courses)
+        const adv = advanced(this.state.courses)
+        const math = mathematics(this.state.courses)
+        const stats = statistics(this.state.courses)
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
@@ -275,16 +279,16 @@ class App extends React.Component {
 
                             <div>
                                 <Route path="/kartta" render={() =>
-                                    <CourseMap perus={perus} aine={aine} syv={syv} mat={mat} selectedMatrice={this.state.selectedMatrice} courseMapMatrice={this.state.selectedMatrice.matrice} matrices={this.state.matrices} matriceCallback={this.matriceCallback} />}
+                                    <CourseMap basic={basic} inter={inter} adv={adv} math={math} stats={stats} selectedMatrice={this.state.selectedMatrice} courseMapMatrice={this.state.selectedMatrice.matrice} matrices={this.state.matrices} matriceCallback={this.matriceCallback} />}
                                 />
                                 <Route path="/perus" render={() =>
-                                    <CourseMap perus={perus} aine={null} syv={null} mat={null} />}
+                                    <CourseMap basic={basic} inter={null} adv={null} math={null} />}
                                 />
                                 <Route path="/kandi" render={() =>
-                                    <CourseMap perus={perus} aine={aine} syv={null} mat={null} />}
+                                    <CourseMap basic={basic} inter={inter} adv={null} math={null} />}
                                 />
                                 <Route path="/mat" render={() =>
-                                    <CourseMap perus={null} aine={null} syv={null} mat={mat} />}
+                                    <CourseMap basic={null} inter={null} adv={null} math={math} />}
                                 />
                                 <Route path="/admin" render={() =>
                                     <AdminPage
@@ -297,7 +301,7 @@ class App extends React.Component {
                                         matrices={this.state.matrices}
                                         matrice={this.state.selectedMatrice.matrice}
                                         handleNewSubmit={this.addNewCourseMatriceHandler}
-                                        perus={perus} aine={aine} syv={syv} mat={mat}
+                                        basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                         user={this.state.user}
                                         deleteCourseHandler={this.deleteCourseHandler}
                                         courseMovementHandler={this.courseMovementHandler}
@@ -316,7 +320,7 @@ class App extends React.Component {
                                 />
 
                                 <Route exact path="/" render={() =>
-                                    <CourseList perus={perus} aine={aine} syv={syv} mat={mat} stats={stats} />}
+                                    <CourseList basic={basic} inter={inter} adv={adv} math={math} stats={stats} />}
                                 />
 
                             </div>

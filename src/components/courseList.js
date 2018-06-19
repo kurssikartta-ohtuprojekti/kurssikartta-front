@@ -7,29 +7,29 @@ const mapCss = {
     position: 'absolute'
 }
 // Kaikkien kurssien renderointi listaan
-const CourseList = ({ perus, aine, syv, mat, stats }) => (
+const CourseList = ({ basic, inter, adv, math, stats }) => (
     <div className="mappi" style={mapCss}>
         <div className="perus" style={{ float: 'left', padding: 4 }}>
             <h2>Perusopinnot</h2>
-            {perus.map(course =>
+            {basic.map(course =>
                 <Course key={course.code} course={course} style={{ display: 'inline-block' }} />
             )}
         </div>
         <div className="aine" style={{ float: 'left', padding: 4 }}>
             <h2>Aineopinnot</h2>
-            {aine.map(course =>
+            {inter.map(course =>
                 <Course key={course.code} course={course} style={{ display: 'inline-block' }} />
             )}
         </div>
         <div className="syventavat" style={{ float: 'left', padding: 4 }}>
             <h2>Syventävät opinnot</h2>
-            {syv.map(course =>
+            {adv.map(course =>
                 <Course key={course.code} course={course} style={{ display: 'inline-block' }} />
             )}
         </div>
         <div className="matematiikka" style={{ float: 'left', padding: 4 }}>
             <h2>Matematiikan opinnot</h2>
-            {mat.map(course =>
+            {math.map(course =>
                 <Course key={course.code} course={course} style={{ display: 'inline-block' }}/>
             )}
         </div>

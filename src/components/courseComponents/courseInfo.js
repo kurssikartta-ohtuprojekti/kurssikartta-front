@@ -1,55 +1,52 @@
 import React from 'react'
 // Kurssitietojen renderointi
 
-const opetustapahtumaMapper = (opetustapahtuma) => {
+const instructionEventMapper = (instructionEvent) => {
 
-    const alkuString = new Date(opetustapahtuma.alkamisaika).toLocaleDateString()
-    const loppuString = new Date(opetustapahtuma.loppumisaika).toLocaleDateString()
-   // console.log('opetustapahtuma: ', opetustapahtuma)
+    const beginDateString = new Date(instructionEvent.begins).toLocaleDateString()
+    const endDateString = new Date(instructionEvent.ends).toLocaleDateString()
+    // console.log('opetustapahtuma: ', opetustapahtuma)
     return (
-        <div key={opetustapahtuma.key}>
+        <div key={instructionEvent.key}>
             <small>
-                {opetustapahtuma.opintokohteenTunniste}: {opetustapahtuma.nimi}  <br />
+                {instructionEvent.studyObjectCode}: {instructionEvent.name}  <br />
                 <div style={{ paddingLeft: 8 }}>
-                    Tyyppi: {opetustapahtuma.tyyppi}  <br />
+                    Tyyppi: {instructionEvent.type}  <br />
 
-                    {alkuString === loppuString ?
+                    {beginDateString === endDateString ?
 
-                        <span> Ajankohta: {alkuString}  <br /> </span>
+                        <span> Ajankohta: {beginDateString}  <br /> </span>
 
                         :
                         <span>
-                            Alkamisaika: {alkuString}  <br />
-                            Loppumisaika: {loppuString} <br />
+                            Alkamisaika: {beginDateString}  <br />
+                            Loppumisaika: {endDateString} <br />
                         </span>
                     }
-                    Ilmoittautuminen käynnissä: {opetustapahtuma.ilmoittautuminenKaynnissa ? "Kyllä" : "Ei"}
+                    Ilmoittautuminen käynnissä: {instructionEvent.signupAvailability ? "Kyllä" : "Ei"}
                 </div>
 
             </small>
         </div>
     )
 }
-const opintokohdeMapper = (opintokohde) => {
-    //console.log('opintokohde.key: ', opintokohde)
-    const opetustapahtumat = opintokohde.opetustapahtumat.map(opetustapahtuma => {
-        const tapahtuma = opetustapahtuma
-        tapahtuma.opintokohteenTunniste = opintokohde.opintokohteenTunniste
-      // console.log('tapahtuma:', tapahtuma)
-        return tapahtuma
+const studyObjectMapper = (studyObject) => {
+    const instructionEvents = studyObject.instructionEvents.map(instructionEvent => {
+        const event = instructionEvent
+        event.studyObjectCode = studyObject.studyObjectCode
+        return event
     })
     return (
 
 
-        <div key={opintokohde.key}>
-            {console.log('opetustapahtumat: ', opintokohde.opetustapahtumat)}
+        <div key={studyObject.key}>
 
             <div>
-                {opetustapahtumat.length !== 0 ?
+                {instructionEvents.length !== 0 ?
 
-                    opetustapahtumat.map(opetustapahtumaMapper)
+                    instructionEvents.map(instructionEventMapper)
 
-                    : <div><small>{opintokohde.opintokohteenTunniste}: WebOodissa ei opetustapahtumia</small> </div>
+                    : <div><small>{studyObject.studyObjectCode}: WebOodissa ei opetustapahtumia</small> </div>
                 }
             </div>
         </div>
@@ -57,7 +54,7 @@ const opintokohdeMapper = (opintokohde) => {
     )
 }
 
-const esitietovaatimukset = (prereqs) => {
+const prerequirements = (prereqs) => {
 
     return (
 
@@ -80,11 +77,11 @@ const esitietovaatimukset = (prereqs) => {
 
 }
 
-const toteutukset = (courseInfo) => {
+const instructions = (courseInfo) => {
     return (
         <div>
             Opintojaksot:
-            {courseInfo.map(opintokohdeMapper)}
+            {courseInfo.map(studyObjectMapper)}
         </div>
     )
 }
@@ -93,16 +90,15 @@ export default class CourseInfo extends React.Component {
         super(props);
         this.state = {
             course: props.course,
-            onToteutuksia: false,
             courseInfoService: props.courseInfoService
         }
-        
+
     }
 
     componentDidMount() {
         this.state.courseInfoService.getCourseInfo(this.state.course.code).then(courseInfo => {
             this.setState({ courseInfo })
-           // console.log('A', this.state.courseInfo)
+            // console.log('A', this.state.courseInfo)
         }).catch(() => console.log('coult not fetch course info from weboodi'))
 
     }
@@ -111,7 +107,7 @@ export default class CourseInfo extends React.Component {
 
     render() {
 
-      //  console.log('process.env', process.env)
+        //  console.log('process.env', process.env)
         return (
             <div>
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}<br />{this.state.course.code} ({this.state.course.ects} op)</p>
@@ -124,11 +120,11 @@ export default class CourseInfo extends React.Component {
                         <div>Pakollisuus: Ei</div>
                     }
                 </div>
-                {esitietovaatimukset(this.state.course.prereqs)}
+                {prerequirements(this.state.course.prereqs)}
 
                 {this.state.courseInfo !== undefined ?
 
-                    toteutukset(this.state.courseInfo)
+                    instructions(this.state.courseInfo)
 
                     : <div style={{ position: 'inherit' }}>
                         <h5> Ladataan opintojaksoja WebOodista... </h5>
