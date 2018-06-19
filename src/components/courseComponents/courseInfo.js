@@ -39,7 +39,7 @@ const studyObjectMapper = (studyObject) => {
     return (
 
 
-        <div key={studyObject.key}>
+        <div key={studyObject.key} color="black">
 
             <div>
                 {instructionEvents.length !== 0 ?
@@ -109,7 +109,7 @@ export default class CourseInfo extends React.Component {
 
         //  console.log('process.env', process.env)
         return (
-            <div>
+            <div style={{color: 'black'}}>
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}<br />{this.state.course.code} ({this.state.course.ects} op)</p>
                 <a href={this.state.course.url}>Kurssisivu</a>
                 <br />
