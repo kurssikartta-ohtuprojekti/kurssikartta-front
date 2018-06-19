@@ -27,6 +27,7 @@ const Legend = () => {
       <p>Kurssi vahvana = opetusta valitussa periodissa</p>
       <p>Kurssi himmeänä = ei opetusta valitulla periodilla</p>
       <p><img src={require('../images/bolded.png')} alt="bold" height="21" width="42" /> = Pakollinen kurssi</p>
+      <p><img src={require('../images/shadow.png')} alt="shadow" height="22" width="43" /> = Esitieto hiiren alla olevalle kurssille</p>
       <p><img src={require('../images/sin.png')} alt="blue" height="21" width="42" /> = Networking and Services</p>
       <p><img src={require('../images/kel.png')} alt="yellow" height="21" width="42" /> = Software Systems</p>
       <p><img src={require('../images/pun.png')} alt="red" height="21" width="42" /> = Algorithms, Data-analytics and Machine Learning</p>

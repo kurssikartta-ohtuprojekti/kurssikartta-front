@@ -2,13 +2,14 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import { periodFilter } from '.././utils/tools.js'
+import LegendButton from './legendButton'
 
 const mapCss = {
     backgroundColor: '#f2f2f2',
     borderRadius: 10,
     borderWidth: 5,
     position: 'absolute',
-    padding: 10,
+    padding: 8,
 }
 // Kaikkien kurssien renderointi listaan
 class CourseList extends React.Component {
@@ -48,8 +49,9 @@ class CourseList extends React.Component {
                             callback={this.periodCallback}
                             year={this.state.year} yearCallback={this.yearCallback} 
                 />
+                <LegendButton />
                     <div className="perus" style={{ float: 'left', padding: 8 }}>
-                        <h2>Perusopinnot</h2>
+                        <h3>Perusopinnot</h3>
                         {basic.map(course =>
                             <div key={course.code} style={{ display: 'inline-block' }}>
                                 {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
@@ -91,7 +93,7 @@ class CourseList extends React.Component {
                         )}
                     </div>
                     <div className="aine" style={{ float: 'left', padding: 8 }}>
-                        <h2>Aineopinnot</h2>
+                        <h3>Aineopinnot</h3>
                         {inter.map(course =>
                             <div key={course.code} style={{ display: 'inline-block' }}>
                             {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
@@ -133,7 +135,7 @@ class CourseList extends React.Component {
                         )}
                     </div>
                     <div className="syventavat" style={{ float: 'left', padding: 8 }}>
-                        <h2>Syventävät opinnot</h2>
+                        <h3>Syventävät opinnot</h3>
                         {adv.map(course =>
                             <div key={course.code} style={{ display: 'inline-block' }}>
                             {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
@@ -175,7 +177,7 @@ class CourseList extends React.Component {
                         )}
                     </div>
                     <div className="matematiikka" style={{ float: 'left', padding: 8 }}>
-                        <h2>Matematiikan opinnot</h2>
+                        <h3>Matematiikan opinnot</h3>
                         {math.map(course =>
                             <div key={course.code} style={{display: 'inline-block'}}>
                             {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
@@ -217,7 +219,7 @@ class CourseList extends React.Component {
                         )}
                     </div>
                     <div className="tilastotiede" style={{ float: 'left', padding: 8 }}>
-                        <h2>Tilastotieteen opinnot</h2>
+                        <h3>Tilastotieteen opinnot</h3>
                         {stats.map(course =>
                             <div key={course.code} style={{display: 'inline-block'}}>
                             {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
