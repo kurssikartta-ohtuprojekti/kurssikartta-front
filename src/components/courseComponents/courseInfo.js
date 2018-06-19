@@ -59,7 +59,7 @@ const prerequirements = (prereqs) => {
     return (
 
         <div>
-            <div fontWeight='bold'>Esitiedot:</div>
+            <div style={{ fontWeight: 'bold' }}>Esitiedot:</div>
 
             {
                 prereqs.length !== 0 ?
@@ -80,7 +80,7 @@ const prerequirements = (prereqs) => {
 const instructions = (courseInfo) => {
     return (
         <div>
-            Opintojaksot:
+            <b>Opintojaksot:</b>
             {courseInfo.map(studyObjectMapper)}
         </div>
     )
@@ -110,16 +110,17 @@ export default class CourseInfo extends React.Component {
         //  console.log('process.env', process.env)
         return (
             <div style={{color: 'black'}}>
-                <p style={{ fontWeight: 'bold' }}>{this.state.course.name}<br />{this.state.course.code} ({this.state.course.ects} op)</p>
-                <a href={this.state.course.url}>Kurssisivu</a>
+                <p style={{ fontWeight: 'bold' }}>{this.state.course.name}
+                <br />{this.state.course.code} ({this.state.course.ects} op)</p>
+                <a href={this.state.course.url} style={{ fontWeight: 'bold' }}>Kurssisivu</a>
                 <br />
-
                 <div>
                     {this.state.course.compulsory ?
-                        <div>Pakollisuus: Kyllä</div> :
-                        <div>Pakollisuus: Ei</div>
+                        <div style={{ fontWeight: 'bold' }}>Pakollinen kurssi</div> :
+                        <div style={{ fontWeight: 'bold' }}>Vapaavalintainen kurssi</div>
                     }
                 </div>
+                
                 {prerequirements(this.state.course.prereqs)}
 
                 {this.state.courseInfo !== undefined ?
@@ -130,6 +131,7 @@ export default class CourseInfo extends React.Component {
                         <h5> Ladataan opintojaksoja WebOodista... </h5>
                     </div>
                 }
+                
             </div>
         )
     }
