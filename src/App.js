@@ -193,19 +193,18 @@ class App extends React.Component {
 
     matriceCallback = (event) => {
         event.preventDefault()
+
         if (event.target.name === "clone") {
             const newMatrice = this.state.selectedMatrice
-            console.log((parseInt(this.state.matrices.length, 10)))
             if (newMatrice.error === undefined) {
                 const newMatriceJson = {
-                    id: (parseInt(this.state.matrices.length, 10)),
                     name: 'Clone of ' + newMatrice.name,
                     matrice: newMatrice.matrice
                 }
-                matriceService.postNewMatrice(newMatriceJson).then(msg =>
+                var clonedMatrice = matriceService.postNewMatrice(newMatriceJson).then(msg =>
                     this.componentDidMount()
                 )
-                this.setState({ selectedMatrice: newMatriceJson })
+                this.setState({ selectedMatrice: clonedMatrice })
                 window.alert('Matriisi kloonattu')
 
             } else {
@@ -213,16 +212,21 @@ class App extends React.Component {
             }
         } else if (event.target.name === "rename") {
             var newName = prompt("Anna uusi nimi", this.state.selectedMatrice.name)
-            const newMatriceJson = {
-                id: this.state.selectedMatrice.id,
-                name: newName,
-                matrice: this.state.selectedMatrice.matrice
+            newName = String(newName)
+            if (newName !== '' || newName !== this.state.selectedMatrice.name) {
+                const newMatriceJson = {
+                    id: this.state.selectedMatrice.id,
+                    name: newName,
+                    matrice: this.state.selectedMatrice.matrice
+                }
+                matriceService.updateMatrice(newMatriceJson).then(msg =>
+                    this.componentDidMount()
+                )
+                this.setState({ selectedMatrice: newMatriceJson })
+                window.alert('Nimi muutettu')
+            } else {
+                window.alert('Nimeä ei muutettu')
             }
-            matriceService.postNewMatrice(newMatriceJson).then(msg =>
-                this.componentDidMount()
-            )
-            this.setState({ selectedMatrice: newMatriceJson })
-            window.alert('Nimi muutettu')
 
         } else if (event.target.name === "delete") {
             if (this.state.matrices.length >= 2) {
@@ -250,7 +254,7 @@ class App extends React.Component {
                 name: this.state.selectedMatrice.name,
                 matrice: newMatrice
             };
-            matriceService.postNewMatrice(newMatriceJson).then(msg => this.componentDidMount());
+            matriceService.updateMatrice(newMatriceJson).then(msg => this.componentDidMount());
             // window.alert('Kurssia liikutettu')
         }
         else {
