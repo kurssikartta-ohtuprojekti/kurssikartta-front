@@ -65,7 +65,7 @@ const prerequirements = (prereqs) => {
                 prereqs.length !== 0 ?
                     <div className="prereqs" style={{ paddingLeft: 8 }}>
                         {prereqs.map(prereq =>
-                            <div key={prereq} > <small> {prereq} </small></div>
+                            <div key={prereq} > <small> <a href={'https://courses.helsinki.fi/fi/' + prereq} >{prereq}</a> </small></div>
                         )}
                     </div> :
                     <div className="noPrereqs" style={{ paddingLeft: 8 }}>
