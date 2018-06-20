@@ -101,6 +101,52 @@ class CourseMap extends React.Component {
 
         // Turn the course matrice into the css property grid-template-areas
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
+
+        const mapCourses = (courses) => (
+            courses.map(course =>
+                <div key={course.code}
+                    style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px`}}>
+                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
+                        // If course is to be filtered by periods
+                        highlightedPrereqs.includes(course) ? 
+                            // If course is to be highlihted as prerequirement
+                            <Course key={course.code}
+                                    course={course}
+                                    scale={this.state.scale}
+                                    prereqsHandler={this.props.prereqsHandler}
+                                    prereqsOffHandler={this.props.prereqsOffHandler}
+                                    prereqHighlighted={true}/> 
+                                                
+                            :
+                            <Course key={course.code}
+                                    course={course}
+                                    scale={this.state.scale}
+                                    prereqsHandler={this.props.prereqsHandler}
+                                    prereqsOffHandler={this.props.prereqsOffHandler}
+                                    prereqHighlighted={false}/>
+                                    
+                        :
+                        highlightedPrereqs.includes(course) ?
+                            // If course is to be highlihted as prerequirement
+                            <Course key={course.code}
+                                    course={course}
+                                    scale={this.state.scale}
+                                    style={{ opacity: '0.3'}}
+                                    prereqHighlighted={true}
+                                    prereqsHandler={this.props.prereqsHandler}
+                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
+                            :
+                            <Course key={course.code}
+                                    course={course}
+                                    scale={this.state.scale}
+                                    style={{ opacity: '0.3'}}
+                                    prereqsHandler={this.props.prereqsHandler}
+                                    prereqsOffHandler={this.props.prereqsOffHandler}
+                                    prereqHighlighted={false}/>
+                    }
+                </div>
+        )
+    )
         return (
             <div>
                 <div style={{position: 'relative'}}>
@@ -152,217 +198,28 @@ class CourseMap extends React.Component {
                         {/* perusopinnot */}
                         {basic === null || basic === undefined ?
                             <div></div> :
-                            basic.map(course =>
-                                <div key={course.code}
-                                    style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px`}}>
-                                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={true}/>
-                                                                
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/>
-                                                    
-                                        :
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqHighlighted={true}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/>
-                                    }
-                                </div>
-                            )
+                            mapCourses(basic)
                         }
                         {/* Aineopinnot */}
                         {inter === null || inter === undefined ?
                             <div></div> :
-                            inter.map(course =>
-                                <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
-                                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={true}
-                                                    />            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/> 
-                                        
-                                        :
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqHighlighted={true}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/>
-                                    }
-                                </div>
-                            )
+                            mapCourses(inter)
                         }
                         {/* Syventävät opinnot */}
                         {adv === null || adv === undefined ?
                             <div></div> :
-                            adv.map(course =>
-                                <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
-                                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={true}/>            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/> 
-                                        
-                                        :
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqHighlighted={true}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/>
-                                    }
-                                </div>
-                            )
+                            mapCourses(adv)
                         }
 
                         {/* Matematiikan opinnot */}
                         {math === null || math === undefined ?
                             <div></div> :
-                            math.map(course =>
-                                <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
-                                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={true}/>            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/> 
-                                        
-                                        :
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqHighlighted={true}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/>
-                                    }
-                                </div>
-                            )
+                            mapCourses(math)
                         }
                         {/* Tilastotieteen opinnot */}
                         {stats === null || stats === undefined ?
                             <div></div> :
-                            math.map(course =>
-                                <div key={course.code} style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px` }}>
-                                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={true}
-                                                    />            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/> 
-                                        
-                                        :
-                                        highlightedPrereqs.includes(course) ? 
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqHighlighted={true}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
-                                            :
-                                            <Course key={course.code}
-                                                    course={course}
-                                                    scale={this.state.scale}
-                                                    style={{ opacity: '0.3'}}
-                                                    prereqsHandler={this.props.prereqsHandler}
-                                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                                    prereqHighlighted={false}/>
-                                    }
-                                </div>
-                            )
+                            mapCourses(stats)
                         }
 
                     </div>

@@ -27,7 +27,7 @@ class Course extends React.Component {
             if (prereqsHandler !== undefined) {
                 prereqsHandler(course)
             }
-        }, 300)
+        }, 250)
     }
 
     toggleHoverOff = () => {
