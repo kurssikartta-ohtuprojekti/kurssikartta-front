@@ -33,7 +33,7 @@ import {
 import loginService from './services/login'
 import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
-import MyStudies from './components/myStudies/myStudies';
+import StudiesPage from './components/studiesPage';
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -375,7 +375,7 @@ class App extends React.Component {
                                 }
                                 />
                                 <Route path="/myStudies" render={() =>
-                                    <MyStudies
+                                    <StudiesPage
                                         username={this.state.username}
                                         password={this.state.password}
                                         handleLoginFieldChange={this.handleLoginFieldChange}
@@ -388,6 +388,11 @@ class App extends React.Component {
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                         user={this.state.user}
                                         admin={this.state.admin}
+                                        deleteCourseHandler={this.deleteCourseHandler}
+                                        courseMovementHandler={this.courseMovementHandler}
+                                        matriceCallback={this.matriceCallback}
+                                        selectedMatrice={this.state.selectedMatrice}
+                                        handleNewSubmit={this.addNewCourseMatriceHandler}
                                     />
                                 }
                                 />

@@ -22,13 +22,10 @@ const NaviBar = () => (
                 <NavItem href="/kartta">
                   <b style={{color: 'black'}}>Kartta</b>
                 </NavItem>
-                <NavItem href="/myStudies">
-                <b style={{color: 'black'}}>Omat opinnot</b>
-                </NavItem>
             </Nav>
             <Nav pullRight>
-                <NavItem href="/admin">
-                  <b style={{color: 'black'}}>Admin view</b>
+                <NavItem href="/myStudies">
+                  <b style={{color: 'black'}}>Login</b>
                 </NavItem>
             </Nav>
           </Navbar.Collapse>
