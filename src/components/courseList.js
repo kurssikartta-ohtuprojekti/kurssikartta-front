@@ -42,6 +42,7 @@ class CourseList extends React.Component {
             highlightedPrereqs = []
         }
 
+        // Maps courses to mappi div
         const listCourses  = (courses) => (
             courses.map(course =>
                 <div key={course.code} style={{ display: 'inline-block' }}>
@@ -84,7 +85,7 @@ class CourseList extends React.Component {
             )
         )
         return (
-                <div className="mappi" style={mapCss}>
+            <div className="mappi" style={mapCss}>
                 <PeriodButton   
                             p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
                             p4={this.state.p4} pC={this.state.pC} pS={this.state.pS}
@@ -112,7 +113,7 @@ class CourseList extends React.Component {
                         <h3>Tilastotieteen opinnot</h3>
                         {listCourses(stats)}
                     </div>
-                </div>
+            </div>
         )
     }
 }

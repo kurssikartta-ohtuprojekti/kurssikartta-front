@@ -102,6 +102,7 @@ class CourseMap extends React.Component {
         // Turn the course matrice into the css property grid-template-areas
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
 
+        // Maps courses to wrapper div
         const mapCourses = (courses) => (
             courses.map(course =>
                 <div key={course.code}
