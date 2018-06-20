@@ -31,6 +31,7 @@ import {
     moveCourseSouthWest,
 } from './utils/courseMatrices'
 import loginService from './services/login'
+import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
 import MyStudies from './components/myStudies/myStudies';
 class App extends React.Component {
@@ -93,7 +94,7 @@ class App extends React.Component {
     register = async (event) => {
         event.preventDefault()
         try {
-            const user = await loginService.register({
+            const user = await registerService.register({
                 username: this.state.username,
                 password: this.state.password,
             })
@@ -101,7 +102,7 @@ class App extends React.Component {
             window.localStorage.setItem('loggedUser', JSON.stringify(user))
             this.setState({ username: '', password: '', user })
         } catch (exception) {
-            window.alert("Invalid username or password")
+            window.alert("Password criteria not met")
         }
         this.componentDidMount()
     }

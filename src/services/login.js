@@ -8,9 +8,4 @@ const login = async (credentials) => {
     return await request.then(response => response.data)
 }
 
-const register = async (credentials) => {
-    const request = axios.put(`${baseUrl}/register`, credentials)
-    return await request.then(response => response.data)
-}
-
-export default { login, register }
+export default { login }
