@@ -86,7 +86,7 @@ class CourseList extends React.Component {
         )
         return (
             <div className="mappi" style={mapCss}>
-                <div style={{position: 'relative', paddingRight: 3}}>
+                <div style={{position: 'relative',paddingRight: 3}}>
                     <PeriodButton   
                                 p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
                                 p4={this.state.p4} pC={this.state.pC} pS={this.state.pS}
