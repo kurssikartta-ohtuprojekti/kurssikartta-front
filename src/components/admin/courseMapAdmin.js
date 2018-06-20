@@ -69,13 +69,15 @@ class CourseMapAdmin extends React.Component {
         )
         return (
             <div style={{position: 'relative'}}>
+
+                {/* Render matriceSelect, undefined check for tests */}
                 {this.props.matrices === undefined ?
                     <div /> :
                     <div className="matriceSelect" style={{position: 'absolute', height: 0}}>
-
                         <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} user={this.props.user} />
                     </div>
                 }
+                {/* Wrapper for admin course map */}
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
                     {basic === null ?

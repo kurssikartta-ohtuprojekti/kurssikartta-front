@@ -31,6 +31,22 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return 'none'
         }
     }
+    const border = (borderColor) => {
+        const returnColor = color(borderColor)
+        if (!hovered) {
+            return returnColor
+        } else {
+            // console.log(returnColor.lighten(0.5).rgbNumber())
+            return returnColor.darken(0.1)
+        }
+    }
+    const compulsory = () => {
+        if (course.compulsory) {
+            return '4px'
+        } else {
+            return '1px'
+        }
+    }
      // console.log(course.studytrack)
     const algorithms = {
         backgroundColor: background('#ffb3b3'),
@@ -43,6 +59,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
     }
     const dataSc = {
         backgroundColor: background('#bdf5bd'),
@@ -55,6 +75,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     const systems = {
@@ -68,6 +92,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     const networking = {
@@ -81,6 +109,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     const math = {
@@ -94,6 +126,11 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
+
     }
 
     const stats = {
@@ -107,6 +144,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
 
@@ -121,6 +162,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     if (course.studytrack[0] === 'ds') {

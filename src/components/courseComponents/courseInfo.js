@@ -1,11 +1,10 @@
 import React from 'react'
-// Kurssitietojen renderointi
 
+// Renders course information for nonadmin users when course button is clicked
 const instructionEventMapper = (instructionEvent) => {
 
     const beginDateString = new Date(instructionEvent.begins).toLocaleDateString()
     const endDateString = new Date(instructionEvent.ends).toLocaleDateString()
-    // console.log('opetustapahtuma: ', opetustapahtuma)
     return (
         <div key={instructionEvent.key}>
             <small>
