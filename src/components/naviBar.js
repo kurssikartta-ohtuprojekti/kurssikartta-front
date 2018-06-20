@@ -23,7 +23,7 @@ const NaviBar = () => (
                   <b style={{color: 'black'}}>Kartta</b>
                 </NavItem>
                 <NavItem href="/myStudies">
-                  My Studies
+                <b style={{color: 'black'}}>Omat opinnot</b>
                 </NavItem>
             </Nav>
             <Nav pullRight>

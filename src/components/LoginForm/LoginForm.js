@@ -1,7 +1,7 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
 import './LoginForm.css'
-const LoginForm = ({ handleSubmit, handleChange, username, password }) => {
+const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, password }) => {
   return (
     <div className="loginWrapper">
       <h2 className="loginHeader">Login</h2>
@@ -27,10 +27,10 @@ const LoginForm = ({ handleSubmit, handleChange, username, password }) => {
           />
 
           <Button className="loginSubmit" type="submit" bsStyle="success">Login</Button>
-
+          &nbsp; <Button onClick={handleRegister}>Register</Button>
 
         </FormGroup>
-        &nbsp; <Button className="register" type="register">Register</Button>
+        {/* &nbsp; <Button className="register" type="submit">Register</Button> */}
       </form>
     </div>
   )

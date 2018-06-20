@@ -19,7 +19,8 @@ class MyStudies extends React.Component {
                         username={this.props.username}
                         password={this.props.password}
                         handleChange={this.props.handleLoginFieldChange}
-                        handleSubmit={this.props.login} /> :
+                        handleSubmit={this.props.login}
+                        handleRegister={this.props.register} /> :
 
                     <div>
                         <div>

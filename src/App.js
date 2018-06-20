@@ -43,6 +43,7 @@ class App extends React.Component {
             matrices: null,
             user: null,
             admin: null,
+            role: null,
             username: '',
             password: '',
             selectedMatrice: null,
@@ -78,14 +79,14 @@ class App extends React.Component {
         try {
             const user = await loginService.login({
                 username: this.state.username,
-                password: this.state.password
-            })
-            var admin = true;
-            if(user.admin) {
-                admin = user.admin
+                password: this.state.password,
+                role: this.state.role
+                // role: 'admin'
             }
+        )
+        console.log(user);
             window.localStorage.setItem('loggedUser', JSON.stringify(user))
-            this.setState({ username: '', password: '', user, admin })
+            this.setState({ username: '', password: '', user })
         } catch (exception) {
             window.alert("Invalid username or password")
         }
@@ -369,6 +370,7 @@ class App extends React.Component {
                                         password={this.state.password}
                                         handleChange={this.handleLoginFieldChange}
                                         handleSubmit={this.login}
+                                        handleRegister={this.register}
                                     />
                                 }
                                 />
@@ -378,6 +380,7 @@ class App extends React.Component {
                                         password={this.state.password}
                                         handleLoginFieldChange={this.handleLoginFieldChange}
                                         login={this.login}
+                                        register={this.register}
                                         logout={this.logout}
                                         courses={this.state.courses}
                                         matrices={this.state.matrices}

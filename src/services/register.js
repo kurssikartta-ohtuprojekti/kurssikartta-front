@@ -1,6 +1,6 @@
 import axios from 'axios'
-const baseUrl = 'https://kurssikartta-backend.herokuapp.com/signup'
-// const baseUrl = 'http://localhost:3001/login'
+// const baseUrl = 'https://kurssikartta-backend.herokuapp.com/register'
+const baseUrl = 'http://localhost:3001/register'
 
 const register = async (credentials) => {
     const request = axios.put(`${baseUrl}`, credentials)
