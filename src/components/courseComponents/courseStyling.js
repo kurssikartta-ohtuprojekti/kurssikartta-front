@@ -1,7 +1,7 @@
 // Valinnaisen kurssin tyylittely
 import color from 'color'
 
-const CourseStyling = ({ course, scale, hovered }) => {
+const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
     if (scale === undefined) {
         scale = 2
     }
@@ -23,6 +23,14 @@ const CourseStyling = ({ course, scale, hovered }) => {
             return returnColor.lighten(0.05)
         }
     }
+    const prereq = () => {
+        if (prereqHighlight === true) {
+            return '2px 3px 3px black'
+        }
+        else {
+            return 'none'
+        }
+    }
      // console.log(course.studytrack)
     const algorithms = {
         backgroundColor: background('#ffb3b3'),
@@ -34,7 +42,7 @@ const CourseStyling = ({ course, scale, hovered }) => {
         whiteSpace: 'normal',
         position: 'relative',
         zIndex: 1,
-
+        boxShadow: prereq(),
     }
     const dataSc = {
         backgroundColor: background('#bdf5bd'),
@@ -46,6 +54,7 @@ const CourseStyling = ({ course, scale, hovered }) => {
         overflow: 'hidden',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
 
     }
     const systems = {
@@ -58,6 +67,8 @@ const CourseStyling = ({ course, scale, hovered }) => {
         overflow: 'hidden',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
+
     }
     const networking = {
         backgroundColor: background('#c4e3ed'),
@@ -69,6 +80,7 @@ const CourseStyling = ({ course, scale, hovered }) => {
         whiteSpace: 'normal',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
 
     }
     const math = {
@@ -81,7 +93,7 @@ const CourseStyling = ({ course, scale, hovered }) => {
         whiteSpace: 'normal',
         position: 'relative',
         zIndex: 1,
-
+        boxShadow: prereq(),
     }
 
     const stats = {
@@ -94,6 +106,7 @@ const CourseStyling = ({ course, scale, hovered }) => {
         whiteSpace: 'normal',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
 
     }
 
@@ -107,6 +120,8 @@ const CourseStyling = ({ course, scale, hovered }) => {
         whiteSpace: 'normal',
         position: 'relative',
         zIndex: 1,
+        boxShadow: prereq(),
+
     }
     if (course.studytrack[0] === 'ds') {
         return (

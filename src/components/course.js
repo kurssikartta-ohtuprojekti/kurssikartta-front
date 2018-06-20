@@ -8,7 +8,8 @@ import CourseAdminPanel from './admin/courseAdminPanel'
 import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
 
-// const Course = ({ course, style, user, courseMovementHandler, deleteCourseHandler, scale }) => {
+let hoverTimer // Variable to control timed out hover functions
+
 class Course extends React.Component {
     constructor(props) {
         super(props)
@@ -17,13 +18,23 @@ class Course extends React.Component {
             }
         }
     
-    toggleHover = () => {
-        if (!this.state.hovered) {
-            // console.log("in")
-            this.setState({hovered: true})
-        } else {
-            // console.log("out")
-            this.setState({hovered: false})
+    
+    toggleHoverOn = () => {
+        const course = this.props.course
+        const prereqsHandler = this.props.prereqsHandler
+        this.setState({hovered: true})
+        hoverTimer =  window.setTimeout(function() {
+            if (prereqsHandler !== undefined) {
+                prereqsHandler(course)
+            }
+        }, 300)
+    }
+
+    toggleHoverOff = () => {
+        this.setState({hovered: false})
+        window.clearTimeout(hoverTimer);
+        if (this.props.prereqsOffHandler !== undefined) {
+            this.props.prereqsOffHandler()
         }
     }
     // Pakollisen kurssin Button-ominaisuus
@@ -31,8 +42,9 @@ class Course extends React.Component {
         const course = this.props.course
         const scale = this.props.scale
         const hovered = this.state.hovered
+        const prereqHighlight = this.props.prereqHighlighted
         return (
-            <Button onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} className="compulsoryBtn" style={CompCourseStyling({course, scale, hovered})}>   
+            <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff} className="compulsoryBtn" style={CompCourseStyling({course, scale, hovered, prereqHighlight})}>   
                 {this.props.scale > 1.5 || this.props.scale === undefined ? 
                     <span>
                         {this.props.course.code} <br/> {this.props.course.name}
@@ -50,8 +62,9 @@ class Course extends React.Component {
         const course = this.props.course
         const scale = this.props.scale
         const hovered = this.state.hovered
+        const prereqHighlight = this.props.prereqHighlighted
         return (
-            <Button onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} className="noncompulsoryBtn" style={CourseStyling({course, scale, hovered})}>
+            <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff} className="noncompulsoryBtn" style={CourseStyling({course, scale, hovered, prereqHighlight})}>
                 {this.props.scale > 1.5 || this.props.scale === undefined ? 
                     <span>
                         {this.props.course.code} <br/> {this.props.course.name}
