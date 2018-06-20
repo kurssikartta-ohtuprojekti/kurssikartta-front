@@ -17,20 +17,15 @@ describe.only('<Course course={noncompulsory course}/>', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={course}/>)
-        const contentDiv = courseComponent.find('.noncompulsory')
-        // console.log(courseComponent.html())
-        // console.log(contentDiv.html())
-            // console.log(contentDiv.text())
+        const contentDiv = courseComponent.find('.course')
         expect(contentDiv.html()).toContain("Full Stack -websovelluskehitys harjoitustyö")
     })
     it('renders as noncompulsory', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={course}/>)
-        const contentDiv = courseComponent.find('.compulsory')
-        // console.log(contentDiv)
-        // console.log(courseComponent.html())
-        expect(contentDiv.length === 0)
+        const contentDiv = courseComponent.find('.course')
+        expect(contentDiv.html()).toContain("border-width:1px;")
     })
 })
 
@@ -49,20 +44,15 @@ describe.only('<Course course={compulsory course}/>', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={course}/>)
-        const contentDiv = courseComponent.find('.compulsory')
-        // console.log(courseComponent.html())
-        // console.log(contentDiv.html())
-        // console.log(contentDiv.text())
+        const contentDiv = courseComponent.find('.course')
         expect(contentDiv.html()).toContain("Tietorakenteet ja algoritmit")
     })
     it('renders as compulsory', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={course}/>)
-        const contentDiv = courseComponent.find('.noncompulsory')
-        // console.log(contentDiv)
-        // console.log(courseComponent.html())
-        expect(contentDiv.length === 0)
+        const contentDiv = courseComponent.find('.course')
+        expect(contentDiv.html()).toContain("border-width:4px;")
     })
 
 
@@ -115,40 +105,28 @@ describe.only('Course buttons get coloring based on study track', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={softwareSystems}/>)
-        const contentDiv = courseComponent.find('.noncompulsory')
-        // console.log(courseComponent.html())
-        // console.log(contentDiv.html())
-        // console.log(contentDiv.text())
+        const contentDiv = courseComponent.find('.course')
         expect(contentDiv.html()).toContain("background-color:rgb(255, 255, 204)")
     })
     it('algorithms', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={algorithms}/>)
-        const contentDiv = courseComponent.find('.compulsory')
-        // console.log(courseComponent.html())
-        // console.log(contentDiv.html())
-        // console.log(contentDiv.text())
+        const contentDiv = courseComponent.find('.course')
         expect(contentDiv.html()).toContain("background-color:rgb(255, 179, 179)")
     })
     it('networking', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={networking}/>)
-        const contentDiv = courseComponent.find('.compulsory')
-        // console.log(courseComponent.html())
-        // console.log(contentDiv.html())
-        // console.log(contentDiv.text())
+        const contentDiv = courseComponent.find('.course')
         expect(contentDiv.html()).toContain("background-color:rgb(196, 227, 237)")
     })
     it('data science', () => {
         
         const mockHandler = jest.fn()
         const courseComponent = shallow(<Course course ={datascience}/>)
-        const contentDiv = courseComponent.find('.noncompulsory')
-        // console.log(courseComponent.html())
-        // console.log(contentDiv.html())
-        // console.log(contentDiv.text())
+        const contentDiv = courseComponent.find('.course')
         expect(contentDiv.html()).toContain("background-color:rgb(189, 245, 189")
     })
 })

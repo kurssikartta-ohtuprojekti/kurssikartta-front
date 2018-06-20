@@ -1,6 +1,6 @@
 #legendBtn {
   position: absolute; /* Fixed/sticky position */
-  top: 35px; /* Place the button at the top */
+  top: 5px; /* Place the button at the top */
   right: 3px; /* Place the button x pixels from right */
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */

@@ -51,92 +51,60 @@ class CourseMapAdmin extends React.Component {
             emptyList[i] = i;
         }
 
-        const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice)
+        const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice) 
+
+        // Maps courses to be rendered in wrapper div
+        const adminCoursesMap = (courses) => (
+            courses.map(course =>
+                <div key={course.code} style={{ gridArea: course.code }}>
+                    <Course
+                        courseMovementHandler={this.props.courseMovementHandler}
+                        deleteCourseHandler={this.props.deleteCourseHandler}
+                        key={course.code}
+                        course={course}
+                        scale={2}
+                        user={this.props.user} />       
+                </div>
+            )
+        )
         return (
             <div style={{position: 'relative'}}>
+
+                {/* Render matriceSelect, undefined check for tests */}
                 {this.props.matrices === undefined ?
                     <div /> :
-                    <div className="matriceSelect" style={{left: 3}}>
+                    <div className="matriceSelect" style={{position: 'absolute', height: 0}}>
                         <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} user={this.props.user} />
                     </div>
                 }
+                {/* Wrapper for admin course map */}
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
                     {basic === null ?
                         <null></null> :
-                        basic.map(course =>
-                            <div key={course.code} style={{ gridArea: course.code }}>
-                                <Course
-                                    courseMovementHandler={this.props.courseMovementHandler}
-                                    deleteCourseHandler={this.props.deleteCourseHandler}
-                                    key={course.code}
-                                    course={course}
-                                    scale={2}
-                                    user={this.props.user} />
-                            </div>
-                        )
+                        adminCoursesMap(basic)
                     }
                     {/* Aineopinnot */}
                     {inter === null ?
                         <null></null> :
-                        inter.map(course =>
-                            <div key={course.code} style={{ gridArea: course.code }}>
-                                <Course
-                                    courseMovementHandler={this.props.courseMovementHandler}
-                                    deleteCourseHandler={this.props.deleteCourseHandler}
-                                    key={course.code}
-                                    course={course}
-                                    scale={2}
-                                    user={this.props.user} />
-                            </div>
-                        )
+                        adminCoursesMap(inter)
                     }
 
                     {/* Syventävät opinnot */}
                     {adv === null ?
                         <null></null> :
-                        adv.map(course =>
-                            <div key={course.code} style={{ gridArea: course.code }}>
-                                <Course
-                                    courseMovementHandler={this.props.courseMovementHandler}
-                                    deleteCourseHandler={this.props.deleteCourseHandler}
-                                    key={course.code}
-                                    course={course}
-                                    scale={2}
-                                    user={this.props.user} />
-                            </div>
-                        )
+                        adminCoursesMap(adv)
                     }
 
                     {/* Matematiikan opinnot */}
                     {this.props.math === null ?
                         <null></null> :
-                        math.map(course =>
-                            <div key={course.code} style={{ gridArea: course.code }}>
-                                <Course
-                                    courseMovementHandler={this.props.courseMovementHandler}
-                                    deleteCourseHandler={this.props.deleteCourseHandler}
-                                    key={course.code}
-                                    course={course}
-                                    scale={2}
-                                    user={this.props.user} />
-                            </div>
-                        )
+                        adminCoursesMap(math)
                     }
                     {/* Tilastotieteen opinnot */}
                     {this.props.stats === null ?
                         <null></null> :
-                        stats.map(course =>
-                            <div key={course.code} style={{ gridArea: course.code }}>
-                                <Course
-                                    courseMovementHandler={this.props.courseMovementHandler}
-                                    deleteCourseHandler={this.props.deleteCourseHandler}
-                                    key={course.code}
-                                    course={course}
-                                    scale={2}
-                                    user={this.props.user} />
-                            </div>
-                        )
+                        adminCoursesMap(stats)
                     }
                     {/* Admin empty grids */}
                     {emptyList.map(i =>

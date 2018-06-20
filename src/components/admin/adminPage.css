@@ -1,7 +1,8 @@
 .adminButtonGroup{
     padding-right: 10px;
     padding-bottom: 10px;
-    position: 'relative';
-    height: 20px;
+    position: relative;
+    float: top;
+    height: 50px;
 
 }

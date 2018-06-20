@@ -5,6 +5,8 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
     if (scale === undefined) {
         scale = 2
     }
+
+    // Increase font size based on scale
     const fontSizing = () => {
         if (scale > 2) {
             return (4.5 * scale)
@@ -13,6 +15,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return 9
         }
     }
+    // Lighten background color onHover
     const background = (bgColor) => {
         const returnColor = color(bgColor)
         // console.log(returnColor)
@@ -23,12 +26,33 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return returnColor.lighten(0.05)
         }
     }
+
+    // Render course as prerequirement
+    // returns values for css boxShadow
     const prereq = () => {
         if (prereqHighlight === true) {
             return '2px 3px 3px black'
         }
         else {
             return 'none'
+        }
+    }
+    // Darken borderColor onhover
+    const border = (borderColor) => {
+        const returnColor = color(borderColor)
+        if (!hovered) {
+            return returnColor
+        } else {
+            // console.log(returnColor.lighten(0.5).rgbNumber())
+            return returnColor.darken(0.1)
+        }
+    }
+    // Thicker borders for compulsory courses
+    const compulsory = () => {
+        if (course.compulsory) {
+            return '4px'
+        } else {
+            return '1px'
         }
     }
      // console.log(course.studytrack)
@@ -43,6 +67,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
     }
     const dataSc = {
         backgroundColor: background('#bdf5bd'),
@@ -55,6 +83,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     const systems = {
@@ -68,6 +100,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     const networking = {
@@ -81,6 +117,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     const math = {
@@ -94,6 +134,11 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
+
     }
 
     const stats = {
@@ -107,6 +152,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
 
@@ -121,6 +170,10 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         position: 'relative',
         zIndex: 1,
         boxShadow: prereq(),
+        border: 'solid',
+        borderWidth: compulsory(),
+        borderColor: border('#C0C0C0'),
+        borderRadius: '6px'
 
     }
     if (course.studytrack[0] === 'ds') {
