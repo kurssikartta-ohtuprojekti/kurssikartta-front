@@ -42,7 +42,7 @@ class CourseList extends React.Component {
             highlightedPrereqs = []
         }
 
-        // Maps courses to mappi div
+        // Maps courses to be rendered in  mappi div
         const listCourses  = (courses) => (
             courses.map(course =>
                 <div key={course.code} style={{ display: 'inline-block' }}>

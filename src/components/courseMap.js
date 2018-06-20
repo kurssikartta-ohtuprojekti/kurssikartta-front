@@ -103,15 +103,15 @@ class CourseMap extends React.Component {
         // Turn the course matrice into the css property grid-template-areas
         const cssGridTemplateAreas = cssGridStringify(sideLength, courseMapMatrice)
 
-        // Maps courses to wrapper div
+        // Maps courses to be rendered in wrapper div
         const mapCourses = (courses) => (
             courses.map(course =>
                 <div key={course.code}
-                    style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px`}}>
+                    style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px`}}>    
+                    {/* If course is to be filtered by periods */}
                     {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
-                        // If course is to be filtered by periods
+                        // If course is to be highlighted as prerequirement
                         highlightedPrereqs.includes(course) ? 
-                            // If course is to be highlihted as prerequirement
                             <Course key={course.code}
                                     course={course}
                                     scale={this.state.scale}
@@ -128,8 +128,8 @@ class CourseMap extends React.Component {
                                     prereqHighlighted={false}/>
                                     
                         :
+                        // If course is to be highlihted as prerequirement
                         highlightedPrereqs.includes(course) ?
-                            // If course is to be highlihted as prerequirement
                             <Course key={course.code}
                                     course={course}
                                     scale={this.state.scale}

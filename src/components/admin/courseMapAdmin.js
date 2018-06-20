@@ -53,7 +53,7 @@ class CourseMapAdmin extends React.Component {
 
         const emptyNodeCoordinates = emptyNodeCoordinatesAsList(courseMapMatrice) 
 
-        // Maps courses to wrapper div
+        // Maps courses to be rendered in wrapper div
         const adminCoursesMap = (courses) => (
             courses.map(course =>
                 <div key={course.code} style={{ gridArea: course.code }}>
