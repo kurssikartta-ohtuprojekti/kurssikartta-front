@@ -4,6 +4,7 @@ import {mappedCourses, unmappedCourses} from '../.././utils/courseMatrices'
 import UnmappedCourse from './unmappedCourse'
 import {ListGroup, ListGroupItem} from 'react-bootstrap'
 
+// Renders courses that haven't yet been added to the current selected matrice
 class UnmappedCourses extends React.Component {
     constructor(props) {
       super(props)
@@ -11,23 +12,20 @@ class UnmappedCourses extends React.Component {
           filter: ''
       }
     }
+    // Handler for search filter
     handleFilterChange = (event) => {
-        console.log(event.target.value)
         this.setState({ filter: event.target.value })
-        console.log(this.state.filter)
     }
-// const UnmappedCourses = ({courses, matrice, handleSubmit}) => {
     render () {
         const mapped = mappedCourses(this.props.selectedMatrice.matrice)
-
         const unmapped = unmappedCourses(this.props.courses, mapped)
-        // console.log(this.props.matrice)
-        // console.log(unmapped)
-        const filtered = unmapped.filter(course => course.name.toLowerCase().includes(this.state.filter.toLowerCase()))
+        const filtered = unmapped.filter(course => 
+            course.name.toLowerCase().includes(this.state.filter.toLowerCase())
+        )
 
         return (
             <div>
-                <h1 className="unmappedHeader"> Courses that can be added to {this.props.selectedMatrice.name} </h1>
+                <h2 className="unmappedHeader"> Courses that can be added to {this.props.selectedMatrice.name} matrice </h2>
                     <div className="filter">
                         Search courses by name:
                         <input

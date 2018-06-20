@@ -6,18 +6,21 @@ const NaviBar = () => (
     <div className ="navBar">
       <Navbar collapseOnSelect>
           <Navbar.Header>
+          <a href="/" className="navbar-left"><img 
+          height="51" width="auto" src={require("../images/tko_logo.jpg")} alt="Tko-äly ry"
+          style={{padding: 4}}/></a>
             <Navbar.Brand>
-                Kurssikartta-sovellus
+                <b style={{color: 'black'}}>Kurssikartta-sovellus</b>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
                 <NavItem href="/">
-                  Etusivu
+                  <b style={{color: 'black'}}>Etusivu</b>
                 </NavItem>
                 <NavItem href="/kartta">
-                  Kartta
+                  <b style={{color: 'black'}}>Kartta</b>
                 </NavItem>
                 <NavItem href="/myStudies">
                   My Studies
@@ -25,7 +28,7 @@ const NaviBar = () => (
             </Nav>
             <Nav pullRight>
                 <NavItem href="/admin">
-                  Admin view
+                  <b style={{color: 'black'}}>Admin view</b>
                 </NavItem>
             </Nav>
           </Navbar.Collapse>

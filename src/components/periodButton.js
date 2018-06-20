@@ -9,7 +9,7 @@ const PeriodButton = (props) => {
         <div>
             <Popup
                 trigger={<Button id="periodSelect">Periodit</Button>}
-                modal
+                position="left top"
                 closeOnDocumentClick>
                 <span>
                     <Years year={props.year} yearCallback={props.yearCallback} />
