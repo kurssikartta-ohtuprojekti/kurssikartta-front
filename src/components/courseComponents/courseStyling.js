@@ -5,6 +5,8 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
     if (scale === undefined) {
         scale = 2
     }
+
+    // Increase font size based on scale
     const fontSizing = () => {
         if (scale > 2) {
             return (4.5 * scale)
@@ -13,6 +15,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return 9
         }
     }
+    // Lighten background color onHover
     const background = (bgColor) => {
         const returnColor = color(bgColor)
         // console.log(returnColor)
@@ -23,6 +26,9 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return returnColor.lighten(0.05)
         }
     }
+
+    // Render course as prerequirement
+    // returns values for css boxShadow
     const prereq = () => {
         if (prereqHighlight === true) {
             return '2px 3px 3px black'
@@ -31,6 +37,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return 'none'
         }
     }
+    // Darken borderColor onhover
     const border = (borderColor) => {
         const returnColor = color(borderColor)
         if (!hovered) {
@@ -40,6 +47,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return returnColor.darken(0.1)
         }
     }
+    // Thicker borders for compulsory courses
     const compulsory = () => {
         if (course.compulsory) {
             return '4px'
