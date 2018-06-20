@@ -98,13 +98,20 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return '1px'
         }
     }
-
+    const compulsoryWeight = () => {
+        if (course.compulsory) {
+            return 'bold'
+        } else {
+            return 'none'
+        }
+    }
     const courseStyle = {
         backgroundColor: background(),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
         fontSize: fontSizing(),
+        fontWeight: compulsoryWeight(),
         overflow: 'hidden',
         whiteSpace: 'normal',
         position: 'relative',
