@@ -98,6 +98,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return '1px'
         }
     }
+    // Font weight for compulsory courses
     const compulsoryWeight = () => {
         if (course.compulsory) {
             return 'bold'
@@ -105,6 +106,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return 'none'
         }
     }
+    // Returned css-styling
     const courseStyle = {
         backgroundColor: background(),
         width: `${scale * 75}px`,

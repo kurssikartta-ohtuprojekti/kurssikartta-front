@@ -62,13 +62,14 @@ class App extends React.Component {
         }
     }
 
+    // Admin logout handler
     logout = async (event) => {
         event.preventDefault()
         console.log(window.localStorage.getItem('loggedAdmin'))
         window.localStorage.removeItem('loggedAdmin')
         this.setState({ user: null })
     }
-
+    // Admin login handler
     login = async (event) => {
         event.preventDefault()
         try {
@@ -84,12 +85,13 @@ class App extends React.Component {
         }
         this.componentDidMount()
     }
-
+    // Login text input handler
     handleLoginFieldChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
 
     }
 
+    // Admin handler for adding courses to maps
     addNewCourseMatriceHandler = (event) => {
         event.preventDefault()
         // console.log(event.target.xCoord.value)
@@ -103,8 +105,9 @@ class App extends React.Component {
             window.alert('Enter coordinates!')
         }
     }
+
+    // Admin handler to set new coordinates for courses in maps
     moveCourseToNewCoordsMatriceHandler = (code, matrice, y, x) => {
-        // console.log(event.target.xCoord.value)
         if (x !== '' || y !== '') {
             const newMatrice = moveCourseToNewCoordinates(
                 code, // course code of the new course
@@ -117,14 +120,14 @@ class App extends React.Component {
         }
     }
 
+    // Admin handler for removing courses from maps
     deleteCourseHandler = (event) => {
         event.preventDefault()
-        console.log(event.target.id)
-        console.log(this.state.matrices)
         const newMatrice = removeCourse(event.target.id, this.state.selectedMatrice.matrice)
         this.postChangedMatrice(newMatrice);
     }
 
+    // Move course by one step in matrice
     moveWestHandler = (code, matrice) => {
         const newMatrice = moveCourseWest(code, matrice)
         this.postChangedMatrice(newMatrice);
@@ -262,9 +265,8 @@ class App extends React.Component {
         }
     }
 
+    // Handle highlighed prerequirement courses for mouse overed course
     prerequirementHighlightHandler = (course) => {
-        // console.log(this.state.courses)
-
         let found = []
         for (let i = 0; i < course.prereqs.length; i++) {
             found.push(this.state.courses.find(c => c.code === course.prereqs[i]))
