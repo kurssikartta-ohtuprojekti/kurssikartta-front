@@ -37,7 +37,7 @@ class CourseMap extends React.Component {
             year: (new Date()).getFullYear().toString()
         }
     }
-    // Handler for zoom
+    // Handler for mouse scroll zoom
     handlePanAndZoom(x, y, scale) {
         if (scale < 0.8) {
             this.setState({x, y, scale: 0.8})
@@ -53,6 +53,7 @@ class CourseMap extends React.Component {
     // Handler for maps drag movement
     handlePanMove(x, y) {
         this.setState({x, y})
+        // return (x, y)
     }
 
     ifOutsideOnPanEnd(x, y) {
@@ -63,16 +64,16 @@ class CourseMap extends React.Component {
             this.setState({y: 0})
         }
     }
-
+    // Handler for period filter checkboxes
     periodCallback = (event) => {
         this.setState({ [event.target.name]: event.target.checked })
     }
+    // Handler for period filter years
     yearCallback = (event) => {
         this.setState({ year: event.target.name })
     }
 
     render() {
-    
         let courseMapMatrice = []
         if (this.props.courseMapMatrice === undefined) {
             courseMapMatrice = []
@@ -171,7 +172,7 @@ class CourseMap extends React.Component {
                 <LegendButton />
 
                 </div>
-                
+                {/* Enables Panning and zooming */}
                 <InteractiveDiv 
                     className="interactive"
                     x={x}
@@ -184,6 +185,7 @@ class CourseMap extends React.Component {
                     onPanMove={(x, y) => this.handlePanMove(x, y)}
                     onPanEnd={(x, y) => this.ifOutsideOnPanEnd(x, y)}
                 >
+                {/* Wrapper for the map */}
                     <div className="wrapper"
                         style={{gridTemplateAreas: cssGridTemplateAreas,
                                 gridAutoRows: `${scale * 15}px`,

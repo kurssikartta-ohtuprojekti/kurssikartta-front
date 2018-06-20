@@ -274,7 +274,7 @@ class App extends React.Component {
     }
 
     prerequirementHighlightOffHandler = () => {
-        this.setState({selectedPrereqs: []})
+        this.setState({selectedPrereqs: [] })
     }
 
     render() {
@@ -286,7 +286,6 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
-        console.log(this.state.selectedPrereqs)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>
