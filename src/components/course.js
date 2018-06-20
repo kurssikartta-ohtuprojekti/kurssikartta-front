@@ -62,7 +62,7 @@ class Course extends React.Component {
         return (
         // Render a single course button
         <div className="courseBtn" style={this.props.style}> 
-                <div className="compulsory" style={{padding:3}}> 
+                <div className="course" style={{padding:3}}> 
                     {/* Popups for course information or admin control panel*/}
 
                     {this.props.user !== undefined ? 
