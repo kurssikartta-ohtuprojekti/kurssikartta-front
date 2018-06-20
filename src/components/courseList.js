@@ -42,7 +42,7 @@ class CourseList extends React.Component {
             highlightedPrereqs = []
         }
 
-        // Maps courses to be rendered in  mappi div
+        // Maps courses to be rendered in mappi div
         const listCourses  = (courses) => (
             courses.map(course =>
                 <div key={course.code} style={{ display: 'inline-block' }}>
@@ -86,13 +86,15 @@ class CourseList extends React.Component {
         )
         return (
             <div className="mappi" style={mapCss}>
-                <PeriodButton   
-                            p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
-                            p4={this.state.p4} pC={this.state.pC} pS={this.state.pS}
-                            callback={this.periodCallback}
-                            year={this.state.year} yearCallback={this.yearCallback} 
-                />
-                <LegendButton />
+                <div style={{position: 'relative', paddingRight: 3}}>
+                    <PeriodButton   
+                                p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
+                                p4={this.state.p4} pC={this.state.pC} pS={this.state.pS}
+                                callback={this.periodCallback}
+                                year={this.state.year} yearCallback={this.yearCallback} 
+                    />
+                    <LegendButton />
+                </div>
                     <div className="perus" style={{ float: 'left', padding: 8 }}>
                         <h3>Perusopinnot</h3>
                         {listCourses(basic)}

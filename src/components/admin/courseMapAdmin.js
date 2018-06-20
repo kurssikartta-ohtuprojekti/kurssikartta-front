@@ -71,7 +71,8 @@ class CourseMapAdmin extends React.Component {
             <div style={{position: 'relative'}}>
                 {this.props.matrices === undefined ?
                     <div /> :
-                    <div className="matriceSelect" style={{left: 3}}>
+                    <div className="matriceSelect" style={{position: 'absolute', height: 0}}>
+
                         <MatriceSelect selected={this.props.selectedMatrice} matrices={this.props.matrices} matriceCallback={this.props.matriceCallback} user={this.props.user} />
                     </div>
                 }

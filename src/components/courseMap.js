@@ -151,7 +151,7 @@ class CourseMap extends React.Component {
     )
         return (
             <div>
-                <div style={{position: 'relative'}}>
+                <div style={{position: 'relative', height: 0}}>
                     <PeriodButton   
                             p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}
                             p4={this.state.p4} pC={this.state.pC} pS={this.state.pS}
