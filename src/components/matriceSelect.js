@@ -18,7 +18,7 @@ const MatriceSelect = (props) => {
 
     return (
         <DropdownButton
-            title={props.selected.name}
+            title={'Matrice: ' + props.selected.name}
             id="matriceSelect"
         >
             {props.matrices === null ?

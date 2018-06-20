@@ -12,7 +12,7 @@ export default class CourseAdminPanel extends React.Component {
     render() {
         return (
             <div>
-                {this.props.course.name}
+                <b style={{color: 'black'}}>{this.props.course.name}</b>
 
                 {/* Render the movement control panel */}
                 <div className="controlWrapper">
@@ -49,7 +49,7 @@ export default class CourseAdminPanel extends React.Component {
                             closeOnDocumentClick
                         >
                             <span>
-                                <p style={{ float: 'left' }}>New Coordinates:</p>
+                                <b style={{ float: 'left', color: 'black' }}>New Coordinates:</b>
                                 <br />
                                 {/* Form for repositioning */}
                                 <AddForm style={{ float: 'left' }}
