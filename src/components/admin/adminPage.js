@@ -33,7 +33,7 @@ class AdminPage extends React.Component {
                     <CourseUpdate />
                 </div>
 
-                <CourseMapAdmin courseMovementHandler={this.props.courseMovementHandler} deleteCourseHandler={this.props.deleteCourseHandler} matrices={this.props.matrices} matrice={this.props.matrice} user={this.props.user} admin={this.props.admin} basic={this.props.basic} inter={this.props.inter} adv={this.props.adv} math={this.props.math} stats={this.props.stats} matriceCallback={this.props.matriceCallback} selectedMatrice={this.props.selectedMatrice} />
+                <CourseMapAdmin courseMovementHandler={this.props.courseMovementHandler} deleteCourseHandler={this.props.deleteCourseHandler} matrices={this.props.matrices} matrice={this.props.matrice} user={this.props.user} basic={this.props.basic} inter={this.props.inter} adv={this.props.adv} math={this.props.math} stats={this.props.stats} matriceCallback={this.props.matriceCallback} selectedMatrice={this.props.selectedMatrice} />
 
 
                 <UnmappedCourses selectedMatrice={this.props.selectedMatrice} courses={this.props.courses} handleSubmit={this.props.handleNewSubmit} />
