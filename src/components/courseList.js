@@ -2,13 +2,14 @@ import React from 'react'
 import Course from './course'
 import PeriodButton from './periodButton'
 import { periodFilter } from '.././utils/tools.js'
+import LegendButton from './legendButton'
 
 const mapCss = {
     backgroundColor: '#f2f2f2',
     borderRadius: 10,
     borderWidth: 5,
     position: 'absolute',
-    padding: 10,
+    padding: 8,
 }
 // Kaikkien kurssien renderointi listaan
 class CourseList extends React.Component {
@@ -90,24 +91,25 @@ class CourseList extends React.Component {
                             callback={this.periodCallback}
                             year={this.state.year} yearCallback={this.yearCallback} 
                 />
+                <LegendButton />
                     <div className="perus" style={{ float: 'left', padding: 8 }}>
-                        <h2>Perusopinnot</h2>
+                        <h3>Perusopinnot</h3>
                         {listCourses(basic)}
                     </div>
                     <div className="aine" style={{ float: 'left', padding: 8 }}>
-                        <h2>Aineopinnot</h2>
+                        <h3>Aineopinnot</h3>
                         {listCourses(inter)}
                     </div>
                     <div className="syventavat" style={{ float: 'left', padding: 8 }}>
-                        <h2>Syventävät opinnot</h2>
+                        <h3>Syventävät opinnot</h3>
                         {listCourses(adv)}
                     </div>
                     <div className="matematiikka" style={{ float: 'left', padding: 8 }}>
-                        <h2>Matematiikan opinnot</h2>
+                        <h3>Matematiikan opinnot</h3>
                         {listCourses(math)}
                     </div>
                     <div className="tilastotiede" style={{ float: 'left', padding: 8 }}>
-                        <h2>Tilastotieteen opinnot</h2>
+                        <h3>Tilastotieteen opinnot</h3>
                         {listCourses(stats)}
                     </div>
                 </div>
