@@ -17,15 +17,15 @@ const NaviBar = () => (
           <Navbar.Collapse>
             <Nav>
                 <NavItem href="/">
-                  Etusivu
+                  <b>Etusivu</b>
                 </NavItem>
                 <NavItem href="/kartta">
-                  Kartta
+                  <b>Kartta</b>
                 </NavItem>
             </Nav>
             <Nav pullRight>
                 <NavItem href="/admin">
-                  Admin view
+                  <b>Admin view</b>
                 </NavItem>
             </Nav>
           </Navbar.Collapse>
