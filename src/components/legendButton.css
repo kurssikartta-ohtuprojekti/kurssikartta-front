@@ -1,11 +1,11 @@
 #legendBtn {
   position: absolute; /* Fixed/sticky position */
   top: 5px; /* Place the button at the top */
-  right: 3px; /* Place the button x pixels from right */
+  right: 5px; /* Place the button x pixels from right */
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: rgb(139, 138, 138); /* Set a background color */
+  background-color: rgb(63, 61, 61); /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 5px; /* Some padding */
