@@ -15,16 +15,59 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return 9
         }
     }
+    // Background color based on studytrack or faculty
     // Lighten background color onHover
-    const background = (bgColor) => {
-        const returnColor = color(bgColor)
-        // console.log(returnColor)
-        if (!hovered) {
-            return returnColor
-        } else {
-            // console.log(returnColor.lighten(0.5).rgbNumber())
-            return returnColor.lighten(0.05)
+    const background = () => {
+        if (course.studytrack[0] === 'ds') {
+            if (!hovered) {
+                return color('#bdf5bd')
+            } else {
+                return color('#bdf5bd').lighten(0.05)
+            }
         }
+        if (course.studytrack[0] === 'ns') {
+            if (!hovered) {
+                return color('#c4e3ed')
+            } else {
+                return color('#c4e3ed').lighten(0.05)
+            }
+        }
+        if (course.studytrack[0] === 'ss') {
+            if (!hovered) {
+                return color('#ffffcc')
+            } else {
+                return color('#ffffcc').lighten(0.05)
+            }
+        }
+        if (course.studytrack[0] === 'adm') {
+            if (!hovered) {
+                return color('#ffb3b3')
+            } else {
+                return color('#ffb3b3').lighten(0.05)
+            }
+        }
+        if (course.studytrack[0] === undefined || course.studytrack[0] === null || course.studytrack[0] ==='') {
+            if (!hovered) {
+                return color('white')
+            } else {
+                return color('#f0f8ff')
+            }
+        }
+        if (course.faculty === 'math') {
+            if (!hovered) {
+                return color('#f6d4bc')
+            } else {
+                return color('#f6d4bc').lighten(0.05)
+            }
+        }
+    
+        if (course.faculty === 'stats') {
+            if (!hovered) {
+                return color('#f6bcdd')
+            } else {
+                return color('#f6bcdd').lighten(0.05)
+            }
+        }        
     }
 
     // Render course as prerequirement
@@ -55,9 +98,9 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return '1px'
         }
     }
-     // console.log(course.studytrack)
-    const algorithms = {
-        backgroundColor: background('#ffb3b3'),
+
+    const courseStyle = {
+        backgroundColor: background(),
         width: `${scale * 75}px`,
         height: `${scale * 30}px`,
         padding: 0,
@@ -72,143 +115,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         borderColor: border('#C0C0C0'),
         borderRadius: '6px'
     }
-    const dataSc = {
-        backgroundColor: background('#bdf5bd'),
-        width: `${scale * 75}px`,
-        height: `${scale * 30}px`,
-        padding: 0,
-        fontSize: fontSizing(),
-        whiteSpace: 'normal',
-        overflow: 'hidden',
-        position: 'relative',
-        zIndex: 1,
-        boxShadow: prereq(),
-        border: 'solid',
-        borderWidth: compulsory(),
-        borderColor: border('#C0C0C0'),
-        borderRadius: '6px'
-
-    }
-    const systems = {
-        backgroundColor: background('#ffffcc'),
-        width: `${scale * 75}px`,
-        height: `${scale * 30}px`,
-        padding: 0,
-        fontSize: fontSizing(),
-        whiteSpace: 'normal',
-        overflow: 'hidden',
-        position: 'relative',
-        zIndex: 1,
-        boxShadow: prereq(),
-        border: 'solid',
-        borderWidth: compulsory(),
-        borderColor: border('#C0C0C0'),
-        borderRadius: '6px'
-
-    }
-    const networking = {
-        backgroundColor: background('#c4e3ed'),
-        width: `${scale * 75}px`,
-        height: `${scale * 30}px`,
-        padding: 0,
-        fontSize: fontSizing(),
-        overflow: 'hidden',
-        whiteSpace: 'normal',
-        position: 'relative',
-        zIndex: 1,
-        boxShadow: prereq(),
-        border: 'solid',
-        borderWidth: compulsory(),
-        borderColor: border('#C0C0C0'),
-        borderRadius: '6px'
-
-    }
-    const math = {
-        backgroundColor: background('#f6d4bc'),
-        width: `${scale * 75}px`,
-        height: `${scale * 30}px`,
-        padding: 0,
-        fontSize: fontSizing(),
-        overflow: 'hidden',
-        whiteSpace: 'normal',
-        position: 'relative',
-        zIndex: 1,
-        boxShadow: prereq(),
-        border: 'solid',
-        borderWidth: compulsory(),
-        borderColor: border('#C0C0C0'),
-        borderRadius: '6px'
-
-    }
-
-    const stats = {
-        backgroundColor: background('#f6bcdd'),
-        width: `${scale * 75}px`,
-        height: `${scale * 30}px`,
-        padding: 0,
-        fontSize: fontSizing(),
-        overflow: 'hidden',
-        whiteSpace: 'normal',
-        position: 'relative',
-        zIndex: 1,
-        boxShadow: prereq(),
-        border: 'solid',
-        borderWidth: compulsory(),
-        borderColor: border('#C0C0C0'),
-        borderRadius: '6px'
-
-    }
-
-    const defaultStyle = {
-        width: `${scale * 75}px`,
-        height: `${scale * 30}px`,
-        padding: 0,
-        ':hover': {backgroundColor: 'red'},
-        fontSize: fontSizing(),
-        overflow: 'hidden',
-        whiteSpace: 'normal',
-        position: 'relative',
-        zIndex: 1,
-        boxShadow: prereq(),
-        border: 'solid',
-        borderWidth: compulsory(),
-        borderColor: border('#C0C0C0'),
-        borderRadius: '6px'
-
-    }
-    if (course.studytrack[0] === 'ds') {
-        return (
-            dataSc
-        )
-    }
-    if (course.studytrack[0] === 'ns') {
-        return (
-            networking
-        )
-    }
-    if (course.studytrack[0] === 'ss') {
-        return (
-            systems
-        )
-    }
-    if (course.studytrack[0] === 'adm') {
-        return (
-            algorithms
-        )
-    }
-    if (course.faculty === 'math') {
-        return (
-            math
-        )
-    }
-
-    if (course.faculty === 'stats') {
-        return (
-            stats
-        )
-    }
-    return (
-        defaultStyle
-    )
+    return courseStyle
 }
+
 export default CourseStyling
