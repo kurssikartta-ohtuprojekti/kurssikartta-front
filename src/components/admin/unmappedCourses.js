@@ -27,7 +27,7 @@ class UnmappedCourses extends React.Component {
 
         return (
             <div>
-                <h1 className="unmappedHeader"> Courses that can be added to {this.props.selectedMatrice.name} </h1>
+                <h2 className="unmappedHeader"> Courses that can be added to {this.props.selectedMatrice.name} matrice </h2>
                     <div className="filter">
                         Search courses by name:
                         <input

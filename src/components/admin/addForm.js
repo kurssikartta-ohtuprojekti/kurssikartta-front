@@ -8,7 +8,7 @@ const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord, formNa
     <div>
       <form id={courseCode} name={formName} onSubmit={handleSubmit}>
         <FormGroup className="coordFormGroup">
-          <ControlLabel className="coordText">Y:</ControlLabel>
+          <ControlLabel className="coordText" style={{color: 'black'}}>Y:</ControlLabel>
 
           <FormControl
             value={yCoord}
@@ -17,7 +17,7 @@ const AddForm = ({courseCode, handleSubmit, handleChange, yCoord, xCoord, formNa
             className="coordInput"
           />
         
-          <ControlLabel className="coordText">X:</ControlLabel>
+          <ControlLabel className="coordText" style={{color: 'black'}}>X:</ControlLabel>
 
           <FormControl
             name="xCoord"
