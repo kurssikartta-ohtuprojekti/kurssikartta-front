@@ -7,7 +7,7 @@ const NaviBar = () => (
       <Navbar collapseOnSelect>
           <Navbar.Header>
           <a href="/" className="navbar-left"><img 
-          height="50" width="auto" src={require("../images/tko_logo.jpg")}
+          height="51" width="auto" src={require("../images/tko_logo.jpg")}
           style={{padding: 4}}/></a>
             <Navbar.Brand>
                 <b>Kurssikartta-sovellus</b>
