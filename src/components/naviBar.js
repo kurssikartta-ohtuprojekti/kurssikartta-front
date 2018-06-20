@@ -6,8 +6,11 @@ const NaviBar = () => (
     <div className ="navBar">
       <Navbar collapseOnSelect>
           <Navbar.Header>
+          <a href="/" className="navbar-left"><img 
+          height="50" width="auto" src={require("../images/tko_logo.jpg")}
+          style={{padding: 4}}/></a>
             <Navbar.Brand>
-                Kurssikartta-sovellus
+                <b>Kurssikartta-sovellus</b>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
