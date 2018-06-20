@@ -13,7 +13,8 @@ class MyStudies extends React.Component {
         return (
             <div>
                 {/* Render login page if user isn't logged in */}
-                {this.props.user === undefined ?
+                {console.log(this.props.user)}
+                {this.props.user === null ?
                     <LoginForm
                         username={this.props.username}
                         password={this.props.password}
@@ -22,7 +23,7 @@ class MyStudies extends React.Component {
 
                     <div>
                         <div>
-                            Tervetuloa, {this.props.username}
+                            Tervetuloa, {this.props.user.username}
                         </div>
                         <div className="userButtonGroup">
                             <Logout logoutHandler={this.props.logout} /> {/* Admin log out */}

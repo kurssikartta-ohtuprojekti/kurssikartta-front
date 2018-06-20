@@ -11,11 +11,12 @@ class AdminPage extends React.Component {
         this.state = {
         }
     }
+
     render() {
         return (
             <div>
                 {/* Render login page if admin isn't logged in */}
-                {this.props.admin === false ?
+                {this.props.admin !== true ?
                     <LoginForm
                         username={this.props.username}
                         password={this.props.password}

@@ -68,7 +68,7 @@ class App extends React.Component {
         event.preventDefault()
         console.log(window.localStorage.getItem('loggedUser'))
         window.localStorage.removeItem('loggedUser')
-        this.setState({ user: null })
+        this.setState({ user: null, admin : false })
     }
 
     login = async (event) => {
@@ -78,7 +78,7 @@ class App extends React.Component {
                 username: this.state.username,
                 password: this.state.password
             })
-            var admin
+            var admin = true;
             if(user.admin) {
                 admin = user.admin
             }
