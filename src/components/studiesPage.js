@@ -30,6 +30,7 @@ class StudiesPage extends React.Component {
                 username={this.props.username}
                 password={this.props.password}
                 handleLoginFieldChange={this.props.handleLoginFieldChange}
+                reCaptcha={this.props.reCaptcha} verified={this.props.verified}
                 login={this.props.login}
                 register={this.props.register}
                 logout={this.props.logout}
@@ -50,6 +51,7 @@ class StudiesPage extends React.Component {
                 username={this.props.username}
                 password={this.props.password}
                 handleLoginFieldChange={this.props.handleLoginFieldChange}
+                reCaptcha={this.props.reCaptcha} verified={this.props.verified}
                 login={this.props.login}
                 register={this.props.register}
                 logout={this.props.logout}
@@ -65,7 +67,8 @@ class StudiesPage extends React.Component {
 
     displayLogin() {
         if (this.props.user === null) {
-            return <LoginForm username={this.props.username} password={this.props.password} handleChange={this.props.handleLoginFieldChange} handleSubmit={this.props.login} handleRegister={this.props.register} />;
+            return <LoginForm username={this.props.username} password={this.props.password} handleChange={this.props.handleLoginFieldChange} handleSubmit={this.props.login} handleRegister={this.props.register}
+                reCaptcha={this.props.reCaptcha} verified={this.props.verified} />;
         }
     }
 }
