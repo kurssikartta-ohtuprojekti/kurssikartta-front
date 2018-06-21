@@ -6,6 +6,7 @@ import CourseStyling from'./courseComponents/courseStyling'
 import CourseAdminPanel from './admin/courseAdminPanel'
 import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
+import {completedFilter} from '.././utils/tools'
 
 let hoverTimer // Variable to control timed out hover functions
 
@@ -43,18 +44,35 @@ class Course extends React.Component {
         const scale = this.props.scale
         const hovered = this.state.hovered
         const prereqHighlight = this.props.prereqHighlighted
+        let user = this.props.user
+            if (user === undefined || user === null) {
+                user = 'none'
+            }
         return (
             <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff} 
                     // className="noncompulsoryBtn"
                     style={CourseStyling({course, scale, hovered, prereqHighlight})}>
-                {this.props.scale > 1.5 || this.props.scale === undefined ? 
+                {this.props.scale > 1.5 || this.props.scale === undefined ?
                     <span>
-                        {this.props.course.code} <br/> {this.props.course.name}
-                    </span> :
-                    <span style= {{textAlign: 'center'}}>
-                        {this.props.course.code}
+                        {completedFilter(this.props.course, this.props.user.completedCourses) ? 
+                            <span style={{color: 'green'}} className="glyphicon glyphicon-ok"/>
+                            :
+                            <span/>}
+                        <span>
+                            {this.props.course.code} <br/> {this.props.course.name}
+                        </span> 
                     </span>
-                }            
+                    :
+                    <span>
+                        {completedFilter(this.props.course, this.props.user.completedCourses) ? 
+                            <span style={{color: 'green'}} className="glyphicon glyphicon-ok"/>
+                            :
+                            <span/>}
+                        <span style= {{textAlign: 'center'}}>
+                            {this.props.course.code}
+                        </span>
+                    </span>
+                }       
             </Button>
         )
     }

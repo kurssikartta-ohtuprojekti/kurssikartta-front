@@ -24,7 +24,7 @@ const MatriceSelect = (props) => {
             {props.matrices === null ?
                 <null></null> :
                 props.matrices.map(matrice =>
-                    <div style={divStyle}>
+                    <div key={matrice.id} style={divStyle}>
                         <MenuItem style={divStyle} name={matrice.id} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
                     </div>
                 )
@@ -41,9 +41,9 @@ function isAdmin(divStyle2, props) {
     if (props.user.role === 'admin') {
         return <div style={divStyle2}>
             <MenuItem divider />
-            <MenuItem name="clone" onClick={props.matriceCallback}>Kopioi {props.selected.name}</MenuItem>
-            <MenuItem name="rename" onClick={props.matriceCallback}>Nimeä uudelleen {props.selected.name}</MenuItem>
-            <MenuItem name="delete" onClick={props.matriceCallback}>Poista {props.selected.name}</MenuItem>
+            <MenuItem key="clone" name="clone" onClick={props.matriceCallback}>Kopioi {props.selected.name}</MenuItem>
+            <MenuItem key="rename" name="rename" onClick={props.matriceCallback}>Nimeä uudelleen {props.selected.name}</MenuItem>
+            <MenuItem key="delete" name="delete" onClick={props.matriceCallback}>Poista {props.selected.name}</MenuItem>
         </div>;
     } else {
         return
