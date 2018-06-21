@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
+import {completedFilter} from '../.././utils/tools.js'
 // Renders course information for nonadmin users when course button is clicked
 const instructionEventMapper = (instructionEvent) => {
 
@@ -89,26 +90,36 @@ export default class CourseInfo extends React.Component {
         super(props);
         this.state = {
             course: props.course,
-            courseInfoService: props.courseInfoService
+            courseInfoService: props.courseInfoService,
+            completed: true,
         }
 
     }
-
     componentDidMount() {
         this.state.courseInfoService.getCourseInfo(this.state.course.code).then(courseInfo => {
             this.setState({ courseInfo })
             // console.log('A', this.state.courseInfo)
         }).catch(() => console.log('coult not fetch course info from weboodi'))
-
+        const setCompleted = completedFilter(this.state.course.code, this.props.user.completedCourses)
+        this.setState({completed: setCompleted})
     }
 
 
 
+
     render() {
-        console.log(this.props.user)
+        // console.log(this.props.user)
         //  console.log('process.env', process.env)
         return (
             <div style={{color: 'black'}}>
+                {this.props.user === undefined || this.props.user === null ?
+                    <div/>
+                :
+                    <Button style={{position: 'relative', float: 'right'}} bsStyle="success">
+                        {this.state.completed ? 'Poista suoritus' : 'Merkitse suoritetuksi'}
+                    </Button>
+                }
+
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}
                 <br />{this.state.course.code} ({this.state.course.ects} op)</p>
                 <a href={this.state.course.url} style={{ fontWeight: 'bold' }}>Kurssisivu</a>

@@ -357,7 +357,7 @@ class App extends React.Component {
                                         handleNewSubmit={this.addNewCourseMatriceHandler}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                         user={this.state.user}
-                                        // admin={this.state.admin}
+                                        admin={this.state.admin}
                                         deleteCourseHandler={this.deleteCourseHandler}
                                         courseMovementHandler={this.courseMovementHandler}
                                         matriceCallback={this.matriceCallback}
