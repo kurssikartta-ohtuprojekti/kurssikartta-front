@@ -307,6 +307,7 @@ class App extends React.Component {
         const adv = advanced(this.state.courses)
         const math = mathematics(this.state.courses)
         const stats = statistics(this.state.courses)
+        console.log(this.state.user)
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
@@ -356,7 +357,7 @@ class App extends React.Component {
                                         handleNewSubmit={this.addNewCourseMatriceHandler}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                         user={this.state.user}
-                                        admin={this.state.admin}
+                                        // admin={this.state.admin}
                                         deleteCourseHandler={this.deleteCourseHandler}
                                         courseMovementHandler={this.courseMovementHandler}
                                         matriceCallback={this.matriceCallback}
