@@ -27,7 +27,7 @@ const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, passw
           />
 
           <Button className="loginSubmit" type="submit" bsStyle="success">Login</Button>
-          &nbsp; <Button onClick={handleRegister}>Register</Button>
+          &nbsp; <Button className="registerSubmit" onClick={handleRegister}>Register</Button>
 
         </FormGroup>
         {/* &nbsp; <Button className="register" type="submit">Register</Button> */}

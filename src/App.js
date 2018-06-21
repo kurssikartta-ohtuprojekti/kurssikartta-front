@@ -84,7 +84,6 @@ class App extends React.Component {
                 // role: 'admin'
             }
         )
-        console.log(user);
             window.localStorage.setItem('loggedUser', JSON.stringify(user))
             this.setState({ username: '', password: '', user })
         } catch (exception) {
@@ -104,7 +103,7 @@ class App extends React.Component {
             window.localStorage.setItem('loggedUser', JSON.stringify(user))
             this.setState({ username: '', password: '', user })
         } catch (exception) {
-            window.alert("Password criteria not met")
+            window.alert("Could not register user")
         }
         this.componentDidMount()
     }
@@ -315,7 +314,7 @@ class App extends React.Component {
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>
                     <div>
-                        <NaviBar />
+                        <NaviBar user={this.state.user} />
                         {this.state.courses.length === 0 || this.state.matrices === null || this.state.selectedMatrice === null ?
                             <div style={{ position: 'absolute', left: '45%' }}>
                                 <h1> Loading... </h1>
