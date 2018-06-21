@@ -65,7 +65,7 @@ class Course extends React.Component {
                 <div className="course" style={{padding:3}}> 
                     {/* Popups for course information or admin control panel*/}
 
-                    {this.props.user !== undefined ? 
+                    {this.props.admin !== undefined ?
                         <Popup
                             trigger={this.courseButton()}
                             // modal

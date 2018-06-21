@@ -31,7 +31,9 @@ import {
     moveCourseSouthWest,
 } from './utils/courseMatrices'
 import loginService from './services/login'
+import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
+import StudiesPage from './components/studiesPage';
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -40,6 +42,8 @@ class App extends React.Component {
             selectedPrereqs: [],
             matrices: null,
             user: null,
+            admin: null,
+            role: null,
             username: '',
             password: '',
             selectedMatrice: null,
@@ -54,7 +58,7 @@ class App extends React.Component {
         matriceService.getAll().then(matrices =>
             this.setState({ matrices })
         )
-        const loggedUserJSON = window.localStorage.getItem('loggedAdmin')
+        const loggedUserJSON = window.localStorage.getItem('loggedUser')
         if (loggedUserJSON) {
             const user = JSON.parse(loggedUserJSON)
             this.setState({ user })
@@ -65,9 +69,9 @@ class App extends React.Component {
     // Admin logout handler
     logout = async (event) => {
         event.preventDefault()
-        console.log(window.localStorage.getItem('loggedAdmin'))
-        window.localStorage.removeItem('loggedAdmin')
-        this.setState({ user: null })
+        console.log(window.localStorage.getItem('loggedUser'))
+        window.localStorage.removeItem('loggedUser')
+        this.setState({ user: null, admin : false })
     }
     // Admin login handler
     login = async (event) => {
@@ -75,13 +79,31 @@ class App extends React.Component {
         try {
             const user = await loginService.login({
                 username: this.state.username,
-                password: this.state.password
-            })
-
-            window.localStorage.setItem('loggedAdmin', JSON.stringify(user))
+                password: this.state.password,
+                role: this.state.role
+                // role: 'admin'
+            }
+        )
+            window.localStorage.setItem('loggedUser', JSON.stringify(user))
             this.setState({ username: '', password: '', user })
         } catch (exception) {
             window.alert("Invalid username or password")
+        }
+        this.componentDidMount()
+    }
+
+    register = async (event) => {
+        event.preventDefault()
+        try {
+            const user = await registerService.register({
+                username: this.state.username,
+                password: this.state.password,
+            })
+
+            window.localStorage.setItem('loggedUser', JSON.stringify(user))
+            this.setState({ username: '', password: '', user })
+        } catch (exception) {
+            window.alert("Could not register user")
         }
         this.componentDidMount()
     }
@@ -292,7 +314,7 @@ class App extends React.Component {
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>
                     <div>
-                        <NaviBar />
+                        <NaviBar user={this.state.user} />
                         {this.state.courses.length === 0 || this.state.matrices === null || this.state.selectedMatrice === null ?
                             <div style={{ position: 'absolute', left: '45%' }}>
                                 <h1> Loading... </h1>
@@ -326,6 +348,7 @@ class App extends React.Component {
                                         password={this.state.password}
                                         handleLoginFieldChange={this.handleLoginFieldChange}
                                         login={this.login}
+                                        register={this.register}
                                         logout={this.logout}
                                         courses={this.state.courses}
                                         matrices={this.state.matrices}
@@ -333,6 +356,7 @@ class App extends React.Component {
                                         handleNewSubmit={this.addNewCourseMatriceHandler}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                         user={this.state.user}
+                                        admin={this.state.admin}
                                         deleteCourseHandler={this.deleteCourseHandler}
                                         courseMovementHandler={this.courseMovementHandler}
                                         matriceCallback={this.matriceCallback}
@@ -345,6 +369,29 @@ class App extends React.Component {
                                         password={this.state.password}
                                         handleChange={this.handleLoginFieldChange}
                                         handleSubmit={this.login}
+                                        handleRegister={this.register}
+                                    />
+                                }
+                                />
+                                <Route path="/myStudies" render={() =>
+                                    <StudiesPage
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        handleLoginFieldChange={this.handleLoginFieldChange}
+                                        login={this.login}
+                                        register={this.register}
+                                        logout={this.logout}
+                                        courses={this.state.courses}
+                                        matrices={this.state.matrices}
+                                        matrice={this.state.selectedMatrice.matrice}
+                                        basic={basic} inter={inter} adv={adv} math={math} stats={stats}
+                                        user={this.state.user}
+                                        admin={this.state.admin}
+                                        deleteCourseHandler={this.deleteCourseHandler}
+                                        courseMovementHandler={this.courseMovementHandler}
+                                        matriceCallback={this.matriceCallback}
+                                        selectedMatrice={this.state.selectedMatrice}
+                                        handleNewSubmit={this.addNewCourseMatriceHandler}
                                     />
                                 }
                                 />
