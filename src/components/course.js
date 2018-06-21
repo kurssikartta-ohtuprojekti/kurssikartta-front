@@ -59,13 +59,17 @@ class Course extends React.Component {
         )
     }
     render () { 
+        let user = this.props.user
+        if (user === undefined) {
+            user = {role: 'none'} 
+        }
         return (
         // Render a single course button
         <div className="courseBtn" style={this.props.style}> 
                 <div className="course" style={{padding:3}}> 
                     {/* Popups for course information or admin control panel*/}
 
-                    {this.props.user.role === 'admin' ?
+                    {user.role === 'admin' ?
                         <Popup
                             trigger={this.courseButton()}
                             // modal
@@ -86,7 +90,8 @@ class Course extends React.Component {
                         >
                             <span>
                                 <CourseInfo course={this.props.course}
-                                            courseInfoService={courseInfoService}/> 
+                                            courseInfoService={courseInfoService}
+                                            user={this.props.user}/> 
                             </span>
                         </Popup>
                     }

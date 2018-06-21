@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Button} from 'react-bootstrap'
 // Renders course information for nonadmin users when course button is clicked
 const instructionEventMapper = (instructionEvent) => {
 
@@ -105,7 +105,7 @@ export default class CourseInfo extends React.Component {
 
 
     render() {
-
+        console.log(this.props.user)
         //  console.log('process.env', process.env)
         return (
             <div style={{color: 'black'}}>

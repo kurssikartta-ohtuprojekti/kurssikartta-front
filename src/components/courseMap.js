@@ -117,7 +117,8 @@ class CourseMap extends React.Component {
                                     scale={this.state.scale}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={true}/> 
+                                    prereqHighlighted={true}
+                                    user={this.props.user}/> 
                                                 
                             :
                             <Course key={course.code}
@@ -125,7 +126,8 @@ class CourseMap extends React.Component {
                                     scale={this.state.scale}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={false}/>
+                                    prereqHighlighted={false}
+                                    user={this.props.user}/>
                                     
                         :
                         // If course is to be highlihted as prerequirement
@@ -136,7 +138,8 @@ class CourseMap extends React.Component {
                                     style={{ opacity: '0.3'}}
                                     prereqHighlighted={true}
                                     prereqsHandler={this.props.prereqsHandler}
-                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
+                                    prereqsOffHandler={this.props.prereqsOffHandler}
+                                    user={this.props.user}/>            
                             :
                             <Course key={course.code}
                                     course={course}
@@ -144,7 +147,8 @@ class CourseMap extends React.Component {
                                     style={{ opacity: '0.3'}}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={false}/>
+                                    prereqHighlighted={false}
+                                    user={this.props.user}/>
                     }
                 </div>
         )

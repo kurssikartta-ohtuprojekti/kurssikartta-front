@@ -54,6 +54,7 @@ class CourseList extends React.Component {
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
                                     prereqHighlighted={true}
+                                    user={this.props.user}
                                     />            
                             :
                             <Course key={course.code}
@@ -61,7 +62,8 @@ class CourseList extends React.Component {
                                     scale={2}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={false}/> 
+                                    prereqHighlighted={false}
+                                    user={this.props.user}/> 
 
                         :
                         highlightedPrereqs.includes(course) ? 
@@ -71,7 +73,8 @@ class CourseList extends React.Component {
                                     style={{ opacity: '0.3'}}
                                     prereqHighlighted={true}
                                     prereqsHandler={this.props.prereqsHandler}
-                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
+                                    prereqsOffHandler={this.props.prereqsOffHandler}
+                                    user={this.props.user}/>            
                             :
                             <Course key={course.code}
                                     course={course}
@@ -79,7 +82,8 @@ class CourseList extends React.Component {
                                     style={{ opacity: '0.3'}}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={false}/>
+                                    prereqHighlighted={false}
+                                    user={this.props.user}/>
                     }
                 </div>
             )

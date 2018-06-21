@@ -307,7 +307,6 @@ class App extends React.Component {
         const adv = advanced(this.state.courses)
         const math = mathematics(this.state.courses)
         const stats = statistics(this.state.courses)
-        console.log(this.state.user)
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
@@ -332,8 +331,9 @@ class App extends React.Component {
                                         selectedMatrice={this.state.selectedMatrice}
                                         courseMapMatrice={this.state.selectedMatrice.matrice}
                                         matrices={this.state.matrices}
-                                        matriceCallback={this.matriceCallback} />}
-                                />
+                                        matriceCallback={this.matriceCallback} 
+                                        user={this.state.user}/>
+                                }/>
                                 <Route path="/perus" render={() =>
                                     <CourseMap basic={basic} inter={null} adv={null} math={null} />}
                                 />
@@ -401,6 +401,7 @@ class App extends React.Component {
                                     <CourseList prereqsOffHandler={this.prerequirementHighlightOffHandler}
                                                 prereqsHandler={this.prerequirementHighlightHandler}
                                                 highlightedPrereqs={this.state.selectedPrereqs}
+                                                user={this.state.user}
                                                 basic={basic} inter={inter} adv={adv} math={math} stats={stats} 
                                     />}
                                 />
