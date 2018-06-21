@@ -13,7 +13,7 @@ const MatriceSelect = (props) => {
 
     var divStyle2 = {
         // fontSize: 15, textOverflow: 'ellipsis', overflow: 'hidden',
-        
+
     }
 
     return (
@@ -31,17 +31,23 @@ const MatriceSelect = (props) => {
             }
             {props.user === undefined ?
                 <null></null> :
-                <div style={divStyle2}>
-                    <MenuItem divider />
-                    <MenuItem name="clone" onClick={props.matriceCallback}>Kopioi {props.selected.name}</MenuItem>
-                    <MenuItem name="rename" onClick={props.matriceCallback}>Nimeä uudelleen {props.selected.name}</MenuItem>
-                    <MenuItem name="delete" onClick={props.matriceCallback}>Poista {props.selected.name}</MenuItem>
-                </div>
+                isAdmin(divStyle2, props)
             }
         </DropdownButton>
     )
-
-
-
 }
+
+function isAdmin(divStyle2, props) {
+    if (props.user.role === 'admin') {
+        return <div style={divStyle2}>
+            <MenuItem divider />
+            <MenuItem name="clone" onClick={props.matriceCallback}>Kopioi {props.selected.name}</MenuItem>
+            <MenuItem name="rename" onClick={props.matriceCallback}>Nimeä uudelleen {props.selected.name}</MenuItem>
+            <MenuItem name="delete" onClick={props.matriceCallback}>Poista {props.selected.name}</MenuItem>
+        </div>;
+    } else {
+        return
+    }
+}
+
 export default MatriceSelect
