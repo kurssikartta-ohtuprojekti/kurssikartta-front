@@ -79,40 +79,66 @@ class App extends React.Component {
     login = async (event) => {
         event.preventDefault()
 
-        this.setState({ verified: false })
+        // console.log(event.target.id)
+
+        // this.setState({ verified: false });
+        if (event.target.id === 'login') {
+            this.loginHandle();
+        } else if (event.target.id === 'register') {
+            this.register();
+        }
+    }
+
+    async register() {
+        try {
+            const user = await registerService.register({
+                username: this.state.username,
+                password: this.state.password,
+            });
+            window.localStorage.setItem('loggedUser', JSON.stringify(user));
+            this.setState({ username: '', password: '', user });
+        }
+        catch (exception) {
+            window.alert("Could not register user");
+        }
+        this.componentDidMount();
+    }
+
+    async loginHandle() {
         try {
             const user = await loginService.login({
                 username: this.state.username,
                 password: this.state.password,
                 role: this.state.role
                 // role: 'admin'
-            }
-            )
-            window.localStorage.setItem('loggedUser', JSON.stringify(user))
-            this.setState({ username: '', password: '', user })
-        } catch (exception) {
-            window.alert("Invalid username or password")
+            });
+            window.localStorage.setItem('loggedUser', JSON.stringify(user));
+            this.setState({ username: '', password: '', user });
         }
-        this.componentDidMount()
+        catch (exception) {
+            window.alert("Invalid username or password");
+        }
+        this.componentDidMount();
     }
 
-    register = async (event) => {
-        event.preventDefault()
+    // register = async (event) => {
+    //     event.preventDefault()
 
-        this.setState({ verified: false })
-        try {
-            const user = await registerService.register({
-                username: this.state.username,
-                password: this.state.password,
-            })
+    //     this.setState({ verified: false })
+    //     try {
+    //         const user = await registerService.register({
+    //             username: this.state.username,
+    //             password: this.state.password,
+    //         })
 
-            window.localStorage.setItem('loggedUser', JSON.stringify(user))
-            this.setState({ username: '', password: '', user })
-        } catch (exception) {
-            window.alert("Could not register user")
-        }
-        this.componentDidMount()
-    }
+    //         window.localStorage.setItem('loggedUser', JSON.stringify(user))
+    //         this.setState({ username: '', password: '', user })
+    //     } catch (exception) {
+    //         window.alert("Could not register user")
+    //     }
+    //     this.componentDidMount()
+    // }
+
     // Login text input handler
     handleLoginFieldChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
@@ -122,7 +148,7 @@ class App extends React.Component {
     reCaptcha = (value) => {
         this.setState({ verified: true, reCaptchaResponse: value })
     }
-    
+
     reCaptchaExpire = () => {
         this.setState({ verified: false })
     }

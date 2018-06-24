@@ -5,6 +5,12 @@ import Reaptcha from 'reaptcha';
 import './LoginForm.css'
 const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
   const reset = () => this.captcha.reset();
+
+  const newLocal = () => (handleRegister, this.captcha.reset())
+
+  if(!verified) {
+    reset
+  }
   return (
     <div className="loginWrapper">
       <h2 className="loginHeader">Login</h2>
@@ -33,12 +39,12 @@ const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, passw
             ref={e => (this.captcha = e)}
             sitekey="6LeUDGAUAAAAADuHhR9osYcaewMSKUGo5URI74il"
             onVerify={reCaptcha}
-            // onExpire={reCaptchaExpire}
+          // onExpire={reCaptchaExpire}
           />
+          
+          <Button className="loginSubmit" bsStyle="success" disabled={!verified} onClick={handleSubmit} id='login'>Login</Button>
+          <Button className="registerSubmit" disabled={!verified} onClick={handleSubmit} id='register'>Register</Button>
 
-          <Button className="loginSubmit" type="submit" bsStyle="success" disabled={!verified}>Login</Button>
-          <Button className="registerSubmit" onClick={handleRegister} disabled={!verified}>Register</Button>
-          {/* <Button onClick={reset}>Reset</Button> */}
         </FormGroup>
       </form>
     </div>
@@ -46,4 +52,6 @@ const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, passw
 
 }
 
+
 export default LoginForm
+
