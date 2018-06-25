@@ -74,10 +74,11 @@ class Course extends React.Component {
                             {this.isAdmin()}
                         </Popup>
                         :
+
                         <Popup
                             trigger={this.courseButton()}
-                            modal
                             closeOnDocumentClick
+                            contentStyle={{ width: "auto" }}
                         >
                             <span>
                                 <CourseInfo course={this.props.course}
