@@ -49,6 +49,7 @@ class App extends React.Component {
             selectedMatrice: null,
             reCaptchaResponse: null,
             verified: null,
+            loginMessage: null,
         }
     }
 
@@ -73,14 +74,14 @@ class App extends React.Component {
         event.preventDefault()
         // console.log(window.localStorage.getItem('loggedUser'))
         window.localStorage.removeItem('loggedUser')
-        this.setState({ user: null, admin: false })
+        this.setState({ user: null, admin: false, verified: false })
     }
     // Admin login handler
     login = async (event) => {
         event.preventDefault()
 
         // console.log(event.target.id)
-        // this.setState({ verified: false });
+        this.setState({ verified: false });
 
         if (event.target.id === 'login') {
             this.loginHandle();
@@ -99,7 +100,7 @@ class App extends React.Component {
             this.setState({ username: '', password: '', user });
         }
         catch (exception) {
-            window.alert("Could not register user");
+            this.setState({ loginMessage: "Could not register user" });
         }
         this.componentDidMount();
     }
@@ -116,7 +117,7 @@ class App extends React.Component {
             this.setState({ username: '', password: '', user });
         }
         catch (exception) {
-            window.alert("Invalid username or password");
+            this.setState({ loginMessage: "Invalid username or password" });
         }
         this.componentDidMount();
     }
@@ -147,10 +148,14 @@ class App extends React.Component {
 
     reCaptcha = (value) => {
         this.setState({ verified: true, reCaptchaResponse: value })
+
+        this.componentDidMount();
     }
 
     reCaptchaExpire = () => {
         this.setState({ verified: false })
+
+        this.componentDidMount();
     }
 
 
@@ -415,7 +420,7 @@ class App extends React.Component {
                                         onExpire={this.reCaptchaExpire}
                                         verified={this.state.verified}
                                         handleSubmit={this.login}
-                                        handleRegister={this.register}
+                                        loginMessage={this.state.loginMessage}
                                     />
                                 }
                                 />
