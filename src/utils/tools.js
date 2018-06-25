@@ -14,7 +14,7 @@ const intermediate = (courses) => {
     var resultsfilter = courses.filter(function (i, n) {
         // console.log(i)
         // console.log(n)
-        return i.level === 'intermediate'
+        return i.level === 'intermediate' && i.faculty !== 'stats' && i.faculty !== 'math'
     })
     // console.log(resultsfilter)
 
