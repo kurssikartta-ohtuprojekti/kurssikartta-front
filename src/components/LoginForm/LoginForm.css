@@ -6,8 +6,9 @@
   width: 300px;
 }
 .loginWrapper {
-  width: 325px;
   margin-left: 15px;
+  max-width: 1146px;
+  margin: 0 auto;
 }
 .loginSubmit {
   float: left;
