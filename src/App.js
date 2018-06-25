@@ -419,7 +419,7 @@ class App extends React.Component {
                                     />
                                 }
                                 />
-                                <Route path="/myStudies" render={() =>
+                                <Route path="/mystudies" render={() =>
                                     <StudiesPage
                                         username={this.state.username}
                                         password={this.state.password}
