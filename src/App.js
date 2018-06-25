@@ -71,7 +71,7 @@ class App extends React.Component {
     // Admin logout handler
     logout = async (event) => {
         event.preventDefault()
-        console.log(window.localStorage.getItem('loggedUser'))
+        // console.log(window.localStorage.getItem('loggedUser'))
         window.localStorage.removeItem('loggedUser')
         this.setState({ user: null, admin: false })
     }
@@ -80,8 +80,8 @@ class App extends React.Component {
         event.preventDefault()
 
         // console.log(event.target.id)
-
         // this.setState({ verified: false });
+
         if (event.target.id === 'login') {
             this.loginHandle();
         } else if (event.target.id === 'register') {
@@ -109,8 +109,8 @@ class App extends React.Component {
             const user = await loginService.login({
                 username: this.state.username,
                 password: this.state.password,
-                role: this.state.role
-                // role: 'admin'
+                role: this.state.role,
+                reCaptchaResponse: this.state.reCaptchaResponse,
             });
             window.localStorage.setItem('loggedUser', JSON.stringify(user));
             this.setState({ username: '', password: '', user });

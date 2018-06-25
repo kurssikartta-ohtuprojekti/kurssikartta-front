@@ -4,13 +4,9 @@ import Reaptcha from 'reaptcha';
 
 import './LoginForm.css'
 const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
-  const reset = () => this.captcha.reset();
 
-  const newLocal = () => (handleRegister, this.captcha.reset())
+  // const reset = () => this.captcha.reset();
 
-  if(!verified) {
-    reset
-  }
   return (
     <div className="loginWrapper">
       <h2 className="loginHeader">Login</h2>
