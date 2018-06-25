@@ -3,14 +3,9 @@ import Course from './course'
 import PeriodButton from './periodButton'
 import { periodFilter } from '.././utils/tools.js'
 import LegendButton from './legendButton'
+import './courseList.css'
 
-const mapCss = {
-    backgroundColor: '#f2f2f2',
-    borderRadius: 10,
-    borderWidth: 5,
-    position: 'absolute',
-    padding: 8,
-}
+
 // Kaikkien kurssien renderointi listaan
 class CourseList extends React.Component {
     constructor(props) {
@@ -85,7 +80,7 @@ class CourseList extends React.Component {
             )
         )
         return (
-            <div className="mappi" style={mapCss}>
+            <div className="mappi">
                 <div style={{position: 'relative',paddingRight: 3}}>
                     <PeriodButton   
                                 p1={this.state.p1} p2={this.state.p2} p3={this.state.p3}

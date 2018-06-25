@@ -3,9 +3,13 @@ import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
 import Reaptcha from 'reaptcha';
 
 import './LoginForm.css'
-const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
+const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
 
   // const reset = () => this.captcha.reset();
+
+  if (verified === false) {
+    this.captcha.reset();
+  }
 
   return (
     <div className="loginWrapper">
@@ -37,12 +41,16 @@ const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, passw
             onVerify={reCaptcha}
           // onExpire={reCaptchaExpire}
           />
-          
+
           <Button className="loginSubmit" bsStyle="success" disabled={!verified} onClick={handleSubmit} id='login'>Login</Button>
           <Button className="registerSubmit" disabled={!verified} onClick={handleSubmit} id='register'>Register</Button>
 
         </FormGroup>
       </form>
+
+      <div className="message">
+        {loginMessage}
+      </div>
     </div>
   )
 
