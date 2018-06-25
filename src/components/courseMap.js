@@ -39,6 +39,7 @@ class CourseMap extends React.Component {
     }
     // Handler for mouse scroll zoom
     handlePanAndZoom(x, y, scale) {
+        console.log(scale, 'scale')
         if (scale < 0.8) {
             this.setState({x, y, scale: 0.8})
         }
@@ -52,18 +53,37 @@ class CourseMap extends React.Component {
  
     // Handler for maps drag movement
     handlePanMove(x, y) {
-        this.setState({x, y})
+        console.log(x)
+        console.log(y)
+        console.log(this.state.scale, 'scale')
+
+        this.setState({x,y})
         // return (x, y)
     }
 
     ifOutsideOnPanEnd(x, y) {
+        
         if (x > 0) {
             this.setState({x: 0})
         }
         if (y > 0) {
             this.setState({y: 0})
         }
+
+        /*
+        (bad temp solution for further zoom)
+        If scale less than one, limit the movement on other ends of the map.
+        this should be replaced with function that works nicely for all scales
+        */
+        if (this.state.scale < 1) {
+            if (x < -0.46) {
+                this.setState({x: -0.45})
+            } if (y < -0.222) {
+                this.setState({y: -0.21})
+            }
+        }
     }
+
     // Handler for period filter checkboxes
     periodCallback = (event) => {
         this.setState({ [event.target.name]: event.target.checked })
