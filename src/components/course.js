@@ -1,8 +1,8 @@
 
 import React from 'react'
 import Popup from 'reactjs-popup'
-import { Button } from 'react-bootstrap' 
-import CourseStyling from'./courseComponents/courseStyling'
+import { Button } from 'react-bootstrap'
+import CourseStyling from './courseComponents/courseStyling'
 import CourseAdminPanel from './admin/courseAdminPanel'
 import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
@@ -12,17 +12,17 @@ let hoverTimer // Variable to control timed out hover functions
 class Course extends React.Component {
     constructor(props) {
         super(props)
-            this.state = {
-                hovered: false,                
-            }
+        this.state = {
+            hovered: false,
         }
-    
-    
+    }
+
+
     toggleHoverOn = () => {
         const course = this.props.course
         const prereqsHandler = this.props.prereqsHandler
-        this.setState({hovered: true})
-        hoverTimer =  window.setTimeout(function() {
+        this.setState({ hovered: true })
+        hoverTimer = window.setTimeout(function () {
             if (prereqsHandler !== undefined) {
                 prereqsHandler(course)
             }
@@ -30,7 +30,7 @@ class Course extends React.Component {
     }
 
     toggleHoverOff = () => {
-        this.setState({hovered: false})
+        this.setState({ hovered: false })
         window.clearTimeout(hoverTimer);
         if (this.props.prereqsOffHandler !== undefined) {
             this.props.prereqsOffHandler()
@@ -44,41 +44,36 @@ class Course extends React.Component {
         const hovered = this.state.hovered
         const prereqHighlight = this.props.prereqHighlighted
         return (
-            <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff} 
-                    // className="noncompulsoryBtn"
-                    style={CourseStyling({course, scale, hovered, prereqHighlight})}>
-                {this.props.scale > 1.5 || this.props.scale === undefined ? 
+            <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff}
+                // className="noncompulsoryBtn"
+                style={CourseStyling({ course, scale, hovered, prereqHighlight })}>
+                {this.props.scale > 1.5 || this.props.scale === undefined ?
                     <span>
-                        {this.props.course.code} <br/> {this.props.course.name}
+                        {this.props.course.code} <br /> {this.props.course.name}
                     </span> :
-                    <span style= {{textAlign: 'center'}}>
+                    <span style={{ textAlign: 'center' }}>
                         {this.props.course.code}
                     </span>
-                }            
+                }
             </Button>
         )
     }
-    render () { 
+    render() {
         return (
-        // Render a single course button
-        <div className="courseBtn" style={this.props.style}> 
-                <div className="course" style={{padding:3}}> 
+            // Render a single course button
+            <div className="courseBtn" style={this.props.style}>
+                <div className="course" style={{ padding: 3 }}>
                     {/* Popups for course information or admin control panel*/}
 
-                    {this.props.admin !== undefined ?
+                    {this.props.user !== undefined ?
                         <Popup
                             trigger={this.courseButton()}
                             // modal
                             closeOnDocumentClick
                         >
-                            <span>
-                                <CourseAdminPanel 
-                                    course={this.props.course}
-                                    courseMovementHandler={this.props.courseMovementHandler} 
-                                    deleteCourseHandler={this.props.deleteCourseHandler}/>  
-                            </span> 
+                            {this.isAdmin()}
                         </Popup>
-                            :
+                        :
                         <Popup
                             trigger={this.courseButton()}
                             modal
@@ -86,14 +81,24 @@ class Course extends React.Component {
                         >
                             <span>
                                 <CourseInfo course={this.props.course}
-                                            courseInfoService={courseInfoService}/> 
+                                    courseInfoService={courseInfoService} />
                             </span>
                         </Popup>
                     }
-                </div>  
-        </div>
-        
-    )
+                </div>
+            </div>
+
+        )
+    }
+
+    isAdmin() {
+        if (this.props.user.role === 'admin') {
+            return <span>
+                <CourseAdminPanel course={this.props.course} courseMovementHandler={this.props.courseMovementHandler} deleteCourseHandler={this.props.deleteCourseHandler} />
+            </span>;
+        } else {
+            return
+        }
     }
 }
 

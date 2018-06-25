@@ -1,0 +1,11 @@
+
+.mappi {
+    display: block;
+    background-color: #f2f2f2;
+    border-radius: 10;
+    border-width: 5;
+    position: center;
+    padding: 8;
+    max-width: 1146px;
+    margin: 0 auto;
+}

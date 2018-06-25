@@ -47,7 +47,8 @@ class AdminPage extends React.Component {
 
     displayLogin() {
         if (this.props.user === null) {
-            return <LoginForm username={this.props.username} password={this.props.password} handleChange={this.props.handleLoginFieldChange} handleSubmit={this.props.login} handleRegister={this.props.register} />;
+            return <LoginForm username={this.props.username} password={this.props.password} handleChange={this.props.handleLoginFieldChange} handleSubmit={this.props.login} handleRegister={this.props.register}
+                reCaptcha={this.props.reCaptcha} verified={this.props.verified} />;
         }
     }
 }
