@@ -81,7 +81,6 @@ class App extends React.Component {
         event.preventDefault()
 
         // console.log(event.target.id)
-        this.setState({ verified: false });
 
         if (event.target.id === 'login') {
             this.loginHandle();
@@ -103,6 +102,7 @@ class App extends React.Component {
             this.setState({ loginMessage: "Could not register user" });
         }
         this.componentDidMount();
+        this.setState({ verified: false });
     }
 
     async loginHandle() {
@@ -120,6 +120,7 @@ class App extends React.Component {
             this.setState({ loginMessage: "Invalid username or password" });
         }
         this.componentDidMount();
+        this.setState({ verified: false });
     }
 
     // register = async (event) => {
@@ -396,7 +397,7 @@ class App extends React.Component {
                                         reCaptcha={this.reCaptcha}
                                         verified={this.state.verified}
                                         login={this.login}
-                                        register={this.register}
+                                        loginMessage={this.state.loginMessage}
                                         logout={this.logout}
                                         courses={this.state.courses}
                                         matrices={this.state.matrices}
@@ -432,7 +433,7 @@ class App extends React.Component {
                                         reCaptcha={this.reCaptcha}
                                         verified={this.state.verified}
                                         login={this.login}
-                                        register={this.register}
+                                        loginMessage={this.state.loginMessage}
                                         logout={this.logout}
                                         courses={this.state.courses}
                                         matrices={this.state.matrices}

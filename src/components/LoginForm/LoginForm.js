@@ -7,7 +7,7 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
 
   // const reset = () => this.captcha.reset();
 
-  if (verified === false) {
+  if (verified === false && this.captcha !== null && this.captcha !== undefined) {
     this.captcha.reset();
   }
 
