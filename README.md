@@ -44,6 +44,10 @@ New features must have a branch. Pushing directly to master is not allowed and y
 
 When code is pushed to Github and a pull request to master branch has been made, Travis CI will run tests for the project and if passed, the project is deployed in Heroku.
 
+### Testing
+
+You can invoke the unit tests with `npm test`
+
 ### Programming help
 
 * [Fullstack](https://fullstackopen.github.io/)
