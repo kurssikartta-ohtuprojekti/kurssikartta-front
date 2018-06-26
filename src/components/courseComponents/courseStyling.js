@@ -1,7 +1,7 @@
 // Valinnaisen kurssin tyylittely
 import color from 'color'
 
-const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
+const CourseStyling = ({ course, scale, hovered, prereqHighlight, periodFiltered }) => {
     if (scale === undefined) {
         scale = 2
     }
@@ -106,6 +106,14 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
             return 'none'
         }
     }
+    const periodFilter = () => {
+        if (!periodFiltered) {
+            return 0.3
+        }
+        else {
+            return 1
+        }
+    }
     // Returned css-styling
     const courseStyle = {
         backgroundColor: background(),
@@ -122,7 +130,8 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight }) => {
         border: 'solid',
         borderWidth: compulsory(),
         borderColor: border('#C0C0C0'),
-        borderRadius: '6px'
+        borderRadius: '6px',
+        opacity: periodFilter()
     }
     return courseStyle
 }

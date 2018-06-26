@@ -127,53 +127,18 @@ class CourseMap extends React.Component {
         const mapCourses = (courses) => (
             courses.map(course =>
                 <div key={course.code}
-                    style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px`}}>    
-                    {/* If course is to be filtered by periods */}
-                    {periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear) ?
-                        // If course is to be highlighted as prerequirement
-                        highlightedPrereqs.includes(course) ? 
-                            <Course key={course.code}
-                                    course={course}
-                                    user={this.props.user}
-                                    adminFuncts={false}
-                                    scale={this.state.scale}
-                                    prereqsHandler={this.props.prereqsHandler}
-                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={true}/> 
-                                                
-                            :
-                            <Course key={course.code}
-                                    course={course}
-                                    user={this.props.user}
-                                    adminFuncts={false}
-                                    scale={this.state.scale}
-                                    prereqsHandler={this.props.prereqsHandler}
-                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={false}/>
-                                    
-                        :
-                        // If course is to be highlihted as prerequirement
-                        highlightedPrereqs.includes(course) ?
-                            <Course key={course.code}
-                                    course={course}
-                                    user={this.props.user}
-                                    adminFuncts={false}
-                                    scale={this.state.scale}
-                                    style={{ opacity: '0.3'}}
-                                    prereqHighlighted={true}
-                                    prereqsHandler={this.props.prereqsHandler}
-                                    prereqsOffHandler={this.props.prereqsOffHandler}/>            
-                            :
-                            <Course key={course.code}
-                                    course={course}
-                                    user={this.props.user}
-                                    adminFuncts={false}
-                                    scale={this.state.scale}
-                                    style={{ opacity: '0.3'}}
-                                    prereqsHandler={this.props.prereqsHandler}
-                                    prereqsOffHandler={this.props.prereqsOffHandler}
-                                    prereqHighlighted={false}/>
-                    }
+                    style={{ gridArea: course.code, width: `${scale * 37.5}px`, height: `${scale* 15}px`}}> 
+                        <Course key={course.code}
+                                course={course}
+                                user={this.props.user}
+                                adminFuncts={false}
+                                scale={this.state.scale}
+                                prereqsHandler={this.props.prereqsHandler}
+                                prereqsOffHandler={this.props.prereqsOffHandler}                                    prereqHighlighted={highlightedPrereqs.includes(course)} 
+                                periodFiltered={periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear)}
+                            />
+    
+                    
                 </div>
         )
     )
