@@ -6,7 +6,7 @@ import CourseStyling from './courseComponents/courseStyling'
 import CourseAdminPanel from './admin/courseAdminPanel'
 import CourseInfo from './courseComponents/courseInfo'
 import courseInfoService from './../services/courseinfo'
-
+import {completedFilter} from './../utils/tools'
 let hoverTimer // Variable to control timed out hover functions
 
 class Course extends React.Component {
@@ -43,17 +43,34 @@ class Course extends React.Component {
         const scale = this.props.scale
         const hovered = this.state.hovered
         const prereqHighlight = this.props.prereqHighlighted
+        let completedCourses = []
+            if (this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user') {
+                completedCourses = this.props.user.completedCourses
+            }
         return (
             <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff}
                 // className="noncompulsoryBtn"
                 style={CourseStyling({ course, scale, hovered, prereqHighlight })}>
                 {this.props.scale > 1.5 || this.props.scale === undefined ?
-                    <span>
-                        {this.props.course.code} <br /> {this.props.course.name}
-                    </span> :
-                    <span style={{ textAlign: 'center' }}>
-                        {this.props.course.code}
-                    </span>
+                     <span>
+                     {completedFilter(this.props.course, completedCourses) ? 
+                         <span style={{color: 'green'}} className="glyphicon glyphicon-ok"/>
+                         :
+                         <span/>}
+                     <span>
+                         {this.props.course.code} <br/> {this.props.course.name}
+                     </span> 
+                 </span>
+                 :
+                 <span>
+                     {completedFilter(this.props.course, completedCourses) ? 
+                         <span style={{color: 'green'}} className="glyphicon glyphicon-ok"/>
+                         :
+                         <span/>}
+                     <span style= {{textAlign: 'center'}}>
+                         {this.props.course.code}
+                     </span>
+                 </span>
                 }
             </Button>
         )
@@ -65,7 +82,7 @@ class Course extends React.Component {
                 <div className="course" style={{ padding: 3 }}>
                     {/* Popups for course information or admin control panel*/}
 
-                    {this.props.user !== undefined ?
+                    {this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'admin' && this.props.adminFuncts === true?
                         <Popup
                             trigger={this.courseButton()}
                             // modal
@@ -78,11 +95,13 @@ class Course extends React.Component {
                         <Popup
                             trigger={this.courseButton()}
                             closeOnDocumentClick
-                            contentStyle={{ width: "auto" }}
+                            modal
+                            contentStyle={{ width: "500px" }}
                         >
                             <span>
                                 <CourseInfo course={this.props.course}
-                                    courseInfoService={courseInfoService} />
+                                            user={this.props.user}
+                                            courseInfoService={courseInfoService} />
                             </span>
                         </Popup>
                     }

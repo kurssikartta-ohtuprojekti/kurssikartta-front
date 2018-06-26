@@ -46,6 +46,8 @@ class CourseList extends React.Component {
                             <Course key={course.code}
                                     course={course}
                                     scale={2}
+                                    adminFuncts={false}
+                                    user={this.props.user}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
                                     prereqHighlighted={true}
@@ -54,6 +56,8 @@ class CourseList extends React.Component {
                             <Course key={course.code}
                                     course={course}
                                     scale={2}
+                                    adminFuncts={false}
+                                    user={this.props.user}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
                                     prereqHighlighted={false}/> 
@@ -63,6 +67,8 @@ class CourseList extends React.Component {
                             <Course key={course.code}
                                     course={course}
                                     scale={2}
+                                    adminFuncts={false}
+                                    user={this.props.user}
                                     style={{ opacity: '0.3'}}
                                     prereqHighlighted={true}
                                     prereqsHandler={this.props.prereqsHandler}
@@ -71,6 +77,8 @@ class CourseList extends React.Component {
                             <Course key={course.code}
                                     course={course}
                                     scale={2}
+                                    adminFuncts={false}
+                                    user={this.props.user}
                                     style={{ opacity: '0.3'}}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}

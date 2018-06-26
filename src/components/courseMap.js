@@ -39,7 +39,7 @@ class CourseMap extends React.Component {
     }
     // Handler for mouse scroll zoom
     handlePanAndZoom(x, y, scale) {
-        console.log(scale, 'scale')
+        // console.log(scale, 'scale')
         if (scale < 0.8) {
             this.setState({x, y, scale: 0.8})
         }
@@ -53,9 +53,9 @@ class CourseMap extends React.Component {
  
     // Handler for maps drag movement
     handlePanMove(x, y) {
-        console.log(x)
-        console.log(y)
-        console.log(this.state.scale, 'scale')
+        // console.log(x)
+        // console.log(y)
+        // console.log(this.state.scale, 'scale')
 
         this.setState({x,y})
         // return (x, y)
@@ -134,6 +134,8 @@ class CourseMap extends React.Component {
                         highlightedPrereqs.includes(course) ? 
                             <Course key={course.code}
                                     course={course}
+                                    user={this.props.user}
+                                    adminFuncts={false}
                                     scale={this.state.scale}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
@@ -142,6 +144,8 @@ class CourseMap extends React.Component {
                             :
                             <Course key={course.code}
                                     course={course}
+                                    user={this.props.user}
+                                    adminFuncts={false}
                                     scale={this.state.scale}
                                     prereqsHandler={this.props.prereqsHandler}
                                     prereqsOffHandler={this.props.prereqsOffHandler}
@@ -152,6 +156,8 @@ class CourseMap extends React.Component {
                         highlightedPrereqs.includes(course) ?
                             <Course key={course.code}
                                     course={course}
+                                    user={this.props.user}
+                                    adminFuncts={false}
                                     scale={this.state.scale}
                                     style={{ opacity: '0.3'}}
                                     prereqHighlighted={true}
@@ -160,6 +166,8 @@ class CourseMap extends React.Component {
                             :
                             <Course key={course.code}
                                     course={course}
+                                    user={this.props.user}
+                                    adminFuncts={false}
                                     scale={this.state.scale}
                                     style={{ opacity: '0.3'}}
                                     prereqsHandler={this.props.prereqsHandler}

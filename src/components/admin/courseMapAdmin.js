@@ -63,6 +63,7 @@ class CourseMapAdmin extends React.Component {
                         key={course.code}
                         course={course}
                         scale={2}
+                        adminFuncts={this.props.adminFuncts}
                         user={this.props.user} />       
                 </div>
             )
