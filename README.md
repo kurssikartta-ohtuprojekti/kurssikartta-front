@@ -16,6 +16,9 @@ This repository contains frontend code for course map software (Kurssikartta), c
 
 ### Documentation
 * [Backlog and progress](https://docs.google.com/spreadsheets/d/1PXgQVgB_MMsUWzie6D0eFcQnCfmKfAFmBePvULNeHoE/edit#gid=422100513)
+* [Diagrams and sequences](https://github.com/kurssikartta-ohtuprojekti/kurssikartta-front/docs/diagrams_and_use_cases)
+* [Backend docs](https://github.com/kurssikartta-ohtuprojekti/kurssikartta-back/docs)
+
 
 ## Development
 
