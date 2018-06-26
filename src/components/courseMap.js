@@ -192,33 +192,10 @@ class CourseMap extends React.Component {
                                 width :`${scale * wrapperWidth}px`,
                                 height :`${scale * wrapperHeight}px`}}>
 
-                        {/* perusopinnot */}
-                        {basic === null || basic === undefined ?
-                            <div></div> :
-                            mapCourses(basic)
-                        }
-                        {/* Aineopinnot */}
-                        {inter === null || inter === undefined ?
-                            <div></div> :
-                            mapCourses(inter)
-                        }
-                        {/* Syventävät opinnot */}
-                        {adv === null || adv === undefined ?
-                            <div></div> :
-                            mapCourses(adv)
-                        }
-
-                        {/* Matematiikan opinnot */}
-                        {math === null || math === undefined ?
-                            <div></div> :
-                            mapCourses(math)
-                        }
-                        {/* Tilastotieteen opinnot */}
-                        {stats === null || stats === undefined ?
-                            <div></div> :
-                            mapCourses(stats)
-                        }
-
+                            {[basic, inter, adv, math, stats].map(courses =>
+                                (mapCourses(courses))
+                            )}
+                        
                     </div>
                 </InteractiveDiv>
             </div>
