@@ -193,7 +193,7 @@ class CourseMap extends React.Component {
                                 height :`${scale * wrapperHeight}px`}}>
 
                             {[basic, inter, adv, math, stats].map(courses =>
-                                (mapCourses(courses))
+                                (courses ? mapCourses(courses) : <div/>)
                             )}
                         
                     </div>
