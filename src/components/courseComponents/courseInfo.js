@@ -1,5 +1,6 @@
 import React from 'react'
-
+import {Button} from 'react-bootstrap'
+import {completedFilter} from './../../utils/tools'
 // Renders course information for nonadmin users when course button is clicked
 const instructionEventMapper = (instructionEvent) => {
 
@@ -89,8 +90,10 @@ export default class CourseInfo extends React.Component {
         super(props);
         this.state = {
             course: props.course,
-            courseInfoService: props.courseInfoService
+            courseInfoService: props.courseInfoService,
+            completed: false
         }
+        
 
     }
 
@@ -99,9 +102,18 @@ export default class CourseInfo extends React.Component {
             this.setState({ courseInfo })
             // console.log('A', this.state.courseInfo)
         }).catch(() => console.log('coult not fetch course info from weboodi'))
-
+        let completedCourses = []
+        if (this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user') {
+            completedCourses = this.props.user.completedCourses
+        }
+        const setCompleted = completedFilter(this.state.course.code, completedCourses)
+        this.setState({completed: setCompleted})
     }
 
+    completedHandler = () => {
+        const set = !this.state.completed 
+        this.setState({completed: set})
+    }
 
 
     render() {
@@ -109,6 +121,16 @@ export default class CourseInfo extends React.Component {
         //  console.log('process.env', process.env)
         return (
             <div style={{color: 'black'}}>
+                {this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user' ?
+                    
+                    <Button onClick={this.completedHandler} style={{position: 'relative', float: 'right'}} bsStyle="success">
+                        {/* {console.log(this.props.user)} */}
+                        {this.state.completed ? 'Poista suoritus' : 'Merkitse suoritetuksi'}
+                    </Button>
+                :
+                    <div/>
+                }
+
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}
                 <br />{this.state.course.code} ({this.state.course.ects} op)</p>
                 <a href={this.state.course.url} style={{ fontWeight: 'bold' }}>Kurssisivu</a>

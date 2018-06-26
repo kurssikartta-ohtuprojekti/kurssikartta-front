@@ -129,6 +129,18 @@ const periodFilter = (periodFilter, coursePeriods) => {
     return false
 }
 
+const completedFilter = (courseCode, userCompleted) => {
+    if (userCompleted === undefined) {
+        return false;
+    }
+    for (let i = 0; i < userCompleted.length; i++) {
+        if (userCompleted[i] === courseCode) {
+            return true
+        }
+    }
+    return false
+}
+
 
 module.exports = {
     basics,
@@ -138,5 +150,6 @@ module.exports = {
     statistics,
     visibleFalseFilter,
     courseCounter,
-    periodFilter
+    periodFilter,
+    completedFilter
 }
