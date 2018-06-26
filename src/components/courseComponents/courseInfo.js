@@ -91,7 +91,7 @@ export default class CourseInfo extends React.Component {
         this.state = {
             course: props.course,
             courseInfoService: props.courseInfoService,
-            completed: true,
+            completed: false,
         }
 
     }
@@ -107,22 +107,23 @@ export default class CourseInfo extends React.Component {
         const setCompleted = completedFilter(this.state.course.code, completedCourses)
         this.setState({completed: setCompleted})
     }
-    
 
-
+    completedHandler = () => {
+        this.setState({completed: !this.state.completed})
+    }
 
 
     render() {
-        // console.log(this.props.user)
-        //  console.log('process.env', process.env)
+        console.log(this.props.user)
+        console.log(this.state.completed)
         return (
             <div style={{color: 'black'}}>
-                {this.props.user === undefined && this.props.user === null ?
-                    <div/>
-                :
-                    <Button style={{position: 'relative', float: 'right'}} bsStyle="success">
+                {this.props.user !== undefined && this.props.user !== null ?
+                    <Button onClick={this.completedHandler} style={{position: 'relative', float: 'right'}} bsStyle="success">
                         {this.state.completed ? 'Poista suoritus' : 'Merkitse suoritetuksi'}
                     </Button>
+                :
+                    <div/>
                 }
 
                 <p style={{ fontWeight: 'bold' }}>{this.state.course.name}
