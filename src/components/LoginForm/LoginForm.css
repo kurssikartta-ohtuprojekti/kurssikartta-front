@@ -6,8 +6,9 @@
   width: 300px;
 }
 .loginWrapper {
-  width: 325px;
   margin-left: 15px;
+  max-width: 1146px;
+  margin: 0 auto;
 }
 .loginSubmit {
   float: left;
@@ -18,4 +19,16 @@
   float: left;
   margin-left: 5px;
   margin-top: 15px;
+}
+
+.captcha {
+  margin-top: 15px;
+}
+
+.message {
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-weight: bold;
+  color: red;
 }

@@ -1,7 +1,16 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
+import Reaptcha from 'reaptcha';
+
 import './LoginForm.css'
-const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, password }) => {
+const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
+
+  // const reset = () => this.captcha.reset();
+
+  if (verified === false && this.captcha !== null && this.captcha !== undefined) {
+    this.captcha.reset();
+  }
+
   return (
     <div className="loginWrapper">
       <h2 className="loginHeader">Login</h2>
@@ -26,15 +35,27 @@ const LoginForm = ({ handleSubmit, handleRegister, handleChange, username, passw
 
           />
 
-          <Button className="loginSubmit" type="submit" bsStyle="success">Login</Button>
-          &nbsp; <Button className="registerSubmit" onClick={handleRegister}>Register</Button>
+          <Reaptcha className="captcha"
+            ref={e => (this.captcha = e)}
+            sitekey="6LeUDGAUAAAAADuHhR9osYcaewMSKUGo5URI74il"
+            onVerify={reCaptcha}
+          // onExpire={reCaptchaExpire}
+          />
+
+          <Button className="loginSubmit" bsStyle="success" disabled={!verified} onClick={handleSubmit} id='login'>Login</Button>
+          <Button className="registerSubmit" disabled={!verified} onClick={handleSubmit} id='register'>Register</Button>
 
         </FormGroup>
-        {/* &nbsp; <Button className="register" type="submit">Register</Button> */}
       </form>
+
+      <div className="message">
+        {loginMessage}
+      </div>
     </div>
   )
 
 }
 
+
 export default LoginForm
+

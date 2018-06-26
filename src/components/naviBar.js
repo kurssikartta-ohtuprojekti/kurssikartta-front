@@ -25,7 +25,7 @@ const NaviBar = (props) => (
           </NavItem>
         </Nav>
         <Nav pullRight>
-          <NavItem href="/myStudies">
+          <NavItem href="/mystudies">
             {props.user === null || props.user === undefined ?
               <b>Login</b>
               :

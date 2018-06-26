@@ -20,7 +20,7 @@ class MyStudies extends React.Component {
                         password={this.props.password}
                         handleChange={this.props.handleLoginFieldChange}
                         handleSubmit={this.props.login}
-                        handleRegister={this.props.register} /> :
+                        loginMessage={this.props.loginMessage} /> :
 
                     <div>
                         <div>

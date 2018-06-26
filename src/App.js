@@ -47,6 +47,9 @@ class App extends React.Component {
             username: '',
             password: '',
             selectedMatrice: null,
+            reCaptchaResponse: null,
+            verified: null,
+            loginMessage: null,
         }
     }
 
@@ -69,49 +72,93 @@ class App extends React.Component {
     // Admin logout handler
     logout = async (event) => {
         event.preventDefault()
-        console.log(window.localStorage.getItem('loggedUser'))
+        // console.log(window.localStorage.getItem('loggedUser'))
         window.localStorage.removeItem('loggedUser')
-        this.setState({ user: null, admin : false })
+        this.setState({ user: null, admin: false, verified: false })
     }
     // Admin login handler
     login = async (event) => {
         event.preventDefault()
-        try {
-            const user = await loginService.login({
-                username: this.state.username,
-                password: this.state.password,
-                role: this.state.role
-                // role: 'admin'
-            }
-        )
-            window.localStorage.setItem('loggedUser', JSON.stringify(user))
-            this.setState({ username: '', password: '', user })
-        } catch (exception) {
-            window.alert("Invalid username or password")
+
+        // console.log(event.target.id)
+
+        if (event.target.id === 'login') {
+            this.loginHandle();
+        } else if (event.target.id === 'register') {
+            this.register();
         }
-        this.componentDidMount()
     }
 
-    register = async (event) => {
-        event.preventDefault()
+    async register() {
         try {
             const user = await registerService.register({
                 username: this.state.username,
                 password: this.state.password,
-            })
-
-            window.localStorage.setItem('loggedUser', JSON.stringify(user))
-            this.setState({ username: '', password: '', user })
-        } catch (exception) {
-            window.alert("Could not register user")
+            });
+            window.localStorage.setItem('loggedUser', JSON.stringify(user));
+            this.setState({ username: '', password: '', user });
         }
-        this.componentDidMount()
+        catch (exception) {
+            this.setState({ loginMessage: "Could not register user" });
+        }
+        this.componentDidMount();
+        this.setState({ verified: false });
     }
+
+    async loginHandle() {
+        try {
+            const user = await loginService.login({
+                username: this.state.username,
+                password: this.state.password,
+                role: this.state.role,
+                reCaptchaResponse: this.state.reCaptchaResponse,
+            });
+            window.localStorage.setItem('loggedUser', JSON.stringify(user));
+            this.setState({ username: '', password: '', user });
+        }
+        catch (exception) {
+            this.setState({ loginMessage: "Invalid username or password" });
+        }
+        this.componentDidMount();
+        this.setState({ verified: false });
+    }
+
+    // register = async (event) => {
+    //     event.preventDefault()
+
+    //     this.setState({ verified: false })
+    //     try {
+    //         const user = await registerService.register({
+    //             username: this.state.username,
+    //             password: this.state.password,
+    //         })
+
+    //         window.localStorage.setItem('loggedUser', JSON.stringify(user))
+    //         this.setState({ username: '', password: '', user })
+    //     } catch (exception) {
+    //         window.alert("Could not register user")
+    //     }
+    //     this.componentDidMount()
+    // }
+
     // Login text input handler
     handleLoginFieldChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
 
     }
+
+    reCaptcha = (value) => {
+        this.setState({ verified: true, reCaptchaResponse: value })
+
+        this.componentDidMount();
+    }
+
+    reCaptchaExpire = () => {
+        this.setState({ verified: false })
+
+        this.componentDidMount();
+    }
+
 
     // Admin handler for adding courses to maps
     addNewCourseMatriceHandler = (event) => {
@@ -294,11 +341,11 @@ class App extends React.Component {
             found.push(this.state.courses.find(c => c.code === course.prereqs[i]))
         }
 
-        this.setState({selectedPrereqs: found})
+        this.setState({ selectedPrereqs: found })
     }
 
     prerequirementHighlightOffHandler = () => {
-        this.setState({selectedPrereqs: [] })
+        this.setState({ selectedPrereqs: [] })
     }
 
     render() {
@@ -323,7 +370,7 @@ class App extends React.Component {
 
                             <div>
                                 <Route path="/kartta" render={() =>
-                                    <CourseMap 
+                                    <CourseMap
                                         prereqsOffHandler={this.prerequirementHighlightOffHandler}
                                         prereqsHandler={this.prerequirementHighlightHandler}
                                         highlightedPrereqs={this.state.selectedPrereqs}
@@ -347,8 +394,10 @@ class App extends React.Component {
                                         username={this.state.username}
                                         password={this.state.password}
                                         handleLoginFieldChange={this.handleLoginFieldChange}
+                                        reCaptcha={this.reCaptcha}
+                                        verified={this.state.verified}
                                         login={this.login}
-                                        register={this.register}
+                                        loginMessage={this.state.loginMessage}
                                         logout={this.logout}
                                         courses={this.state.courses}
                                         matrices={this.state.matrices}
@@ -368,18 +417,23 @@ class App extends React.Component {
                                         username={this.state.username}
                                         password={this.state.password}
                                         handleChange={this.handleLoginFieldChange}
+                                        reCaptcha={this.reCaptcha}
+                                        onExpire={this.reCaptchaExpire}
+                                        verified={this.state.verified}
                                         handleSubmit={this.login}
-                                        handleRegister={this.register}
+                                        loginMessage={this.state.loginMessage}
                                     />
                                 }
                                 />
-                                <Route path="/myStudies" render={() =>
+                                <Route path="/mystudies" render={() =>
                                     <StudiesPage
                                         username={this.state.username}
                                         password={this.state.password}
                                         handleLoginFieldChange={this.handleLoginFieldChange}
+                                        reCaptcha={this.reCaptcha}
+                                        verified={this.state.verified}
                                         login={this.login}
-                                        register={this.register}
+                                        loginMessage={this.state.loginMessage}
                                         logout={this.logout}
                                         courses={this.state.courses}
                                         matrices={this.state.matrices}
@@ -398,9 +452,9 @@ class App extends React.Component {
 
                                 <Route exact path="/" render={() =>
                                     <CourseList prereqsOffHandler={this.prerequirementHighlightOffHandler}
-                                                prereqsHandler={this.prerequirementHighlightHandler}
-                                                highlightedPrereqs={this.state.selectedPrereqs}
-                                                basic={basic} inter={inter} adv={adv} math={math} stats={stats} 
+                                        prereqsHandler={this.prerequirementHighlightHandler}
+                                        highlightedPrereqs={this.state.selectedPrereqs}
+                                        basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
                                 />
 
