@@ -50,7 +50,6 @@ class CourseList extends React.Component {
                                 prereqsOffHandler={this.props.prereqsOffHandler}                                    
                                 prereqHighlighted={highlightedPrereqs.includes(course)}
                                 periodFiltered={periodFilter({ p1: this.state.p1, p2: this.state.p2, p3: this.state.p3, p4: this.state.p4, pC: this.state.pC, pS: this.state.pS, year: this.state.year }, course.periodyear)}
-                                
                             />            
                            
                 </div>

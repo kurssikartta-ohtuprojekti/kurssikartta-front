@@ -397,7 +397,6 @@ class App extends React.Component {
                                         courseMapMatrice={this.state.selectedMatrice.matrice}
                                         matrices={this.state.matrices}
                                         user={this.state.user}
-                                        userService={userService}
                                         matriceCallback={this.matriceCallback} />}
                                 />
                                 <Route path="/perus" render={() =>
@@ -475,7 +474,6 @@ class App extends React.Component {
                                         prereqsHandler={this.prerequirementHighlightHandler}
                                         highlightedPrereqs={this.state.selectedPrereqs}
                                         user={this.state.user}
-                                        userService={userService}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
                                 />
