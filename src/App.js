@@ -35,6 +35,8 @@ import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
 import RegisterForm from './components/LoginForm/RegisterForm';
 import StudiesPage from './components/studiesPage';
+import userService from './services/user'
+
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -67,6 +69,7 @@ class App extends React.Component {
             const user = JSON.parse(loggedUserJSON)
             this.setState({ user })
             matriceService.setToken(user.token)
+            userService.setToken(user.token)
         }
     }
 
@@ -75,6 +78,8 @@ class App extends React.Component {
         event.preventDefault()
         // console.log(window.localStorage.getItem('loggedUser'))
         window.localStorage.removeItem('loggedUser')
+        matriceService.setToken(null)
+        userService.setToken(null)
         this.setState({ user: null, admin: false, verified: false })
     }
     // Admin login handler
@@ -114,6 +119,7 @@ class App extends React.Component {
                 role: this.state.role,
                 reCaptchaResponse: this.state.reCaptchaResponse,
             });
+            console.log(user)
             window.localStorage.setItem('loggedUser', JSON.stringify(user));
             this.setState({ username: '', password: '', user });
         }
@@ -349,6 +355,30 @@ class App extends React.Component {
         this.setState({ selectedPrereqs: [] })
     }
 
+    userCompletedCourseHandler = async (handleCourse) => {
+        let setCourses = []
+         if (this.state.user.courses) {
+            setCourses = this.state.user.courses
+         }
+        if (setCourses.includes(handleCourse)) {
+            setCourses = setCourses.filter(item => item !== handleCourse)
+        } else {
+            setCourses.push(handleCourse)
+        }
+        // console.log(setCourses)
+        const res = await userService.completedCourses(setCourses)
+        // console.log(res)
+        const user = {
+            token: this.state.user.token,
+            username: res.username,
+            courses: res.courses,
+            role: res.role
+        }
+        this.setState({user})
+        window.localStorage.setItem('loggedUser', JSON.stringify(user));
+
+    }
+    
     render() {
         const basic = basics(this.state.courses) // Using functions from /utils/tools.js
         const inter = intermediate(this.state.courses)
@@ -358,6 +388,7 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
+        // console.log(this.state.user)
         // console.log(this.state.user)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
@@ -381,6 +412,7 @@ class App extends React.Component {
                                         courseMapMatrice={this.state.selectedMatrice.matrice}
                                         matrices={this.state.matrices}
                                         user={this.state.user}
+                                        userCompletedCourseHandler={this.userCompletedCourseHandler}
                                         matriceCallback={this.matriceCallback} />}
                                 />
                                 <Route path="/perus" render={() =>
@@ -458,6 +490,7 @@ class App extends React.Component {
                                         prereqsHandler={this.prerequirementHighlightHandler}
                                         highlightedPrereqs={this.state.selectedPrereqs}
                                         user={this.state.user}
+                                        userCompletedCourseHandler={this.userCompletedCourseHandler}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
                                 />

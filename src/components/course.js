@@ -46,15 +46,16 @@ class Course extends React.Component {
         const periodFiltered = this.props.periodFiltered
         let completedCourses = []
             if (this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user') {
-                completedCourses = this.props.user.completedCourses
+                completedCourses = this.props.user.courses
             }
+        // console.log(completedCourses)
         return (
             <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff}
                 // className="noncompulsoryBtn"
                 style={CourseStyling({ course, scale, hovered, prereqHighlight, periodFiltered})}>
                 {this.props.scale > 1.5 || this.props.scale === undefined ?
                      <span>
-                     {completedFilter(this.props.course, completedCourses) ? 
+                     {completedFilter(this.props.course.code, completedCourses) ? 
                          <span style={{color: 'green'}} className="glyphicon glyphicon-ok"/>
                          :
                          <span/>}
@@ -64,7 +65,7 @@ class Course extends React.Component {
                  </span>
                  :
                  <span>
-                     {completedFilter(this.props.course, completedCourses) ? 
+                     {completedFilter(this.props.course.code, completedCourses) ? 
                          <span style={{color: 'green'}} className="glyphicon glyphicon-ok"/>
                          :
                          <span/>}
@@ -102,7 +103,9 @@ class Course extends React.Component {
                             <span>
                                 <CourseInfo course={this.props.course}
                                             user={this.props.user}
-                                            courseInfoService={courseInfoService} />
+                                            courseInfoService={courseInfoService} 
+                                            userCompletedCourseHandler={this.props.userCompletedCourseHandler}
+                                            />
                             </span>
                         </Popup>
                     }

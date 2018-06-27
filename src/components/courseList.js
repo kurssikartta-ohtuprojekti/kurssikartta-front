@@ -46,6 +46,7 @@ class CourseList extends React.Component {
                                 scale={2}
                                 adminFuncts={false}
                                 user={this.props.user}
+                                userCompletedCourseHandler={this.props.userCompletedCourseHandler}
                                 prereqsHandler={this.props.prereqsHandler}
                                 prereqsOffHandler={this.props.prereqsOffHandler}                                    
                                 prereqHighlighted={highlightedPrereqs.includes(course)}
