@@ -57,6 +57,11 @@ const RegisterForm = ({ handleSubmit, loginMessage, handleChange, username, pass
                         onVerify={reCaptcha}
                     // onExpire={reCaptchaExpire}
                     />
+
+                    {/* <Checkbox onChange={verified = true}>
+                        Olen lukenut
+                    </Checkbox> */}
+
                     <Button className="registerSubmit" disabled={!verified} onClick={handleSubmit} id='register'>Rekisteröidy</Button>
 
                 </FormGroup>
