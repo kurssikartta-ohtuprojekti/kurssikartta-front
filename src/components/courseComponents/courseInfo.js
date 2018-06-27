@@ -104,15 +104,20 @@ export default class CourseInfo extends React.Component {
         }).catch(() => console.log('coult not fetch course info from weboodi'))
         let completedCourses = []
         if (this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user') {
-            completedCourses = this.props.user.completedCourses
+            completedCourses = this.props.user.courses
         }
         const setCompleted = completedFilter(this.state.course.code, completedCourses)
         this.setState({completed: setCompleted})
     }
 
     completedHandler = () => {
-        const set = !this.state.completed 
-        this.setState({completed: set})
+        try {
+            this.props.userCompletedCourseHandler(this.state.course.code)
+            const set = !this.state.completed 
+            this.setState({completed: set})
+        } catch (error){
+            console.log('error: ', error)
+        }
     }
 
 

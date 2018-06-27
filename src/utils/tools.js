@@ -130,7 +130,7 @@ const periodFilter = (periodFilter, coursePeriods) => {
 }
 
 const completedFilter = (courseCode, userCompleted) => {
-    if (userCompleted === undefined) {
+    if (!userCompleted) {
         return false;
     }
     for (let i = 0; i < userCompleted.length; i++) {

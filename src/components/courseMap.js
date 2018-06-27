@@ -131,6 +131,7 @@ class CourseMap extends React.Component {
                         <Course key={course.code}
                                 course={course}
                                 user={this.props.user}
+                                userCompletedCourseHandler={this.props.userCompletedCourseHandler}
                                 adminFuncts={false}
                                 scale={this.state.scale}
                                 prereqsHandler={this.props.prereqsHandler}
