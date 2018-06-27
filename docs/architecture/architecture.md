@@ -2,10 +2,10 @@
 
 ##### Projektiryhmä:
 
-Juslenius Santeri
-Moisio Mikko
-Rikander Tomi
-Varilo Miro
+* Juslenius Santeri
+* Moisio Mikko
+* Rikander Tomi
+* Varilo Miro
 
 ##### Asiakas:
 TKO-äly
