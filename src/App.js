@@ -33,6 +33,7 @@ import {
 import loginService from './services/login'
 import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
+import RegisterForm from './components/LoginForm/RegisterForm';
 import StudiesPage from './components/studiesPage';
 class App extends React.Component {
     constructor(props) {
@@ -357,7 +358,7 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
-        console.log(this.state.user)
+        // console.log(this.state.user)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>
@@ -459,6 +460,19 @@ class App extends React.Component {
                                         user={this.state.user}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
+                                />
+
+                                <Route path="/register" render={() =>
+                                    <RegisterForm
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        handleChange={this.handleLoginFieldChange}
+                                        reCaptcha={this.reCaptcha}
+                                        onExpire={this.reCaptchaExpire}
+                                        verified={this.state.verified}
+                                        handleSubmit={this.login}
+                                        loginMessage={this.state.loginMessage} />
+                                }
                                 />
 
                             </div>
