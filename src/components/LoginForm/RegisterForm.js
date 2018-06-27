@@ -7,7 +7,7 @@ const RegisterForm = ({ handleSubmit, loginMessage, handleChange, username, pass
 
     // const reset = () => this.captcha.reset();
 
-    verified = true;
+    // verified = true;
 
     if (verified === false && this.captcha !== null && this.captcha !== undefined) {
         this.captcha.reset();
