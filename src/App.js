@@ -357,7 +357,7 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
-        console.log(this.state.user)
+        // console.log(this.state.user)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>

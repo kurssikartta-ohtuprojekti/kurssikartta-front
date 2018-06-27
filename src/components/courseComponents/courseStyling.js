@@ -74,7 +74,7 @@ const CourseStyling = ({ course, scale, hovered, prereqHighlight, periodFiltered
     // returns values for css boxShadow
     const prereq = () => {
         if (prereqHighlight === true) {
-            return '2px 3px 3px black'
+            return '2px 5px 5px black'
         }
         else {
             return 'none'
