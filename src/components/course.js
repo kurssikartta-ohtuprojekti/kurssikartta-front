@@ -48,7 +48,7 @@ class Course extends React.Component {
             if (this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user') {
                 completedCourses = this.props.user.courses
             }
-        console.log(completedCourses)
+        // console.log(completedCourses)
         return (
             <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff}
                 // className="noncompulsoryBtn"
