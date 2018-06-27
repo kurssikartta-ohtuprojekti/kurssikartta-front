@@ -192,6 +192,7 @@ class CourseMap extends React.Component {
                                 width :`${scale * wrapperWidth}px`,
                                 height :`${scale * wrapperHeight}px`}}>
 
+                            {/* Maps all courses to wrapper */}
                             {[basic, inter, adv, math, stats].map(courses =>
                                 (courses ? mapCourses(courses) : <div/>)
                             )}

@@ -22,15 +22,15 @@ const MatriceSelect = (props) => {
             id="matriceSelect"
         >
             {props.matrices === null ?
-                <null></null> :
+                <div></div> :
                 props.matrices.map(matrice =>
-                    <div style={divStyle}>
+                    <div key={matrice.id} style={divStyle}>
                         <MenuItem style={divStyle} name={matrice.id} active={props.selected === matrice.id} onClick={props.matriceCallback}>{matrice.name}</MenuItem>
                     </div>
                 )
             }
             {props.user === undefined ?
-                <null></null> :
+                <div></div> :
                 isAdmin(divStyle2, props)
             }
         </DropdownButton>
