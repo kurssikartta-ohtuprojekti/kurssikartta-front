@@ -464,10 +464,14 @@ class App extends React.Component {
 
                                 <Route path="/register" render={() =>
                                     <RegisterForm
-                                        username={this.props.username} password={this.props.password}
-                                        handleChange={this.props.handleLoginFieldChange} handleSubmit={this.props.login}
-                                        loginMessage={this.props.loginMessage}
-                                        reCaptcha={this.props.reCaptcha} verified={this.props.verified} />
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        handleChange={this.handleLoginFieldChange}
+                                        reCaptcha={this.reCaptcha}
+                                        onExpire={this.reCaptchaExpire}
+                                        verified={this.state.verified}
+                                        handleSubmit={this.login}
+                                        loginMessage={this.state.loginMessage} />
                                 }
                                 />
 
