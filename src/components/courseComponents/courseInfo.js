@@ -111,8 +111,14 @@ export default class CourseInfo extends React.Component {
     }
 
     completedHandler = () => {
-        const set = !this.state.completed 
-        this.setState({completed: set})
+        try {
+            const res = await this.props.userService.completedCourses(this.props.user.completedCourses)
+            
+            const set = !this.state.completed 
+            this.setState({completed: set})
+        } catch {
+            console.log('error')
+        }
     }
 
 

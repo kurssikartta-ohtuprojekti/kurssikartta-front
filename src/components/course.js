@@ -102,7 +102,9 @@ class Course extends React.Component {
                             <span>
                                 <CourseInfo course={this.props.course}
                                             user={this.props.user}
-                                            courseInfoService={courseInfoService} />
+                                            courseInfoService={courseInfoService} 
+                                            userService={this.props.userService}
+                                        />
                             </span>
                         </Popup>
                     }

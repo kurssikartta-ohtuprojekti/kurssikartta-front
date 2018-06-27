@@ -34,6 +34,8 @@ import loginService from './services/login'
 import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
 import StudiesPage from './components/studiesPage';
+import userService from './services/user'
+
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -66,6 +68,7 @@ class App extends React.Component {
             const user = JSON.parse(loggedUserJSON)
             this.setState({ user })
             matriceService.setToken(user.token)
+            userService.setToken(user.token)
         }
     }
 
@@ -74,6 +77,8 @@ class App extends React.Component {
         event.preventDefault()
         // console.log(window.localStorage.getItem('loggedUser'))
         window.localStorage.removeItem('loggedUser')
+        matriceService.setToken(null)
+        userService.setToken(null)
         this.setState({ user: null, admin: false, verified: false })
     }
     // Admin login handler
@@ -348,6 +353,17 @@ class App extends React.Component {
         this.setState({ selectedPrereqs: [] })
     }
 
+    userCompletedCourseHandler = (completedCourses) => {
+        userService.completedCourses(completedCourses)
+        const user = {
+            username: this.state.username,
+            password: this.state.password,
+            role: this.state.role,
+            courses: completedCourses}
+            
+        this.setState({user})
+    }
+    
     render() {
         const basic = basics(this.state.courses) // Using functions from /utils/tools.js
         const inter = intermediate(this.state.courses)
@@ -380,6 +396,7 @@ class App extends React.Component {
                                         courseMapMatrice={this.state.selectedMatrice.matrice}
                                         matrices={this.state.matrices}
                                         user={this.state.user}
+                                        userService={userService}
                                         matriceCallback={this.matriceCallback} />}
                                 />
                                 <Route path="/perus" render={() =>
@@ -457,6 +474,7 @@ class App extends React.Component {
                                         prereqsHandler={this.prerequirementHighlightHandler}
                                         highlightedPrereqs={this.state.selectedPrereqs}
                                         user={this.state.user}
+                                        userService={userService}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
                                 />
