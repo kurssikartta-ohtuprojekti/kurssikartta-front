@@ -33,6 +33,7 @@ import {
 import loginService from './services/login'
 import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
+import RegisterForm from './components/LoginForm/RegisterForm';
 import StudiesPage from './components/studiesPage';
 class App extends React.Component {
     constructor(props) {
@@ -459,6 +460,15 @@ class App extends React.Component {
                                         user={this.state.user}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
+                                />
+
+                                <Route path="/register" render={() =>
+                                    <RegisterForm
+                                        username={this.props.username} password={this.props.password}
+                                        handleChange={this.props.handleLoginFieldChange} handleSubmit={this.props.login}
+                                        loginMessage={this.props.loginMessage}
+                                        reCaptcha={this.props.reCaptcha} verified={this.props.verified} />
+                                }
                                 />
 
                             </div>

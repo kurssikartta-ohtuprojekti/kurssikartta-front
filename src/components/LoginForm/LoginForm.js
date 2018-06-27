@@ -7,9 +7,11 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
 
   // const reset = () => this.captcha.reset();
 
-  if (verified === false && this.captcha !== null && this.captcha !== undefined) {
-    this.captcha.reset();
-  }
+  verified = true;
+
+  // if (verified === false && this.captcha !== null && this.captcha !== undefined) {
+  //   this.captcha.reset();
+  // }
 
   return (
     <div className="loginWrapper">
@@ -35,15 +37,15 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
 
           />
 
-          <Reaptcha className="captcha"
+          {/* <Reaptcha className="captcha"
             ref={e => (this.captcha = e)}
             sitekey="6LeUDGAUAAAAADuHhR9osYcaewMSKUGo5URI74il"
             onVerify={reCaptcha}
           // onExpire={reCaptchaExpire}
-          />
+          /> */}
 
           <Button className="loginSubmit" bsStyle="success" disabled={!verified} onClick={handleSubmit} id='login'>Login</Button>
-          <Button className="registerSubmit" disabled={!verified} onClick={handleSubmit} id='register'>Register</Button>
+          <Button className="registerSubmit" href="/register" >Register</Button>
 
         </FormGroup>
       </form>
