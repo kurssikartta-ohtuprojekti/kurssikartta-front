@@ -13,7 +13,7 @@ class MyStudies extends React.Component {
         return (
             <div>
                 {/* Render login page if user isn't logged in */}
-                {console.log(this.props.user)}
+                {/* {console.log(this.props.user)} */}
                 {this.props.user === null ?
                     <LoginForm
                         username={this.props.username}
@@ -23,14 +23,14 @@ class MyStudies extends React.Component {
                         loginMessage={this.props.loginMessage} /> :
 
                     <div style={{margin: 60}}>
-                        <div style={{margin: 13, padding: 10}}>
-                            <h1>
+                        <div style={{position: 'absolute', width: '90%', backgroundColor: 'lightblue', borderRadius: 5, padding: 10}}>
+                            <h1 style={{position: 'relative', float: 'left', width: 300}}>
                                 Tervetuloa, {this.props.user.username}
                             </h1>
+                            <Logout style={{position: 'relative', float: 'right'}} logoutHandler={this.props.logout} /> {/* Admin log out */}
+                            
                         </div>
-                        <div style={{position: 'absolute', top: 110, right: 83}} className="userButtonGroup">
-                            <Logout logoutHandler={this.props.logout} /> {/* Admin log out */}
-                        </div>
+                        
                     </div>
                 }
             </div>

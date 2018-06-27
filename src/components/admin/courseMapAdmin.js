@@ -80,34 +80,12 @@ class CourseMapAdmin extends React.Component {
                 }
                 {/* Wrapper for admin course map */}
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
-                    {/* perusopinnot */}
                     
-                    {basic === null ?
-                        <null></null> :
-                        adminCoursesMap(basic)
-                    }
-                    {/* Aineopinnot */}
-                    {inter === null ?
-                        <null></null> :
-                        adminCoursesMap(inter)
-                    }
+                    {/* Maps all courses to wrapper */}
+                    {[basic, inter, adv, math, stats].map(courses =>
+                        (courses ? adminCoursesMap(courses) : <null/>)
+                    )}
 
-                    {/* Syventävät opinnot */}
-                    {adv === null ?
-                        <null></null> :
-                        adminCoursesMap(adv)
-                    }
-
-                    {/* Matematiikan opinnot */}
-                    {this.props.math === null ?
-                        <null></null> :
-                        adminCoursesMap(math)
-                    }
-                    {/* Tilastotieteen opinnot */}
-                    {this.props.stats === null ?
-                        <null></null> :
-                        adminCoursesMap(stats)
-                    }
                     {/* Admin empty grids */}
                     {emptyList.map(i =>
                         <div key={emptyNodeCoordinates[i]}>
