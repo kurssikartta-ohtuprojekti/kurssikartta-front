@@ -13,7 +13,7 @@ class MyStudies extends React.Component {
         return (
             <div>
                 {/* Render login page if user isn't logged in */}
-                {console.log(this.props.user)}
+                {/* {console.log(this.props.user)} */}
                 {this.props.user === null ?
                     <LoginForm
                         username={this.props.username}
