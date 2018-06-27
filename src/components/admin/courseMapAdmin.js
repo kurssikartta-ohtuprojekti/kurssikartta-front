@@ -81,6 +81,7 @@ class CourseMapAdmin extends React.Component {
                 {/* Wrapper for admin course map */}
                 <div className="awrapper" style={{ gridTemplateAreas: cssGridTemplateAreas }}>
                     {/* perusopinnot */}
+                    
                     {basic === null ?
                         <null></null> :
                         adminCoursesMap(basic)

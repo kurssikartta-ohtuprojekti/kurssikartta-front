@@ -43,6 +43,7 @@ class Course extends React.Component {
         const scale = this.props.scale
         const hovered = this.state.hovered
         const prereqHighlight = this.props.prereqHighlighted
+        const periodFiltered = this.props.periodFiltered
         let completedCourses = []
             if (this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user') {
                 completedCourses = this.props.user.completedCourses
@@ -50,7 +51,7 @@ class Course extends React.Component {
         return (
             <Button onMouseEnter={this.toggleHoverOn} onMouseLeave={this.toggleHoverOff}
                 // className="noncompulsoryBtn"
-                style={CourseStyling({ course, scale, hovered, prereqHighlight })}>
+                style={CourseStyling({ course, scale, hovered, prereqHighlight, periodFiltered})}>
                 {this.props.scale > 1.5 || this.props.scale === undefined ?
                      <span>
                      {completedFilter(this.props.course, completedCourses) ? 

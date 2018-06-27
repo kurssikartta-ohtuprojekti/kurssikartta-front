@@ -22,11 +22,13 @@ class MyStudies extends React.Component {
                         handleSubmit={this.props.login}
                         loginMessage={this.props.loginMessage} /> :
 
-                    <div>
-                        <div>
-                            Tervetuloa, {this.props.user.username}
+                    <div style={{margin: 60}}>
+                        <div style={{margin: 13, padding: 10}}>
+                            <h1>
+                                Tervetuloa, {this.props.user.username}
+                            </h1>
                         </div>
-                        <div className="userButtonGroup">
+                        <div style={{position: 'absolute', top: 110, right: 83}} className="userButtonGroup">
                             <Logout logoutHandler={this.props.logout} /> {/* Admin log out */}
                         </div>
                     </div>
