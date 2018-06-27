@@ -119,6 +119,7 @@ class App extends React.Component {
                 role: this.state.role,
                 reCaptchaResponse: this.state.reCaptchaResponse,
             });
+            console.log(user)
             window.localStorage.setItem('loggedUser', JSON.stringify(user));
             this.setState({ username: '', password: '', user });
         }
@@ -354,15 +355,28 @@ class App extends React.Component {
         this.setState({ selectedPrereqs: [] })
     }
 
-    userCompletedCourseHandler = (completedCourses) => {
-        userService.completedCourses(completedCourses)
+    userCompletedCourseHandler = async (handleCourse) => {
+        let setCourses = []
+         if (this.state.user.courses) {
+            setCourses = this.state.user.courses
+         }
+        if (setCourses.includes(handleCourse)) {
+            setCourses = setCourses.filter(item => item !== handleCourse)
+        } else {
+            setCourses.push(handleCourse)
+        }
+        // console.log(setCourses)
+        const res = await userService.completedCourses(setCourses)
+        // console.log(res)
         const user = {
-            username: this.state.username,
-            password: this.state.password,
-            role: this.state.role,
-            courses: completedCourses}
-            
+            token: this.state.user.token,
+            username: res.username,
+            courses: res.courses,
+            role: res.role
+        }
         this.setState({user})
+        window.localStorage.setItem('loggedUser', JSON.stringify(user));
+
     }
     
     render() {
@@ -374,6 +388,7 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
+        console.log(this.state.user)
         // console.log(this.state.user)
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
@@ -397,6 +412,7 @@ class App extends React.Component {
                                         courseMapMatrice={this.state.selectedMatrice.matrice}
                                         matrices={this.state.matrices}
                                         user={this.state.user}
+                                        userCompletedCourseHandler={this.userCompletedCourseHandler}
                                         matriceCallback={this.matriceCallback} />}
                                 />
                                 <Route path="/perus" render={() =>
@@ -474,6 +490,7 @@ class App extends React.Component {
                                         prereqsHandler={this.prerequirementHighlightHandler}
                                         highlightedPrereqs={this.state.selectedPrereqs}
                                         user={this.state.user}
+                                        userCompletedCourseHandler={this.userCompletedCourseHandler}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
                                 />

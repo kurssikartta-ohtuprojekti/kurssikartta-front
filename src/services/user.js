@@ -13,7 +13,8 @@ const completedCourses = async (completedCourses) => {
     const config = {
         headers: { 'authorization': token }
     }
-    const request = axios.post(`${baseUrl}/my_courses`, completedCourses, config)
+    const resCourses = {courses: completedCourses}
+    const request = axios.post(`${baseUrl}/my_courses`, resCourses, config)
     return await request.then(response => response.data)
 }
 
