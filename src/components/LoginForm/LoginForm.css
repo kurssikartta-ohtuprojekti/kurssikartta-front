@@ -32,3 +32,10 @@
   font-weight: bold;
   color: red;
 }
+
+.registerText {
+  /* float: left; */
+  margin-left: 15px;
+  margin-top: 60px;
+  font-weight: bold;
+}

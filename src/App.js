@@ -33,6 +33,7 @@ import {
 import loginService from './services/login'
 import registerService from './services/register'
 import LoginForm from './components/LoginForm/LoginForm';
+import RegisterForm from './components/LoginForm/RegisterForm';
 import StudiesPage from './components/studiesPage';
 import userService from './services/user'
 
@@ -477,6 +478,19 @@ class App extends React.Component {
                                         userService={userService}
                                         basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />}
+                                />
+
+                                <Route path="/register" render={() =>
+                                    <RegisterForm
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        handleChange={this.handleLoginFieldChange}
+                                        reCaptcha={this.reCaptcha}
+                                        onExpire={this.reCaptchaExpire}
+                                        verified={this.state.verified}
+                                        handleSubmit={this.login}
+                                        loginMessage={this.state.loginMessage} />
+                                }
                                 />
 
                             </div>
