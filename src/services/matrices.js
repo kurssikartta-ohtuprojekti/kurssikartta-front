@@ -1,6 +1,6 @@
 import axios from 'axios'
-const baseUrl = 'https://kurssikartta-backend.herokuapp.com/matrix'
-
+import config from './../utils/config'
+const baseUrl = `${config}/matrix` 
 
 let token = null
 

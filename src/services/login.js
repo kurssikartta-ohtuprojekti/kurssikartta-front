@@ -1,6 +1,6 @@
 import axios from 'axios'
-const baseUrl = 'https://kurssikartta-backend.herokuapp.com/login'
-// const baseUrl = 'http://localhost:3001/login'
+import config from './../utils/config'
+const baseUrl = `${config}/login`
 
 
 const login = async (credentials) => {
