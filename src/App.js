@@ -90,7 +90,6 @@ class App extends React.Component {
     // Login and register handler
     login = async (event) => {
         event.preventDefault()
-
         if (event.target.id === 'login') {
             this.loginHandle();
         } else if (event.target.id === 'register') {
@@ -123,7 +122,6 @@ class App extends React.Component {
                 role: this.state.role,
                 reCaptchaResponse: this.state.reCaptchaResponse,
             });
-            console.log(user)
             window.localStorage.setItem('loggedUser', JSON.stringify(user));
             this.setState({ username: '', password: '', user });
         }
