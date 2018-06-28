@@ -1,5 +1,6 @@
 import axios from 'axios'
-const baseUrl = 'https://kurssikartta-backend.herokuapp.com/courses'
+import config from './../utils/config'
+const baseUrl = `${config}/courses` 
 
 const getAll = async () => {
   const request = axios.get(baseUrl)
