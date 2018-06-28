@@ -528,9 +528,7 @@ class App extends React.Component {
                                         prereqsOffHandler={this.prerequirementHighlightOffHandler}
                                         prereqsHandler={this.prerequirementHighlightHandler}
                                         highlightedPrereqs={this.state.selectedPrereqs}
-                                        user={this.state.user}
                                         userCompletedCourseHandler={this.userCompletedCourseHandler}
-                                        basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />
                                 }
                                 />

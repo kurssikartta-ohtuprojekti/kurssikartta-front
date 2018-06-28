@@ -2,7 +2,6 @@ import React from 'react'
 import LoginForm from '.././LoginForm/LoginForm.js'
 import Logout from '.././LoginForm/Logout.js'
 import './myStudies.css'
-import CourseList from '../courseList.js';
 
 class MyStudies extends React.Component {
     constructor(props) {
