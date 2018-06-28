@@ -6,12 +6,15 @@
 		"node_modules"
     ]
  },
+	"install" [
+	"npm i -g npm@5.7.1"
+	"npm ci"
+]	
 	"script": [
-		rm -rf node_modules/
 		"npm run build",
 		"npm test"
  ],
-		"group": "stable",
+	"group": "stable",
 	"dist": "trusty",
 	"os": "linux"
 }
