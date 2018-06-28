@@ -44,15 +44,28 @@ class MyStudies extends React.Component {
     }
 
     listCourses() {
-        return (<div className="studyList">Käymäsi kurssit
-            {this.props.user.courses.map(course =>
-                <div key={course} style={{ display: 'block' }}>
-                    <div>{course}</div>
-                </div>
+        if (this.props.user !== undefined) {
+            if (this.props.user.courses !== undefined) {
+                return (<div className="studyList">Lista käymistäsi kursseista:
+                {this.props.user.courses.map(course =>
+                        <div key={course} style={{ display: 'block' }}>
+                            <div>{course}</div>
+                        </div>
 
-            )}
-        </div>
-        )
+                    )}
+                </div>
+                )
+            } else {
+                return (
+                    <div className="studyList">
+                        Tänne tulee lista käymistäsi kursseista"
+                </div>
+                )
+            }
+        }
+        else {
+            return
+        }
     }
 
 }

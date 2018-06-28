@@ -169,27 +169,31 @@ class App extends React.Component {
     deleteAccount = async (event) => {
         event.preventDefault()
 
-        if (this.state.username === this.state.user.username) {
-            if (this.state.password === this.state.passwordAgain) {
-                try {
-                    await registerService.deleteRegistration({
-                        username: this.state.username,
-                        password: this.state.password,
-                    });
-                    window.localStorage.removeItem('loggedUser')
-                    matriceService.setToken(null)
-                    userService.setToken(null)
-                    this.setState({ username: '', password: '', passwordAgain: '', user: null, verified: false, redirectAddress: '/' });
+        if (this.state.user.role !== 'admin') {
+            if (this.state.username === this.state.user.username) {
+                if (this.state.password === this.state.passwordAgain) {
+                    try {
+                        await registerService.deleteRegistration({
+                            username: this.state.username,
+                            password: this.state.password,
+                        });
+                        window.localStorage.removeItem('loggedUser')
+                        matriceService.setToken(null)
+                        userService.setToken(null)
+                        this.setState({ username: '', password: '', passwordAgain: '', user: null, verified: false, redirectAddress: '/' });
+                    }
+                    catch (exception) {
+                        this.setState({ loginMessage: "Could not delete user" });
+                    }
+                    this.componentDidMount();
+                } else {
+                    this.setState({ loginMessage: "Passwords do not match" })
                 }
-                catch (exception) {
-                    this.setState({ loginMessage: "Could not delete user" });
-                }
-                this.componentDidMount();
             } else {
-                this.setState({ loginMessage: "Passwords do not match" })
+                this.setState({ loginMessage: "Username does not match" })
             }
         } else {
-            this.setState({ loginMessage: "Username does not match" })
+            this.setState({ loginMessage: "Admin users can not be deleted" })
         }
     }
 
