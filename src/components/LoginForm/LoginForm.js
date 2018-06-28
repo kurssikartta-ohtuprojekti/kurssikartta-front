@@ -15,11 +15,11 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
 
   return (
     <div className="loginWrapper">
-      <h2 className="loginHeader">Login</h2>
+      <h2 className="loginHeader">Kirjaudu sisään</h2>
 
       <form onSubmit={handleSubmit}>
         <FormGroup className="loginForm">
-          <ControlLabel>Username: </ControlLabel>
+          <ControlLabel>Käyttäjätunnus: </ControlLabel>
           <FormControl
             className="loginInput"
             value={username}
@@ -27,7 +27,7 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
             name="username"
           />
 
-          <ControlLabel>Password: </ControlLabel>
+          <ControlLabel>Salasana: </ControlLabel>
           <FormControl
             className="loginInput"
             type="password"
@@ -44,7 +44,7 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
           // onExpire={reCaptchaExpire}
           /> */}
 
-          <Button className="loginSubmit" type="submit" bsStyle="success" disabled={!verified} onClick={handleSubmit} id='login'>Login</Button>
+          <Button className="loginSubmit" type="submit" bsStyle="success" disabled={!verified} onClick={handleSubmit} id='login'>Kirjaudu</Button>
 
         </FormGroup>
       </form>
@@ -53,7 +53,7 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
         {loginMessage}
       </div>
       <div className="registerText">
-        Uusi käyttäjä? <a href="/register">Register</a>
+        Uusi käyttäjä? <a href="/register">Rekisteröidy</a>
       </div>
     </div>
   )
