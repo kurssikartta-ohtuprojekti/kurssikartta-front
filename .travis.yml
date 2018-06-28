@@ -1,20 +1,9 @@
- {
-	"language": "node_js",
-	"node_js": "stable",
-	"cache": {
-    "directories": [
-		"node_modules"
-    ]
- },
-	"install" [
-	"npm i -g npm@5.7.1",
-	"npm ci"
-],	
-	"script": [
-		"npm run build",
-		"npm test"
- ],
-	"group": "stable",
-	"dist": "trusty",
-	"os": "linux"
-}
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+install:
+  - npm i -g npm@5.7.1 # this should be deleted once 5.7.X is out of "pre-release"
+  - npm ci             # instead of default npm install 
