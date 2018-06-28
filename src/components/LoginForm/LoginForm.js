@@ -54,7 +54,7 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
         {loginMessage}
       </div>
       <div className="registerText">
-        Uusi käyttäjä? <Link to='/register'>Rekisteröidy</Link>
+        Uusi käyttäjä? <a href="/register">Rekisteröidy</a>
       </div>
     </div>
   )
