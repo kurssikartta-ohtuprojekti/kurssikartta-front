@@ -106,13 +106,12 @@ class App extends React.Component {
                 password: this.state.password,
             });
             window.localStorage.setItem('loggedUser', JSON.stringify(user));
-            this.setState({ username: '', password: '', user });
+            this.setState({ username: '', password: '', user, verified: false, redirectAddress: 'mystudies' });
         }
         catch (exception) {
             this.setState({ loginMessage: "Could not register user" });
         }
         this.componentDidMount();
-        this.setState({ verified: false, redirectAddress: 'mystudies' });
     }
 
     // Login handler logic
