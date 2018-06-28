@@ -1,0 +1,18 @@
+  .studyWrapper {
+    margin-left: 15px;
+    max-width: 1146px;
+    margin: 0 auto;
+  }
+  
+  .deleteText {
+    float: left;
+    margin-left: 0px;
+    margin-top: 25px;
+    font-weight: bold;
+  }
+
+  .studyList {
+    line-height: 200%;
+    margin-left: 0px;
+    margin-top: 25px;
+  }

@@ -1,6 +1,5 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
 // import Reaptcha from 'reaptcha';
 
 import './LoginForm.css'

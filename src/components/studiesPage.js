@@ -61,7 +61,10 @@ class StudiesPage extends React.Component {
                 basic={this.props.basic} inter={this.props.inter} adv={this.props.adv} math={this.props.math} stats={this.props.stats}
                 user={this.props.user}
                 admin={this.props.admin}
-            />
+                prereqsOffHandler={this.props.prerequirementHighlightOffHandler}
+                prereqsHandler={this.props.prerequirementHighlightHandler}
+                highlightedPrereqs={this.props.selectedPrereqs}
+                userCompletedCourseHandler={this.userCompletedCourseHandler}            />
         }
     }
 

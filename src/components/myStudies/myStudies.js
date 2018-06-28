@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginForm from '.././LoginForm/LoginForm.js'
 import Logout from '.././LoginForm/Logout.js'
-// import './myStudies.css'
+import './myStudies.css'
 
 class MyStudies extends React.Component {
     constructor(props) {
@@ -22,20 +22,51 @@ class MyStudies extends React.Component {
                         handleSubmit={this.props.login}
                         loginMessage={this.props.loginMessage} /> :
 
-                    <div style={{margin: 60}}>
-                        <div style={{position: 'absolute', width: '90%', backgroundColor: 'lightblue', borderRadius: 5, padding: 10}}>
-                            <h1 style={{position: 'relative', float: 'left', width: 300}}>
+                    <div className="studyWrapper">
+                        <div style={{ borderRadius: 5, padding: 10 }}>
+                            <h2>
                                 Tervetuloa, {this.props.user.username}
-                            </h1>
-                            <Logout style={{position: 'relative', float: 'right'}} logoutHandler={this.props.logout} /> {/* Admin log out */}
-                            
+                            </h2>
+                            <Logout style={{ position: 'relative', float: 'right' }} logoutHandler={this.props.logout} /> {/* Admin log out */}
+
+                            {this.listCourses()}
+
+                            <div className="deleteText">
+                                Käyttäjätunnuksen <a href="/deleteuser">poistaminen</a>
+                            </div>
                         </div>
-                        
+
                     </div>
                 }
             </div>
         )
     }
+
+    listCourses() {
+        if (this.props.user !== undefined) {
+            if (this.props.user.courses !== undefined) {
+                return (<div className="studyList">Lista käymistäsi kursseista:
+                {this.props.user.courses.map(course =>
+                        <div key={course} style={{ display: 'block' }}>
+                            <div>{course}</div>
+                        </div>
+
+                    )}
+                </div>
+                )
+            } else {
+                return (
+                    <div className="studyList">
+                        Tänne tulee lista käymistäsi kursseista"
+                </div>
+                )
+            }
+        }
+        else {
+            return
+        }
+    }
+
 }
 
 export default MyStudies

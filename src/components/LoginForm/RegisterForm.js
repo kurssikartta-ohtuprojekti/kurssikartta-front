@@ -3,7 +3,7 @@ import { ControlLabel, Button, FormGroup, FormControl, HelpBlock, Checkbox } fro
 import Reaptcha from 'reaptcha';
 
 import './RegisterForm.css'
-const RegisterForm = ({ handleSubmit, checkboxVerify, checkboxVerified, loginMessage, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
+const RegisterForm = ({ handleSubmit, checkboxVerify, checkboxVerified, loginMessage, handleChange, username, password, passwordAgain, reCaptcha, reCaptchaExpire, verified }) => {
 
     // const reset = () => this.captcha.reset();
     // verified = true;
@@ -37,6 +37,16 @@ const RegisterForm = ({ handleSubmit, checkboxVerify, checkboxVerified, loginMes
 
                     />
                     <HelpBlock>Salasanan tulee olla 6-20 merkkiä ja sisältää vähintään yhden numeron.</HelpBlock>
+                    <ControlLabel>Salasana uudelleen: </ControlLabel>
+                    <FormControl
+                        className="loginInput"
+                        type="password"
+                        name="passwordAgain"
+                        value={passwordAgain}
+                        onChange={handleChange}
+
+                    />
+
                     <Reaptcha className="captcha"
                         ref={e => (this.captcha = e)}
                         sitekey="6LcE2l8UAAAAALMqws8reJ6Okpv2IT6Z3DhVS8US"
