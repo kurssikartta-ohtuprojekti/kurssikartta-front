@@ -7,10 +7,11 @@
     ]
  },
 	"script": [
+		rm -rf node_modules/
 		"npm run build",
 		"npm test"
  ],
-	"group": "stable",
+		"group": "stable",
 	"dist": "trusty",
 	"os": "linux"
 }
