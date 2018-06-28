@@ -1,23 +1,16 @@
 import React from 'react'
-import { ControlLabel, Button, FormGroup, FormControl, HelpBlock } from 'react-bootstrap'
+import { ControlLabel, Button, FormGroup, FormControl, HelpBlock, Checkbox } from 'react-bootstrap'
 import Reaptcha from 'reaptcha';
 
 import './RegisterForm.css'
-const RegisterForm = ({ handleSubmit, loginMessage, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
+const RegisterForm = ({ handleSubmit, checkboxVerify, checkboxVerified, loginMessage, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
 
     // const reset = () => this.captcha.reset();
-
     // verified = true;
 
     if (verified === false && this.captcha !== null && this.captcha !== undefined) {
         this.captcha.reset();
     }
-
-    // const popoverTop = (
-    //     <Popover id="popover-positioned-scrolling-top" title="Popover top">
-    //         <strong>Popover testi</strong>
-    //     </Popover>
-    // );
 
 
     return (
@@ -27,12 +20,6 @@ const RegisterForm = ({ handleSubmit, loginMessage, handleChange, username, pass
             <form onSubmit={handleSubmit}>
                 <FormGroup className="registerForm">
                     <ControlLabel>Käyttäjätunnus: </ControlLabel>
-                    {/* <OverlayTrigger
-                        container={this}
-                        trigger="click"
-                        placement="top"
-                        overlay={popoverTop}
-                    > */}
                     <FormControl
                         className="loginInput"
                         value={username}
@@ -40,7 +27,6 @@ const RegisterForm = ({ handleSubmit, loginMessage, handleChange, username, pass
                         name="username"
                     />
                     <HelpBlock>Käyttäjätunnuksen tulee olla 3-10 merkkiä pitkä.</HelpBlock>
-                    {/* </OverlayTrigger> */}
                     <ControlLabel>Salasana: </ControlLabel>
                     <FormControl
                         className="loginInput"
@@ -58,15 +44,15 @@ const RegisterForm = ({ handleSubmit, loginMessage, handleChange, username, pass
                     // onExpire={reCaptchaExpire}
                     />
 
-                    {/* <Checkbox onChange={verified = true}>
-                        Olen lukenut
-                    </Checkbox> */}
+                    <Checkbox onClick={checkboxVerify}>
+                        Hyväksyn, että antamani henkilötiedot tallennetaan kurssikarttasovellukseen.
+                    </Checkbox>
+                    <HelpBlock>Lisätietoja kurssikartan <a href="https://www.tko-aly.fi/coursemap_privacy" target="popup">tietosuojaselosteesta</a>.</HelpBlock>
 
-                    <Button className="registerSubmit" disabled={!verified} onClick={handleSubmit} id='register'>Rekisteröidy</Button>
+                    <Button className="registerSubmit" disabled={(!verified || !checkboxVerified)} onClick={handleSubmit} id='register'>Rekisteröidy</Button>
 
                 </FormGroup>
             </form>
-
             <div className="message">
                 {loginMessage}
             </div>
