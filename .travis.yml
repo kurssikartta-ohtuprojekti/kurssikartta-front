@@ -1,6 +1,16 @@
-language: node_js
-node_js:
-  - "stable"
-cache:
-  directories:
-  - node_modules
+ {
+	"language": "node_js",
+	"node_js": "stable",
+	"cache": {
+    "directories": [
+		"node_modules"
+    ]
+ },
+	"script": [
+		"npm run build",
+		"npm test"
+ ],
+	"group": "stable",
+	"dist": "trusty",
+	"os": "linux"
+}
