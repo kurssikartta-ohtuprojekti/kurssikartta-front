@@ -37,6 +37,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import RegisterForm from './components/LoginForm/RegisterForm';
 import StudiesPage from './components/studiesPage';
 import userService from './services/user'
+import DeleteUser from './components/LoginForm/DeleteUser'
 
 
 class App extends React.Component {
@@ -51,6 +52,7 @@ class App extends React.Component {
             role: null,
             username: '',
             password: '',
+            passwordAgain: '',
             selectedMatrice: null,
             reCaptchaResponse: null,
             verified: null,
@@ -99,18 +101,22 @@ class App extends React.Component {
 
     // Register handler logic
     async register() {
-        try {
-            const user = await registerService.register({
-                username: this.state.username,
-                password: this.state.password,
-            });
-            window.localStorage.setItem('loggedUser', JSON.stringify(user));
-            this.setState({ username: '', password: '', user, verified: false, redirectAddress: 'mystudies' });
+        if (this.state.password === this.state.passwordAgain) {
+            try {
+                const user = await registerService.register({
+                    username: this.state.username,
+                    password: this.state.password,
+                });
+                window.localStorage.setItem('loggedUser', JSON.stringify(user));
+                this.setState({ username: '', password: '', passwordAgain: '', user, verified: false, redirectAddress: 'mystudies' });
+            }
+            catch (exception) {
+                this.setState({ loginMessage: "Could not register user" });
+            }
+            this.componentDidMount();
+        } else {
+            this.setState({ loginMessage: "Passwords do not match" })
         }
-        catch (exception) {
-            this.setState({ loginMessage: "Could not register user" });
-        }
-        this.componentDidMount();
     }
 
     // Login handler logic
@@ -158,6 +164,33 @@ class App extends React.Component {
             this.setState({ checkboxVerified: !this.state.checkboxVerified })
         }
         this.componentDidMount();
+    }
+
+    deleteAccount = async (event) => {
+        event.preventDefault()
+
+        if (this.state.username === this.state.user.username) {
+            if (this.state.password === this.state.passwordAgain) {
+                try {
+                    await registerService.deleteRegistration({
+                        username: this.state.username,
+                        password: this.state.password,
+                    });
+                    window.localStorage.removeItem('loggedUser')
+                    matriceService.setToken(null)
+                    userService.setToken(null)
+                    this.setState({ username: '', password: '', passwordAgain: '', user: null, verified: false, redirectAddress: '/' });
+                }
+                catch (exception) {
+                    this.setState({ loginMessage: "Could not delete user" });
+                }
+                this.componentDidMount();
+            } else {
+                this.setState({ loginMessage: "Passwords do not match" })
+            }
+        } else {
+            this.setState({ loginMessage: "Username does not match" })
+        }
     }
 
 
@@ -378,6 +411,9 @@ class App extends React.Component {
         if (this.state.redirectAddress === 'mystudies') {
             this.setState({ redirectAddress: null });
             return <Redirect to='/mystudies' />;
+        } else if (this.state.redirectAddress === '/') {
+            this.setState({ redirectAddress: null });
+            return <Redirect to='/' />;
         } else {
             return
         }
@@ -485,6 +521,12 @@ class App extends React.Component {
                                         matriceCallback={this.matriceCallback}
                                         selectedMatrice={this.state.selectedMatrice}
                                         handleNewSubmit={this.addNewCourseMatriceHandler}
+                                        prereqsOffHandler={this.prerequirementHighlightOffHandler}
+                                        prereqsHandler={this.prerequirementHighlightHandler}
+                                        highlightedPrereqs={this.state.selectedPrereqs}
+                                        user={this.state.user}
+                                        userCompletedCourseHandler={this.userCompletedCourseHandler}
+                                        basic={basic} inter={inter} adv={adv} math={math} stats={stats}
                                     />
                                 }
                                 />
@@ -503,6 +545,7 @@ class App extends React.Component {
                                     <RegisterForm
                                         username={this.state.username}
                                         password={this.state.password}
+                                        passwordAgain={this.state.passwordAgain}
                                         handleChange={this.handleLoginFieldChange}
                                         reCaptcha={this.reCaptcha}
                                         onExpire={this.reCaptchaExpire}
@@ -511,6 +554,23 @@ class App extends React.Component {
                                         loginMessage={this.state.loginMessage}
                                         checkboxVerify={this.checkboxVerify}
                                         checkboxVerified={this.state.checkboxVerified} />
+                                }
+                                />
+
+                                <Route path="/deleteuser" render={() =>
+                                    <DeleteUser
+                                        username={this.state.username}
+                                        password={this.state.password}
+                                        handleChange={this.handleLoginFieldChange}
+                                        deleteAccount={this.deleteAccount}
+                                        reCaptcha={this.reCaptcha}
+                                        onExpire={this.reCaptchaExpire}
+                                        verified={this.state.verified}
+                                        handleSubmit={this.login}
+                                        loginMessage={this.state.loginMessage}
+                                        checkboxVerify={this.checkboxVerify}
+                                        checkboxVerified={this.state.checkboxVerified}
+                                        user={this.state.user} />
                                 }
                                 />
 
