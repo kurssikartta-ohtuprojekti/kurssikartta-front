@@ -98,7 +98,7 @@ class Course extends React.Component {
                             trigger={this.courseButton()}
                             closeOnDocumentClick
                             modal
-                            contentStyle={{ width: "500px" }}
+                            contentStyle={{ maxHeight: "70vh", width: "380px", overflow: 'auto', zIndex: 99 }}
                         >
                             <span>
                                 <CourseInfo course={this.props.course}

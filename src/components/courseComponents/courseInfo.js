@@ -128,7 +128,9 @@ export default class CourseInfo extends React.Component {
             <div style={{color: 'black'}}>
                 {this.props.user !== undefined && this.props.user !== null && this.props.user.role === 'user' ?
                     
-                    <Button onClick={this.completedHandler} style={{position: 'relative', float: 'right'}} bsStyle="success">
+                    <Button onClick={this.completedHandler}
+                            style={{position: 'relative', float: 'right', width: '90px', whiteSpace: 'normal',}}
+                            bsStyle="success">
                         {this.state.completed ? 'Poista suoritus' : 'Merkitse suoritetuksi'}
                     </Button>
                 :
