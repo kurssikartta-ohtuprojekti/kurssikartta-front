@@ -7,7 +7,8 @@ import CourseList from './components/courseList'
 import CourseMap from './components/courseMap'
 import {
     BrowserRouter as Router,
-    Route
+    Route,
+    Redirect,
 } from 'react-router-dom'
 import {
     basics,
@@ -37,6 +38,7 @@ import RegisterForm from './components/LoginForm/RegisterForm';
 import StudiesPage from './components/studiesPage';
 import userService from './services/user'
 
+
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -53,6 +55,8 @@ class App extends React.Component {
             reCaptchaResponse: null,
             verified: null,
             loginMessage: null,
+            checkboxVerified: null,
+            redirectAddress: null,
         }
     }
 
@@ -73,7 +77,7 @@ class App extends React.Component {
         }
     }
 
-    // Admin logout handler
+    // Logout handler
     logout = async (event) => {
         event.preventDefault()
         // console.log(window.localStorage.getItem('loggedUser'))
@@ -82,11 +86,10 @@ class App extends React.Component {
         userService.setToken(null)
         this.setState({ user: null, admin: false, verified: false })
     }
-    // Admin login handler
+
+    // Login and register handler
     login = async (event) => {
         event.preventDefault()
-
-        // console.log(event.target.id)
 
         if (event.target.id === 'login') {
             this.loginHandle();
@@ -95,6 +98,7 @@ class App extends React.Component {
         }
     }
 
+    // Register handler logic
     async register() {
         try {
             const user = await registerService.register({
@@ -108,9 +112,10 @@ class App extends React.Component {
             this.setState({ loginMessage: "Could not register user" });
         }
         this.componentDidMount();
-        this.setState({ verified: false });
+        this.setState({ verified: false, redirectAddress: 'mystudies' });
     }
 
+    // Login handler logic
     async loginHandle() {
         try {
             const user = await loginService.login({
@@ -130,30 +135,13 @@ class App extends React.Component {
         this.setState({ verified: false });
     }
 
-    // register = async (event) => {
-    //     event.preventDefault()
-
-    //     this.setState({ verified: false })
-    //     try {
-    //         const user = await registerService.register({
-    //             username: this.state.username,
-    //             password: this.state.password,
-    //         })
-
-    //         window.localStorage.setItem('loggedUser', JSON.stringify(user))
-    //         this.setState({ username: '', password: '', user })
-    //     } catch (exception) {
-    //         window.alert("Could not register user")
-    //     }
-    //     this.componentDidMount()
-    // }
-
     // Login text input handler
     handleLoginFieldChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
 
     }
 
+    // Verifying reCaptcha is entered
     reCaptcha = (value) => {
         this.setState({ verified: true, reCaptchaResponse: value })
 
@@ -163,6 +151,15 @@ class App extends React.Component {
     reCaptchaExpire = () => {
         this.setState({ verified: false })
 
+        this.componentDidMount();
+    }
+
+    checkboxVerify = () => {
+        if (this.state.checkboxVerified === null) {
+            this.setState({ checkboxVerified: true })
+        } else {
+            this.setState({ checkboxVerified: !this.state.checkboxVerified })
+        }
         this.componentDidMount();
     }
 
@@ -357,9 +354,9 @@ class App extends React.Component {
 
     userCompletedCourseHandler = async (handleCourse) => {
         let setCourses = []
-         if (this.state.user.courses) {
+        if (this.state.user.courses) {
             setCourses = this.state.user.courses
-         }
+        }
         if (setCourses.includes(handleCourse)) {
             setCourses = setCourses.filter(item => item !== handleCourse)
         } else {
@@ -374,11 +371,21 @@ class App extends React.Component {
             courses: res.courses,
             role: res.role
         }
-        this.setState({user})
+        this.setState({ user })
         window.localStorage.setItem('loggedUser', JSON.stringify(user));
 
     }
-    
+
+    // Redirect if needed
+    redirect() {
+        if (this.state.redirectAddress === 'mystudies') {
+            this.setState({ redirectAddress: null });
+            return <Redirect to='/mystudies' />;
+        } else {
+            return
+        }
+    }
+
     render() {
         const basic = basics(this.state.courses) // Using functions from /utils/tools.js
         const inter = intermediate(this.state.courses)
@@ -504,10 +511,13 @@ class App extends React.Component {
                                         onExpire={this.reCaptchaExpire}
                                         verified={this.state.verified}
                                         handleSubmit={this.login}
-                                        loginMessage={this.state.loginMessage} />
+                                        loginMessage={this.state.loginMessage}
+                                        checkboxVerify={this.checkboxVerify}
+                                        checkboxVerified={this.state.checkboxVerified} />
                                 }
                                 />
 
+                                {this.redirect()}
                             </div>
                         }
                     </div>

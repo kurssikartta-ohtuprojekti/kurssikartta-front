@@ -1,5 +1,6 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 // import Reaptcha from 'reaptcha';
 
 import './LoginForm.css'
@@ -44,7 +45,7 @@ const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, passwor
           // onExpire={reCaptchaExpire}
           /> */}
 
-          <Button className="loginSubmit" type="submit" bsStyle="success" disabled={!verified} onClick={handleSubmit} id='login'>Kirjaudu</Button>
+          <Button className="loginSubmit" type="submit" bsStyle="success" disabled={!verified} id='login'>Kirjaudu</Button>
 
         </FormGroup>
       </form>
