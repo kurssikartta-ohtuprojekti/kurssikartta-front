@@ -57,7 +57,7 @@ class MyStudies extends React.Component {
             } else {
                 return (
                     <div className="studyList">
-                        Tänne tulee lista käymistäsi kursseista"
+                        Tänne tulee lista käymistäsi kursseista.
                 </div>
                 )
             }
