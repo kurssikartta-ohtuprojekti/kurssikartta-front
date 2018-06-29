@@ -14,8 +14,8 @@ import './matriceSelect.css'
 
 import { periodFilter } from '.././utils/tools.js'
  
-{/* Should be replaced with a better library,
-preferably one that enables touch screens */}
+/* Should be replaced with a better library,
+preferably one that enables touch screens */
 import panAndZoomHoc from 'react-pan-and-zoom-hoc';
 const InteractiveDiv = panAndZoomHoc('div');
 

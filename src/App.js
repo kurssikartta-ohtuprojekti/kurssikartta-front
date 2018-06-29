@@ -106,6 +106,7 @@ class App extends React.Component {
                 const user = await registerService.register({
                     username: this.state.username,
                     password: this.state.password,
+                    reCaptchaResponse: this.state.reCaptchaResponse
                 });
                 window.localStorage.setItem('loggedUser', JSON.stringify(user));
                 this.setState({ username: '', password: '', passwordAgain: '', user, verified: false, redirectAddress: 'mystudies' });
@@ -126,7 +127,7 @@ class App extends React.Component {
                 username: this.state.username,
                 password: this.state.password,
                 role: this.state.role,
-                reCaptchaResponse: this.state.reCaptchaResponse,
+                // reCaptchaResponse: this.state.reCaptchaResponse,
             });
             window.localStorage.setItem('loggedUser', JSON.stringify(user));
             this.setState({ username: '', password: '', user });
@@ -433,8 +434,7 @@ class App extends React.Component {
         if (this.state.matrices !== null && this.state.selectedMatrice === null) {
             this.setState({ selectedMatrice: this.state.matrices[0] })
         }
-        // console.log(this.state.user)
-        // console.log(this.state.user)
+
         return (
             <div className="containerFluid" style={{ position: 'relative' }}>
                 <Router>
