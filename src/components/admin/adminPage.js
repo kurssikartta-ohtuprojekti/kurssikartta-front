@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginForm from '.././LoginForm/LoginForm.js'
 import CourseUpdate from './courseUpdate'
+import ExcelUpdate from './excelUpdate'
 import CourseMapAdmin from './courseMapAdmin'
 import UnmappedCourses from './unmappedCourses'
 import Logout from '.././LoginForm/Logout.js'
@@ -28,14 +29,17 @@ class AdminPage extends React.Component {
     // render all admin control tools
     adminDisplay() {
         if (this.props.user.role === 'admin') {
-            return <div>
+            return <div className="adminPage">
                 <div className="adminButtonGroup">
                     <Logout logoutHandler={this.props.logout} />
-                    <CourseUpdate />
+                    <CourseUpdate user={this.props.user}/>
                 </div>
 
                 <CourseMapAdmin adminFuncts={true} courseMovementHandler={this.props.courseMovementHandler} deleteCourseHandler={this.props.deleteCourseHandler} matrices={this.props.matrices} matrice={this.props.matrice} user={this.props.user} basic={this.props.basic} inter={this.props.inter} adv={this.props.adv} math={this.props.math} stats={this.props.stats} matriceCallback={this.props.matriceCallback} selectedMatrice={this.props.selectedMatrice} />
 
+                <div classname="excelUpdate">
+                    <ExcelUpdate user={this.props.user} />
+                </div>
 
                 <UnmappedCourses selectedMatrice={this.props.selectedMatrice} courses={this.props.courses} handleSubmit={this.props.handleNewSubmit} />
             </div>;
@@ -45,7 +49,7 @@ class AdminPage extends React.Component {
             </div>
         }
     }
-    
+
     // render login page
     displayLogin() {
         if (this.props.user === null) {

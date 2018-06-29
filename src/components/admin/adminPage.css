@@ -6,3 +6,18 @@
     height: 50px;
 
 }
+
+.excelInput {
+    width: 300px;
+}
+
+.excelSubmit {
+    margin-top: -55px;
+    margin-left: 310px;
+}
+
+.adminPage {
+    max-width: 98%;
+    position: center;
+    margin: 0 auto;
+}
