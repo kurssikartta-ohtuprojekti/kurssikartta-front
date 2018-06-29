@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap'
 import Popup from 'reactjs-popup'
 import './courseAdminPanel.css'
 import AddForm from './addForm';
+
+// Class to render the popup contol panel for admin's course map view
 export default class CourseAdminPanel extends React.Component {
     constructor(props) {
         super(props);

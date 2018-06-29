@@ -41,7 +41,7 @@ class MyStudies extends React.Component {
             </div>
         )
     }
-
+    // List courses that user has set to completed
     listCourses() {
         if (this.props.user !== undefined) {
             if (this.props.user.courses !== undefined) {

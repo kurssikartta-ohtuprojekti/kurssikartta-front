@@ -13,8 +13,10 @@ import {
 import './matriceSelect.css'
 
 import { periodFilter } from '.././utils/tools.js'
-import panAndZoomHoc from 'react-pan-and-zoom-hoc';
  
+{/* Should be replaced with a better library,
+preferably one that enables touch screens */}
+import panAndZoomHoc from 'react-pan-and-zoom-hoc';
 const InteractiveDiv = panAndZoomHoc('div');
 
 //  Kartalla näkyväksi asetettujen kurssien renderointi kartalle
@@ -168,6 +170,8 @@ class CourseMap extends React.Component {
 
                 </div>
                 {/* Enables Panning and zooming */}
+                {/* Should be replaced with a better technology,
+                preferably one that enables touch screens */}
                 <InteractiveDiv 
                     className="interactive"
                     x={x}

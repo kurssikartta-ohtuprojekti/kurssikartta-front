@@ -1,17 +1,12 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
-// import Reaptcha from 'reaptcha';
-
 import './LoginForm.css'
+
+// Renders login form
 const LoginForm = ({ handleSubmit, loginMessage, handleChange, username, password, reCaptcha, reCaptchaExpire, verified }) => {
 
-  // const reset = () => this.captcha.reset();
 
   verified = true;
-
-  // if (verified === false && this.captcha !== null && this.captcha !== undefined) {
-  //   this.captcha.reset();
-  // }
 
   return (
     <div className="loginWrapper">

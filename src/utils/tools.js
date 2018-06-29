@@ -62,6 +62,7 @@ const visibleFalseFilter = (courses) => {
     return resultsfilter
 }
 
+// Used to count all courses from basic, inter, adv, math and stats
 const courseCounter = (courses1, courses2, courses3, courses4, courses5) => {
 
     if (courses1 === null || courses1 === undefined) {
@@ -129,6 +130,7 @@ const periodFilter = (periodFilter, coursePeriods) => {
     return false
 }
 
+// Check to see if logged in user has completed a course
 const completedFilter = (courseCode, userCompleted) => {
     if (!userCompleted) {
         return false;
