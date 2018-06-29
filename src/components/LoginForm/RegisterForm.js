@@ -1,12 +1,10 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl, HelpBlock, Checkbox } from 'react-bootstrap'
 import Reaptcha from 'reaptcha';
-
 import './RegisterForm.css'
-const RegisterForm = ({ handleSubmit, checkboxVerify, checkboxVerified, loginMessage, handleChange, username, password, passwordAgain, reCaptcha, reCaptchaExpire, verified }) => {
 
-    // const reset = () => this.captcha.reset();
-    // verified = true;
+// Renders register form
+const RegisterForm = ({ handleSubmit, checkboxVerify, checkboxVerified, loginMessage, handleChange, username, password, passwordAgain, reCaptcha, reCaptchaExpire, verified }) => {
 
     if (verified === false && this.captcha !== null && this.captcha !== undefined) {
         this.captcha.reset();

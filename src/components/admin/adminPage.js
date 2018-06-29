@@ -25,6 +25,7 @@ class AdminPage extends React.Component {
         )
     }
 
+    // render all admin control tools
     adminDisplay() {
         if (this.props.user.role === 'admin') {
             return <div>
@@ -44,7 +45,8 @@ class AdminPage extends React.Component {
             </div>
         }
     }
-
+    
+    // render login page
     displayLogin() {
         if (this.props.user === null) {
             return <LoginForm username={this.props.username} password={this.props.password} handleChange={this.props.handleLoginFieldChange} handleSubmit={this.props.login} handleRegister={this.props.register}

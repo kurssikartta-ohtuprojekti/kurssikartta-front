@@ -1,7 +1,6 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
 import {completedFilter} from './../../utils/tools'
-// Renders course information for nonadmin users when course button is clicked
 const instructionEventMapper = (instructionEvent) => {
 
     const beginDateString = new Date(instructionEvent.begins).toLocaleDateString()
@@ -85,6 +84,8 @@ const instructions = (courseInfo) => {
         </div>
     )
 }
+// Renders course information for nonadmin users when course button is clicked
+
 export default class CourseInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -110,6 +111,7 @@ export default class CourseInfo extends React.Component {
         this.setState({completed: setCompleted})
     }
 
+    // Handler to set course to be completed by user
     completedHandler = () => {
         try {
             this.props.userCompletedCourseHandler(this.state.course.code)

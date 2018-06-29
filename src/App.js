@@ -166,6 +166,7 @@ class App extends React.Component {
         this.componentDidMount();
     }
 
+    // Handler for account deletion
     deleteAccount = async (event) => {
         event.preventDefault()
 

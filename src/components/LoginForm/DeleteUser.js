@@ -1,8 +1,8 @@
 import React from 'react'
 import { ControlLabel, Button, FormGroup, FormControl, Checkbox } from 'react-bootstrap'
-// import Reaptcha from 'reaptcha';
-
 import './LoginForm.css'
+
+// Renders user deletion form
 const DeleteUser = ({ deleteAccount, checkboxVerify, checkboxVerified, loginMessage, handleChange, username, password, passwordAgain, user }) => {
 
     return (
