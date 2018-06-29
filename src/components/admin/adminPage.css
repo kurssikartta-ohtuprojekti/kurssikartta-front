@@ -7,17 +7,21 @@
 
 }
 
+.adminPage {
+    max-width: 98%;
+    position: center;
+    margin: 0 auto;
+}
+
 .excelInput {
     width: 300px;
 }
 
 .excelSubmit {
-    margin-top: -55px;
+    margin-top: -247px;
     margin-left: 310px;
 }
 
-.adminPage {
-    max-width: 98%;
-    position: center;
-    margin: 0 auto;
+.excelHeader {
+margin-left: 10px;
 }

@@ -37,11 +37,11 @@ class AdminPage extends React.Component {
 
                 <CourseMapAdmin adminFuncts={true} courseMovementHandler={this.props.courseMovementHandler} deleteCourseHandler={this.props.deleteCourseHandler} matrices={this.props.matrices} matrice={this.props.matrice} user={this.props.user} basic={this.props.basic} inter={this.props.inter} adv={this.props.adv} math={this.props.math} stats={this.props.stats} matriceCallback={this.props.matriceCallback} selectedMatrice={this.props.selectedMatrice} />
 
-                <div classname="excelUpdate">
+                <UnmappedCourses selectedMatrice={this.props.selectedMatrice} courses={this.props.courses} handleSubmit={this.props.handleNewSubmit} />
+                
+                <div className="excelUpdate">
                     <ExcelUpdate user={this.props.user} />
                 </div>
-
-                <UnmappedCourses selectedMatrice={this.props.selectedMatrice} courses={this.props.courses} handleSubmit={this.props.handleNewSubmit} />
             </div>;
         } else if (this.props.user.role !== 'admin') {
             return <div> Käyttäjä ei ole admin.

@@ -38,7 +38,7 @@ class UnmappedCourses extends React.Component {
                 <div className="unmappedList">
                     <ListGroup>
                     {filtered.map(course => 
-                        <ListGroupItem className="unmappedCourseItem">
+                        <ListGroupItem key={course.code} className="unmappedCourseItem">
                             <UnmappedCourse key={course.code}
                                             course={course}
                                             handleSubmit={this.props.handleSubmit}

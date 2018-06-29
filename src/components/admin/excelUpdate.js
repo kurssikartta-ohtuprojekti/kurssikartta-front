@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import config from './../../utils/config'
-import { ControlLabel, Button, FormGroup, FormControl } from 'react-bootstrap'
+import { ControlLabel, Button, FormGroup, FormControl, HelpBlock } from 'react-bootstrap'
 
 
 export default class excelUpdate extends React.Component {
@@ -13,6 +13,7 @@ export default class excelUpdate extends React.Component {
             excel: '',
         };
 
+        this.updateAdress = this.updateAdress.bind(this);
     }
 
 
@@ -68,10 +69,10 @@ export default class excelUpdate extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2 className="loginHeader">Vaihda excel-tiedoston osoitetta</h2>
+            <div className="excelHeader">
+                <h2>Vaihda kurssilista-tiedoston osoitetta</h2>
 
-                <form onSubmit="">
+                <form>
                     <FormGroup>
                         <ControlLabel>Tiedoston id:</ControlLabel>
                         <FormControl
@@ -81,6 +82,15 @@ export default class excelUpdate extends React.Component {
                             name="excel"
                         />
 
+                        <HelpBlock>
+                            Tiedoston id:n saa avoinna olevan Google Sheetsin osoitteesta, 'https://docs.google.com/spreadsheets/d/<b>ID</b>/edit'.
+                        </HelpBlock>
+                        <HelpBlock>
+                            <b>Huomioi</b>, että tiedoston pitää olla 'published to the web', jotta se on lukukelpoinen. (File -> Publish to the web..)
+                        </HelpBlock>
+                        <HelpBlock>
+                            Lista haetaan tiedoston ensimmäisestä sivusta.
+                        </HelpBlock>
                         <Button className="excelSubmit" bsStyle="warning" onClick={this.updateAdress} id='login'>{this.state.isToggleOn ? 'Vaihda id' : 'Vaihdettu'}</Button>
 
                     </FormGroup>
