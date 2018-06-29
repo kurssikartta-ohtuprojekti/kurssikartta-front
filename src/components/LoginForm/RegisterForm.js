@@ -36,7 +36,7 @@ const RegisterForm = ({ handleSubmit, checkboxVerify, checkboxVerified, loginMes
                         onChange={handleChange}
 
                     />
-                    <HelpBlock>Salasanan tulee olla 6-20 merkkiä ja sisältää vähintään yhden numeron.</HelpBlock>
+                    <HelpBlock>Salasanan tulee olla 10-20 merkkiä ja sisältää vähintään yhden numeron.</HelpBlock>
                     <ControlLabel>Salasana uudelleen: </ControlLabel>
                     <FormControl
                         className="loginInput"

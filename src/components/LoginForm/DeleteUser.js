@@ -39,7 +39,7 @@ function userDeletion(user, deleteAccount, username, handleChange, password, pas
                         Olen varma, että haluan poistaa käyttäjätunnukseni.
                 </Checkbox>
 
-                    <Button bsStyle="danger" className="loginSubmit" disabled={(!checkboxVerified)} onClick={deleteAccount} id='register'>Rekisteröidy</Button>
+                    <Button bsStyle="danger" className="loginSubmit" disabled={(!checkboxVerified)} onClick={deleteAccount} id='register'>Poista</Button>
 
                 </FormGroup>
             </form>
